@@ -1,0 +1,279 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Alppiharju",
+        "name_fi": "Alppiharju",
+        "count": 1,
+        "objects": [
+          {
+            "name": "House of Culture",
+            "name_fi": "Kulttuuritalo",
+            "url": "https://visit.alvaraalto.fi/en/destinations/house-of-culture/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/kulttuuritalo/"
+          }
+        ],
+        "object_name": "House of Culture",
+        "object_name_fi": "Kulttuuritalo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9441933,
+          60.1882427
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Etu-Töölö",
+        "name_fi": "Etu-Töölö",
+        "count": 1,
+        "objects": [
+          {
+            "name": "Finlandia Hall",
+            "name_fi": "Finlandia-talo",
+            "url": "https://visit.alvaraalto.fi/en/destinations/finlandia-hall/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/finlandia-talo/"
+          }
+        ],
+        "object_name": "Finlandia Hall",
+        "object_name_fi": "Finlandia-talo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9335608,
+          60.1758229
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Espoo",
+        "name_fi": "Espoo",
+        "count": 1,
+        "objects": [
+          {
+            "name": "Espoo and Otaniemi Campus Area",
+            "name_fi": "Espoo ja Otaniemen yliopisto­kampus",
+            "url": "https://visit.alvaraalto.fi/en/destinations/espoo/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/espoo-otaniemi-kampus/"
+          }
+        ],
+        "object_name": "Espoo and Otaniemi Campus Area",
+        "object_name_fi": "Espoo ja Otaniemen yliopisto­kampus"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.8270103,
+          60.1857416
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "City Centre",
+        "name_fi": "Kaartinkaupunki",
+        "count": 3,
+        "objects": [
+          {
+            "name": "Interior and Furnishing of the Savoy Restaurant",
+            "name_fi": "Ravintola Savoyn sisustus",
+            "url": "https://visit.alvaraalto.fi/en/destinations/interior-and-decoration-of-the-savoy-restaurant/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/ravintola-savoyn-sisustus/"
+          },
+          {
+            "name": "Alvar Aalto in Helsinki",
+            "name_fi": "Alvar Aallon Helsinki",
+            "url": "https://visit.alvaraalto.fi/en/destinations/alvar-aaltos-helsinki/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alvar-aallon-helsinki/"
+          },
+          {
+            "name": "Erottaja Pavilion",
+            "name_fi": "Erottajan paviljonki",
+            "url": "https://visit.alvaraalto.fi/en/destinations/erottaja-pavilion/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/erottajan-paviljonki/"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.944620200000003,
+          60.16694053333333
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kamppi",
+        "name_fi": "Kamppi",
+        "count": 1,
+        "objects": [
+          {
+            "name": "Helsinki Energy Office Building",
+            "name_fi": "Sähkötalo, Helsingin Energia",
+            "url": "https://visit.alvaraalto.fi/en/destinations/helsinki-energy-office-building/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/sahkotalo-helsingin-energia/"
+          }
+        ],
+        "object_name": "Helsinki Energy Office Building",
+        "object_name_fi": "Sähkötalo, Helsingin Energia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9310828,
+          60.1680326
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Katajanokka",
+        "name_fi": "Katajanokka",
+        "count": 1,
+        "objects": [
+          {
+            "name": "Enso-Gutzeit Co. Headquarters",
+            "name_fi": "Enso-Gutzeit Oy:n pääkonttori",
+            "url": "https://visit.alvaraalto.fi/en/destinations/enso-gutzeit-co-headquarters/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/enso-gutzeit-oyn-paakonttori/"
+          }
+        ],
+        "object_name": "Enso-Gutzeit Co. Headquarters",
+        "object_name_fi": "Enso-Gutzeit Oy:n pääkonttori"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9581759,
+          60.1680411
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kluuvi",
+        "name_fi": "Kluuvi",
+        "count": 2,
+        "objects": [
+          {
+            "name": "Book House",
+            "name_fi": "Kirjatalo",
+            "url": "https://visit.alvaraalto.fi/en/destinations/academic-bookstore/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/akateeminen-kirjakauppa/"
+          },
+          {
+            "name": "Rautatalo Office Building",
+            "name_fi": "Rautatalo",
+            "url": "https://visit.alvaraalto.fi/en/destinations/rautatalo-office-building/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/rautatalo/"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.943212850000002,
+          60.16824365
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Munkkiniemi",
+        "name_fi": "Munkkiniemi",
+        "count": 3,
+        "objects": [
+          {
+            "name": "National Pensions Institute, Housing Area",
+            "name_fi": "Kansan­eläke­laitoksen asuin­alue",
+            "url": "https://visit.alvaraalto.fi/en/destinations/national-pensions-institute-housing-area/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/kansanelakelaitoksen-asuinalue/"
+          },
+          {
+            "name": "Aalto House",
+            "name_fi": "Alvar Aallon kotitalo",
+            "url": "https://visit.alvaraalto.fi/en/destinations/the-aalto-house/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alvar-aallon-kotitalo/"
+          },
+          {
+            "name": "Studio Aalto",
+            "name_fi": "Alvar Aallon ateljee",
+            "url": "https://visit.alvaraalto.fi/en/destinations/studio-aalto/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alvar-aallon-ateljee/"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.877558200000003,
+          60.1965807
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Taka-Töölö",
+        "name_fi": "Taka-Töölö",
+        "count": 1,
+        "objects": [
+          {
+            "name": "National Pensions Institute, Main Building",
+            "name_fi": "Kansaneläke­laitos",
+            "url": "https://visit.alvaraalto.fi/en/destinations/national-pensions-institute-head-office/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/kansanelakelaitos/"
+          }
+        ],
+        "object_name": "National Pensions Institute, Main Building",
+        "object_name_fi": "Kansaneläke­laitos"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9173934,
+          60.1874613
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vantaa",
+        "name_fi": "Vantaa",
+        "count": 1,
+        "objects": [
+          {
+            "name": "Aerola Terraced Houses in Vantaa",
+            "name_fi": "Aerolan rivitalot Vantaalla",
+            "url": "https://visit.alvaraalto.fi/en/destinations/aerola-terraced-houses-in-vantaa/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/aerolan-rivitalot-vantaalla/"
+          }
+        ],
+        "object_name": "Aerola Terraced Houses in Vantaa",
+        "object_name_fi": "Aerolan rivitalot Vantaalla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9735487,
+          60.3003357
+        ]
+      }
+    }
+  ]
+}

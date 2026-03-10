@@ -1,0 +1,1445 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Typpi Oy – The Red-Brick Industrial Community in Laanila",
+        "name_fi": "Typpi Oy – Punatiilinen tehdasyhdyskunta Laanilassa",
+        "address": "Typpipark Typpitie 1, 90620 Oulu, Pohjois-Pohjanmaa Suomi",
+        "address_fi": "Typpipark Typpitie 1, 90620 Oulu, Pohjois-Pohjanmaa Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/typpi-oy-the-red-brick-industrial-community-in-laanila/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/typpi-oy-punatiilinen-tehdasyhdyskunta-laanilassa/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2026/01/Typpi-Oy-kalivarasto-ppmv1992_359-300x217.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.5146824,
+          65.0290416
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Koskikeskus – Aalto’s Vision for the River Delta",
+        "name_fi": "Koskikeskus – Aallon visio jokisuistossa",
+        "address": "Raatintie 2, 90100 Oulu, Pohjois-Pohjanmaa Suomi",
+        "address_fi": "Raatintie 2, 90100 Oulu, Pohjois-Pohjanmaa Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/koskikeskus-aaltos-vision-for-the-river-delta/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/koskikeskus-aallon-visio-jokisuistossa/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2026/01/Koskikeskus_-maisema-225x300.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.4644327,
+          65.0197014
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Toppila Sulphite Pulp Mill – From Toppila Oy to Meri-Toppila",
+        "name_fi": "Toppilan sulfiittiselluloosatehdas – Toppila Oy:stä Meri-Toppilaksi",
+        "address": "Alvar Aallon katu 1, 90520 Oulu, Pohjois-Pohjanmaa Suomi",
+        "address_fi": "Alvar Aallon katu 1, 90520 Oulu, Pohjois-Pohjanmaa Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/toppila-sulphite-pulp-mill-from-toppila-oy-to-meri-toppila/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/toppilan-sulfiittiselluloosatehdas-toppila-oysta-meri-toppilaksi/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2026/01/Keittamo-01-300x293.png",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.4329071,
+          65.0441162
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ahlström Noormarkku Works",
+        "name_fi": "Ahlströmin ruukki ja Villa Mairea",
+        "address": "Laviantie, 29600 Pori Noormarkku Finpyy, Finland",
+        "address_fi": "Laviantie, 29600 Pori Noormarkku Finpyy, Finland",
+        "url": "https://visit.alvaraalto.fi/en/destinations/ahlstrom-works-and-villa-mairea/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/ahlstromin-ruukki-ja-villa-mairea/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/07/Noormarkunjoen-rannalla_A-300x200.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.8689272,
+          61.5928123
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Alajärvi Town Hall",
+        "name_fi": "Alajärven kaupungin­talo",
+        "address": "Alvar Aallon tie 1, 62900 Alajärvi, Suomi",
+        "address_fi": "Alvar Aallon tie 1, 62900 Alajärvi, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/alajarvi-town-hall/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alajarven-kaupungintalo/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/05/alajarvi-kaupungintalo-hautausmaalta-300x199.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.8227644,
+          62.9994126
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Alajärvi Parish Hall",
+        "name_fi": "Alajärven seurakunta­talo",
+        "address": "Alvar Aallon tie 3, 62900 Alajärvi, Suomi",
+        "address_fi": "Alvar Aallon tie 3, 62900 Alajärvi, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/alajarvi-parish-hall/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alajarven-seurakuntatalo/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/05/alajarvi-seurakuntatalo-edesta-a-300x199.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.8233081,
+          63.0001313
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Alajärvi City Library",
+        "name_fi": "Alajärven kaupungin­kirjasto",
+        "address": "Kirkkotie 7, 62900 Alajärvi, Suomi",
+        "address_fi": "Kirkkotie 7, 62900 Alajärvi, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/alajarvi-city-library/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alajarven-kaupunginkirjasto/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/05/alajarvi-kaupunginkirjasto-kaupungintalolta-a-300x199.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.8239416,
+          62.9991618
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Aalto2 Museum Centre",
+        "name_fi": "Aalto2-museokeskus",
+        "address": "Alvar Aallon katu 7, 40600 Jyväskylä, Finland",
+        "address_fi": "Alvar Aallon katu 7, 40600 Jyväskylä, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/aalto2-museum-centre/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/aalto2-museokeskus/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/06/aalto2-museokeskuksen-uudisosa-yhdistaa-toisiinsa-alvar-aalto-museon-vas-ja-keski-suomen-museon-oik-kuva-maija-holma-alvar-aalto-saatio-300x268.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7309607,
+          62.2334211
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rovaniemi Aalto Center, administrative and cultural center",
+        "name_fi": "Rovaniemen Aalto-keskus (hallinto- ja kulttuurikeskus)",
+        "address": "Hallituskatu 7, 96100 Rovaniemi, Finland",
+        "address_fi": "Hallituskatu 7, 96100 Rovaniemi, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/rovaniemi-aalto-center-administrative-and-cultural-center/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/rovaniemen-aalto-keskus/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-aaltokeskus-talvi-kirjasto-lappia-talo-kuva-rovaniemenkaupunki-rotkonen-samu-a-300x200.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7259084,
+          66.4963795
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rovaniemi City Hall",
+        "name_fi": "Rovaniemen kaupungintalo",
+        "address": "Hallituskatu 7, 96100 Rovaniemi, Finland",
+        "address_fi": "Hallituskatu 7, 96100 Rovaniemi, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/rovaniemi-city-hall/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/rovaniemen-kaupungintalo/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/05/Rovaniemi_Kaupungintalo_Talvi_Valtuustosali_Kuva_RovaniemenKaupunki_Torvinen_Aarno_A-Copy-300x199.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7259084,
+          66.4963795
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Villa Tammekann",
+        "name_fi": "Villa Tammekann",
+        "address": "Friedrich Reinhold Kreutzwaldi 6, 51006 Tartto, Viro",
+        "address_fi": "Friedrich Reinhold Kreutzwaldi, 51006 Tartto, Viro",
+        "url": "https://visit.alvaraalto.fi/en/destinations/villa-tammekann/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/villa-tammekann/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2021/08/villa-tammekann-2-300x200.jpg",
+        "country": "Estonia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.7047027,
+          58.3845055
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Nelimarkka Museum and Villa Väinölä in Alajärvi",
+        "name_fi": "Nelimarkka-museo ja Villa Väinölä Alajärvellä",
+        "address": "Väinöntie, 62900 Alajärvi, Suomi",
+        "address_fi": "Väinöntie 4, 62900 Alajärvi, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/nelimarkka-museum-and-villa-vainola-in-alajarvi/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/nelimarkka-museo-ja-villa-vainola-alajarvella/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/05/alajarvi-villa-vainola-edesta-a-300x199.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.8196303,
+          63.0006033
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Youth Association Building in Alajärvi",
+        "name_fi": "Nuoriso­seurantalo Alajärvellä",
+        "address": "Sairaalatie 9, 62900 Alajärvi, Suomi",
+        "address_fi": "Sairaalatie 9, 62900 Alajärvi, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/youth-association-building-in-alajarvi/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/nuorisoseurantalo-alajarvella/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/05/alajarvi-nuorisoseurantalo-edesta-a-300x180.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.8215899,
+          62.9988442
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Aerola Terraced Houses in Vantaa",
+        "name_fi": "Aerolan rivitalot Vantaalla",
+        "address": "Pyhtäänkorventie 23, 01530 Vantaa, Suomi",
+        "address_fi": "Pyhtäänkorventie 23, 01530 Vantaa, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/aerola-terraced-houses-in-vantaa/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/aerolan-rivitalot-vantaalla/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2020/06/img_6121-300x225.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9735487,
+          60.3003357
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Riola church and parish centre",
+        "name_fi": "Riolan kirkko ja seura­kunta­keskus",
+        "address": "Piazza Alvar Aalto, 1, 40030 Riola BO, Italia",
+        "address_fi": "Piazza Alvar Aalto 1, 40030, Riola (BO)",
+        "url": "https://visit.alvaraalto.fi/en/destinations/riola-church-and-parish-centre/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/riolan-kirkko-ja-seurakuntakeskus/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2020/04/l-1569-300x218.jpg",
+        "country": "Italy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.0546923,
+          44.2292721
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lappia Hall in Rovaniemi",
+        "name_fi": "Lappia-talo Rovaniemellä",
+        "address": "Jorma Eton tie 8, 96100 Rovaniemi, Finland",
+        "address_fi": "Jorma Eton tie 8 A, 96100 Rovaniemi, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/lappia-hall-in-rovaniemi/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/lappia-talo-rovaniemella/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-aaltokeskus-lappia-talo-talvi-kuva-rovaniemenkaupunki-jouni-porsanger-300x200.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7206992,
+          66.4968766
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rovaniemi City Library",
+        "name_fi": "Rovaniemen kirjasto",
+        "address": "Jorma Eton tie 6, 96100 Rovaniemi, Finland",
+        "address_fi": "Jorma Eton tie 6, 96100 Rovaniemi, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/rovaniemi-city-library/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/rovaniemen-kirjasto/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-kirjasto-aalto-sali-syvennykset-kuva-rovaniemenkaupunki-juhokuva-a-300x200.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.722258,
+          66.4964983
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kinkamon Aalto in Varkaus",
+        "name_fi": null,
+        "address": "Kinkamontie, 78500 Varkaus, Suomi",
+        "address_fi": null,
+        "url": "https://visit.alvaraalto.fi/en/destinations/kinkamon-aalto-in-varkaus/",
+        "url_fi": null,
+        "image": "https://visit.alvaraalto.fi/app/uploads/2020/03/kinkamo-by-alvar-aalto_-photo-visit-varkaus-1400px-300x225.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.9602066,
+          62.3337021
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cross Of The Plains and the Parish Centre",
+        "name_fi": "Lakeuden Ristin kirkko ja seura­kunta­keskus",
+        "address": "Koulukatu 24, 60100 Seinäjoki, Finland",
+        "address_fi": "Koulukatu 24, 60100 Seinäjoki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/the-cross-of-the-plains-and-the-parish-centre/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/lakeuden-ristin-kirkko-ja-seurakuntakeskus/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/seinajoki-lakeuden-risti01-300x200.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.8453076,
+          62.7867964
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Finnish Pavilion at the Venice Biennale",
+        "name_fi": "Suomen paviljonki Venetsian biennaali­alueella",
+        "address": "Calle Giazzo, 30122 Venezia VE, Italia",
+        "address_fi": "Calle Giazzo, 30122 Venezia VE, Italia",
+        "url": "https://visit.alvaraalto.fi/en/destinations/the-finnish-pavilion-at-the-venice-biennale/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/suomen-paviljonki-venetsian-biennaalialueella/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2020/01/av-5804-300x199.jpg",
+        "country": "Italy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.3585221,
+          45.429246
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hansaviertel Apartment building “Haus 16”",
+        "name_fi": "Hansa­viertelin asuin­kerros­talo ”Haus 16”",
+        "address": "Klopstockstraße 32, 10557 Berliini, Saksa",
+        "address_fi": "Klopstockstraße 32, 10557 Berliini, Saksa",
+        "url": "https://visit.alvaraalto.fi/en/destinations/hansaviertel-apartment-building-haus-16/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/hansaviertelin-asuinkerrostalo-haus-16/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2020/01/av-524-300x193.jpg",
+        "country": "Germany"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.3417455,
+          52.5170421
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wolfsburg church (Heilig-Geist-Kirche) and the parish centre",
+        "name_fi": "Wolfsburgin Pyhän Hengen kirkko ja seura­kunta­keskus",
+        "address": "Röntgenstraße 81, 38440 Wolfsburg, Ala-Saksi Saksa",
+        "address_fi": "Röntgenstraße 81, 38440 Wolfsburg, Ala-Saksi Saksa",
+        "url": "https://visit.alvaraalto.fi/en/destinations/wolfsburg-church-heilig-geist-kirche-and-the-parish-centre/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/wolfsburgin-pyhan-hengen-kirkko-ja-seurakuntakeskus/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2020/01/dsc7977-300x200.jpg",
+        "country": "Germany"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.7692,
+          52.40974
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wolfsburg Cultural Center",
+        "name_fi": "Wolfsburgin kulttuuri­keskus",
+        "address": "Porschestraße 51, 38440 Wolfsburg, Ala-Saksi Saksa",
+        "address_fi": "Porschestraße 51, 38440 Wolfsburg, Ala-Saksi Saksa",
+        "url": "https://visit.alvaraalto.fi/en/destinations/wolfsburg-cultural-center/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/wolfsburgin-kulttuurikeskus/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2020/01/dsc8787-300x200.jpg",
+        "country": "Germany"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.7859402,
+          52.419646
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vyborg Library",
+        "name_fi": "Viipurin kirjasto",
+        "address": "Prospekt Suvorova 4, 188800 Viipuri, Leningradin alue Venäjä",
+        "address_fi": "Prospekt Suvorova 4, Viipuri, 188800, Venäjä",
+        "url": "https://visit.alvaraalto.fi/en/destinations/vyborg-library/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/viipurin-kirjasto/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2019/12/digi-1906_lainaussali-300x200.jpg",
+        "country": "Russia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.7473029,
+          60.709006
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Terraced House at the Kauttua Works in Eura",
+        "name_fi": "Terassi­talo Kauttuan Ruukin­­puistossa Eurassa",
+        "address": "Alvar Aallon tie 4, 27500 Eura, Finland",
+        "address_fi": "Alvar Aallon tie 4, 27500 Eura, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/the-terraced-house-at-the-kauttua-works-in-eura/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/terassitalo-kauttuan-ruukinpuistossa-eurassa/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2020/01/terassitalo1_liukkonen-300x220.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.1619687,
+          61.1117546
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ekenäs Savings Bank",
+        "name_fi": "Tammisaaren Säästöpankki",
+        "address": "Asematie 6, 10600 Raasepori, Finland",
+        "address_fi": "Asematie 6, 10600 Raasepori, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/ekenas-savings-bank/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/tammisaaren-saastopankki/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2020/01/dsc_8624-2-300x200.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.4395099,
+          59.9769961
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Riverside sauna at the Kauttua Works",
+        "name_fi": "Jokisauna Kauttuan Ruukin­puistossa Eurassa",
+        "address": "Sepäntie 1, 27500 Eura, Finland",
+        "address_fi": "Sepäntie 1, 27500 Eura, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/riverside-sauna-at-kauttua-works/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/jokisauna-kauttuan-ruukinpuistossa-eurassa/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2020/01/digi-2392-rajausb-280x300.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.157273,
+          61.1117342
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Detmerode Church (Stephanuskirche) and parish centre",
+        "name_fi": "Detmeroden kirkko (Stephanus­kirche) ja seura­kunta­keskus",
+        "address": "Detmeroder Markt 6, 38444 Wolfsburg, Ala-Saksi Saksa",
+        "address_fi": "Detmeroder Markt 6, 38444 Wolfsburg, Ala-Saksi Saksa",
+        "url": "https://visit.alvaraalto.fi/en/destinations/detmerode-church-stephanuskirche-and-parish-centre/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/detmeroden-kirkko-stephanuskirche-ja-seurakuntakeskus/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2020/01/dsc9176-detmerode-1-300x232.jpg",
+        "country": "Germany"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.7536664,
+          52.3942729
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Maison Louis Carré",
+        "name_fi": "Maison Louis Carré",
+        "address": "Chemin du Saint-Sacrement 2, 78490 Bazoches-sur-Guyonne, Ile-de-France Ranska",
+        "address_fi": "Chemin du Saint-Sacrement 2, 78490 Bazoches-sur-Guyonne, Ile-de-France Ranska",
+        "url": "https://visit.alvaraalto.fi/en/destinations/maison-louis-carre/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/maison-louis-carre/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2020/08/mlc-jetsonen-copie-e1718628865877-300x178.jpg",
+        "country": "France"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.853683,
+          48.769566
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Aalto Library in Seinäjoki",
+        "name_fi": "Aalto-kirjasto Seinäjoella",
+        "address": "Koulukatu 21, 60100 Seinäjoki, Finland",
+        "address_fi": "Koulukatu 21, 60100 Seinäjoki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/seinajoki-library/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/seinajoen-kirjasto/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2019/03/av-447_seinajoki_kirj-300x237.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.8424393,
+          62.7861871
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Jyväskylä Workers’ Club",
+        "name_fi": "Jyväs­kylän työ­väen­talo",
+        "address": "Väinönkatu 7, 40100 Jyväskylä, Finland",
+        "address_fi": "Väinönkatu 7, 40100 Jyväskylä, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/jyvaskyla-workers-club/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/jyvaskylan-tyovaentalo/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2019/03/av-5172_jty-300x223.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.750628,
+          62.2431806
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Jyväskylä University Campus and Seminar Hill",
+        "name_fi": "Jyväskylän yli­opiston kampus ja Seminaarin­mäki",
+        "address": "Seminaarinkatu 15, 40100 Jyväskylä, Suomi",
+        "address_fi": "Seminaarinkatu 15, 40100 Jyväskylä, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/the-jyvaskyla-university-campus-and-seminar-hill/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/jyvaskylan-yliopiston-kampus-ja-seminaarinmaki/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/jyvaskyla-jyvaskylan-yliopiston-kampusalue-maija-holma-alvar-aalto-museo-1-300x223.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7322963,
+          62.2364265
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Seinäjoki Defence Corps building",
+        "name_fi": "Seinäjoen Suojelus­kuntatalo",
+        "address": "Kauppakatu 17, 60100 Seinäjoki, Finland",
+        "address_fi": "Kauppakatu 17, 60100 Seinäjoki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/the-seinajoki-defence-corps-building/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/seinajoen-suojeluskuntatalo/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2019/03/av-401_seina-ejoen-suojeluskuntatalo-kuva-maija-holma-alvar-aalto-sa-ea-etio-e-300x290.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.8374661,
+          62.7889843
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "AaltoAlvari Swimming Hall",
+        "name_fi": "AaltoAlvari uimahalli",
+        "address": "Pitkäkatu 2, 40700 Jyväskylä, Finland",
+        "address_fi": "Pitkäkatu 2, 40600 Jyväskylä, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/aaltoalvari-swimming-hall/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/aaltoalvari-uimahalli/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2019/03/digi-2219_uimahalli-300x200.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7281888,
+          62.2361684
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Aalto sites in Kouvola",
+        "name_fi": "Kouvolan Aalto-kohteet",
+        "address": "Kouvola, Finland",
+        "address_fi": "Kouvola, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/aalto-sites-in-kouvola/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/kouvolan-aalto-kohteet/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/kouvola-inkeroinen-tehtaanmaen-koulu-kuva-maija-holma-alvar-aalto-museo-1-300x200.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.7038517,
+          60.8680928
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Villa Skeppet",
+        "name_fi": "Villa Skeppet",
+        "address": "Snäcksundintie 8, 10600 Raasepori, Finland",
+        "address_fi": "Snäcksundintie 8, 10600 Raasepori, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/villa-skeppet/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/villa-skeppet/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2020/11/alvar-aalto-villa-skeppet-170-300x200.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.4367678,
+          59.970046
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Iittala Glass Factory and Design Museum Iittala",
+        "name_fi": "Iittalan lasi­tehdas ja Design­museo Iittala",
+        "address": "Könnölänmäentie 2, 14500 Iittala, Finland",
+        "address_fi": "Könnölänmäentie 2, 14500 Hämeenlinna Iittala, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/the-iittala-glass-factory-and-design-museum-iittala/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/iittalan-lasitehdas-ja-designmuseo-iittala/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2019/03/glass_production_iittala_3_jpg-300x200.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.1288103,
+          61.0898809
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Muurame church",
+        "name_fi": "Muuramen kirkko",
+        "address": "Sanantie 7, 40950 Muurame, Finland",
+        "address_fi": "Sanantie 7, 40950 Muurame, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/muurame-church/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/muuramen-kirkko/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/06/alvar-aalto-location-muurame-church-photo-tero-takalo-eskola-300x200.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.6644702,
+          62.1251084
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Church of the Three Crosses (Vuoksenniska Church)",
+        "name_fi": "Kolmen Ristin Kirkko",
+        "address": "Ruokolahdentie 27, 55800 Imatra",
+        "address_fi": "Ruokolahdentie 27, 55800 Imatra, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/church-of-the-three-crosses-vuoksenniska-church/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/kolmen-ristin-kirkko/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/11/kolmen-ristin-kirkko-1956-58-vuoksenniska-imatra-sisaankaynnin-katos-ja-ulko-ovi-kuva-maija-holma-alvar-aalto-saatio-300x297.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.8561403,
+          61.2367108
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Reindeer antler city plan",
+        "name_fi": "Poronsarvi­asemakaava",
+        "address": "Hallituskatu 7, 96100 Rovaniemi, Finland",
+        "address_fi": "Rovaniemi, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/reindeer-antler-city-plan/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/poronsarviasemakaava/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-poronsarviasemakaava-rovaniemiyolla-kuva-rovaniemenkaupunki-nieminen-arttu-300x131.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7259084,
+          66.4963795
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Espoo and Otaniemi Campus Area",
+        "name_fi": "Espoo ja Otaniemen yliopisto­kampus",
+        "address": "Otakaari 1, 02150 Espoo, Suomi",
+        "address_fi": "Otakaari 1, 02150 Espoo, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/espoo/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/espoo-otaniemi-kampus/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/otaniemi-kaunis-valo-1-300x169.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.8270103,
+          60.1857416
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Turku and the Office Building for Turun Sanomat Newspaper",
+        "name_fi": "Turku ja Turun Sanomien toimitalo",
+        "address": "Kauppiaskatu 5, 20100 Turku, Finland",
+        "address_fi": "Kauppiaskatu 5, 20100 Turku, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/turku/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/turku/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/dsc7458-300x200.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.269867,
+          60.4512542
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Säynätsalo Town Hall",
+        "name_fi": "Säynätsalon kunnan­­talo",
+        "address": "Parviaisentie 9, 40900 Jyväskylä, Finland",
+        "address_fi": "Parviaisentie 9, 40900 Jyväskylä, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/saynatsalo-town-hall/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/saynatsalon-kunnantalo/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/aalto-sacc88ynacc88tsalon-kunnantalo-visit-jyvacc88skylacc88-tero-takalo-eskola-1-300x173.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7692937,
+          62.1400568
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Paimio Sanatorium",
+        "name_fi": "Paimion parantola",
+        "address": "Alvar Aallon tie 275, 21540 Paimio, Finland",
+        "address_fi": "Alvar Aallon tie 275, 21540 Paimio, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/paimio-sanatorium/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/paimion-parantola/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/paimion-parantola-kuva-maija-holma-alvar-aalto-museo-1-300x200.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.7355966,
+          60.4650657
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Muuratsalo Experimental house",
+        "name_fi": "Muuratsalon koetalo",
+        "address": "Melalammentie 2, 40900 Jyväskylä, Finland",
+        "address_fi": "Melalammentie, 40900 Jyväskylä, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/muuratsalo-experimental-house/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/muuratsalon-koetalo/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/07/Atriumpiha-on-keskeinen-osa-Koetalon-arkkitehtuuria.-Kuva-Maija-Vatanen-Alvar-Aalto-saatio-300x204.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7488794,
+          62.1139981
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Church of the Cross",
+        "name_fi": "Lahden Ristinkirkko",
+        "address": "Kirkkokatu 4, 15110 Lahti, Finland",
+        "address_fi": "Kirkkokatu 4, 15110 Lahti, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/ristinkirkko-at-lahti/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/lahden-ristinkirkko/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2019/02/digi-1317-300x215.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.657065,
+          60.9856354
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Varkaus – Alvar Aalto’s Architecture and Industrial Heritage by the Shores of Saimaa",
+        "name_fi": "Varkaus – Alvar Aallon arkkitehtuuria ja teollisuuden tarinoita Saimaan rannalla",
+        "address": "Varkaus, Finland",
+        "address_fi": "Varkaus, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/varkaus-industrial-history-lake-saimaa-waterways-and-caviar/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/varkaus-alvar-aallon-arkkitehtuuria-ja-teollisuuden-tarinoita-saimaan-rannalla/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/Varkaus-Maija-Oinonen-225x300.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.8681227,
+          62.3176377
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Finlandia Hall",
+        "name_fi": "Finlandia-talo",
+        "address": "Mannerheimintie 13 E, 00100 Helsinki, Suomi",
+        "address_fi": "Mannerheimintie 13, 00100 Helsinki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/finlandia-hall/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/finlandia-talo/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/2_Finlandia-talo_ulkoa-300x200.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9335608,
+          60.1758229
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Interior and Furnishing of the Savoy Restaurant",
+        "name_fi": "Ravintola Savoyn sisustus",
+        "address": "Eteläesplanadi 14, 00130 Helsinki, Suomi",
+        "address_fi": "Eteläesplanadi 14, 00130 Helsinki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/interior-and-decoration-of-the-savoy-restaurant/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/ravintola-savoyn-sisustus/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/savoy_restaurant_helsinki_alvar_aalto_foundation-1-200x300.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9472796,
+          60.1669578
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Helsinki Energy Office Building",
+        "name_fi": "Sähkötalo, Helsingin Energia",
+        "address": "Kampinkuja 2, 00100 Helsinki, Suomi",
+        "address_fi": "Kampinkuja 2, 00100 Helsinki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/helsinki-energy-office-building/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/sahkotalo-helsingin-energia/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2019/02/digi-1156b-300x201.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9310828,
+          60.1680326
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "National Pensions Institute, Main Building",
+        "name_fi": "Kansaneläke­laitos",
+        "address": "Nordenskiöldinkatu 12, 00250 Helsinki, Suomi",
+        "address_fi": "Nordenskiöldinkatu 12, 00250 Helsinki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/national-pensions-institute-head-office/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/kansanelakelaitos/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/helsinki-kansanelnkelaitos-minna-canthin-katu-kuva-maija-holma-alvar-aalto-museo-1-300x228.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9173934,
+          60.1874613
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "National Pensions Institute, Housing Area",
+        "name_fi": "Kansan­eläke­laitoksen asuin­alue",
+        "address": "Riihitie 14, 00330 Helsinki, Finland",
+        "address_fi": "Riihitie 14, 00330 Helsinki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/national-pensions-institute-housing-area/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/kansanelakelaitoksen-asuinalue/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2019/02/digi-1185-300x199.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.8787103,
+          60.1964397
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Book House",
+        "name_fi": "Kirjatalo",
+        "address": "Keskuskatu 1, 00100 Helsinki, Finland",
+        "address_fi": "Keskuskatu 1, 00100 Helsinki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/academic-bookstore/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/akateeminen-kirjakauppa/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/20240812_Videolle_Akateeminen_kirjakauppa-15-web-300x202.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9432268,
+          60.1679936
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Aalto House",
+        "name_fi": "Alvar Aallon kotitalo",
+        "address": "Riihitie 20, 00330 Helsinki, Finland",
+        "address_fi": "Riihitie 20, 00330 Helsinki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/the-aalto-house/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alvar-aallon-kotitalo/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/05/helsinki-alvar-aallon-kotitalo-4083-a-300x201.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.8764061,
+          60.1967217
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Studio Aalto",
+        "name_fi": "Alvar Aallon ateljee",
+        "address": "Tiilimäki 20, 00330 Helsinki, Finland",
+        "address_fi": "Tiilimäki 20, 00330 Helsinki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/studio-aalto/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alvar-aallon-ateljee/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/05/helsinki-alvar-aallon-ateljee-dsc1466-a-300x199.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.8696208,
+          60.1982019
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Summa paper mill and housing area in Hamina",
+        "name_fi": "Summan paperi­tehdas ja asuin­alue Haminassa",
+        "address": "Bernerintie, 49420 Hamina, Finland",
+        "address_fi": "Bernerintie, 49460 Hamina Hillonkylä Petkele, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/summa-paper-mill-in-hamina/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/summan-paperitehdas-haminassa/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/summa-enso-gutzeit-johtajan-asunto-kuva-martti-kapanen-alvar-aalto-museo-1-300x225.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.1374996,
+          60.5440735
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Artist community at Lake Tuusula and Villa Kokkonen in Järvenpää",
+        "name_fi": "Tuusulan­järven taiteilija­yhteisö ja Villa Kokkonen Järven­päässä",
+        "address": "Tuusula, Finland",
+        "address_fi": "Tuusula, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/the-artist-community-at-lake-tuusula-and-villa-kokkonen-in-jarvenpaa/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/tuusulanjarven-taiteilijayhteiso-ja-villa-kokkonen-jarvenpaassa/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/lake-tuusula-scenery-jarvenpaa-visit-tuusulanjarvi-1-300x200.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.0280695,
+          60.4017496
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Alvar Aalto’s Villa Kokkonen",
+        "name_fi": "Villa Kokkonen",
+        "address": "Tuulimyllyntie 5, 04400 Järvenpää, Finland",
+        "address_fi": "Tuulimyllyntie 5, 04400 Järvenpää, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/villa-kokkonen/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/villa-kokkonen/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/villa-kokkonen-filippo-zambon-3-300x80.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.0570732,
+          60.4574241
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sunila Sulphate Pulp Mill and Residential Area",
+        "name_fi": "Sunilan selluloosa­tehdas ja asuin­alue",
+        "address": "Sunila, 48900 Kotka, Finland",
+        "address_fi": "48900 Kotka, Sunila, Kymenlaakso Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/sunila-pulp-mill-and-residential-area/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/sunila/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/kotka_sunila_aalto_house_kuusela_photo_rurik_wasastjerna-1-300x200.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.9552188,
+          60.4982231
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Alvar Aalto in Alajärvi",
+        "name_fi": "Alvar Aallon Alajärvi",
+        "address": "Alajärvi, Finland",
+        "address_fi": "Alajärvi, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/alvar-aalto-in-alajarvi/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alvar-aallon-alajarvi/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/05/alajarvi-alvar-aallon-alajarvi-kirjasto-kunnantalo-a-300x199.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.8167613,
+          62.9998641
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Seinäjoki Civic Centre",
+        "name_fi": "Seinäjoen hallinto- ja kulttuuri­keskus",
+        "address": "Seinäjoki, Finland",
+        "address_fi": "Alvar Aallon katu 12, 60100 Seinäjoki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/alvar-aalto-in-seinajoki/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alvar-aallon-seinajoki/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/seinajoki-kaupungintalo-alvar-aalto-300x200.jpeg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.8442015,
+          62.7954104
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Alvar Aalto in Helsinki",
+        "name_fi": "Alvar Aallon Helsinki",
+        "address": "Helsinki, Finland",
+        "address_fi": "Helsinki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/alvar-aaltos-helsinki/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alvar-aallon-helsinki/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/helsinki-finlandia-talo-kuva-rune-snellman-alvar-aalto-museo-300x205.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9427473,
+          60.1674881
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tehtaanmäki residential district and school in Inkeroinen, Kouvola",
+        "name_fi": "Tehtaanmäen asuinalue ja koulu Kouvolan Inkeroisissa",
+        "address": "Tehtaanmäki, Kouvola, Finland",
+        "address_fi": "46920 Kouvola, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/industrial-history-and-residences-of-inkeroinen/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/tehtaanmaen-asuinalue-ja-koulu-kouvolan-inkeroisissa/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/inkeroisten-kansakoulu-tehtaanmnen-koulu-kuva-maija-holma-alvar-aalto-museo-1-300x226.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.824737,
+          60.7039705
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Villa Mairea and Ahlström’s Noormarkku Works in Pori",
+        "name_fi": null,
+        "address": "Laviantie 14, 29600 Pori Noormarkku Finpyy, Finland",
+        "address_fi": null,
+        "url": "https://visit.alvaraalto.fi/en/destinations/ahlstroms-noormarkku-works-in-pori/",
+        "url_fi": null,
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/villa-mairea-noormarkku-kuva-maija-holma-alvar-aalto-museo-kopio-300x225.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.8768263,
+          61.592404
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kauttua Ironworks in Eura",
+        "name_fi": "Kauttuan ruukin­puisto Eurassa",
+        "address": "Sepäntie 3, 27500 Kauttua, Finland",
+        "address_fi": "Sepäntie 3, 27500 Eura, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/kauttua-ironworks-in-eura/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/kauttuan-ruukinpuisto-eurassa/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/kauttuan-ruukinpuisto-1-225x300.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.1630045,
+          61.1103191
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Alvar Aalto in Jyväskylä",
+        "name_fi": "Alvar Aallon Jyväskylä",
+        "address": "Jyväskylä, Finland",
+        "address_fi": "Jyväskylä, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/alvar-aalto-in-jyvaskyla/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alvar-aallon-jyvaskyla/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/06/alvar-aalto-location-viitatorni-sky-view-photo-tero-takalo-eskola-300x200.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7495727,
+          62.2417066
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mill Manager’s Residence Kantola and Seaside Sauna in Sunila",
+        "name_fi": "Tehtaan­johtajan asuin­talo Kantola ja ranta­sauna Sunilassa",
+        "address": "Kantokatu 5, 48910 Kotka Popinniemi, Finland",
+        "address_fi": "Kantokatu 1, 48900 Kotka, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/factory-managers-residence-kantola-and-beach-sauna-in-sunila/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/tehtaanjohtajan-asuintalo-kantola-ja-rantasauna-sunilassa/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/05/kotka-sunilan-kantola-julkisivu-merelta-a-300x225.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.9557662,
+          60.4939301
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Villa Mairea",
+        "name_fi": "Villa Mairea",
+        "address": "Pikkukoivukuja, 29600 Pori Noormarkku Finpyy, Finland",
+        "address_fi": "Pikkukoivukuja 20, 29600 Pori Noormarkku Finpyy, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/villa-mairea/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/villa-mairea/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/05/pori-villa-mairea-julkisivu-a-300x169.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.8778372,
+          61.5967605
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Erottaja Pavilion",
+        "name_fi": "Erottajan paviljonki",
+        "address": "Erottajankatu, 00130 Helsinki, Suomi",
+        "address_fi": "Erottajankatu, 00130 Helsinki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/erottaja-pavilion/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/erottajan-paviljonki/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/erottajan-vacc88estocc88nsuojan-sisacc88acc88nkacc88ynti-1950-1951-kuva-alvar-aalto-museo-1-280x300.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9438337,
+          60.1663757
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Enso-Gutzeit Co. Headquarters",
+        "name_fi": "Enso-Gutzeit Oy:n pääkonttori",
+        "address": "Kanavaranta 1, 00170 Helsinki, Suomi",
+        "address_fi": "Kanavaranta 1, 00160 Helsinki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/enso-gutzeit-co-headquarters/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/enso-gutzeit-oyn-paakonttori/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/digi-753a-198x300.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9581759,
+          60.1680411
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rautatalo Office Building",
+        "name_fi": "Rautatalo",
+        "address": "Keskuskatu 3, 00100 Helsinki, Suomi",
+        "address_fi": "Keskuskatu 3, 00100 Helsinki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/rautatalo-office-building/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/rautatalo/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/rautalo-julkisivu-keskuskadulle-kuva-heikki-havas-alvar-aalto-museo-300x218.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9431989,
+          60.1684937
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "House of Culture",
+        "name_fi": "Kulttuuritalo",
+        "address": "Sturenkatu 4, 00510 Helsinki, Suomi",
+        "address_fi": "Sturenkatu 4, 00510 Helsinki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/house-of-culture/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/kulttuuritalo/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/kulttuuritalo-helsinki-photo-alvar-aalto-foundation-1-226x300.jpg",
+        "country": "Finland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9441933,
+          60.1882427
+        ]
+      }
+    }
+  ]
+}

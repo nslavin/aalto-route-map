@@ -1,0 +1,632 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Estonia",
+        "name_fi": "Viro",
+        "count": 1,
+        "objects": [
+          {
+            "name": "Villa Tammekann",
+            "name_fi": "Villa Tammekann",
+            "url": "https://visit.alvaraalto.fi/en/destinations/villa-tammekann/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/villa-tammekann/"
+          }
+        ],
+        "cities": [
+          "Tartto"
+        ],
+        "cities_fi": [
+          "Tartto"
+        ],
+        "city": "Tartto",
+        "city_fi": "Tartto"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.7047027,
+          58.3845055
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Finland",
+        "name_fi": "Suomi",
+        "count": 63,
+        "objects": [
+          {
+            "name": "Typpi Oy – The Red-Brick Industrial Community in Laanila",
+            "name_fi": "Typpi Oy – Punatiilinen tehdasyhdyskunta Laanilassa",
+            "url": "https://visit.alvaraalto.fi/en/destinations/typpi-oy-the-red-brick-industrial-community-in-laanila/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/typpi-oy-punatiilinen-tehdasyhdyskunta-laanilassa/"
+          },
+          {
+            "name": "Koskikeskus – Aalto’s Vision for the River Delta",
+            "name_fi": "Koskikeskus – Aallon visio jokisuistossa",
+            "url": "https://visit.alvaraalto.fi/en/destinations/koskikeskus-aaltos-vision-for-the-river-delta/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/koskikeskus-aallon-visio-jokisuistossa/"
+          },
+          {
+            "name": "Toppila Sulphite Pulp Mill – From Toppila Oy to Meri-Toppila",
+            "name_fi": "Toppilan sulfiittiselluloosatehdas – Toppila Oy:stä Meri-Toppilaksi",
+            "url": "https://visit.alvaraalto.fi/en/destinations/toppila-sulphite-pulp-mill-from-toppila-oy-to-meri-toppila/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/toppilan-sulfiittiselluloosatehdas-toppila-oysta-meri-toppilaksi/"
+          },
+          {
+            "name": "Ahlström Noormarkku Works",
+            "name_fi": "Ahlströmin ruukki ja Villa Mairea",
+            "url": "https://visit.alvaraalto.fi/en/destinations/ahlstrom-works-and-villa-mairea/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/ahlstromin-ruukki-ja-villa-mairea/"
+          },
+          {
+            "name": "Alajärvi Town Hall",
+            "name_fi": "Alajärven kaupungin­talo",
+            "url": "https://visit.alvaraalto.fi/en/destinations/alajarvi-town-hall/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alajarven-kaupungintalo/"
+          },
+          {
+            "name": "Alajärvi Parish Hall",
+            "name_fi": "Alajärven seurakunta­talo",
+            "url": "https://visit.alvaraalto.fi/en/destinations/alajarvi-parish-hall/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alajarven-seurakuntatalo/"
+          },
+          {
+            "name": "Alajärvi City Library",
+            "name_fi": "Alajärven kaupungin­kirjasto",
+            "url": "https://visit.alvaraalto.fi/en/destinations/alajarvi-city-library/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alajarven-kaupunginkirjasto/"
+          },
+          {
+            "name": "Aalto2 Museum Centre",
+            "name_fi": "Aalto2-museokeskus",
+            "url": "https://visit.alvaraalto.fi/en/destinations/aalto2-museum-centre/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/aalto2-museokeskus/"
+          },
+          {
+            "name": "Rovaniemi Aalto Center, administrative and cultural center",
+            "name_fi": "Rovaniemen Aalto-keskus (hallinto- ja kulttuurikeskus)",
+            "url": "https://visit.alvaraalto.fi/en/destinations/rovaniemi-aalto-center-administrative-and-cultural-center/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/rovaniemen-aalto-keskus/"
+          },
+          {
+            "name": "Rovaniemi City Hall",
+            "name_fi": "Rovaniemen kaupungintalo",
+            "url": "https://visit.alvaraalto.fi/en/destinations/rovaniemi-city-hall/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/rovaniemen-kaupungintalo/"
+          },
+          {
+            "name": "Nelimarkka Museum and Villa Väinölä in Alajärvi",
+            "name_fi": "Nelimarkka-museo ja Villa Väinölä Alajärvellä",
+            "url": "https://visit.alvaraalto.fi/en/destinations/nelimarkka-museum-and-villa-vainola-in-alajarvi/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/nelimarkka-museo-ja-villa-vainola-alajarvella/"
+          },
+          {
+            "name": "Youth Association Building in Alajärvi",
+            "name_fi": "Nuoriso­seurantalo Alajärvellä",
+            "url": "https://visit.alvaraalto.fi/en/destinations/youth-association-building-in-alajarvi/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/nuorisoseurantalo-alajarvella/"
+          },
+          {
+            "name": "Aerola Terraced Houses in Vantaa",
+            "name_fi": "Aerolan rivitalot Vantaalla",
+            "url": "https://visit.alvaraalto.fi/en/destinations/aerola-terraced-houses-in-vantaa/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/aerolan-rivitalot-vantaalla/"
+          },
+          {
+            "name": "Lappia Hall in Rovaniemi",
+            "name_fi": "Lappia-talo Rovaniemellä",
+            "url": "https://visit.alvaraalto.fi/en/destinations/lappia-hall-in-rovaniemi/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/lappia-talo-rovaniemella/"
+          },
+          {
+            "name": "Rovaniemi City Library",
+            "name_fi": "Rovaniemen kirjasto",
+            "url": "https://visit.alvaraalto.fi/en/destinations/rovaniemi-city-library/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/rovaniemen-kirjasto/"
+          },
+          {
+            "name": "Kinkamon Aalto in Varkaus",
+            "name_fi": null,
+            "url": "https://visit.alvaraalto.fi/en/destinations/kinkamon-aalto-in-varkaus/",
+            "url_fi": null
+          },
+          {
+            "name": "Cross Of The Plains and the Parish Centre",
+            "name_fi": "Lakeuden Ristin kirkko ja seura­kunta­keskus",
+            "url": "https://visit.alvaraalto.fi/en/destinations/the-cross-of-the-plains-and-the-parish-centre/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/lakeuden-ristin-kirkko-ja-seurakuntakeskus/"
+          },
+          {
+            "name": "Terraced House at the Kauttua Works in Eura",
+            "name_fi": "Terassi­talo Kauttuan Ruukin­­puistossa Eurassa",
+            "url": "https://visit.alvaraalto.fi/en/destinations/the-terraced-house-at-the-kauttua-works-in-eura/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/terassitalo-kauttuan-ruukinpuistossa-eurassa/"
+          },
+          {
+            "name": "Ekenäs Savings Bank",
+            "name_fi": "Tammisaaren Säästöpankki",
+            "url": "https://visit.alvaraalto.fi/en/destinations/ekenas-savings-bank/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/tammisaaren-saastopankki/"
+          },
+          {
+            "name": "Riverside sauna at the Kauttua Works",
+            "name_fi": "Jokisauna Kauttuan Ruukin­puistossa Eurassa",
+            "url": "https://visit.alvaraalto.fi/en/destinations/riverside-sauna-at-kauttua-works/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/jokisauna-kauttuan-ruukinpuistossa-eurassa/"
+          },
+          {
+            "name": "Aalto Library in Seinäjoki",
+            "name_fi": "Aalto-kirjasto Seinäjoella",
+            "url": "https://visit.alvaraalto.fi/en/destinations/seinajoki-library/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/seinajoen-kirjasto/"
+          },
+          {
+            "name": "Jyväskylä Workers’ Club",
+            "name_fi": "Jyväs­kylän työ­väen­talo",
+            "url": "https://visit.alvaraalto.fi/en/destinations/jyvaskyla-workers-club/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/jyvaskylan-tyovaentalo/"
+          },
+          {
+            "name": "Jyväskylä University Campus and Seminar Hill",
+            "name_fi": "Jyväskylän yli­opiston kampus ja Seminaarin­mäki",
+            "url": "https://visit.alvaraalto.fi/en/destinations/the-jyvaskyla-university-campus-and-seminar-hill/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/jyvaskylan-yliopiston-kampus-ja-seminaarinmaki/"
+          },
+          {
+            "name": "Seinäjoki Defence Corps building",
+            "name_fi": "Seinäjoen Suojelus­kuntatalo",
+            "url": "https://visit.alvaraalto.fi/en/destinations/the-seinajoki-defence-corps-building/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/seinajoen-suojeluskuntatalo/"
+          },
+          {
+            "name": "AaltoAlvari Swimming Hall",
+            "name_fi": "AaltoAlvari uimahalli",
+            "url": "https://visit.alvaraalto.fi/en/destinations/aaltoalvari-swimming-hall/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/aaltoalvari-uimahalli/"
+          },
+          {
+            "name": "Aalto sites in Kouvola",
+            "name_fi": "Kouvolan Aalto-kohteet",
+            "url": "https://visit.alvaraalto.fi/en/destinations/aalto-sites-in-kouvola/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/kouvolan-aalto-kohteet/"
+          },
+          {
+            "name": "Villa Skeppet",
+            "name_fi": "Villa Skeppet",
+            "url": "https://visit.alvaraalto.fi/en/destinations/villa-skeppet/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/villa-skeppet/"
+          },
+          {
+            "name": "Iittala Glass Factory and Design Museum Iittala",
+            "name_fi": "Iittalan lasi­tehdas ja Design­museo Iittala",
+            "url": "https://visit.alvaraalto.fi/en/destinations/the-iittala-glass-factory-and-design-museum-iittala/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/iittalan-lasitehdas-ja-designmuseo-iittala/"
+          },
+          {
+            "name": "Muurame church",
+            "name_fi": "Muuramen kirkko",
+            "url": "https://visit.alvaraalto.fi/en/destinations/muurame-church/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/muuramen-kirkko/"
+          },
+          {
+            "name": "Church of the Three Crosses (Vuoksenniska Church)",
+            "name_fi": "Kolmen Ristin Kirkko",
+            "url": "https://visit.alvaraalto.fi/en/destinations/church-of-the-three-crosses-vuoksenniska-church/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/kolmen-ristin-kirkko/"
+          },
+          {
+            "name": "Reindeer antler city plan",
+            "name_fi": "Poronsarvi­asemakaava",
+            "url": "https://visit.alvaraalto.fi/en/destinations/reindeer-antler-city-plan/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/poronsarviasemakaava/"
+          },
+          {
+            "name": "Espoo and Otaniemi Campus Area",
+            "name_fi": "Espoo ja Otaniemen yliopisto­kampus",
+            "url": "https://visit.alvaraalto.fi/en/destinations/espoo/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/espoo-otaniemi-kampus/"
+          },
+          {
+            "name": "Turku and the Office Building for Turun Sanomat Newspaper",
+            "name_fi": "Turku ja Turun Sanomien toimitalo",
+            "url": "https://visit.alvaraalto.fi/en/destinations/turku/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/turku/"
+          },
+          {
+            "name": "Säynätsalo Town Hall",
+            "name_fi": "Säynätsalon kunnan­­talo",
+            "url": "https://visit.alvaraalto.fi/en/destinations/saynatsalo-town-hall/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/saynatsalon-kunnantalo/"
+          },
+          {
+            "name": "Paimio Sanatorium",
+            "name_fi": "Paimion parantola",
+            "url": "https://visit.alvaraalto.fi/en/destinations/paimio-sanatorium/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/paimion-parantola/"
+          },
+          {
+            "name": "Muuratsalo Experimental house",
+            "name_fi": "Muuratsalon koetalo",
+            "url": "https://visit.alvaraalto.fi/en/destinations/muuratsalo-experimental-house/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/muuratsalon-koetalo/"
+          },
+          {
+            "name": "Church of the Cross",
+            "name_fi": "Lahden Ristinkirkko",
+            "url": "https://visit.alvaraalto.fi/en/destinations/ristinkirkko-at-lahti/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/lahden-ristinkirkko/"
+          },
+          {
+            "name": "Varkaus – Alvar Aalto’s Architecture and Industrial Heritage by the Shores of Saimaa",
+            "name_fi": "Varkaus – Alvar Aallon arkkitehtuuria ja teollisuuden tarinoita Saimaan rannalla",
+            "url": "https://visit.alvaraalto.fi/en/destinations/varkaus-industrial-history-lake-saimaa-waterways-and-caviar/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/varkaus-alvar-aallon-arkkitehtuuria-ja-teollisuuden-tarinoita-saimaan-rannalla/"
+          },
+          {
+            "name": "Finlandia Hall",
+            "name_fi": "Finlandia-talo",
+            "url": "https://visit.alvaraalto.fi/en/destinations/finlandia-hall/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/finlandia-talo/"
+          },
+          {
+            "name": "Interior and Furnishing of the Savoy Restaurant",
+            "name_fi": "Ravintola Savoyn sisustus",
+            "url": "https://visit.alvaraalto.fi/en/destinations/interior-and-decoration-of-the-savoy-restaurant/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/ravintola-savoyn-sisustus/"
+          },
+          {
+            "name": "Helsinki Energy Office Building",
+            "name_fi": "Sähkötalo, Helsingin Energia",
+            "url": "https://visit.alvaraalto.fi/en/destinations/helsinki-energy-office-building/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/sahkotalo-helsingin-energia/"
+          },
+          {
+            "name": "National Pensions Institute, Main Building",
+            "name_fi": "Kansaneläke­laitos",
+            "url": "https://visit.alvaraalto.fi/en/destinations/national-pensions-institute-head-office/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/kansanelakelaitos/"
+          },
+          {
+            "name": "National Pensions Institute, Housing Area",
+            "name_fi": "Kansan­eläke­laitoksen asuin­alue",
+            "url": "https://visit.alvaraalto.fi/en/destinations/national-pensions-institute-housing-area/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/kansanelakelaitoksen-asuinalue/"
+          },
+          {
+            "name": "Book House",
+            "name_fi": "Kirjatalo",
+            "url": "https://visit.alvaraalto.fi/en/destinations/academic-bookstore/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/akateeminen-kirjakauppa/"
+          },
+          {
+            "name": "Aalto House",
+            "name_fi": "Alvar Aallon kotitalo",
+            "url": "https://visit.alvaraalto.fi/en/destinations/the-aalto-house/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alvar-aallon-kotitalo/"
+          },
+          {
+            "name": "Studio Aalto",
+            "name_fi": "Alvar Aallon ateljee",
+            "url": "https://visit.alvaraalto.fi/en/destinations/studio-aalto/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alvar-aallon-ateljee/"
+          },
+          {
+            "name": "Summa paper mill and housing area in Hamina",
+            "name_fi": "Summan paperi­tehdas ja asuin­alue Haminassa",
+            "url": "https://visit.alvaraalto.fi/en/destinations/summa-paper-mill-in-hamina/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/summan-paperitehdas-haminassa/"
+          },
+          {
+            "name": "Artist community at Lake Tuusula and Villa Kokkonen in Järvenpää",
+            "name_fi": "Tuusulan­järven taiteilija­yhteisö ja Villa Kokkonen Järven­päässä",
+            "url": "https://visit.alvaraalto.fi/en/destinations/the-artist-community-at-lake-tuusula-and-villa-kokkonen-in-jarvenpaa/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/tuusulanjarven-taiteilijayhteiso-ja-villa-kokkonen-jarvenpaassa/"
+          },
+          {
+            "name": "Alvar Aalto’s Villa Kokkonen",
+            "name_fi": "Villa Kokkonen",
+            "url": "https://visit.alvaraalto.fi/en/destinations/villa-kokkonen/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/villa-kokkonen/"
+          },
+          {
+            "name": "Sunila Sulphate Pulp Mill and Residential Area",
+            "name_fi": "Sunilan selluloosa­tehdas ja asuin­alue",
+            "url": "https://visit.alvaraalto.fi/en/destinations/sunila-pulp-mill-and-residential-area/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/sunila/"
+          },
+          {
+            "name": "Alvar Aalto in Alajärvi",
+            "name_fi": "Alvar Aallon Alajärvi",
+            "url": "https://visit.alvaraalto.fi/en/destinations/alvar-aalto-in-alajarvi/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alvar-aallon-alajarvi/"
+          },
+          {
+            "name": "Seinäjoki Civic Centre",
+            "name_fi": "Seinäjoen hallinto- ja kulttuuri­keskus",
+            "url": "https://visit.alvaraalto.fi/en/destinations/alvar-aalto-in-seinajoki/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alvar-aallon-seinajoki/"
+          },
+          {
+            "name": "Alvar Aalto in Helsinki",
+            "name_fi": "Alvar Aallon Helsinki",
+            "url": "https://visit.alvaraalto.fi/en/destinations/alvar-aaltos-helsinki/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alvar-aallon-helsinki/"
+          },
+          {
+            "name": "Tehtaanmäki residential district and school in Inkeroinen, Kouvola",
+            "name_fi": "Tehtaanmäen asuinalue ja koulu Kouvolan Inkeroisissa",
+            "url": "https://visit.alvaraalto.fi/en/destinations/industrial-history-and-residences-of-inkeroinen/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/tehtaanmaen-asuinalue-ja-koulu-kouvolan-inkeroisissa/"
+          },
+          {
+            "name": "Villa Mairea and Ahlström’s Noormarkku Works in Pori",
+            "name_fi": null,
+            "url": "https://visit.alvaraalto.fi/en/destinations/ahlstroms-noormarkku-works-in-pori/",
+            "url_fi": null
+          },
+          {
+            "name": "Kauttua Ironworks in Eura",
+            "name_fi": "Kauttuan ruukin­puisto Eurassa",
+            "url": "https://visit.alvaraalto.fi/en/destinations/kauttua-ironworks-in-eura/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/kauttuan-ruukinpuisto-eurassa/"
+          },
+          {
+            "name": "Alvar Aalto in Jyväskylä",
+            "name_fi": "Alvar Aallon Jyväskylä",
+            "url": "https://visit.alvaraalto.fi/en/destinations/alvar-aalto-in-jyvaskyla/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alvar-aallon-jyvaskyla/"
+          },
+          {
+            "name": "Mill Manager’s Residence Kantola and Seaside Sauna in Sunila",
+            "name_fi": "Tehtaan­johtajan asuin­talo Kantola ja ranta­sauna Sunilassa",
+            "url": "https://visit.alvaraalto.fi/en/destinations/factory-managers-residence-kantola-and-beach-sauna-in-sunila/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/tehtaanjohtajan-asuintalo-kantola-ja-rantasauna-sunilassa/"
+          },
+          {
+            "name": "Villa Mairea",
+            "name_fi": "Villa Mairea",
+            "url": "https://visit.alvaraalto.fi/en/destinations/villa-mairea/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/villa-mairea/"
+          },
+          {
+            "name": "Erottaja Pavilion",
+            "name_fi": "Erottajan paviljonki",
+            "url": "https://visit.alvaraalto.fi/en/destinations/erottaja-pavilion/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/erottajan-paviljonki/"
+          },
+          {
+            "name": "Enso-Gutzeit Co. Headquarters",
+            "name_fi": "Enso-Gutzeit Oy:n pääkonttori",
+            "url": "https://visit.alvaraalto.fi/en/destinations/enso-gutzeit-co-headquarters/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/enso-gutzeit-oyn-paakonttori/"
+          },
+          {
+            "name": "Rautatalo Office Building",
+            "name_fi": "Rautatalo",
+            "url": "https://visit.alvaraalto.fi/en/destinations/rautatalo-office-building/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/rautatalo/"
+          },
+          {
+            "name": "House of Culture",
+            "name_fi": "Kulttuuritalo",
+            "url": "https://visit.alvaraalto.fi/en/destinations/house-of-culture/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/kulttuuritalo/"
+          }
+        ],
+        "cities": [
+          "Alajärvi",
+          "Espoo",
+          "Eura",
+          "Hamina",
+          "Helsinki",
+          "Iittala",
+          "Jyväskylä",
+          "Järvenpää",
+          "Kauttua",
+          "Kotka",
+          "Kotka Popinniemi",
+          "Kouvola",
+          "Lahti",
+          "Muurame",
+          "Oulu",
+          "Paimio",
+          "Pori Noormarkku Finpyy",
+          "Raasepori",
+          "Rovaniemi",
+          "Ruokolahdentie",
+          "Seinäjoki",
+          "Turku",
+          "Tuusula",
+          "Vantaa",
+          "Varkaus"
+        ],
+        "cities_fi": [
+          "Alajärvi",
+          "Espoo",
+          "Eura",
+          "Hamina Hillonkylä Petkele",
+          "Helsinki",
+          "Hämeenlinna Iittala",
+          "Imatra",
+          "Jyväskylä",
+          "Järvenpää",
+          "Kotka",
+          "Kouvola",
+          "Lahti",
+          "Muurame",
+          "Oulu",
+          "Paimio",
+          "Pori Noormarkku Finpyy",
+          "Raasepori",
+          "Rovaniemi",
+          "Seinäjoki",
+          "Sunila",
+          "Turku",
+          "Tuusula",
+          "Vantaa",
+          "Varkaus"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.944220714285713,
+          60.16762608571429
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "France",
+        "name_fi": "Ranska",
+        "count": 1,
+        "objects": [
+          {
+            "name": "Maison Louis Carré",
+            "name_fi": "Maison Louis Carré",
+            "url": "https://visit.alvaraalto.fi/en/destinations/maison-louis-carre/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/maison-louis-carre/"
+          }
+        ],
+        "cities": [
+          "Bazoches-sur-Guyonne"
+        ],
+        "cities_fi": [
+          "Bazoches-sur-Guyonne"
+        ],
+        "city": "Bazoches-sur-Guyonne",
+        "city_fi": "Bazoches-sur-Guyonne"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.853683,
+          48.769566
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Germany",
+        "name_fi": "Saksa",
+        "count": 4,
+        "objects": [
+          {
+            "name": "Hansaviertel Apartment building “Haus 16”",
+            "name_fi": "Hansa­viertelin asuin­kerros­talo ”Haus 16”",
+            "url": "https://visit.alvaraalto.fi/en/destinations/hansaviertel-apartment-building-haus-16/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/hansaviertelin-asuinkerrostalo-haus-16/"
+          },
+          {
+            "name": "Wolfsburg church (Heilig-Geist-Kirche) and the parish centre",
+            "name_fi": "Wolfsburgin Pyhän Hengen kirkko ja seura­kunta­keskus",
+            "url": "https://visit.alvaraalto.fi/en/destinations/wolfsburg-church-heilig-geist-kirche-and-the-parish-centre/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/wolfsburgin-pyhan-hengen-kirkko-ja-seurakuntakeskus/"
+          },
+          {
+            "name": "Wolfsburg Cultural Center",
+            "name_fi": "Wolfsburgin kulttuuri­keskus",
+            "url": "https://visit.alvaraalto.fi/en/destinations/wolfsburg-cultural-center/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/wolfsburgin-kulttuurikeskus/"
+          },
+          {
+            "name": "Detmerode Church (Stephanuskirche) and parish centre",
+            "name_fi": "Detmeroden kirkko (Stephanus­kirche) ja seura­kunta­keskus",
+            "url": "https://visit.alvaraalto.fi/en/destinations/detmerode-church-stephanuskirche-and-parish-centre/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/detmeroden-kirkko-stephanuskirche-ja-seurakuntakeskus/"
+          }
+        ],
+        "cities": [
+          "Berliini",
+          "Wolfsburg"
+        ],
+        "cities_fi": [
+          "Berliini",
+          "Wolfsburg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.761433199999999,
+          52.40200645
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Italy",
+        "name_fi": "Italia",
+        "count": 2,
+        "objects": [
+          {
+            "name": "Riola church and parish centre",
+            "name_fi": "Riolan kirkko ja seura­kunta­keskus",
+            "url": "https://visit.alvaraalto.fi/en/destinations/riola-church-and-parish-centre/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/riolan-kirkko-ja-seurakuntakeskus/"
+          },
+          {
+            "name": "Finnish Pavilion at the Venice Biennale",
+            "name_fi": "Suomen paviljonki Venetsian biennaali­alueella",
+            "url": "https://visit.alvaraalto.fi/en/destinations/the-finnish-pavilion-at-the-venice-biennale/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/suomen-paviljonki-venetsian-biennaalialueella/"
+          }
+        ],
+        "cities": [
+          "Riola BO",
+          "Venezia VE"
+        ],
+        "cities_fi": [
+          "40030",
+          "Venezia VE"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.0546923,
+          44.2292721
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Russia",
+        "name_fi": "Venäjä",
+        "count": 1,
+        "objects": [
+          {
+            "name": "Vyborg Library",
+            "name_fi": "Viipurin kirjasto",
+            "url": "https://visit.alvaraalto.fi/en/destinations/vyborg-library/",
+            "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/viipurin-kirjasto/"
+          }
+        ],
+        "cities": [
+          "Vyborg"
+        ],
+        "cities_fi": [
+          "Viipuri"
+        ],
+        "city": "Vyborg",
+        "city_fi": "Viipuri"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.7473029,
+          60.709006
+        ]
+      }
+    }
+  ]
+}

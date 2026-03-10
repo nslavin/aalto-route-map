@@ -1,0 +1,2030 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Typpi Oy – The Red-Brick Industrial Community in Laanila",
+        "name_fi": "Typpi Oy – Punatiilinen tehdasyhdyskunta Laanilassa",
+        "address": "Typpipark Typpitie 1, 90620 Oulu, Pohjois-Pohjanmaa Suomi",
+        "address_fi": "Typpipark Typpitie 1, 90620 Oulu, Pohjois-Pohjanmaa Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/typpi-oy-the-red-brick-industrial-community-in-laanila/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/typpi-oy-punatiilinen-tehdasyhdyskunta-laanilassa/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2026/01/Typpi-Oy-kalivarasto-ppmv1992_359-300x217.jpg",
+        "description": "",
+        "description_fi": "",
+        "phone": "",
+        "website": "",
+        "gallery": []
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.5146824,
+          65.0290416
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Koskikeskus – Aalto’s Vision for the River Delta",
+        "name_fi": "Koskikeskus – Aallon visio jokisuistossa",
+        "address": "Raatintie 2, 90100 Oulu, Pohjois-Pohjanmaa Suomi",
+        "address_fi": "Raatintie 2, 90100 Oulu, Pohjois-Pohjanmaa Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/koskikeskus-aaltos-vision-for-the-river-delta/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/koskikeskus-aallon-visio-jokisuistossa/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2026/01/Koskikeskus_-maisema-225x300.jpg",
+        "description": "",
+        "description_fi": "",
+        "phone": "",
+        "website": "",
+        "gallery": []
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.4644327,
+          65.0197014
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Toppila Sulphite Pulp Mill – From Toppila Oy to Meri-Toppila",
+        "name_fi": "Toppilan sulfiittiselluloosatehdas – Toppila Oy:stä Meri-Toppilaksi",
+        "address": "Alvar Aallon katu 1, 90520 Oulu, Pohjois-Pohjanmaa Suomi",
+        "address_fi": "Alvar Aallon katu 1, 90520 Oulu, Pohjois-Pohjanmaa Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/toppila-sulphite-pulp-mill-from-toppila-oy-to-meri-toppila/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/toppilan-sulfiittiselluloosatehdas-toppila-oysta-meri-toppilaksi/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2026/01/Keittamo-01-300x293.png",
+        "description": "",
+        "description_fi": "",
+        "phone": "",
+        "website": "",
+        "gallery": []
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.4329071,
+          65.0441162
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ahlström Noormarkku Works",
+        "name_fi": "Ahlströmin ruukki ja Villa Mairea",
+        "address": "Laviantie, 29600 Pori Noormarkku Finpyy, Finland",
+        "address_fi": "Laviantie, 29600 Pori Noormarkku Finpyy, Finland",
+        "url": "https://visit.alvaraalto.fi/en/destinations/ahlstrom-works-and-villa-mairea/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/ahlstromin-ruukki-ja-villa-mairea/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/07/Noormarkunjoen-rannalla_A-300x200.jpg",
+        "description": "",
+        "description_fi": "",
+        "phone": "",
+        "website": "",
+        "gallery": []
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.8689272,
+          61.5928123
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Alajärvi Town Hall",
+        "name_fi": "Alajärven kaupungin­talo",
+        "address": "Alvar Aallon tie 1, 62900 Alajärvi, Suomi",
+        "address_fi": "Alvar Aallon tie 1, 62900 Alajärvi, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/alajarvi-town-hall/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alajarven-kaupungintalo/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/05/alajarvi-kaupungintalo-hautausmaalta-300x199.jpg",
+        "description": "",
+        "description_fi": "",
+        "phone": "",
+        "website": "",
+        "gallery": []
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.8227644,
+          62.9994126
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Alajärvi Parish Hall",
+        "name_fi": "Alajärven seurakunta­talo",
+        "address": "Alvar Aallon tie 3, 62900 Alajärvi, Suomi",
+        "address_fi": "Alvar Aallon tie 3, 62900 Alajärvi, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/alajarvi-parish-hall/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alajarven-seurakuntatalo/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/05/alajarvi-seurakuntatalo-edesta-a-300x199.jpg",
+        "description": "",
+        "description_fi": "",
+        "phone": "",
+        "website": "",
+        "gallery": []
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.8233081,
+          63.0001313
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Alajärvi City Library",
+        "name_fi": "Alajärven kaupungin­kirjasto",
+        "address": "Kirkkotie 7, 62900 Alajärvi, Suomi",
+        "address_fi": "Kirkkotie 7, 62900 Alajärvi, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/alajarvi-city-library/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alajarven-kaupunginkirjasto/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/05/alajarvi-kaupunginkirjasto-kaupungintalolta-a-300x199.jpg",
+        "description": "",
+        "description_fi": "",
+        "phone": "",
+        "website": "",
+        "gallery": []
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.8239416,
+          62.9991618
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Aalto2 Museum Centre",
+        "name_fi": "Aalto2-museokeskus",
+        "address": "Alvar Aallon katu 7, 40600 Jyväskylä, Finland",
+        "address_fi": "Alvar Aallon katu 7, 40600 Jyväskylä, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/aalto2-museum-centre/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/aalto2-museokeskus/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/06/aalto2-museokeskuksen-uudisosa-yhdistaa-toisiinsa-alvar-aalto-museon-vas-ja-keski-suomen-museon-oik-kuva-maija-holma-alvar-aalto-saatio-300x268.jpg",
+        "description": "",
+        "description_fi": "Aalto2-museokeskus on arkkitehtuurin, muotoilun ja kulttuuriympäristön kohtaamispaikka Jyväskylän Ruusupuistossa. Se yhdistää kaksi arkkitehti Alvar Aallon suunnittelemaa rakennusta, Alvar Aalto -museon ja Keski-Suomen museon. Keski-Suomen museo (1959-1961, 1991) on kulttuurihistoriallinen museo, joka keskittyy pääosin keskisuomalaiseen kulttuuriperintöön. Alvar Aalto -museo (1971-1973) on osa Alvar Aalto -säätiötä, joka huolehtii maailmankuulun arkkitehdin ja muotoilijan henkisestä ja aineellisesta perinnöstä.",
+        "phone": "",
+        "website": "",
+        "gallery": []
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7309607,
+          62.2334211
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rovaniemi Aalto Center, administrative and cultural center",
+        "name_fi": "Rovaniemen Aalto-keskus (hallinto- ja kulttuurikeskus)",
+        "address": "Hallituskatu 7, 96100 Rovaniemi, Finland",
+        "address_fi": "Hallituskatu 7, 96100 Rovaniemi, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/rovaniemi-aalto-center-administrative-and-cultural-center/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/rovaniemen-aalto-keskus/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-aaltokeskus-talvi-kirjasto-lappia-talo-kuva-rovaniemenkaupunki-rotkonen-samu-a-300x200.jpg",
+        "description": "The Rovaniemi administrative and cultural center, Aalto center, is the only completed city center in Finland by Alvar Aalto, along with Seinäjoki.",
+        "description_fi": "Rovaniemen hallinto- ja kulttuurikeskus eli Aalto-keskus on Seinäjoen ohella ainoa Alvar Aallon valmiiksi rakennettu kaupunkikeskus Suomessa.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-aaltokeskus-kaupungintalo-talvi-valtuustosali-kuva-rovaniemenkaupunki-torvinen-aarnotif-copy-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-aaltokeskus-kesa-ilmakuva-kuva-rovaniemenkaupunki-suomen-ilmakuva-oy.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-aaltokeskus-lappia-talo-talvi-kuva-rovaniemenkaupunki-jouni-porsanger-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-aaltokeskus-pororaito-teos-ulosmarssi-risto-immonen-kuvarovaniemenkaupunki-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-aaltokeskus-talvi-drone-kuva-rovaniemenkaupunki-mikko-pekka-karlin.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7259084,
+          66.4963795
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rovaniemi City Hall",
+        "name_fi": "Rovaniemen kaupungintalo",
+        "address": "Hallituskatu 7, 96100 Rovaniemi, Finland",
+        "address_fi": "Hallituskatu 7, 96100 Rovaniemi, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/rovaniemi-city-hall/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/rovaniemen-kaupungintalo/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/05/Rovaniemi_Kaupungintalo_Talvi_Valtuustosali_Kuva_RovaniemenKaupunki_Torvinen_Aarno_A-Copy-300x199.jpg",
+        "description": "The completion of the City Hall in 1986 completed Rovaniemi’s administrative and cultural center, the Aalto Center. Along with Seinäjoki, it is Alvar Aalto’s only completed civic center in Finland. The City Hall was designed based on Alvar Aalto’s sketches after his death under the direction of Elissa Aalto.",
+        "description_fi": "Kaupungintalon valmistuminen vuonna 1986 viimeisteli Rovaniemen hallinto- ja kulttuurikeskuksen, Aalto-keskuksen. Se on Seinäjoen ohella ainoa Alvar Aallon valmiiksi rakennettu kaupunkikeskus Suomessa. Kaupungintalo suunniteltiin Alvar Aallon luonnosten pohjalta hänen kuolemansa jälkeen Elissa Aallon johdolla.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-kaupungintalo-sisapiha-syksy-kuva-rovaniemenkaupunki-uutela-petri-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-kaupungintalo-sisaankaynti-kuva-rovaniemenkaupunki-rajanen-arto-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-kaupungintalo-valaisin-kuva-rovaniemenkaupunki-rajanen-arto-copy-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-kaupungintalo-valtuustosali-kuva-rovaniemenkaupunki-rajanen-arto1-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-kaupungintalo-kaupunginhallituksenkokoushuone-kuva-rovaniemenkaupunki-juhokuva-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-kaupungintalo-ylakerta-kuva-rovaniemenkaupunki-rajanen-arto-scaled.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7259084,
+          66.4963795
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Villa Tammekann",
+        "name_fi": "Villa Tammekann",
+        "address": "Friedrich Reinhold Kreutzwaldi 6, 51006 Tartto, Viro",
+        "address_fi": "Friedrich Reinhold Kreutzwaldi, 51006 Tartto, Viro",
+        "url": "https://visit.alvaraalto.fi/en/destinations/villa-tammekann/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/villa-tammekann/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2021/08/villa-tammekann-2-300x200.jpg",
+        "description": "Situated in Tartu, the Granö Centre of the universities of Turku and Tartu was opened in April 2000.",
+        "description_fi": "Villa Tammekann on Turun Yliopistosäätiön omistama Turun yliopiston tutkijoiden käytössä oleva tutkijaresidenssi. Se on ainoa Alvar Aallon suunnittelema kohde Baltiassa.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2021/08/villa-tammekann-3-scaled.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.7047027,
+          58.3845055
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Nelimarkka Museum and Villa Väinölä in Alajärvi",
+        "name_fi": "Nelimarkka-museo ja Villa Väinölä Alajärvellä",
+        "address": "Väinöntie, 62900 Alajärvi, Suomi",
+        "address_fi": "Väinöntie 4, 62900 Alajärvi, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/nelimarkka-museum-and-villa-vainola-in-alajarvi/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/nelimarkka-museo-ja-villa-vainola-alajarvella/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/05/alajarvi-villa-vainola-edesta-a-300x199.jpg",
+        "description": "The Nelimarkka Museum in Alajärvi was founded by the painter and professor Eero Nelimarkka (1891-1977) in 1964. The building was designed by his friend, the architect Hilding Ekelund. Since 1995 it has functioned as the Regional Art Museum of Southern Ostrobothnia. It focuses on displaying regional Ostrobothnian art, but art education also plays an important role in its activities.",
+        "description_fi": "Alajärvellä on taiteilija-professori Eero Nelimarkan (1891-1977) rakennuttama ja hänen ystävänsä, arkkitehti Hilding Ekelundin suunnittelema vuonna 1964 avattu Nelimarkka-museo. Nelimarkka-museo on toiminut Etelä-Pohjanmaan aluetaidemuseona vuodesta 1995. Taiteilija Eero Nelimarkan taiteen esittämisen ja tutkimuksen lisäksi museon tehtäviin kuuluu pohjalaisen taiteen tunnetuksi tekeminen sekä taidekasvatus. Museon kokoelma koostuu pääasiassa Eero Nelimarkan tuotannosta vuosilta 1910 – 1976, mutta kokoelmissa on myös teoksia muilta suomalaisilta taiteilijoilta kuten esimerksiksi Albert Edelfeldtiltä ja Eero Järnefeltiltä.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2024/05/alajarvi-villa-vainola-nayttelytila.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/05/alajarvi-villa-vainola-puu.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.8196303,
+          63.0006033
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Youth Association Building in Alajärvi",
+        "name_fi": "Nuoriso­seurantalo Alajärvellä",
+        "address": "Sairaalatie 9, 62900 Alajärvi, Suomi",
+        "address_fi": "Sairaalatie 9, 62900 Alajärvi, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/youth-association-building-in-alajarvi/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/nuorisoseurantalo-alajarvella/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/05/alajarvi-nuorisoseurantalo-edesta-a-300x180.jpg",
+        "description": "The Alajärvi Youth Association building from 1920 is one of the buildings designed by Alvar Aalto during his studies. It is also his first public building design. Construction work was carried out quickly, and the building is still in use nowadays. The current Youth Association building, that was formerly the Defence Corps building, was completed in 1920, and it was inaugurated on November 28. Until 1946, the building housed the local Defence Corps and Lotta Svärd departments. In 1946, the building was bought by the Youth Association club, that still owns it.",
+        "description_fi": "Alajärven nuorisoseuran talo vuodelta 1919 on yksi Alvar Aallon opiskeluaikanaan suunnittelemista rakennuksista. Se on samalla myös Aallon ensimmäinen julkisen rakennuksen suunnittelutyö. Rakennustyöt toteutettiin nopeasti, ja talo on edelleen käytössä. Nykyinen nuorisoseurantalo, entinen suojeluskuntatalo valmistui vuonna 1920 ja rakennus vihittiin käyttöön 28.11.1920. Rakennuksessa toimi vuoteen 1946 saakka Alajärven suojeluskunta sekä Lotta Svärdin paikallisosasto. Vuonna 1946 rakennus siirtyi Alajärven kirkonkylän nuoriseuralle, jonka omistuksessa rakennus on edelleen.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2024/05/alajarvi-nuorisoseurantalo-edesta-a.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/05/alajarvi-nuorisoseurantalo-torni.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.8215899,
+          62.9988442
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Aerola Terraced Houses in Vantaa",
+        "name_fi": "Aerolan rivitalot Vantaalla",
+        "address": "Pyhtäänkorventie 23, 01530 Vantaa, Suomi",
+        "address_fi": "Pyhtäänkorventie 23, 01530 Vantaa, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/aerola-terraced-houses-in-vantaa/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/aerolan-rivitalot-vantaalla/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2020/06/img_6121-300x225.jpg",
+        "description": "When Finland was selected to host the 1952 Summer Olympics, it also contributed to the construction of the current Helsinki-Vantaa Airport. Scheduled air traffic in Finland had also grown rapidly at the turn of the 1940s and 1950s. Malmi Airport, which had been completed in 1936, was no longer able to meet the growing demand, and a decision was taken to build a new airport. The Helsinki-Vantaa Airport (1952) was completed just a little over a month before the start of the Olympics, and soon afterwards Alvar Aalto’s Architect Office was commissioned to design employment housing for the staff of Finnair’s predecessor Aero Oy in proximity to the new airport.",
+        "description_fi": "Vuoden 1952 kesäolympialaisten saaminen Suomeen vauhditti osaltaan nykyisen Helsinki-Vantaan lentokentän rakentamista. Suomen reittilentoliikenne oli myös kasvanut nopeasti 1940-50 -lukujen taitteessa. Malmin lentokenttä, joka oli valmistunut vuonna 1936, ei enää pystynyt vastaamaan kasvavaan kysyntään ja uusi lentokenttä päätettiin rakentaa. Uusi lentokenttä valmistui vain reilu kuukausi ennen Olympialaisten alkua. Helsinki-Vantaan lentokentän avajaisten jälkeen Alvar Aallon arkkitehtuuritoimisto sai toimeksiannon suunnitella työsuhdeasuntoja Finnairin edeltäjän Aero Oy:n korjaamohenkilökunnalle uuden lentokentän läheisyyteen.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2020/06/img_6121.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/06/kuva4-1.jpeg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/06/kuva1.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9735487,
+          60.3003357
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Riola church and parish centre",
+        "name_fi": "Riolan kirkko ja seura­kunta­keskus",
+        "address": "Piazza Alvar Aalto, 1, 40030 Riola BO, Italia",
+        "address_fi": "Piazza Alvar Aalto 1, 40030, Riola (BO)",
+        "url": "https://visit.alvaraalto.fi/en/destinations/riola-church-and-parish-centre/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/riolan-kirkko-ja-seurakuntakeskus/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2020/04/l-1569-300x218.jpg",
+        "description": "The small mountain village of Riola di Vergato lies on a slope of the Apennines some forty kilometres south of Bologna, along the road to Pistoia. The ecumenically inclined Bishop of Bologna, Cardinal Giacomo Lercaro, asked Aalto in 1965 to design a small church next to the old highway bridge across the river Reno. Aalto’s initial plan from 1966 already showed the church in its final form, but it was later supplemented by a wider plan including a retirement home and a kindergarten. Plans were then further developed in 1969 and again in 1975, continuing until 1980.",
+        "description_fi": "Pieni Riola di Vergaton vuoristokylä sijaitsee Apenniinien rinteellä noin 40 km Bolognasta etelään. Ekumeenisesti suuntautunut Bolognan piispa, kardinaali Giacomo Lercaro, pyysi Aaltoa vuonna 1965 suunnittelemaan pienen kirkon vanhan maantiesillan viereen Reno-joen äärelle. Aallon alkuperäinen suunnitelma vuodelta 1966 näytti kirkon jo lopullisessa muodossaan, mutta myöhemmin sitä täydennettiin perusteellisemmalla suunnitelmalla vanhainkodista ja lastentarhasta. Suunnittelu jatkui 1969 ja jälleen 1975, aina vuoteen 1980 saakka.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2020/04/l-1570.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/04/av-476.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/04/104684_r16.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.0546923,
+          44.2292721
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lappia Hall in Rovaniemi",
+        "name_fi": "Lappia-talo Rovaniemellä",
+        "address": "Jorma Eton tie 8, 96100 Rovaniemi, Finland",
+        "address_fi": "Jorma Eton tie 8 A, 96100 Rovaniemi, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/lappia-hall-in-rovaniemi/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/lappia-talo-rovaniemella/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-aaltokeskus-lappia-talo-talvi-kuva-rovaniemenkaupunki-jouni-porsanger-300x200.jpg",
+        "description": "Lappia Hall is part of the Rovaniemi administrative and cultural center, the Aalto Center, designed by Alvar Aalto. The building is a well-known landmark of Rovaniemi. Lappia Hall was built in two parts. The first part, including the music school, was completed in 1972, and the main part of the building used by the theater in 1975. Lappia Hall was the last building that Alvar Aalto saw completed before his death.",
+        "description_fi": "Lappia-talo on osa Alvar Aallon suunnittelemaa Rovaniemen hallinto- ja kulttuurikeskusta, Aalto-keskusta. Rakennus on tunnettu Rovaniemen maamerkki.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-lappia-talo-lampio-ulkoa-kuva-rovaniemenkaupunki-torvinen-aarno-copy-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-lappia-talo-talvi-kuva-rovaniemenkaupunki-torvinen-aarno-copy-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-lappia-talo-talvi2-kuva-rovaniemenkaupunki-torvinen-aarno-copy-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-lappia-talo-katto-kesa-kuva-rovaniemenkaupunki-juhokuva-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-lappia-talo-tieva-sali-kuva-rovaniemenkaupunki-juhokuva-scaled.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7206992,
+          66.4968766
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rovaniemi City Library",
+        "name_fi": "Rovaniemen kirjasto",
+        "address": "Jorma Eton tie 6, 96100 Rovaniemi, Finland",
+        "address_fi": "Jorma Eton tie 6, 96100 Rovaniemi, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/rovaniemi-city-library/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/rovaniemen-kirjasto/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-kirjasto-aalto-sali-syvennykset-kuva-rovaniemenkaupunki-juhokuva-a-300x200.jpg",
+        "description": "The library building, which was completed in 1965, was the first of the Rovaniemi administrative and cultural center buildings.",
+        "description_fi": "Rovaniemen hallinto- ja kulttuurikeskuksen rakennuksista ensimmäisenä toteutui kirjastotalo, joka valmistui vuonna 1965.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-kirjasto-aalto-sali-isosyvennys-kuva-rovaniemenkaupunki-rajanen-arto-copy-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-kirjasto-dronekuva-kuva-rovaniemenkaupunki-mikko-pekka-karlin.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-kirjasto-ikkunat-sisalta-kuva-rovaniemenkaupunki-flatlight-creative-oy-copy-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-kirjasto-valaisin-kuva-rovaniemenkaupunki-rajanen-arto-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-kirjasto-ulkokuva-talvi-pororaito-kuva-rovaniemenkaupunki-rajanen-arto-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-kirjasto-portaikonkaide-kuva-rovaniemenkaupunki-rajanen-arto-scaled.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.722258,
+          66.4964983
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kinkamon Aalto in Varkaus",
+        "name_fi": null,
+        "address": "Kinkamontie, 78500 Varkaus, Suomi",
+        "address_fi": null,
+        "url": "https://visit.alvaraalto.fi/en/destinations/kinkamon-aalto-in-varkaus/",
+        "url_fi": null,
+        "image": "https://visit.alvaraalto.fi/app/uploads/2020/03/kinkamo-by-alvar-aalto_-photo-visit-varkaus-1400px-300x225.jpg",
+        "description": "Kinkamo is the first building that Alvar Aalto designed in Varkaus. Kinkamo was designed to be a weekend cabin in Kopolanniemi for the workers of the A. Ahlström factory. Kinkamo is a good example of Aalto’s efforts to adapt the building to its natural surroundings: it is located on a lake shore at the edge of the forest and it is not visible from the opposite shore, or from passing boats. The Warkaus Factory club-association approved the construction of Kinkamo during a general meeting held on May 12th, in 1937. The name Kinkamo was the result of a name competition organized in 1939.",
+        "description_fi": "",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2020/05/kattaus_2-kuva-kinkamon-aalto-varkaus-visitvarkaus-kinkamonaalto-lakesaimaa-visitfinland-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/05/kinkamo-sisaankaynti_kuva-visit-varkaus-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/05/palju_kuva-kinkamon-aalto-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/05/tuvan-kalusto_kuva-kinkamon-aalto-1.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.9602066,
+          62.3337021
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cross Of The Plains and the Parish Centre",
+        "name_fi": "Lakeuden Ristin kirkko ja seura­kunta­keskus",
+        "address": "Koulukatu 24, 60100 Seinäjoki, Finland",
+        "address_fi": "Koulukatu 24, 60100 Seinäjoki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/the-cross-of-the-plains-and-the-parish-centre/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/lakeuden-ristin-kirkko-ja-seurakuntakeskus/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/seinajoki-lakeuden-risti01-300x200.jpg",
+        "description": "Aalto took part in a competition for a large church and parish centre announced by Seinäjoki parish in 1951, sending in an entry marked “Lakeuksien risti” (“Cross of the plains”).",
+        "description_fi": "",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2020/04/dsc3834.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/04/dsc3791.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/04/dsc3789.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/04/dsc3784.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.8453076,
+          62.7867964
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Finnish Pavilion at the Venice Biennale",
+        "name_fi": "Suomen paviljonki Venetsian biennaali­alueella",
+        "address": "Calle Giazzo, 30122 Venezia VE, Italia",
+        "address_fi": "Calle Giazzo, 30122 Venezia VE, Italia",
+        "url": "https://visit.alvaraalto.fi/en/destinations/the-finnish-pavilion-at-the-venice-biennale/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/suomen-paviljonki-venetsian-biennaalialueella/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2020/01/av-5804-300x199.jpg",
+        "description": "The Finnish pavilion, designed at the initiative of art patron Maire Gullichsen, was set up in the Giardini parkland to house the Finnish exhibition section of the Venice Biennale International Art Festival in the spring of 1956. Alvar Aalto had only a couple weeks’ time to produce the plans for the pavilion.",
+        "description_fi": "Taidemesenaatti Maire Gullichsenin aloitteesta suunniteltu paviljonki pystytettiin Venetsian kansainvälisen taidebiennaaliin Suomen näyttelyosastoksi Giardini-puistoalueelle keväällä 1956. Paviljonki suunniteltiin varsin lyhyessä ajassa; suunnitteluaikaa ei ollut enempää kuin pari viikkoa.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2020/01/101301.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/01/101325.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.3585221,
+          45.429246
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hansaviertel Apartment building “Haus 16”",
+        "name_fi": "Hansa­viertelin asuin­kerros­talo ”Haus 16”",
+        "address": "Klopstockstraße 32, 10557 Berliini, Saksa",
+        "address_fi": "Klopstockstraße 32, 10557 Berliini, Saksa",
+        "url": "https://visit.alvaraalto.fi/en/destinations/hansaviertel-apartment-building-haus-16/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/hansaviertelin-asuinkerrostalo-haus-16/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2020/01/av-524-300x193.jpg",
+        "description": "The Hansaviertel residential area in West Berlin was built for the 1957 Interbau Building Exhibition. After the devastation of World War II, the area was rebuilt following principles of international Architectural Modernism. 53 architects from 14 different countries were invited to the project, Alvar Aalto being one of them. In Aalto’s office, design work for the apartment building began in 1954. Aalto made plans for several potential sites around the exhibition area until it was decided to build the “Haus 16” project right in the heart of Hansaviertel, near Hansaplatz Underground Station.",
+        "description_fi": "Hansaviertelin asuinalue Länsi-Berliinissä rakennettiin vuoden 1957 Interbau rakennusnäyttelyä varten. Asuinalue haluttiin jälleenrakentaa 2. maailmansodan tuhojen jälkeen kansainvälisen modernin arkkitehtuurin mukaisesti. Projektiin kutsuttiin mukaan 53 arkkitehtiä 14 eri maasta ja Alvar Aalto oli yksi kutsutuista. Aallon toimistossa asuinkerrostalon suunnittelutyöt aloitettiin vuonna 1954. Aalto teki suunnitelmia useille eri tonteille ympäri näyttelyaluetta, kunnes suunnitelma ”Haus 16” päätettiin rakentaa aivan Hansaviertelin sydämeen, lähelle Hansaplatz metroasemaa.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2020/01/av-531.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/01/av-522.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/01/av-534.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/01/av-525.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.3417455,
+          52.5170421
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wolfsburg church (Heilig-Geist-Kirche) and the parish centre",
+        "name_fi": "Wolfsburgin Pyhän Hengen kirkko ja seura­kunta­keskus",
+        "address": "Röntgenstraße 81, 38440 Wolfsburg, Ala-Saksi Saksa",
+        "address_fi": "Röntgenstraße 81, 38440 Wolfsburg, Ala-Saksi Saksa",
+        "url": "https://visit.alvaraalto.fi/en/destinations/wolfsburg-church-heilig-geist-kirche-and-the-parish-centre/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/wolfsburgin-pyhan-hengen-kirkko-ja-seurakuntakeskus/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2020/01/dsc7977-300x200.jpg",
+        "description": "The complex consists of the Heilig-Geist-Kirche (Church of the Holy Ghost), a bell tower, a parish building, a vicarage, and a kindergarten. The buildings form a tightly-knit group, that turns its back on the surrounding area, and is articulated around an inner courtyard area. Aalto started working on the project in January 1960, drawing from the main principles of his earlier project for the Danish international church competition of 1958.",
+        "description_fi": "Alvar Aallon suunnittelemaan rakennuskokonaisuuteen kuuluu kirkko, seurakuntarakennus, pappila ja lastentarha. Rakennukset muodostavat tiiviin ryhmän, joka kääntää selkänsä muuhun ympäröivään maisemaan, samalla luoden sisäpihamaisen rakennuskokonaisuuden. Aalto aloitti työt kokonaisuuden parissa tammikuussa 1960, mutta se noudatti pääpiirteittäin Aallon ehdotusta kansainväliseen tanskalaiseen kirkkokilpailuun vuodelta 1958.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2020/01/dsc8149-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/01/dsc8239-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/01/dsc8265.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/01/dsc8330-w-burg-seurakuntakeskus-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/01/dsc8394-w-burg-seurakuntakeskus.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.7692,
+          52.40974
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wolfsburg Cultural Center",
+        "name_fi": "Wolfsburgin kulttuuri­keskus",
+        "address": "Porschestraße 51, 38440 Wolfsburg, Ala-Saksi Saksa",
+        "address_fi": "Porschestraße 51, 38440 Wolfsburg, Ala-Saksi Saksa",
+        "url": "https://visit.alvaraalto.fi/en/destinations/wolfsburg-cultural-center/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/wolfsburgin-kulttuurikeskus/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2020/01/dsc8787-300x200.jpg",
+        "description": "Wolfsburg Cultural Centre was designed and constructed for a small German city built around automotive industry. In choosing Alvar Aalto as the designer, the young city of Wolfsburg wanted to acquire a higher profile.",
+        "description_fi": "Wolfsburgin kulttuurikeskus Saksassa (Alvar Aalto Kulturhaus) suunniteltiin pienehköön saksalaiseen, autoteollisuuden ympärille rakennettuun kaupunkiin. Alvar Aalto valittiin rakennuksen suunnittelijaksi sillä nuori kaupunki halusi nostaa profiiliaan.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2020/01/dsc8534.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/01/dsc8591-kopio.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/01/dsc8615.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/01/dsc8984.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/01/dsc9085.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.7859402,
+          52.419646
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vyborg Library",
+        "name_fi": "Viipurin kirjasto",
+        "address": "Prospekt Suvorova 4, 188800 Viipuri, Leningradin alue Venäjä",
+        "address_fi": "Prospekt Suvorova 4, Viipuri, 188800, Venäjä",
+        "url": "https://visit.alvaraalto.fi/en/destinations/vyborg-library/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/viipurin-kirjasto/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2019/12/digi-1906_lainaussali-300x200.jpg",
+        "description": "The Alvar Aalto Library in Vyborg, completed in 1935, was one of the buildings that brought Aalto worldwide fame. The history of the competition and design for Vyborg Library is crucially linked with Alvar Aalto’s changeover from classicism to functionalism. The ideas developed for the Viipuri Library competition remained central to the work of Aalto’s office throughout its existence.",
+        "description_fi": "Viipurin kirjasto oli yksi ensimmäisistä rakennuksista, jotka tekivät Alvar Aallosta tunnetun maailmalla. Kirjaston kilpailu- ja suunnitteluhistoria liittyy keskeisesti Alvar Aallon siirtymiseen klassismista funktionalismiin. Viipurin kirjastokilpailun yhteydessä kehitetyt ideat säilyivät keskeisinä Aallon toimistossa koko sen toiminnan ajan. Rakennuksessa on kaksi pääosaa: itse kirjasto eri osastoineen ja toiseksi kirjastotoiminnan yhteiskunnallisesti aktiivinen osa, kerhohuoneistot. Viipurin kirjasto olikin aikanaan ensimmäisiä kirjastoja Suomessa, johon liitettiin mahdollisuus myös muulle toiminnalle.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2019/12/digi-1853_pa-a-sisa-a-nka-ynti_aula.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/12/digi-1861.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/12/digi-1879_luentosali.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/12/digi-1898_lainaussali.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/12/digi-1918_lainaussali.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/12/digi-1931a_lukusali.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/12/digi-1949b_lastenosasto.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/12/digi-1812pa-a-sisa-a-nka-ynti.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/12/digi-1828b_lastenosaston-sisa-a-nka-ynti.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/12/digi-1829a_lastenosaston-sisa-a-nka-ynti.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.7473029,
+          60.709006
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Terraced House at the Kauttua Works in Eura",
+        "name_fi": "Terassi­talo Kauttuan Ruukin­­puistossa Eurassa",
+        "address": "Alvar Aallon tie 4, 27500 Eura, Finland",
+        "address_fi": "Alvar Aallon tie 4, 27500 Eura, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/the-terraced-house-at-the-kauttua-works-in-eura/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/terassitalo-kauttuan-ruukinpuistossa-eurassa/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2020/01/terassitalo1_liukkonen-300x220.jpg",
+        "description": "The Terraced House in Kauttua is one of Alvar Aalto’s most prominent works also internationally. In 1937, Alvar Aalto received a commission from the A. Ahlström company for the town planning and infill building of the Kauttua ironworks area. The assignment also stemmed from Alvar Aalto’s friendship with the company’s CEO Harry Gullichsen and his wife Maire Gullichsen. Ties to the traditional architecture of the area were deliberately cut, and instead Kauttua was envisioned as a stage for both a new communal life concept, and modern architecture. The first house to be built in the area was a “stairless apartment block”, known as the stepped terrace house, completed in 1938.",
+        "description_fi": "Arkkitehtuuri, sisustus ja taide kohtaavat Terassitalolla Eurassa, Kauttuan Ruukinpuistossa. Yksi talon huoneisto on sisustettu vanhoilla Artekin kalusteilla ja valaisimilla. Huoneiston sisustuksesta vastaa turkulainen Festart Design. Osa esineistä on myynnissä. Terassitalon huoneistossa järjestetään vaihtuvia näyttelyitä ja myyntinäyttelyn kalusteet vaihtuvat aika ajoin – uutta nähtävää ja koettavaa siis riittää!",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2020/01/doku-2989.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/01/terassitalo4-korjmh.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2021/02/eura-terassitalo004-scaled-e1612428791433.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.1619687,
+          61.1117546
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ekenäs Savings Bank",
+        "name_fi": "Tammisaaren Säästöpankki",
+        "address": "Asematie 6, 10600 Raasepori, Finland",
+        "address_fi": "Asematie 6, 10600 Raasepori, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/ekenas-savings-bank/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/tammisaaren-saastopankki/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2020/01/dsc_8624-2-300x200.jpg",
+        "description": "Alvar Aalto was chosen to design Ekenäs Savings Bank in 1962. The bank is located right in the center of Ekenäs town, within Raseborg city. From the market place of Ekenäs, the bank appears to be a two-storey building, but actually it has three stories altogether. The impressive marble façade, opening to the side of the market place of Ekenäs, is similar in style to the Enso-Gutzeit main building in Katajanokka, Helsinki. The other facades of the building are slammed brick. Alvar Aalto was given complete freedom in the design process; most of the interior spaces and furnishings are also his creation.",
+        "description_fi": "Tammisaaren Säästöpankki sijaitsee Tammisaaren keskustassa. Torin suuntaan talo on kaksikerroksinen, ja kolmas kerros on sisäänvedetty. Toria hallitsee rakennuksen huomiota herättävä marmorinen julkisivu, joka muistuttaa myös Enso-Gutzeitin toimistotaloa Helsingin Katajanokalla. Pankkirakennuksen muut julkisivut ovat slammattua tiiltä.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2020/03/dsc0994.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/03/dsc0975.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/03/dsc0914.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/03/dsc0561-2.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/03/dsc0586.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.4395099,
+          59.9769961
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Riverside sauna at the Kauttua Works",
+        "name_fi": "Jokisauna Kauttuan Ruukin­puistossa Eurassa",
+        "address": "Sepäntie 1, 27500 Eura, Finland",
+        "address_fi": "Sepäntie 1, 27500 Eura, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/riverside-sauna-at-kauttua-works/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/jokisauna-kauttuan-ruukinpuistossa-eurassa/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2020/01/digi-2392-rajausb-280x300.jpg",
+        "description": "Aino and Alvar Aalto designed the riverside sauna and laundry building for the employees of A. Ahlström company in the Kauttua Works area in Eura. The building is situated by the rapids in the beautiful surroundings of the bank of the flowing Eurajoki river. It was completed in 1946, with a log and brick structure resting on a concrete foundation. Originally the building had a turf roof. Nowadays Aalto’s riverside sauna is operated by a private entrepreneur, offering meeting and catering services, and of course the original Finnish Sauna experience.",
+        "description_fi": "Aino ja Alvar Aalto suunnittelivat sauna- ja pesularakennuksen A. Ahlström Oy:n työntekijöiden käyttöön Kauttuan ruukin alueelle, lähellä virtaavan Eurajoen rannalle. Rakennus on hirsistä valmistettu, alun perin turve -ja harjakattoinen rakennus, jonka perustukset ovat betoniset. Saunarakennus valmistui vuonna 1946. Rakennuksessa toimii nykyisin kahvila -ja designmyymälä Jokisauna Oy, ja rakennusta on kunnostettu niin, että myös saunatoiminta on voitu käynnistää uudelleen.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2020/01/digi-2392-rajausb.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/01/digi-2393.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.157273,
+          61.1117342
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Detmerode Church (Stephanuskirche) and parish centre",
+        "name_fi": "Detmeroden kirkko (Stephanus­kirche) ja seura­kunta­keskus",
+        "address": "Detmeroder Markt 6, 38444 Wolfsburg, Ala-Saksi Saksa",
+        "address_fi": "Detmeroder Markt 6, 38444 Wolfsburg, Ala-Saksi Saksa",
+        "url": "https://visit.alvaraalto.fi/en/destinations/detmerode-church-stephanuskirche-and-parish-centre/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/detmeroden-kirkko-stephanuskirche-ja-seurakuntakeskus/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2020/01/dsc9176-detmerode-1-300x232.jpg",
+        "description": "Detmerode is a residential community linked to the industrial city of Wolfsburg, a town where several Aalto buildings had found place: a cultural centre whose design started in 1958, and the Church of the Holy Ghost in 1960. For this small suburb, Aalto was commissioned a plan for a church in 1963, filling the gap between a much-frequented shopping centre and a park. The church, also intended to be used for secular events such as concerts, is sheltered behind a portico that connects it to the shopping centre´s plaza. It is equipped with 250 seats, which can be extended to 600 when needed.",
+        "description_fi": "Detmeroden asuinalue liittyy Wolfsburgin teollisuuskaupunkiin, jonne Aalto suunnitteli kulttuurikeskuksen 1958 ja Pyhän Hengen kirkon 1960. Vuonna 1963 Aalto kutsuttiin suunnittelemaan kirkko ja seurakuntakeskus puiston ja vilkkaan ostoskeskuksen väliseen tilaan Detmeroden alueelle. Kirkon oli tarkoitus palvella myös maallisia tilaisuuksia kuten konsertteja, ja sen pääsisäänkäynti avautui suoraan ostoskeskuksen aukiolle. Istumapaikkoja voi tarvittaessa lisätä 250:stä aina kuuteensataan saakka.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2020/01/dsc9523-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/01/dsc9176-detmerode-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/01/dsc9273-detmerode-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/01/dsc9543-detmerode.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/01/dsc9235-detmerode-srk-keskus-1.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.7536664,
+          52.3942729
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Maison Louis Carré",
+        "name_fi": "Maison Louis Carré",
+        "address": "Chemin du Saint-Sacrement 2, 78490 Bazoches-sur-Guyonne, Ile-de-France Ranska",
+        "address_fi": "Chemin du Saint-Sacrement 2, 78490 Bazoches-sur-Guyonne, Ile-de-France Ranska",
+        "url": "https://visit.alvaraalto.fi/en/destinations/maison-louis-carre/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/maison-louis-carre/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2020/08/mlc-jetsonen-copie-e1718628865877-300x178.jpg",
+        "description": "",
+        "description_fi": "",
+        "phone": "",
+        "website": "",
+        "gallery": []
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.853683,
+          48.769566
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Aalto Library in Seinäjoki",
+        "name_fi": "Aalto-kirjasto Seinäjoella",
+        "address": "Koulukatu 21, 60100 Seinäjoki, Finland",
+        "address_fi": "Koulukatu 21, 60100 Seinäjoki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/seinajoki-library/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/seinajoen-kirjasto/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2019/03/av-447_seinajoki_kirj-300x237.jpg",
+        "description": "",
+        "description_fi": "",
+        "phone": "",
+        "website": "",
+        "gallery": []
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.8424393,
+          62.7861871
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Jyväskylä Workers’ Club",
+        "name_fi": "Jyväs­kylän työ­väen­talo",
+        "address": "Väinönkatu 7, 40100 Jyväskylä, Finland",
+        "address_fi": "Väinönkatu 7, 40100 Jyväskylä, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/jyvaskyla-workers-club/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/jyvaskylan-tyovaentalo/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2019/03/av-5172_jty-300x223.jpg",
+        "description": "Jyväskylä Workers’ club building was the first notable public building that Alvar Aalto got to design after his graduation with Aino Aalto. Aalto was given the design commission for the new building in the city centre by the Jyväskylä Workers’ Association in 1924. The plans for the building were made in 1924 and it erected the following year. Aino and Alvar Aalto also designed the furniture, light fixtures, and fittings specially for this building.",
+        "description_fi": "Jyväskylän työväentalo oli vastavalmistuneelle Alvar Aallolle ensimmäinen merkittävän julkisen rakennuksen suunnittelutehtävä. Rakennuspiirustukset ovat vuodelta 1924, ja talo valmistui seuraavana vuonna. Työväentalosta tuli Aallon läpimurtotyö ja sitä pidetään Aallon klassistisen kauden merkkiteoksena. Työväentalo on myös rakennushistoriallisesti aikakautensa merkittävämpiä rakennuksia. Työnväentalo suojeltiinkin asemakaavassa jo 1970-luvun alussa. Keski-Suomen lääninhallitus asetti rakennuksen suojeltavaksi vuonna 1978 ja Valtioneuvoston suojelupäätöksen rakennus sai vuonna 1986.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2019/03/av-5173_jty.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/03/av-5175_jty.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/03/av-5176_jty.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/03/av-6125a_jty.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/03/av-6124a_jty.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.750628,
+          62.2431806
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Jyväskylä University Campus and Seminar Hill",
+        "name_fi": "Jyväskylän yli­opiston kampus ja Seminaarin­mäki",
+        "address": "Seminaarinkatu 15, 40100 Jyväskylä, Suomi",
+        "address_fi": "Seminaarinkatu 15, 40100 Jyväskylä, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/the-jyvaskyla-university-campus-and-seminar-hill/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/jyvaskylan-yliopiston-kampus-ja-seminaarinmaki/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/jyvaskyla-jyvaskylan-yliopiston-kampusalue-maija-holma-alvar-aalto-museo-1-300x223.jpg",
+        "description": "The first buildings at the Seminar Hill were built already in 1880’s. Konstantin Kiseleff’s redbrick buildings are the oldest buildings in the area. Seminar Hill and the Jyväskylä University Campus area is nowadays protected by law. The University area represents many historical layers and it is therefore considered to be one of the areas richness as well. It is also considered to be a good example of an area where modern and older buildings go together seamlessly.",
+        "description_fi": "Jyväskylän kampuksen ensimmäiset rakennukset on rakennettu jo 1880-luvulla. Konstantin Kiseleffin suunnittelemat punatiiliset rakennukset, ”opin kasarmit” ovat Seminaarinmäen vanhimmat rakennukset. Seminaarinmäen rakennushistoriallinen alue on myös suojeltu. Yliopisto kampuksen rakennetun ympäristön kerroksellisuus onkin sen merkittävä rikkaus. Sitä pidetään esimerkillisenä alueena, jossa on hyvän suunnittelun johdosta onnistuttu yhdistämään moderni täydennysrakentaminen vanhemman rakennuskannan lomaan hyvin.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/jyvaskylan-yliopisto-paarakennus-kuva-maija-holma-alvar-aalto-museo.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/06/alvar-aalto-location-university-of-jyvaskyla-lecture-hall-photo-tero-takalo-eskola.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/03/digi-3949_koulu-paarak-lozzi.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/03/digi-3907a_liikunta.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/03/digi-3859_lyhty_koulu.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/04/av-5431_u1-uimahalli-u2.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7322963,
+          62.2364265
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Seinäjoki Defence Corps building",
+        "name_fi": "Seinäjoen Suojelus­kuntatalo",
+        "address": "Kauppakatu 17, 60100 Seinäjoki, Finland",
+        "address_fi": "Kauppakatu 17, 60100 Seinäjoki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/the-seinajoki-defence-corps-building/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/seinajoen-suojeluskuntatalo/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2019/03/av-401_seina-ejoen-suojeluskuntatalo-kuva-maija-holma-alvar-aalto-sa-ea-etio-e-300x290.jpg",
+        "description": "The Defence Corps building was commissioned by the Southern Ostrobothnia Defence Corps, which used the three-storey building with mixed functions as its headquarters. The main building was originally used as offices for the Civil Guard of South Ostrobothnia and the Lotta Svärd Association. The top tier of the building was in residential use.",
+        "description_fi": "Seinäjoen Suojeluskuntatalon tilaajana oli Etelä-Pohjanmaan suojeluskuntapiiri, joka käytti kolmikerroksista rakennusta useisiin eri tehtäviin. Päärakennuksessa toimivat alunperin Etelä-Pohjanmaan suojeluskuntapiirin ja Lotta Svärd -järjestön toimistot. Talon ylin kerros oli asuinkäytössä.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2019/03/av-405_seinajoki_suoj.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/03/av-404_seinajoki_suoj.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/03/av-403_seinajoki_suoj.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.8374661,
+          62.7889843
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "AaltoAlvari Swimming Hall",
+        "name_fi": "AaltoAlvari uimahalli",
+        "address": "Pitkäkatu 2, 40700 Jyväskylä, Finland",
+        "address_fi": "Pitkäkatu 2, 40600 Jyväskylä, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/aaltoalvari-swimming-hall/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/aaltoalvari-uimahalli/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2019/03/digi-2219_uimahalli-300x200.jpg",
+        "description": "AaltoAlvari is the only swimming hall designed by Alvar Aalto. AaltoAlvari also has a gym, sports hall and a cafeteria. AaltoAlvari is also part of the main campus of the Jyväskylä University campus that was designed by Aalto as well. The original design of the swimming hall is from the 1950’s. Soon after its completion the desire was expressed to extend the building. Further extensions were made in the 1960’s, 1970’s and in the 1990’s. The oldest part of the swimming hall was completed in 1955 and it has a 25 meter swimming pool. In 1964 children pool was added and in 1968 the gym was built. In 1975 a 50 meter swimming pool was also added. The latest addition to the building is the spa section which was completed in 1991. Following the renovation in 1991 the swimming hall was converted into a versatile spa-like centre, and was given the name AaltoAlvari.",
+        "description_fi": "AaltoAlvari on ainoa Alvar Aallon suunnittelema uimahalli. Uimahallissa on myös kuntosali, sisäliikuntasali sekä kahviopalvelut. Uimahalli nivoutui osaksi Jyväskylän korkeakoulun arkkitehtuurikilpailun suunnitelmia. Se on nykyään myös tärkeä osa Jyväskylän kaupungin tarinaa suomalaisena yliopistokaupunkina sekä liikuntatieteiden keskuksena. Uimahalli rakennettiin useassa eri osassa. Vanhin osa uimahallista on vuodelta 1955, jossa sijaitsee myös 25-metrinen uima-allas. Vuonna 1964 rakennettiin lastenallas ja vuonna 1975 halliin lisättiin 50-metrinen uima-allas. Kylpyläosasto valmistui vuonna 1991. Kylpyläosaston valmistumisen jälkeen uimahalli sai nimekseen AaltoAlvari.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2019/04/av-4953_u1-uimahalli-u2.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/04/digi-3840a_u1-uimahalli-u2.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7281888,
+          62.2361684
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Aalto sites in Kouvola",
+        "name_fi": "Kouvolan Aalto-kohteet",
+        "address": "Kouvola, Finland",
+        "address_fi": "Kouvola, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/aalto-sites-in-kouvola/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/kouvolan-aalto-kohteet/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/kouvola-inkeroinen-tehtaanmaen-koulu-kuva-maija-holma-alvar-aalto-museo-1-300x200.jpg",
+        "description": "Alvar Aalto’s most prominent works in Kouvola are located in Inkeroinen within the area of the Ankkapurha Culture Park. The buildings designed by Aalto in Tehtaanmäki, Inkeroinen date back to 1937 to 1956. These include the industrial buildings of the Anjala Paper Mill and the Tampella Co. Housing Area, including Rantalinja semi-detached houses, Tervalinja terraced houses, three engineering personnel houses and housing blocks for the workers of the mill. While in Kouvola, also make sure to check the Kasarminmäki gateposts, which the young architect designed for the garrison area when he was doing his military service.",
+        "description_fi": "Alvar Aallon merkittävimmät työt Kouvolassa sijaitsevat Inkeroisissa, Ankkapurhan kulttuuripuiston alueella Inkeroisissa. Aallon suunnittelemat rakennukset ajoittuvat vuosiin 1937-1956. Kokonaisuuteen kuuluvat Tehtaanmäen teollisuusrakennusten lisäksi Rantalinjan paritalot ja Tervalinjan rivitalot, kolme Insinööritaloa sekä kerrostaloja tehtaan työntekijöille. Kouvolan kaupungista voi bongata myös Kasarminmäen portinpylväät, jotka nuori arkkitehti suunnitteli armeija-aikanaan varuskunta-alueelle.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/kouvola-inkeroinen-insinooritalot-mikko-merckling.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/rantalinjan_mestaritalo-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/ink02_ankkapurhan_koski_talvi-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/insinooritalo_mantyrinne-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/makasiinikahvila_kahvitarjoilu_reittiinkymenlaakso-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/ink01ankkapurhan-helmi_lounas-1.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.7038517,
+          60.8680928
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Villa Skeppet",
+        "name_fi": "Villa Skeppet",
+        "address": "Snäcksundintie 8, 10600 Raasepori, Finland",
+        "address_fi": "Snäcksundintie 8, 10600 Raasepori, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/villa-skeppet/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/villa-skeppet/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2020/11/alvar-aalto-villa-skeppet-170-300x200.jpg",
+        "description": "Villa Skeppet was the last home Alvar Aalto designed. Almost all the ideas and solutions that Aalto developed during his career are seen in Villa Skeppet. Aalto designed this house in for his friends the author Göran Schildt and his wife Christine. Göran Schildt’s passions in life; sailing and his love for Mediterranean culture were taken into consideration when Aalto designed the architecture and the furnishings for Villa Skeppet. Villa Skeppet is situated on a nearly level, park-like site with a view across the eastern bay harbour of the idyllic small town.",
+        "description_fi": "Villa Skeppet on Alvar Aallon viimeinen suunnittelema asuintalo, jossa näkyy miltei kaikki ideat ja ratkaisut, joita Aalto kehitti uransa aikana. Aalto suunnitteli talon ystävilleen, kirjailija Göran Schildtille ja tämän vaimolle Christinelle. Rakennuksen suunnittelussa Aalto otti huomioon Göran Schildtin rakkauden purjehdukseen sekä Välimeren kulttuuriin. Villa Skeppet sijaitsee tasaisella, puistomaisella tontilla, josta on näköala idyllisen pikkukaupungin itäiselle satamalahdelle.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2020/11/alvar-aalto-villa-skeppet-246.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/11/alvar-aalto-villa-skeppet-239.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/11/alvar-aalto-villa-skeppet-220.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2020/11/alvar-aalto-villa-skeppet-181.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.4367678,
+          59.970046
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Iittala Glass Factory and Design Museum Iittala",
+        "name_fi": "Iittalan lasi­tehdas ja Design­museo Iittala",
+        "address": "Könnölänmäentie 2, 14500 Iittala, Finland",
+        "address_fi": "Könnölänmäentie 2, 14500 Hämeenlinna Iittala, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/the-iittala-glass-factory-and-design-museum-iittala/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/iittalan-lasitehdas-ja-designmuseo-iittala/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2019/03/glass_production_iittala_3_jpg-300x200.jpg",
+        "description": "Finnish design is known for glass. Iittala is home to a Finnish glass center, the only glass factory in operation in Finland. Iittala’s story began in 1881, when a glass factory was founded in the village. Today, Iittala’s design story is known worldwide.",
+        "description_fi": "Suomalainen muotoilu on tunnettu lasistaan. Iittalassa elää ja voi hyvin suomalaisen lasin keskus, maan ainoa toiminnassa oleva lasitehdas. Iittalan tarina alkoi vuonna 1881, jolloin kylälle perustettiin lasitehdas. Nykyään Iittalan muotoilutarina tunnetaan ympäri maailman.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2019/03/glass_production_iittala_3_jpg.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/03/iittala_2018_making-of-aalto_15_jpg.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.1288103,
+          61.0898809
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Muurame church",
+        "name_fi": "Muuramen kirkko",
+        "address": "Sanantie 7, 40950 Muurame, Finland",
+        "address_fi": "Sanantie 7, 40950 Muurame, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/muurame-church/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/muuramen-kirkko/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/06/alvar-aalto-location-muurame-church-photo-tero-takalo-eskola-300x200.jpg",
+        "description": "Alvar Aalto designed several church plans in 1920’s and Muurame church is the only one that was realised. Muurame church is considered to be a interphase in Aalto’s career. After Muurame church, Aalto gradually moved on from classism to functionalism.",
+        "description_fi": "Muuramen kirkko on Alvar Aallon 1920-luvun lukuisista kirkkosuunnitelmista ainoa toteutunut. Muuramen kirkon koetaan olevan Aallon tuotannossa eräänlainen välivaihe, jonka kautta Aalto siirtyi pikkuhiljaa klassismista funktionalismiin.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2019/02/digi-2821.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/02/digi-2840.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/03/jyvaskyla-muuramen-kirkko-kuva-maija-holma-alvar-aalto-saatio-digi-2846.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/03/jyvaskyla-muuramen-kirkko-kuva-maija-holma-alvar-aalto-saatio-digi-2853.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.6644702,
+          62.1251084
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Church of the Three Crosses (Vuoksenniska Church)",
+        "name_fi": "Kolmen Ristin Kirkko",
+        "address": "Ruokolahdentie 27, 55800 Imatra",
+        "address_fi": "Ruokolahdentie 27, 55800 Imatra, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/church-of-the-three-crosses-vuoksenniska-church/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/kolmen-ristin-kirkko/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/11/kolmen-ristin-kirkko-1956-58-vuoksenniska-imatra-sisaankaynnin-katos-ja-ulko-ovi-kuva-maija-holma-alvar-aalto-saatio-300x297.jpg",
+        "description": "The Church of the Three Crosses in Vuoksenniska is one of Imatra’s parish churches. After the Second World War, Alvar Aalto was commissioned to create a master plan for Imatra, which merged three of the rural municipality’s widely separated old villages: Imatrankoski, Vuoksenniska and Tainionkoski. The industrial community also required church amenities, and thus Aalto was commissioned in 1955 to design a new church. Aalto designed the church for the Vuoksenniska industrial community so as to combine sacral and social activities. The church was completed in 1958 on the high, pine-forested ridge that divides Lake Saimaa from Lake Immala.",
+        "description_fi": "Kolmen Ristin Kirkko on yksi Imatran seurakunnan kirkoista, joka sijaitsee Vuoksenniskalla. Alvar Aaltoa pyydettiin toisen maailmansodan jälkeen laatimaan Imatran yleiskaavaa, jossa yhdistettiin kolme, suhteellisen etäällä toisistaan sijaitsevaa vanhaa kylää: Imatrankoski, Vuoksenniska ja Tainionkoski. Vuoksenniskan teollisuusyhdyskunta tarvitsi myös kirkolliset palvelut, ja Aalto sai uuden kirkon suunnittelutehtävän vuonna 1955. Aalto halusi suunnitella Vuoksenniskan teollisuusyhdyskunnan kirkosta sellaisen, että siinä voisi yhdistyä niin kirkolliset kuin muutkin sosiaaliset toiminnot. Kirkko valmistui vuonna 1958 Saimaan ja Immalanjärven vesistön väliselle mäntyharjanteelle.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2018/12/the-church-of-the-three-crosses-1956-58-interior-vuoksenniska-imatra-photo-pinja-eerola-alvar-aalto-foundation.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/11/kolmen-ristin-kirkko-1956-58-vuoksenniska-imatra-sisaankaynnin-katos-ja-ulko-ovi-kuva-maija-holma-alvar-aalto-saatio.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/12/dsc5415-1.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.8561403,
+          61.2367108
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Reindeer antler city plan",
+        "name_fi": "Poronsarvi­asemakaava",
+        "address": "Hallituskatu 7, 96100 Rovaniemi, Finland",
+        "address_fi": "Rovaniemi, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/reindeer-antler-city-plan/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/poronsarviasemakaava/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-poronsarviasemakaava-rovaniemiyolla-kuva-rovaniemenkaupunki-nieminen-arttu-300x131.jpg",
+        "description": "Alvar Aalto had strong ties to Lapland throughout his life. Aalto’s operations in Rovaniemi started from the ruins of the town destroyed in the Lapland War. The Second World War ended in Lapland with almost complete destruction. In Rovaniemi, 90 percent of the buildings were destroyed, and a huge reconstruction project was ahead. Alvar Aalto led the reconstruction office of the Finnish Architects’ Association.",
+        "description_fi": "Alvar Aallolla oli läpi elämän vahvat siteet Lappiin. Aallon toiminta Rovaniemellä alkoi Lapin sodassa tuhotun kauppalan raunioilta. Toinen maailmansota päättyi Lapissa lähes täydelliseen tuhoon. Rovaniemellä 90 prosenttia rakennuskannasta tuhoutui, ja edessä oli valtava jälleenrakennusurakka. Suomen Arkkitehtiliiton jälleenrakennustoimiston työtä johti Alvar Aalto.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-poronsarviasemakaava-rovaniemikesalla-kuva-rovaniemenkaupunki-flatlightcreativeoy-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-poronsarviasemakaava-lappia-talo-kuva-rovaniemenkaupunki-adkioskioy-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/poronsarviasemakaava-rovaniemi-kuva-visitrovaniemi-copy-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/rovaniemi-tapiola-kerrostalo-kuva-rovaniemenkaupunki-torvinen-aarno-copy-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/poronsarviasemakaava-ahonliiketatalot-koskikatu-auroraborealis-kuva-lapinmaakuntamuseo-veikkovasama-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/06/poronsarviasemakaava-ahonliiketatalot-jaakonkatu3-kuva-lapinmaakuntamuseo-veikkovasama-scaled.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7259084,
+          66.4963795
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Espoo and Otaniemi Campus Area",
+        "name_fi": "Espoo ja Otaniemen yliopisto­kampus",
+        "address": "Otakaari 1, 02150 Espoo, Suomi",
+        "address_fi": "Otakaari 1, 02150 Espoo, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/espoo/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/espoo-otaniemi-kampus/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/otaniemi-kaunis-valo-1-300x169.jpg",
+        "description": "Espoo, located west of Helsinki, is part of the Finnish capital region. Alvar Aalto’s most famous work in Espoo is the Otaniemi campus, now known as Aalto University. Originally known as Helsinki University of Technology, the campus was inspired by American college campuses and realised as their Finnish counterpart by Aalto. The region is under constant expansion, being close to Helsinki, but Aalto’s works remain in their original use.",
+        "description_fi": "Helsingin länsipuolella oleva Espoo on osa pääkaupunkiseutua. Alvar Aallon tunnetuin työ Espoossa on Otaniemen yliopistokampus, joka tunnetaan nykyisin nimellä Aalto-yliopisto. Teknilliseksi korkeakouluksi valmistuneen alueen esikuvana olivat amerikkalaiset yliopistokampukset, jotka saivat suomalaisen vastineensa Aallon toteuttamana. Lähellä Helsinkiä sijaitseva alue on aktiivisen täydennysrakentamisen kohteena, mutta Aallon suunnittelemat rakennukset ovat edelleen alkuperäistä vastaavassa käytössä.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/digi-1627.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/otaniemen-kirjaston-restauroinnin-onnistunut-uusi-osa-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/otaniemi-kirjastossa-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/otaniemi-kaunis-valo-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/02/digi-1132.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/02/digi-1124.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/02/digi-1140b.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.8270103,
+          60.1857416
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Turku and the Office Building for Turun Sanomat Newspaper",
+        "name_fi": "Turku ja Turun Sanomien toimitalo",
+        "address": "Kauppiaskatu 5, 20100 Turku, Finland",
+        "address_fi": "Kauppiaskatu 5, 20100 Turku, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/turku/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/turku/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/dsc7458-300x200.jpg",
+        "description": "Architect Alvar Aalto lived in Turku 1927 – 1933. This period saw the rise of a new era of architecture and furniture design. Aalto co-operated with Erik Bryggman, one of the earliest representatives of Finnish functionalist architecture, who had founded an office in Turku in early 1920s.",
+        "description_fi": "Arkkitehti Alvar Aalto asui Turussa vuo­sina 1927–1933. Turun toiminnan aikana syntyi uudenlaisen arkkitehtuurin ja huonekalu­muotoilun kausi. Turkuun oman toimiston 1920-luvun alussa perustanut Erik Bryggman oli yksi varhai­simmista funktionalismin edustajista suoma­laisessa arkkitehtuurissa. Aalto ja Bryggman tekivät yhteistyötä.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/dsc6820.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/turun-sanomien-toimitalo-painosali-1928-1930-kuva-gustaf-welin-alvar-aalto-museo-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/turun-sanomien-toimitalo-1928-1930-piirustus-alvar-aalto-museo-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/dsc6656.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/dsc7458.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/dsc6811.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/dsc6651.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.269867,
+          60.4512542
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Säynätsalo Town Hall",
+        "name_fi": "Säynätsalon kunnan­­talo",
+        "address": "Parviaisentie 9, 40900 Jyväskylä, Finland",
+        "address_fi": "Parviaisentie 9, 40900 Jyväskylä, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/saynatsalo-town-hall/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/saynatsalon-kunnantalo/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/aalto-sacc88ynacc88tsalon-kunnantalo-visit-jyvacc88skylacc88-tero-takalo-eskola-1-300x173.jpg",
+        "description": "The invitational competition for Säynätsalo Town Hall was held in 1949. Aalto won the competition with an entry marked ‘Curia’, and was immediately commissioned to prepare working drawings. Completed in 1952, the building is one of Aalto’s most admired designs. The dominant element of the building is the council chamber, which soars tower-like above the complex. The main material used for the exterior as well as for the representative areas of the interior is bare red brick.",
+        "description_fi": "Säynätsalon kunnantalo on toteutettu vuonna 1949 pidetyn kutsukilpailun pohjalta. Aalto voitti kilpailun ehdotuksellaan ’Curia’ ja sai saman tien toimeksiannon rakennuksen suunnitteluun. Vuonna 1952 valmistunut rakennus on Aallon ihailluimpia. Kunnanvaltuuston istuntosali kohoaa muuta rakennusryhmää korkeammalle ja hallitsee juhlavasti aluetta. Päämateriaali niin julkisivuissa kuin julkisissa sisätiloissa on punatiili.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/saynatsalon-kunnantalo-valtuustosali-kattorakenne-kuva-maija-holma-alvar-aalto-museo-kopio-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/alvar-aalto-location-saynatsalo-town-hall-visit-jyvaskyla-photo-tero-takalo-eskola_4-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/saynatsalon-kunnantalo-portaat-kuva-rune-snellman-alvar-aalto-museo.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7692937,
+          62.1400568
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Paimio Sanatorium",
+        "name_fi": "Paimion parantola",
+        "address": "Alvar Aallon tie 275, 21540 Paimio, Finland",
+        "address_fi": "Alvar Aallon tie 275, 21540 Paimio, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/paimio-sanatorium/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/paimion-parantola/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/paimion-parantola-kuva-maija-holma-alvar-aalto-museo-1-300x200.jpg",
+        "description": "Nestled in a lush pine forest outside the small Finnish town of Paimio, the Paimio Sanatorium by Alvar and Aino Aalto stands serenely as in a world of its own, a cathedral dedicated to healing. This modernist masterpiece from 1933, is considered as one of the most revolutionary buildings of its time.",
+        "description_fi": "Vehreän mäntymetsän keskellä Paimion liepeillä sijaitsee Alvar ja Aino Aallon suunnittelema Paimion parantola. Se kohoaa kuin omaan maailmaansa kuuluvana, parantamiselle omistettuna katedraalina. Tämä modernistinen mestariteos vuodelta 1933 on yksi aikakautensa vallankumouksellisimmista rakennuksista.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/paimion-parantola-kuva-maija-holma-alvar-aalto-museo-2.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/paimion-parantola-portaat-kuva-maija-holma-alvar-aalto-museo-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/0G7A17063-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/2023_3_13_Paimion_Parantola_27329.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/2023_3_13_Paimion_Parantola_27362.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/Paimion-Parantola-Huoneet-Full-reso--scaled.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.7355966,
+          60.4650657
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Muuratsalo Experimental house",
+        "name_fi": "Muuratsalon koetalo",
+        "address": "Melalammentie 2, 40900 Jyväskylä, Finland",
+        "address_fi": "Melalammentie, 40900 Jyväskylä, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/muuratsalo-experimental-house/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/muuratsalon-koetalo/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/07/Atriumpiha-on-keskeinen-osa-Koetalon-arkkitehtuuria.-Kuva-Maija-Vatanen-Alvar-Aalto-saatio-300x204.jpg",
+        "description": "The Muuratsalo Experimental House, Alvar and Elissa Aalto’s summer home, stands on the western shore of the island of Muuratsalo in Lake Päijänne. Besides the house itself, also in the grounds are a woodshed and smoke sauna.",
+        "description_fi": "Muuratsalon koetalo, Alvar ja Elissa Aallon kesähuvila, sijaitsee Muuratsalon saaren länsirannalla Pohjois-Päijänteellä. Koetalon tontilla sijaitsevat kesähuvila, puuvaja ja savusauna. Koetalo sijaitsee kauniilla paikalla Päijänteen rantakalliolla, mutta kuitenkin metsän suojassa.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2024/07/ERILAI1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/07/Muuratsalo-Experimental-House-1952-54-Jyvaskyla.-Photo-Maija-Holma-Alvar-Aalto-Foundation-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/07/Koetalo-sijaitsee-kauniilla-paikalla-Paijanteen-rantakalliolla-mutta-kuitenkin-metsan-suojassa.-Kuva-Maija-Holma-Alvar-Aalto-saatio.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/07/Muuratsalon-koetalo-sijaitsee-Paijanteen-rannalla.-Kuva-Maija-Holma-Alvar-Aalto-saatio.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/07/ALVARA1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/07/Nemo-propheta-in-patria-on-nykyisin-nahtavilla-Jyvaskylan-Satamakarjessa-veneelle-suunnitellussa-venesuojassaan.-Kuva-Maija-Holma-Alvar-Aalto-saatio.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7488794,
+          62.1139981
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Church of the Cross",
+        "name_fi": "Lahden Ristinkirkko",
+        "address": "Kirkkokatu 4, 15110 Lahti, Finland",
+        "address_fi": "Kirkkokatu 4, 15110 Lahti, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/ristinkirkko-at-lahti/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/lahden-ristinkirkko/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2019/02/digi-1317-300x215.jpg",
+        "description": "On the old church site of Kolkanmäki rises the architecturally impressive tower of the Church of the Cross, built 1978. This vital element of the Lahti cityscape is a masterwork of Alvar Aalto, elegantly mirroring the city hall – located on the southern end of an axis crossing the market square – designed by Eliel Saarinen, another master architect.",
+        "description_fi": "Ristinkirkon (1979) torni kohoaa korkeuteen arkkitehtonisesti vaikuttavana ja puhdaslinjaisena vanhalla kirkonpaikalla, Kolkanmäellä. Kaupunkikuvaan oleellisesti kuuluvan Alvar Aallon (1898-1976) suurteos peilaa tyylikkäästi toisen mestariarkkitehdin, Eliel Saarisen kaupungintaloa, joka on kauppatorin ylittävän akselin eteläisessä päässä.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/lahti-ristin-kirkko-kuva-maija-holma-alvar-aalto-saatio-av-6237.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/lahti-ristin-kirkko-kirkkosali-kuva-maija-holma-alvar-aalto-saatio-av-6242.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2019/02/digi-1318.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.657065,
+          60.9856354
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Varkaus – Alvar Aalto’s Architecture and Industrial Heritage by the Shores of Saimaa",
+        "name_fi": "Varkaus – Alvar Aallon arkkitehtuuria ja teollisuuden tarinoita Saimaan rannalla",
+        "address": "Varkaus, Finland",
+        "address_fi": "Varkaus, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/varkaus-industrial-history-lake-saimaa-waterways-and-caviar/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/varkaus-alvar-aallon-arkkitehtuuria-ja-teollisuuden-tarinoita-saimaan-rannalla/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/Varkaus-Maija-Oinonen-225x300.jpg",
+        "description": "Varkaus offers a fascinating blend of industrial heritage, Alvar Aalto’s architecture, and the serene beauty of the Saimaa lake district. This historic industrial town is where Aalto began his design work in the mid-1930s, leaving a lasting impact over the following decade. Exploring Varkaus is a unique opportunity to see how Aalto incorporated the principles of functionalism into everyday life and industrial settings.",
+        "description_fi": "Varkaus tarjoaa kiehtovan yhdistelmän teollisuushistoriaa, Alvar Aallon arkkitehtuuria ja Saimaan järvialueen luonnon rauhaa. Tämä vanha teollisuuskaupunki on paikka, jossa Aalto aloitti suunnittelutyönsä 1930-luvun puolivälissä ja vaikutti aktiivisesti seuraavat kymmenen vuotta. Kaupunkiin tutustuminen tarjoaa ainutlaatuisen mahdollisuuden nähdä, kuinka Aalto yhdisti funktionalismin periaatteet arkeen ja osaksi teollista ympäristöä.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/varkauden-tehtaat-kuva-t-heinonen-2.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/FB-5-oikea-Varkaus_Tehtaan-vanhat-tornit_photo-Timo-Heinonen_Visit-Varkaus-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/Varkaus-Maija-Oinonen.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/av-565-kopio-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/varkaus-tyyppitalo-mantylankuja-6-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/alvar-aallon-suunnittelema-a-ahlstrom-osakeyhtion-saharakennus-1948-1.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.8681227,
+          62.3176377
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Finlandia Hall",
+        "name_fi": "Finlandia-talo",
+        "address": "Mannerheimintie 13 E, 00100 Helsinki, Suomi",
+        "address_fi": "Mannerheimintie 13, 00100 Helsinki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/finlandia-hall/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/finlandia-talo/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/2_Finlandia-talo_ulkoa-300x200.jpg",
+        "description": "Finlandia Hall is one the most important architectural attractions in Helsinki. Alvar Aalto’s design was finished in 1971 in its beautiful central location by the Töölö Bay.",
+        "description_fi": "Finlandia-talo on yksi Helsingin tärkeimmistä arkkitehtonisista nähtävyyksistä. Alvar Aallon suunnittelema rakennus valmistui vuonna 1971 keskeiselle paikalleen Töölönlahdelle.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/1_Finlandia-Hall_Toolonlahti-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/3_Finlandia_talon_KONGRESSISIIPI-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/4_Finlandia_sali-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/5_Finlandia_talo_aula.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/6_Finlandia_experience_2025-scaled.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9335608,
+          60.1758229
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Interior and Furnishing of the Savoy Restaurant",
+        "name_fi": "Ravintola Savoyn sisustus",
+        "address": "Eteläesplanadi 14, 00130 Helsinki, Suomi",
+        "address_fi": "Eteläesplanadi 14, 00130 Helsinki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/interior-and-decoration-of-the-savoy-restaurant/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/ravintola-savoyn-sisustus/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/savoy_restaurant_helsinki_alvar_aalto_foundation-1-200x300.jpg",
+        "description": "Aino and Alvar Aalto designed the interior of Savoy Restaurant, which occupies a commercial building in the centre of Helsinki. The restaurant’s furniture was commissioned from Artek. The Savoy has mostly kept its original appearance and is still a restaurant.",
+        "description_fi": "Ravintola Savoy avattiin kesäkuussa 1937 Teollisuuspalatsi-nimisen liike- ja konttorirakennuksen Etelä-Esplanadin ja Kasarmikadun kulmaan. Harry Gullichsen, A. Ahlströmin johtaja, palkkasi Alvar Aallon suunnittelemaan rakennuksen 7. ja 8. kerroksen ravintola- ja juhlatilojen sisustuksen. Ravintolan sisustus toteutettiin Artekin piirustuskonttorissa.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/digi-1190-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/savoy_bell_aaf.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9472796,
+          60.1669578
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Helsinki Energy Office Building",
+        "name_fi": "Sähkötalo, Helsingin Energia",
+        "address": "Kampinkuja 2, 00100 Helsinki, Suomi",
+        "address_fi": "Kampinkuja 2, 00100 Helsinki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/helsinki-energy-office-building/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/sahkotalo-helsingin-energia/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2019/02/digi-1156b-300x201.jpg",
+        "description": "Helsinki Energy Office Building was designed for Helsinki Energy, former The Office Building of the Helsinki City Electricity Company. It is located in the the city centre of Helsinki, in Kamppi area. The building’s location is part of Aalto’s city-centre plan from 1961. Together with Finlandia Hall, Helsinki Energy Office Building is the only building realised part of Aalto’s city-centre plan. The designing process started in 1965 and the building finished in 1973.",
+        "description_fi": "Sähkötalo suunniteltiin silloisen Helsingin kaupungin sähkölaitoksen, nykyisen Helsingin Energian toimitaloksi Helsingin keskustaan, Kamppiin. Rakennuksen sijainti perustuu Aallon keskustasuunnitelmaan vuodelta 1961. Sähkötalo onkin Finlandia talon lisäksi ainoa rakennus, joka rakennettiin Aallon keskustasuunnitelmasta. Rakennuksen suunnittelu aloitettiin vuonna 1965 ja rakennus valmistui vuonna 1973.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": []
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9310828,
+          60.1680326
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "National Pensions Institute, Main Building",
+        "name_fi": "Kansaneläke­laitos",
+        "address": "Nordenskiöldinkatu 12, 00250 Helsinki, Suomi",
+        "address_fi": "Nordenskiöldinkatu 12, 00250 Helsinki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/national-pensions-institute-head-office/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/kansanelakelaitos/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/helsinki-kansanelnkelaitos-minna-canthin-katu-kuva-maija-holma-alvar-aalto-museo-1-300x228.jpg",
+        "description": "National Pensions Institute (The Social Insurance Institution of Finland KELA) Head Office is close to the centre of Helsinki. The richly nuancedly monumental main building represents the best of Aalto’s office buildings. The building (1953-1956) is still in its original use.",
+        "description_fi": "Kansaneläkelaitoksen pääkonttori (1953-1956) sijaitsee lähellä Helsingin keskustaa. Vivahteikkaan monumentaalinen pääkonttori edustaa Aallon toimistorakennusten parhaimmistoa. Rakennus on edelleen alkuperäisessä käytössään.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/kansanelakelaitos-helsinki-portaat-sauvatiilet-kuva-maija-holma-alvar-aalto-museo.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/national-pensions-institute-finlandi-helsinki-library-photo-maija-holma-alvar-aalto-museum.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/kansanelnkelaitos-asiakaspalvelupiste-1953-1957-kuva-maija-holma-alvar-aalto-museo-1.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9173934,
+          60.1874613
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "National Pensions Institute, Housing Area",
+        "name_fi": "Kansan­eläke­laitoksen asuin­alue",
+        "address": "Riihitie 14, 00330 Helsinki, Finland",
+        "address_fi": "Riihitie 14, 00330 Helsinki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/national-pensions-institute-housing-area/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/kansanelakelaitoksen-asuinalue/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2019/02/digi-1185-300x199.jpg",
+        "description": "Seen in the cityscape the redbrick high-rise blocks form an integrated whole. Alvar Aalto designed these blocks of flats in Munkkiniemi, Helsinki, for the employees of the Social Insurance Institution of Finland. The collaboration with the National Pensions Insitute and the Aalto’s had already begun a couple years before. Aino and Alvar Aalto won the architectural competition to design an office complex for the National Pensions Institute in Helsinki in 1949. Nowadays these buildings are operated by a normal housing cooperative.",
+        "description_fi": "Alvar Aalto sai Kansaneläkelaitokselta toimeksiannon suunnitella kerrostaloryhmän Munkkiniemeen vuonna 1952. Asunnot oli alunperin tarkoitettu Kansaneläkelaitoksen työntekijöille. Aaltojen yhteistyö Kansaneläkelaitoksen kanssa oli alkanut jo vuonne 1949 kun Aino ja Alvar voittivat ensimmäisen palkinnon Kansaneläkelaitoksen pääkonttorin arkkitehtuurikilpailussa. Nykyään Munkkiniemen kerrostalo kokonaisuus on muutettu normaaliksi asunto-osakeyhtiöksi.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/helsinki-asuinkerrostalot-munkkiniemi-kuva-maija-holma-alvar-aalto-saatio.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.8787103,
+          60.1964397
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Book House",
+        "name_fi": "Kirjatalo",
+        "address": "Keskuskatu 1, 00100 Helsinki, Finland",
+        "address_fi": "Keskuskatu 1, 00100 Helsinki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/academic-bookstore/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/akateeminen-kirjakauppa/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/20240812_Videolle_Akateeminen_kirjakauppa-15-web-300x202.jpg",
+        "description": "The Academic Bookstore, or ‘Book Palace’, is in Helsinki’s city centre, in the same block as the Aalto-designed office building, the Rautatalo. The building was finished in 1969 and it is still in its original use. The Academic Bookstore moved in to the building in October 1969.",
+        "description_fi": "Kirjatalo sijaitsee Helsingin ydinkeskustassa samassa korttelissa Aallon suunnitteleman Rautatalon kanssa. Akateeminen Kirjakauppa muutti rakennukseen lokakuussa 1969 ja se on edelleen alkuperäisessä käytössään.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/20240812_Videolle_Akateeminen_kirjakauppa-1-web-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/09/20240812_Videolle_Akateeminen_kirjakauppa-5-web-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/20240812_Videolle_Akateeminen_kirjakauppa-2-web-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/20240812_Videolle_Akateeminen_kirjakauppa-7-web-scaled.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/20240812_Videolle_Akateeminen_kirjakauppa-12-web-scaled.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9432268,
+          60.1679936
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Aalto House",
+        "name_fi": "Alvar Aallon kotitalo",
+        "address": "Riihitie 20, 00330 Helsinki, Finland",
+        "address_fi": "Riihitie 20, 00330 Helsinki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/the-aalto-house/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alvar-aallon-kotitalo/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/05/helsinki-alvar-aallon-kotitalo-4083-a-300x201.jpg",
+        "description": "In 1934, Aino and Alvar Aalto acquired a site in almost completely untouched surroundings at Riihitie in Helsinki’s Munkkiniemi. Aino and Alvar Aalto designed the building, whose simple, natural materials soften the form language of modern architecture. Designing their own home gave them an opportunity to make various structural and material experiments. The Aalto House was completed in August 1936. Aalto’s architect’s office was in this building in Munkkiniemi until 1955.",
+        "description_fi": "Alvar Aallon kotitaloon voit tutustua etukäteen varattavalla opastetulla kierroksella ympäri vuoden. Vuonna 1934 Aino ja Alvar Aalto hankkivat tontin Helsingin Munkkiniemestä Riihitieltä lähes luonnonvaraisesta ympäristöstä ja alkoivat suunnitella omaa taloa. Rakennus valmistui vuonna 1936 Aaltojen kodiksi ja ateljeeksi. Aallot suunnittelivat rakennuksen, jonka yksinkertaiset, luonnolliset materiaalit pehmentävät modernin arkkitehtuurin muotokieltä. Oman kotitalon suunnittelu antoi myös mahdollisuuden erilaisiin rakenne- ja materiaalikokeiluihin.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2024/05/helsinki-alvar-aallon-kotitalo-4141-pano11.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/05/helsinki-alvar-aallon-kotitalo-3356.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/05/helsinki-alvar-aallon-kotitalo-1516-pano.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/05/helsinki-alvar-aallon-kotitalo-1537-pano.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.8764061,
+          60.1967217
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Studio Aalto",
+        "name_fi": "Alvar Aallon ateljee",
+        "address": "Tiilimäki 20, 00330 Helsinki, Finland",
+        "address_fi": "Tiilimäki 20, 00330 Helsinki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/studio-aalto/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alvar-aallon-ateljee/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/05/helsinki-alvar-aallon-ateljee-dsc1466-a-300x199.jpg",
+        "description": "Alvar Aalto designed the building at Tiilimäki 20 in Munkkiniemi as his own office in 1955. Because of a number of large commissions, the office needed more space to work in. The building is only a short walk from Aalto’s own house, where the office had previously been located. Studio Aalto is one of the best of Alvar Aalto’s 1950s buildings.",
+        "description_fi": "Alvar Aallon ateljeehen voit tutustua etukäteen varattavalla opastetulla kierroksella ympäri vuoden. Tunnin mittaisella vierailulla tutustutaan Helsingin Munkkiniemessä sijaitsevan Aallon arkkitehtitoimiston tarinaan ja arkkitehtuuriin oppaan johdolla. Aikaa jää myös omatoimiseen tunnelmointiin, valokuvaamiseen, skissailuun ja museokauppaostoksiin. Ateljee valmistui Alvar Aallon arkkitehtitoimiston käyttöön vuonna 1955. Vuosikymmen oli aktiivista aikaa arkkitehtitoimistolle ja suurten toimeksiantojen takia toimisto tarvitsi lisää työtilaa.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2024/05/helsinki-alvar-aallon-ateljee-dsc3263-pano.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/05/helsinki-alvar-aallon-ateljee-dsc3260-pano.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/05/helsinki-alvar-aallon-ateljee-dsc3274-pano.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/05/helsinki-alvar-aallon-ateljee-dsc3997.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/05/helsinki-alvar-aallon-ateljee-dsc7768-pano.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/05/helsinki-alvar-aallon-ateljee-dsc8216.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.8696208,
+          60.1982019
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Summa paper mill and housing area in Hamina",
+        "name_fi": "Summan paperi­tehdas ja asuin­alue Haminassa",
+        "address": "Bernerintie, 49420 Hamina, Finland",
+        "address_fi": "Bernerintie, 49460 Hamina Hillonkylä Petkele, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/summa-paper-mill-in-hamina/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/summan-paperitehdas-haminassa/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/summa-enso-gutzeit-johtajan-asunto-kuva-martti-kapanen-alvar-aalto-museo-1-300x225.jpg",
+        "description": "Hamina – military history, circular town plan and the Summa paper mill",
+        "description_fi": "Haminassa voi tutustua Alvar Aallon suunnittelemaan Summan paperitehtaan miljööseen sekä hänen suunnittelemiinsa paperitehtaan työntekijöiden ja työnjohdon asuntoihin Petkeleen asuinalueella.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": []
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.1374996,
+          60.5440735
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Artist community at Lake Tuusula and Villa Kokkonen in Järvenpää",
+        "name_fi": "Tuusulan­järven taiteilija­yhteisö ja Villa Kokkonen Järven­päässä",
+        "address": "Tuusula, Finland",
+        "address_fi": "Tuusula, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/the-artist-community-at-lake-tuusula-and-villa-kokkonen-in-jarvenpaa/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/tuusulanjarven-taiteilijayhteiso-ja-villa-kokkonen-jarvenpaassa/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/lake-tuusula-scenery-jarvenpaa-visit-tuusulanjarvi-1-300x200.jpg",
+        "description": "The museums near the lake Tuusula display the history and the rich cultural heritage of Finland. A unique community of artists formed on the shores of Lake Tuusula in early 1900’s. Notable artists settled in the rural landscape and their works play an important role in the story of the Finnish identity. In artists’ studios of National Romantic style you can sense the historical atmosphere that generated the inspiring national spirit and the strive towards independence from Russia. Finland gained independence in 1917. Visitors can enjoy art and experience the past through artists, writers and composers of the Golden age of Finnish art. The artists’ studios takes you back in time to the National Romantic era and the other museums in the area exhibit the history of Finland in the 20th century.",
+        "description_fi": "Tuusulanjärven rannoille syntyi noin sata vuotta sitten ainutlaatuinen taitelijayhteisö, jolla oli aivan erityinen sija suomalaisuuden tarinan synnyssä. Kansallisromanttiset taitelijakodit vievät kävijänsä aitoihin tunnelmiin, joissa synnytettiin se kansallistunne, joka inspiroi ja johdatteli kansakunnan itsenäistymiseen 1917. Tuusulanjärven ympäristössä vaikutti eri alojen taiteilijoita, kuvataiteilijoita, kirjailijoita ja säveltäjiä. Nykyään Tuusulanjärven museot tarjoavat monipuolisia museoelämyksiä – esittelevät taidetta, kertovat kulttuurista ja opettavat historiaa.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/jarvenpaa-villa-kokkonen-1967-1969-kuva-maija-holma-alvar-aalto-museo-2.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/halosenniemi-hom-museum-jarvenpaa-visit-tuusulanjarvi-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/lake-tuusula-winter-jarvenpaa-visit-tuusulanjarvi-1.jpeg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/sibelius-grave-monument-ainola-jarvenpaa-visit-tuusulanjarvi-1.jpeg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/lake-tuusula-summer-evening-boats-jarvenpaa-visit-tuusulanjarvi-1.jpeg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.0280695,
+          60.4017496
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Alvar Aalto’s Villa Kokkonen",
+        "name_fi": "Villa Kokkonen",
+        "address": "Tuulimyllyntie 5, 04400 Järvenpää, Finland",
+        "address_fi": "Tuulimyllyntie 5, 04400 Järvenpää, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/villa-kokkonen/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/villa-kokkonen/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/villa-kokkonen-filippo-zambon-3-300x80.jpg",
+        "description": "Villa Kokkonen (1967 – 1969) is a real rarity among the private homes designed by Alvar Aalto, because Aalto designed the building as an artist’s home. The composer Joonas Kokkonen lived in Villa Kokkonen for 27 years. The architectural heart of the building is the unique combination of a grand piano and concert room. The Tuusulanjärvi artists’ community would have come to an end by the death of Jean Sibelius in 1957, but the community gained new momentum when Joonas Kokkonen cancelled his plans to move to Helsinki. Instead, he acquired a lakeside plot from the Town of Järvenpää at an affordable price and was able to hire the most famous architect in Finland to design his home.",
+        "description_fi": "Alvar Aallon piirtämien yksityiskotien joukossa Villa Kokkonen (1967-1969) on harvinaisuus, koska se on ainoa toteutettu taiteilijakoti Aallon tuotannossa. Säveltäjä Joonas Kokkonen asui Villa Kokkosessa 27 vuotta. Talon rakennustaiteellisena sydämenä on konserttisali. Tuusulanjärven taiteilijayhteisön tarina olisi päättynyt Jean Sibeliuksen kuolemaan vuonna 1957, ellei Joonas Kokkonen olisi perunut muuttoaikeitaan Helsinkiin. Hän hankki rantatontin Järvenpään kaupungilta ja sai kotinsa suunnittelijaksi Suomen tunnetuimman arkkitehdin.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": []
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.0570732,
+          60.4574241
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sunila Sulphate Pulp Mill and Residential Area",
+        "name_fi": "Sunilan selluloosa­tehdas ja asuin­alue",
+        "address": "Sunila, 48900 Kotka, Finland",
+        "address_fi": "48900 Kotka, Sunila, Kymenlaakso Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/sunila-pulp-mill-and-residential-area/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/sunila/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/kotka_sunila_aalto_house_kuusela_photo_rurik_wasastjerna-1-300x200.jpg",
+        "description": "The Sunila pulp mill and the adjoining residential area designed by Alvar Aalto are masterpieces of modern architecture. The pulp mill was said to be the most beautiful in the world and it was presented at the World’s Fair of Paris in 1937 and of New York in 1939. The mill or the head office with the original interior designed by Aino Aalto unfortunately cannot be visited.",
+        "description_fi": "Aikoinaan Sunilasta tuli Aallon kansainvälisen modernismin ikoni, jota esiteltiin Pariisin ja New Yorkin maailmannäyttelyissä vuosina 1937 ja 1939. Sunilan sellutehdas ja asuinalue (1936–54) on laajin Aallon alkuperäisten suunnitelmien mukaan toteutunut kokonaisuus; tehdas ja metsälähiö Suomenlahden rannalla Kymijoen suistossa. Asemakaavaltaan suojellussa Sunilassa on mm. tehtaanjohtajan talo Kantola, 12 rivi- ja kerrosasuintaloa ja muotokieleltään mielenkiintoisia huoltorakennuksia. Aluetta leimaavat laajat nurmikentät ja pelkistetyt mäntypihat.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/kotka_sunila_aalto_house_kuusela_photo_rurik_wasastjerna-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/kotka_sunila_terassehouses_photo_rurik_wasatjerna-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/sunila-runkola-ja-mannyt-talvisessa-asussa-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/kotka_sunila_aalto_house_kuusela_detail_photo_rurik_wasastjerna.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/tehtaanjohtajan-asuintalo-kantola-kuva-rurik-wasastjerna-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/kantolan-rantasaunan-tupa-kuva-rurik-wasastjerna-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/kantola-piha-talvella-kuva-rurik-wasastjerna-1.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.9552188,
+          60.4982231
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Alvar Aalto in Alajärvi",
+        "name_fi": "Alvar Aallon Alajärvi",
+        "address": "Alajärvi, Finland",
+        "address_fi": "Alajärvi, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/alvar-aalto-in-alajarvi/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alvar-aallon-alajarvi/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/05/alajarvi-alvar-aallon-alajarvi-kirjasto-kunnantalo-a-300x199.jpg",
+        "description": "The city of Alajärvi in the Southern Ostrobothnia is located close to Alvar Aalto’s childhood hometown Kuortane. Aalto spent his childhood summers in Alajärvi and later had his own summer house there up to 1940s. For him Alajärvi represented leisure time with family and relatives in contrast to the hectic work at the office with all the assignments and architecture competitions. Later Aalto reminisced the place and called it his spiritual home.",
+        "description_fi": "Alajärvi oli arkkitehti Alvar Aallon lapsuuden kesänviettopaikka ja nuoruuden kotiseutu, joka edusti Aalloille vapaa-aikaa perheen ja sukulaisten kanssa vastapainona hektiselle työnteolle ja kilpailuteoksille. Paikkakunta oli arkkitehtimestarin puheissa henkinen koti vielä vanhuudenpäivinäkin.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2024/05/alajarvi-alvar-aallon-alajarvi-kunnantalo.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/05/alajarvi-alvar-aallon-alajarvi-lamppu.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/05/alajarvi-alvar-aallon-alajarvi-terveystalo.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/05/alajarvi-alvar-aallon-alajarvi-vainola.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.8167613,
+          62.9998641
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Seinäjoki Civic Centre",
+        "name_fi": "Seinäjoen hallinto- ja kulttuuri­keskus",
+        "address": "Seinäjoki, Finland",
+        "address_fi": "Alvar Aallon katu 12, 60100 Seinäjoki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/alvar-aalto-in-seinajoki/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alvar-aallon-seinajoki/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/seinajoki-kaupungintalo-alvar-aalto-300x200.jpeg",
+        "description": "As an architectural whole, the Seinäjoki Civic Centre, or Administrative and Cultural Centre of Seinäjoki, is unique on a global scale. Seinäjoki is also the location of the Defence Corps Building built in 1924-26, one of the rare works from Aalto’s youth. The Administrative and Cultural Centre consists of six buildings and the Civic Square completed in 1988.",
+        "description_fi": "Alvar Aallon suunnittelema Seinäjoen hallinto- ja kulttuurikeskus on maailmanlaajuisesti ainutlaatuinen rakennustaiteellinen kokonaisuus. Monipuolisen rakennusvalikoimansa ja eheän toteutuksensa ansiosta Seinäjoen kaupunkikeskus on edustavin esimerkki Alvar Aallon monista, mutta useimmiten suunnitelmiksi jääneistä kaupunkikeskuksista.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/seinajoki-kaupungintalo03.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/seinajoki-kirjasto-ja-teatteri01.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/lakeuden_risti_os_0825-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/library-seinajoki-aalto-photo-katja-losonen-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/seinajoki-kaupungintalo02-1.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.8442015,
+          62.7954104
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Alvar Aalto in Helsinki",
+        "name_fi": "Alvar Aallon Helsinki",
+        "address": "Helsinki, Finland",
+        "address_fi": "Helsinki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/alvar-aaltos-helsinki/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alvar-aallon-helsinki/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/helsinki-finlandia-talo-kuva-rune-snellman-alvar-aalto-museo-300x205.jpg",
+        "description": "The maritime Helsinki is the biggest city in Finland and home for several buildings designed by Alvar Aalto. It also contains a wide range of other Finnish architecture from different centuries and decades.",
+        "description_fi": "Merellinen Helsinki on Suomen suurin kaupunki, josta löytyy useiden Alvar Aallon suunnittelemien rakennusten lisäksi edustava kattaus eri vuosikymmenten ja aikakausien suomalaista arkkitehtuuria.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2019/02/digi-1185.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/the-aalto-house-living-room-photo-maija-holma-alvar-aalto-museum.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/digi-3375.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9427473,
+          60.1674881
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tehtaanmäki residential district and school in Inkeroinen, Kouvola",
+        "name_fi": "Tehtaanmäen asuinalue ja koulu Kouvolan Inkeroisissa",
+        "address": "Tehtaanmäki, Kouvola, Finland",
+        "address_fi": "46920 Kouvola, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/industrial-history-and-residences-of-inkeroinen/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/tehtaanmaen-asuinalue-ja-koulu-kouvolan-inkeroisissa/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/inkeroisten-kansakoulu-tehtaanmnen-koulu-kuva-maija-holma-alvar-aalto-museo-1-300x226.jpg",
+        "description": "The buildings in Tehtaanmäki district designed by Aalto date from 1937 to 1956. These buildings include industrial buildings, Rantalinja semi-detached houses, Tervalinja terraced houses, three single-family houses, three housing blocks, Tehtaanmäki Primary School and Karhunkangas single-family houses.",
+        "description_fi": "Alvar Aallon Tehtaanmäelle suunnittelemat rakennukset ajoittuvat vuosiin 1937-1956. Kouvolassa sijaitseva kokonaisuus muodostuu tehdasrakennuksista, Rantalinjan paritaloista, Tervalinjan rivitaloista, kolmesta omakotitalosta (Insinööritalot), kolmesta kerrostalosta, Tehtaanmäen koulusta ja Karhunkankaan omakotitaloista.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/inkeroisten-kansakoulu-tehtaanmnen-koulu-kuva-maija-holma-alvar-aalto-museo-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/kouvola-inkeroinen-tehtaanmaen-koulu-kuva-maija-holma-alvar-aalto-museo-1.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.824737,
+          60.7039705
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Villa Mairea and Ahlström’s Noormarkku Works in Pori",
+        "name_fi": null,
+        "address": "Laviantie 14, 29600 Pori Noormarkku Finpyy, Finland",
+        "address_fi": null,
+        "url": "https://visit.alvaraalto.fi/en/destinations/ahlstroms-noormarkku-works-in-pori/",
+        "url_fi": null,
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/villa-mairea-noormarkku-kuva-maija-holma-alvar-aalto-museo-kopio-300x225.jpg",
+        "description": "Ahlström’s Noormarkku Works area is one of the largest and most impressive old engineering works areas in Finland, with the visitors having an opportunity to absorb the atmosphere of bygone industrial times. The area houses a high-standard restaurant and hotel, with elegant accommodation for up to 60 guests. The club restaurant offers local and wild food as well as game hunted under the instruction of the game warden. Guided tours are arranged in the dignified cultural surroundings. In addition to the Sawmill Museum and Ahlström Voyage exhibition, travellers can visit (upon advance reservation) Villa Mairea, probably the highlight of the design career of Alvar and Aino Aalto.",
+        "description_fi": "",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/villa-mairea-noormarkku-kuva-maija-holma-alvar-aalto-museo-kopio.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/noormarkku-works-field-summer-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/aino-aalto-tuolit-noormarkun-ruukin-ruokasalissa-2.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.8768263,
+          61.592404
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kauttua Ironworks in Eura",
+        "name_fi": "Kauttuan ruukin­puisto Eurassa",
+        "address": "Sepäntie 3, 27500 Kauttua, Finland",
+        "address_fi": "Sepäntie 3, 27500 Eura, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/kauttua-ironworks-in-eura/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/kauttuan-ruukinpuisto-eurassa/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/kauttuan-ruukinpuisto-1-225x300.jpg",
+        "description": "The Terraced House at the Kauttua Works in Eura is a vivid example of the desire of the architect to integrate the building into the natural environment: the multi-storey residential building adapts to the slope, so the entrance of each apartment is on ground level. Completed in 1938, the Terraced House in Kauttua is one of Alvar Aalto’s most prominent works also internationally. It was an ordered assignment, and intended as the dwelling for the senior clerical employees of Ahlström Osakeyhtiö Corporation. The assignment also stemmed from Alvar Aalto’s friendship with the company’s CEO Harry Gullichsen and his wife Maire Gullichsen.",
+        "description_fi": "Kauttuan Ruukinpuisto on rakentunut yli 330 vuoden ajan rauta- ja paperiteollisuuden ympärille. Vierailija pääsee tutustumaan ruukkialueeseen muun muassa arkkitehtuurin, näyttelyiden, puotien, kahviloiden ja ravintoloiden kautta.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/digi-2392.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/digi-2393.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/kauttuan-ruukinpuisto-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/terassitalo-kauttua-kesalla-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/kauttuan-klubi-eurassa-1.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.1630045,
+          61.1103191
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Alvar Aalto in Jyväskylä",
+        "name_fi": "Alvar Aallon Jyväskylä",
+        "address": "Jyväskylä, Finland",
+        "address_fi": "Jyväskylä, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/alvar-aalto-in-jyvaskyla/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alvar-aallon-jyvaskyla/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/06/alvar-aalto-location-viitatorni-sky-view-photo-tero-takalo-eskola-300x200.jpg",
+        "description": "In Jyväskylä, the city of lakes and hills in the heart of the Finnish Lakeland, you’ll find the largest number of masterful buildings in the whole world designed by the world-famous architect and academician Alvar Aalto.",
+        "description_fi": "Jyväskylässä, järvien ja kukkuloiden keskisuomalaisessa kaupungissa, on eniten maailmankuulun arkkitehdin, akateemikko Alvar Aallon suunnittelemia merkittäviä rakennuskokonaisuuksia koko maailmassa.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/muuratsalo_experimental_house_whitewall_alvar_aalto_foundation-2.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/av-7296.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/06/alvar-aalto-location-viitatorni-sky-view-photo-tero-takalo-eskola.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/06/alvar-aalto-location-aira-building-blue-sky-photo-tero-takalo-eskola.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/alvar-aalto-museo-museum-jyvaskyla-kuvaaja-janina-kastikainen.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/06/alvar-aalto-location-university-of-jyvaskyla-interior-photo-tero-takalo-eskola.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7495727,
+          62.2417066
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mill Manager’s Residence Kantola and Seaside Sauna in Sunila",
+        "name_fi": "Tehtaan­johtajan asuin­talo Kantola ja ranta­sauna Sunilassa",
+        "address": "Kantokatu 5, 48910 Kotka Popinniemi, Finland",
+        "address_fi": "Kantokatu 1, 48900 Kotka, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/factory-managers-residence-kantola-and-beach-sauna-in-sunila/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/tehtaanjohtajan-asuintalo-kantola-ja-rantasauna-sunilassa/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/05/kotka-sunilan-kantola-julkisivu-merelta-a-300x225.jpg",
+        "description": "Former mill manager’s house Kantola was built in 1937, and it’s located in the residential area of Sunila, in the city of Kotka. Kantola has its own park-like yard with pine trees and a unique view towards the sea and the Sunila pulp mill. Sunila mill was once told to be the most beautiful mill in the world.",
+        "description_fi": "Vuonna 1937 tehtaanjohtaja Lauri Kannolle valmistunut erillistalo Kantola sijaitsee Sunilan asuinalueella Kotkassa. Kantolan mäntymetsäinen puistopiha avautuu kohti meren rantaa ja sieltä on myös ainutlaatuiset näkymät kohti Sunilan sellutehdasta – kerran maailman kauneimmaksikin kutsuttua. Kantola ympäristöineen kertoo kävijälleen arkkitehtuurin ja metsäteollisuuden yhteisestä historiasta alueella, sekä niiden vaikutuksista toisiinsa.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2024/05/kotka-sunilan-kantola-nakyma-puistopihalle.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/05/kotka-sunilan-kantola-sisaportaikko.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/05/kotka-sunilan-kantola-sauna-talvi.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/05/kotka-sunilan-kantola-talvella.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.9557662,
+          60.4939301
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Villa Mairea",
+        "name_fi": "Villa Mairea",
+        "address": "Pikkukoivukuja, 29600 Pori Noormarkku Finpyy, Finland",
+        "address_fi": "Pikkukoivukuja 20, 29600 Pori Noormarkku Finpyy, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/villa-mairea/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/villa-mairea/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2024/05/pori-villa-mairea-julkisivu-a-300x169.jpg",
+        "description": "Located within the Noormarkku Works area, Villa Mairea was built in 1939 to serve as the home of Maire (née Ahlström) and Harry Gullichsen. The progressive couple were patrons of the arts, and they were interested in the clean-cut expression of modernism. Their good friends, the architects Aino and Alvar Aalto, had an opportunity to apply free and experimental design in the planning of Villa Mairea.",
+        "description_fi": "Villa Mairea rakennettiin Noormarkun ruukin alueelle vuonna 1939 Maire (o.s. Ahlström) ja Harry Gullichsenin edustuskodiksi. Edistysmielinen pariskunta tuki taiteita ja heitä kiinnosti modernismin puhdaspiirteinen ilmaisu. Heidän hyvät ystävänsä, arkkitehdit Aino ja Alvar Aalto saivat Maireassa tilaisuuden vapaaseen ja kokeilevaan suunnitteluun. Yhteistyön tuloksena syntyi ainutlaatuinen kokonaistaideteos, joka nykyisin luetaan 1900-luvun arkkitehtuurin kansainvälisiin huipputeoksiin. Mairean sisustuksen suunnitteli Aino Aalto.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2024/05/pori-villa-mairea-takapiha.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/05/pori-villa-mairea-olohuone.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2024/05/pori-villa-mairea-kukkahuone.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.8778372,
+          61.5967605
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Erottaja Pavilion",
+        "name_fi": "Erottajan paviljonki",
+        "address": "Erottajankatu, 00130 Helsinki, Suomi",
+        "address_fi": "Erottajankatu, 00130 Helsinki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/erottaja-pavilion/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/erottajan-paviljonki/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/erottajan-vacc88estocc88nsuojan-sisacc88acc88nkacc88ynti-1950-1951-kuva-alvar-aalto-museo-1-280x300.jpg",
+        "description": "Erottaja Pavilion is one of Helsinki’s earliest Aalto-designed buildings. This small building intended as an emergency-shelter entrance is close to Helsinki’s city centre.",
+        "description_fi": "Väestösuojan sisäänkäynniksi suunniteltu pieni rakennus sijaitsee keskeisellä paikalla Helsingin ydinkeskustassa. Lähellä Akateemista kirjakauppaa sijaitseva Erottajan paviljonki on Aallon tuotannossa kuriositeetti, joka muistuttaa yhdestä Helsingin keskustaa koskeneesta laajemmasta ja toteutumattomaksi jääneestä suunnitelmasta. Erottajan paviljongin historia liittyy sota-ajan vaiheisiin. Helsingin kaupunki järjesti vuonna 1941 arkkitehtuurikilpailun, joka koski Erottajan mäen alle rakennettavan väestönsuojan ympäristön järjestelyä. Kutsukilpailun tehtävänä oli suunnitella suojan sisäänkäynti, jonka yhteyteen sai sijoittaa ”mukavuuslaitoksia, virvoitusjuoma-, sanomalehti- ja puhelinkioskeja”. Samalla tuli suunnitella Erottajan alueen uusi liikennejärjestely. Aallon arkkitehtitoimisto voitti kilpailun ehdotuksella nimellä “Hurra för den lilla skillnaden”. Erottajan paviljonki onkin yksi varhaisimpia Aallon Helsinkiin suunnittelemia rakennuksia.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/erottajan-vacc88estocc88nsuojan-sisacc88acc88nkacc88ynti-1950-1951-kuva-alvar-aalto-museo-1.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/digi-1113.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9438337,
+          60.1663757
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Enso-Gutzeit Co. Headquarters",
+        "name_fi": "Enso-Gutzeit Oy:n pääkonttori",
+        "address": "Kanavaranta 1, 00170 Helsinki, Suomi",
+        "address_fi": "Kanavaranta 1, 00160 Helsinki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/enso-gutzeit-co-headquarters/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/enso-gutzeit-oyn-paakonttori/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/digi-753a-198x300.jpg",
+        "description": "The Enso-Gutzeit Headquarters building was completed in the centre of Helsinki, in a prominent place in the Southern Harbour, in 1962. Now Stora Enso’s Headquarters, the building is one of Aalto’s most controversial works.",
+        "description_fi": "Enso-Gutzeitin pääkonttori valmistui Helsingin keskustaan, näkyvälle paikalle Eteläsatamaan vuonna 1962. Nykyisin Stora Enson pääkonttorina toimiva rakennus on yksi Aallon kiistellyimmistä töistä.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/digi-767b.jpg",
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/helsinki-enso-gutzeit-kuva-eino-mnkinen-alvar-aalto-museo-1.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9581759,
+          60.1680411
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rautatalo Office Building",
+        "name_fi": "Rautatalo",
+        "address": "Keskuskatu 3, 00100 Helsinki, Suomi",
+        "address_fi": "Keskuskatu 3, 00100 Helsinki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/rautatalo-office-building/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/rautatalo/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/rautalo-julkisivu-keskuskadulle-kuva-heikki-havas-alvar-aalto-museo-300x218.jpg",
+        "description": "The Rautatalo Office Building was completed in Helsinki’s city centre in 1955. The building got its name (‘Iron House’) from the federation of Finnish hardware dealers that commissioned it. The main space is the light court, or marble courtyard, that extends from the first floor upwards.",
+        "description_fi": "Rautatalo valmistui vuonna 1955 Helsingin ydinkeskustaan. Rakennus sai nimensä siihen sijoittuneesta Rautakauppojen keskusjärjestöstä.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": []
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9431989,
+          60.1684937
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "House of Culture",
+        "name_fi": "Kulttuuritalo",
+        "address": "Sturenkatu 4, 00510 Helsinki, Suomi",
+        "address_fi": "Sturenkatu 4, 00510 Helsinki, Suomi",
+        "url": "https://visit.alvaraalto.fi/en/destinations/house-of-culture/",
+        "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/kulttuuritalo/",
+        "image": "https://visit.alvaraalto.fi/app/uploads/2018/05/kulttuuritalo-helsinki-photo-alvar-aalto-foundation-1-226x300.jpg",
+        "description": "The House of Culture was completed in 1958 close to the centre of Helsinki. It was designed as a multi-purpose building for the Communist Party of Finland. Apart from the concert hall, the building was intended to accommodate a variety of cultural activities.",
+        "description_fi": "Kulttuuritalo valmistui vuonna 1958 lähelle Helsingin keskustaa. Se suunniteltiin Suomen kommunistiselle puolueelle monitoimitaloksi. Konserttisalin lisäksi rakennukseen tulivat tilat monipuoliselle kulttuuritoiminnalle. Rakennuksen toimistosiivessä on 110 huonetta kokous- ja harrastetilojen lisäksi. Yhdyssiivessä oli aulatiloja, luentosali, luokka- ja kokoushuoneita, kirjasto sekä voimistelusali joka sijoittui pohjakerrokseen. Konserttisalisiiven tärkeimmät tilat olivat 1500 henkilöä vetävä sali, ravintola ja pieni kellarikerroksen elokuvateatteri jota nykyään käytetään kokoustilana.",
+        "phone": "040 550 9992",
+        "website": "",
+        "gallery": [
+          "https://visit.alvaraalto.fi/app/uploads/2018/05/kulttuuritalo-helsinki-photo-alvar-aalto-foundation-1.jpg"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9441933,
+          60.1882427
+        ]
+      }
+    }
+  ]
+}
