@@ -6,7 +6,7 @@
   <title>Aalto Map</title>
   <link href="https://api.mapbox.com/mapbox-gl-js/v3.9.0/mapbox-gl.css" rel="stylesheet">
   <script src="https://api.mapbox.com/mapbox-gl-js/v3.9.0/mapbox-gl.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=&loading=async" async></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCg0KE9pBhJcrL-6YZphVgde2iCukX4GRU&loading=async" async></script>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -1330,9 +1330,8 @@
         'text-size': 11,
         'text-letter-spacing': 0.06,
         'text-transform': 'uppercase',
-        'text-allow-overlap': false,
-        'text-ignore-placement': false,
-        'text-optional': true,
+        'text-allow-overlap': true,
+        'text-ignore-placement': true,
         'text-variable-anchor': ['left', 'right', 'top', 'bottom'],
         'text-radial-offset': 1.4,
         'text-justify': 'auto',
@@ -1362,6 +1361,7 @@
       // ── Country cluster layers (zoom 3–6.5) ──
       map.addLayer({
         id: 'country-clusters-stack', type: 'circle', source: 'aalto-countries',
+        slot: 'top',
         maxzoom: 6.5, filter: ['>', ['get', 'count'], 1],
         paint: { 'circle-radius': 4, 'circle-color': '#000', 'circle-opacity': 0.35,
                  'circle-stroke-width': 1.5, 'circle-stroke-color': '#fff',
@@ -1369,12 +1369,14 @@
       });
       map.addLayer({
         id: 'country-clusters', type: 'circle', source: 'aalto-countries',
+        slot: 'top',
         maxzoom: 6.5,
         paint: { 'circle-radius': 4, 'circle-color': '#000', 'circle-opacity': 0.9,
                  'circle-stroke-width': 1.5, 'circle-stroke-color': '#fff' },
       });
       map.addLayer({
         id: 'country-labels', type: 'symbol', source: 'aalto-countries',
+        slot: 'top',
         maxzoom: 6.5,
         layout: {
           ..._clusterSymLayout,
@@ -1387,20 +1389,23 @@
       // ── City cluster layers (zoom 6.5–11) ──
       map.addLayer({
         id: 'city-clusters-stack', type: 'circle', source: 'aalto-cities',
-        minzoom: 6.5, maxzoom: 11, filter: ['>', ['get', 'count'], 1],
+        slot: 'top',
+        minzoom: 6.5, maxzoom: 13, filter: ['>', ['get', 'count'], 1],
         paint: { 'circle-radius': 4, 'circle-color': '#000', 'circle-opacity': 0.35,
                  'circle-stroke-width': 1.5, 'circle-stroke-color': '#fff',
                  'circle-translate': [2.5, -2.5] },
       });
       map.addLayer({
         id: 'city-clusters', type: 'circle', source: 'aalto-cities',
-        minzoom: 6.5, maxzoom: 11,
+        slot: 'top',
+        minzoom: 6.5, maxzoom: 13,
         paint: { 'circle-radius': 4, 'circle-color': '#000', 'circle-opacity': 0.9,
                  'circle-stroke-width': 1.5, 'circle-stroke-color': '#fff' },
       });
       map.addLayer({
         id: 'city-labels', type: 'symbol', source: 'aalto-cities',
-        minzoom: 6.5, maxzoom: 11,
+        slot: 'top',
+        minzoom: 6.5, maxzoom: 13,
         layout: {
           ..._clusterSymLayout,
           'text-field': ['concat', ['get', 'name'], ' (', ['to-string', ['get', 'count']], ')'],
@@ -1412,6 +1417,7 @@
       // ── Helsinki metro district layers (zoom 9–13) ──
       map.addLayer({
         id: 'metro-clusters-stack', type: 'circle', source: 'aalto-metro',
+        slot: 'top',
         minzoom: 11, maxzoom: 13, filter: ['>', ['get', 'count'], 1],
         paint: { 'circle-radius': 4, 'circle-color': '#000', 'circle-opacity': 0.35,
                  'circle-stroke-width': 1.5, 'circle-stroke-color': '#fff',
@@ -1419,6 +1425,7 @@
       });
       map.addLayer({
         id: 'metro-clusters', type: 'circle', source: 'aalto-metro',
+        slot: 'top',
         minzoom: 11, maxzoom: 13,
         filter: ['>', ['get', 'count'], 1],
         paint: { 'circle-radius': 4, 'circle-color': '#000', 'circle-opacity': 0.9,
@@ -1426,6 +1433,7 @@
       });
       map.addLayer({
         id: 'metro-labels', type: 'symbol', source: 'aalto-metro',
+        slot: 'top',
         minzoom: 11, maxzoom: 13,
         filter: ['>', ['get', 'count'], 1],
         layout: {
@@ -1439,6 +1447,7 @@
       // ── GL-clustered dots (zoom 11+, colliding points only) ──
       map.addLayer({
         id: 'aalto-clusters-stack', type: 'circle', source: 'aalto',
+        slot: 'top',
         minzoom: 13, filter: ['has', 'point_count'],
         paint: { 'circle-radius': 4, 'circle-color': '#000', 'circle-opacity': 0.35,
                  'circle-stroke-width': 1.5, 'circle-stroke-color': '#fff',
@@ -1446,6 +1455,7 @@
       });
       map.addLayer({
         id: 'aalto-clusters', type: 'circle', source: 'aalto',
+        slot: 'top',
         minzoom: 13,
         filter: ['has', 'point_count'],
         paint: { 'circle-radius': 4, 'circle-color': '#000', 'circle-opacity': 0.9,
@@ -1453,6 +1463,7 @@
       });
       map.addLayer({
         id: 'aalto-cluster-labels', type: 'symbol', source: 'aalto',
+        slot: 'top',
         minzoom: 13,
         filter: ['has', 'point_count'],
         layout: {
@@ -1467,6 +1478,7 @@
       // Halo: selection/fav/hover ring behind the dot (circle, no collision)
       map.addLayer({
         id: 'aalto-halo', type: 'circle', source: 'aalto',
+        slot: 'top',
         minzoom: 13,
         filter: ['all', ['!', ['has', 'point_count']], ['!', ['get', 'onRoute']]],
         paint: {
@@ -1485,6 +1497,7 @@
       // Dot + label: symbol layer for proper collision detection
       map.addLayer({
         id: 'aalto-points', type: 'symbol', source: 'aalto',
+        slot: 'top',
         minzoom: 13,
         filter: ['all', ['!', ['has', 'point_count']], ['!', ['get', 'onRoute']]],
         layout: {
@@ -1492,8 +1505,8 @@
           // Base image 32px at pixelRatio=2 → 16 CSS px, radius 8px
           // target: radius 3px at z11, 7px at z18 → size = target/8
           'icon-size': ['interpolate', ['linear'], ['zoom'], 11, 0.375, 18, 0.875],
-          'icon-allow-overlap': false,
-          'icon-ignore-placement': false,
+          'icon-allow-overlap': true,
+          'icon-ignore-placement': true,
           'text-field': ['concat', ['get', 'name'], ['coalesce', ['get', '_symbol'], '']],
           'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular'],
           'text-size': 11,
@@ -1503,9 +1516,8 @@
           'text-radial-offset': 1.4,
           'text-justify': 'auto',
           'text-max-width': 12,
-          'text-optional': true,
-          'text-allow-overlap': false,
-          'text-ignore-placement': false,
+          'text-allow-overlap': true,
+          'text-ignore-placement': true,
         },
         paint: {
           'icon-color': ['case', ['get', '_visited'], '#999', '#000'],
@@ -1610,9 +1622,9 @@
               [[Math.min(...lons), Math.min(...lats)], [Math.max(...lons), Math.max(...lats)]],
               { padding: 80 }
             );
-            map.flyTo({ center: cam.center, zoom: Math.max(cam.zoom, 6.5), bearing: 0, pitch: 31, speed: 1.4 });
+            map.flyTo({ center: cam.center, zoom: Math.max(cam.zoom, 6.5), bearing: 0, pitch: 0, speed: 1.4 });
           } else {
-            map.flyTo({ center: coords, zoom: map.getZoom() + 3, pitch: 31, speed: 1.4 });
+            map.flyTo({ center: coords, zoom: map.getZoom() + 3, pitch: 0, speed: 1.4 });
           }
         }
       }
@@ -1647,7 +1659,7 @@
       // GL dot-cluster click → zoom in
       map.on('click', 'aalto-clusters', (e) => {
         _skipMapClick = true;
-        map.flyTo({ center: e.features[0].geometry.coordinates, zoom: map.getZoom() + 2, pitch: 31 });
+        map.flyTo({ center: e.features[0].geometry.coordinates, zoom: map.getZoom() + 2, pitch: 0 });
       });
 
       // Individual point click → zoom to 18 if needed + select
@@ -2084,11 +2096,24 @@
         paint: { 'circle-radius': 8, 'circle-color': '#000', 'circle-stroke-width': 1.5, 'circle-stroke-color': '#fff' },
       });
       map.addLayer({
+        id: 'route-stop-numbers', type: 'symbol', source: 'route-stops-src',
+        slot: 'top',
+        filter: ['!', ['has', 'point_count']],
+        layout: {
+          'text-field': ['get', 'num'],
+          'text-font': ['DIN Pro Bold', 'Arial Unicode MS Bold'],
+          'text-size': 10,
+          'text-allow-overlap': true,
+          'text-ignore-placement': true,
+        },
+        paint: { 'text-color': '#fff' },
+      });
+      map.addLayer({
         id: 'route-stop-labels', type: 'symbol', source: 'route-stops-src',
         slot: 'top',
         filter: ['!', ['has', 'point_count']],
         layout: {
-          'text-field': ['concat', ['get', 'num'], ' ', ['get', 'name']],
+          'text-field': ['concat', ['get', 'num'], '. ', ['get', 'name']],
           'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular'],
           'text-size': 11,
           'text-letter-spacing': 0.06,
@@ -2096,9 +2121,8 @@
           'text-variable-anchor': ['left', 'right', 'top', 'bottom'],
           'text-radial-offset': 0.9,
           'text-justify': 'auto',
-          'text-allow-overlap': false,
-          'text-ignore-placement': false,
-          'text-optional': true,
+          'text-allow-overlap': true,
+          'text-ignore-placement': true,
         },
         paint: { 'text-color': '#000', 'text-halo-color': '#fff', 'text-halo-width': 2.5 },
       });
@@ -2480,7 +2504,7 @@
 
         function openGmaps() {
           const travelmode = modeMap[effectiveMode] || 'driving';
-          let url = `https://www.google.com/maps/dir/?api=AIzaSyCg0KE9pBhJcrL-6YZphVgde2iCukX4GRU&origin=${origin.coords[1]},${origin.coords[0]}&destination=${dest.coords[1]},${dest.coords[0]}&travelmode=${travelmode}`;
+          let url = `https://www.google.com/maps/dir/?api=1&origin=${origin.coords[1]},${origin.coords[0]}&destination=${dest.coords[1]},${dest.coords[0]}&travelmode=${travelmode}`;
           if (routeStops.length > 2) {
             const waypoints = routeStops.slice(1, -1).map(s => `${s.coords[1]},${s.coords[0]}`).join('|');
             url += `&waypoints=${encodeURIComponent(waypoints)}`;
