@@ -719,7 +719,7 @@
   </div>
 
   <script>
-    mapboxgl.accessToken = '';
+    mapboxgl.accessToken = 'pk.eyJ1IjoibnNsYXZpbiIsImEiOiJjbW1sNWxtMnYwMzUwMnBzNzhkMTljbGNsIn0.fkor-RTU_VQKCE4icVJSJg';
 
     // ═══════════════════════════════════════════════════════
     //  State & Persistence
@@ -2480,7 +2480,7 @@
 
         function openGmaps() {
           const travelmode = modeMap[effectiveMode] || 'driving';
-          let url = `https://www.google.com/maps/dir/?api=1&origin=${origin.coords[1]},${origin.coords[0]}&destination=${dest.coords[1]},${dest.coords[0]}&travelmode=${travelmode}`;
+          let url = `https://www.google.com/maps/dir/?api=AIzaSyCg0KE9pBhJcrL-6YZphVgde2iCukX4GRU&origin=${origin.coords[1]},${origin.coords[0]}&destination=${dest.coords[1]},${dest.coords[0]}&travelmode=${travelmode}`;
           if (routeStops.length > 2) {
             const waypoints = routeStops.slice(1, -1).map(s => `${s.coords[1]},${s.coords[0]}`).join('|');
             url += `&waypoints=${encodeURIComponent(waypoints)}`;
