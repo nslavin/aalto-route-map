@@ -1014,7 +1014,7 @@
     // ═══════════════════════════════════════════════════════
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/nslavin/cmmibclq6002g01s9f14leyc1',
+      style: 'mapbox://styles/nslavin/cmml8edyr004101r1fxw306px',
       center: [16.37, 56.37],
       zoom: 4.15,
       bearing: 0,
@@ -1330,8 +1330,9 @@
         'text-size': 11,
         'text-letter-spacing': 0.06,
         'text-transform': 'uppercase',
-        'text-allow-overlap': true,
-        'text-ignore-placement': true,
+        'text-allow-overlap': false,
+        'text-ignore-placement': false,
+        'text-optional': true,
         'text-variable-anchor': ['left', 'right', 'top', 'bottom'],
         'text-radial-offset': 1.4,
         'text-justify': 'auto',
@@ -1358,21 +1359,20 @@
         map.addImage('aalto-dot', { width: sz, height: sz, data: d.data }, { sdf: true, pixelRatio: 2 });
       })();
 
-      // ── Country cluster layers (zoom 3–6.5) ──
+      // ── Country cluster layers (zoom 0–6.5) ──
       map.addLayer({
-        id: 'country-clusters-stack', type: 'circle', source: 'aalto-countries',
+        id: 'country-clusters-stack', type: 'symbol', source: 'aalto-countries',
         slot: 'top',
         maxzoom: 6.5, filter: ['>', ['get', 'count'], 1],
-        paint: { 'circle-radius': 4, 'circle-color': '#000', 'circle-opacity': 0.35,
-                 'circle-stroke-width': 1.5, 'circle-stroke-color': '#fff',
-                 'circle-translate': [2.5, -2.5] },
+        layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': true },
+        paint: { 'icon-color': '#000', 'icon-opacity': 0.35, 'icon-halo-color': '#fff', 'icon-halo-width': 5, 'icon-translate': [2.5, -2.5] },
       });
       map.addLayer({
-        id: 'country-clusters', type: 'circle', source: 'aalto-countries',
+        id: 'country-clusters', type: 'symbol', source: 'aalto-countries',
         slot: 'top',
         maxzoom: 6.5,
-        paint: { 'circle-radius': 4, 'circle-color': '#000', 'circle-opacity': 0.9,
-                 'circle-stroke-width': 1.5, 'circle-stroke-color': '#fff' },
+        layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': false },
+        paint: { 'icon-color': '#000', 'icon-opacity': 0.9, 'icon-halo-color': '#fff', 'icon-halo-width': 5 },
       });
       map.addLayer({
         id: 'country-labels', type: 'symbol', source: 'aalto-countries',
@@ -1386,21 +1386,20 @@
         paint: _clusterSymPaint,
       });
 
-      // ── City cluster layers (zoom 6.5–11) ──
+      // ── City cluster layers (zoom 6.5–13) ──
       map.addLayer({
-        id: 'city-clusters-stack', type: 'circle', source: 'aalto-cities',
+        id: 'city-clusters-stack', type: 'symbol', source: 'aalto-cities',
         slot: 'top',
         minzoom: 6.5, maxzoom: 13, filter: ['>', ['get', 'count'], 1],
-        paint: { 'circle-radius': 4, 'circle-color': '#000', 'circle-opacity': 0.35,
-                 'circle-stroke-width': 1.5, 'circle-stroke-color': '#fff',
-                 'circle-translate': [2.5, -2.5] },
+        layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': true },
+        paint: { 'icon-color': '#000', 'icon-opacity': 0.35, 'icon-halo-color': '#fff', 'icon-halo-width': 5, 'icon-translate': [2.5, -2.5] },
       });
       map.addLayer({
-        id: 'city-clusters', type: 'circle', source: 'aalto-cities',
+        id: 'city-clusters', type: 'symbol', source: 'aalto-cities',
         slot: 'top',
         minzoom: 6.5, maxzoom: 13,
-        paint: { 'circle-radius': 4, 'circle-color': '#000', 'circle-opacity': 0.9,
-                 'circle-stroke-width': 1.5, 'circle-stroke-color': '#fff' },
+        layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': false },
+        paint: { 'icon-color': '#000', 'icon-opacity': 0.9, 'icon-halo-color': '#fff', 'icon-halo-width': 5 },
       });
       map.addLayer({
         id: 'city-labels', type: 'symbol', source: 'aalto-cities',
@@ -1414,22 +1413,21 @@
         paint: _clusterSymPaint,
       });
 
-      // ── Helsinki metro district layers (zoom 9–13) ──
+      // ── Helsinki metro district layers (zoom 11–13) ──
       map.addLayer({
-        id: 'metro-clusters-stack', type: 'circle', source: 'aalto-metro',
+        id: 'metro-clusters-stack', type: 'symbol', source: 'aalto-metro',
         slot: 'top',
         minzoom: 11, maxzoom: 13, filter: ['>', ['get', 'count'], 1],
-        paint: { 'circle-radius': 4, 'circle-color': '#000', 'circle-opacity': 0.35,
-                 'circle-stroke-width': 1.5, 'circle-stroke-color': '#fff',
-                 'circle-translate': [2.5, -2.5] },
+        layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': true },
+        paint: { 'icon-color': '#000', 'icon-opacity': 0.35, 'icon-halo-color': '#fff', 'icon-halo-width': 5, 'icon-translate': [2.5, -2.5] },
       });
       map.addLayer({
-        id: 'metro-clusters', type: 'circle', source: 'aalto-metro',
+        id: 'metro-clusters', type: 'symbol', source: 'aalto-metro',
         slot: 'top',
         minzoom: 11, maxzoom: 13,
         filter: ['>', ['get', 'count'], 1],
-        paint: { 'circle-radius': 4, 'circle-color': '#000', 'circle-opacity': 0.9,
-                 'circle-stroke-width': 1.5, 'circle-stroke-color': '#fff' },
+        layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': false },
+        paint: { 'icon-color': '#000', 'icon-opacity': 0.9, 'icon-halo-color': '#fff', 'icon-halo-width': 5 },
       });
       map.addLayer({
         id: 'metro-labels', type: 'symbol', source: 'aalto-metro',
@@ -1444,22 +1442,21 @@
         paint: _clusterSymPaint,
       });
 
-      // ── GL-clustered dots (zoom 11+, colliding points only) ──
+      // ── GL-clustered dots (zoom 13+, colliding points only) ──
       map.addLayer({
-        id: 'aalto-clusters-stack', type: 'circle', source: 'aalto',
+        id: 'aalto-clusters-stack', type: 'symbol', source: 'aalto',
         slot: 'top',
         minzoom: 13, filter: ['has', 'point_count'],
-        paint: { 'circle-radius': 4, 'circle-color': '#000', 'circle-opacity': 0.35,
-                 'circle-stroke-width': 1.5, 'circle-stroke-color': '#fff',
-                 'circle-translate': [2.5, -2.5] },
+        layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': true },
+        paint: { 'icon-color': '#000', 'icon-opacity': 0.35, 'icon-halo-color': '#fff', 'icon-halo-width': 5, 'icon-translate': [2.5, -2.5] },
       });
       map.addLayer({
-        id: 'aalto-clusters', type: 'circle', source: 'aalto',
+        id: 'aalto-clusters', type: 'symbol', source: 'aalto',
         slot: 'top',
         minzoom: 13,
         filter: ['has', 'point_count'],
-        paint: { 'circle-radius': 4, 'circle-color': '#000', 'circle-opacity': 0.9,
-                 'circle-stroke-width': 1.5, 'circle-stroke-color': '#fff' },
+        layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': false },
+        paint: { 'icon-color': '#000', 'icon-opacity': 0.9, 'icon-halo-color': '#fff', 'icon-halo-width': 5 },
       });
       map.addLayer({
         id: 'aalto-cluster-labels', type: 'symbol', source: 'aalto',
@@ -1505,8 +1502,8 @@
           // Base image 32px at pixelRatio=2 → 16 CSS px, radius 8px
           // target: radius 3px at z11, 7px at z18 → size = target/8
           'icon-size': ['interpolate', ['linear'], ['zoom'], 11, 0.375, 18, 0.875],
-          'icon-allow-overlap': true,
-          'icon-ignore-placement': true,
+          'icon-allow-overlap': false,
+          'icon-ignore-placement': false,
           'text-field': ['concat', ['get', 'name'], ['coalesce', ['get', '_symbol'], '']],
           'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular'],
           'text-size': 11,
@@ -1516,13 +1513,14 @@
           'text-radial-offset': 1.4,
           'text-justify': 'auto',
           'text-max-width': 12,
-          'text-allow-overlap': true,
-          'text-ignore-placement': true,
+          'text-optional': true,
+          'text-allow-overlap': false,
+          'text-ignore-placement': false,
         },
         paint: {
           'icon-color': ['case', ['get', '_visited'], '#999', '#000'],
           'icon-halo-color': '#fff',
-          'icon-halo-width': 1.5,
+          'icon-halo-width': 5,
           'text-color': '#000',
           'text-halo-color': '#fff',
           'text-halo-width': 2.5,
@@ -1608,7 +1606,7 @@
       data.features.forEach(f => { nameToCoords[f.properties.name] = f.geometry.coordinates; });
 
       // Shared handler for cluster clicks: count=1 → open panel; count>1 → fitBounds of all objects
-      function handleClusterClick(props, coords) {
+      function handleClusterClick(props, coords, useFitBounds = false) {
         _skipMapClick = true;
         const objects = JSON.parse(props.objects || '[]');
         if (props.count === 1) {
@@ -1618,11 +1616,13 @@
           if (pts.length >= 2) {
             const lons = pts.map(c => c[0]);
             const lats = pts.map(c => c[1]);
-            const cam = map.cameraForBounds(
-              [[Math.min(...lons), Math.min(...lats)], [Math.max(...lons), Math.max(...lats)]],
-              { padding: 80 }
-            );
-            map.flyTo({ center: cam.center, zoom: Math.max(cam.zoom, 6.5), bearing: 0, pitch: 0, speed: 1.4 });
+            const bounds = [[Math.min(...lons), Math.min(...lats)], [Math.max(...lons), Math.max(...lats)]];
+            if (useFitBounds) {
+              map.flyTo({ center: [24.022, 61.776], zoom: 6, bearing: 0, pitch: 0, speed: 1.4 });
+            } else {
+              const cam = map.cameraForBounds(bounds, { padding: 80 });
+              map.flyTo({ center: cam.center, zoom: Math.max(cam.zoom, 6.5), bearing: 0, pitch: 0, speed: 1.4 });
+            }
           } else {
             map.flyTo({ center: coords, zoom: map.getZoom() + 3, pitch: 0, speed: 1.4 });
           }
@@ -1632,7 +1632,7 @@
       // Country cluster click
       ['country-clusters', 'country-labels'].forEach(id => {
         map.on('click', id, (e) => {
-          handleClusterClick(e.features[0].properties, e.features[0].geometry.coordinates);
+          handleClusterClick(e.features[0].properties, e.features[0].geometry.coordinates, true);
         });
         map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
         map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
@@ -2040,7 +2040,7 @@
         slot: 'top',
         filter: ['==', ['get', 'mode'], 'DRIVING'],
         paint: { 'line-color': '#000', 'line-width': 1.5, 'line-opacity': 0.8 },
-      });
+      }, 'country-clusters-stack');
       map.addLayer({
         id: 'route-walking', type: 'line', source: 'route-line',
         slot: 'top',
@@ -2049,7 +2049,7 @@
           'line-color': '#000', 'line-width': 1.5, 'line-opacity': 0.8,
           'line-dasharray': [4, 3],
         },
-      });
+      }, 'country-clusters-stack');
       map.addLayer({
         id: 'route-bicycling', type: 'line', source: 'route-line',
         slot: 'top',
@@ -2058,7 +2058,7 @@
           'line-color': '#000', 'line-width': 1.5, 'line-opacity': 0.8,
           'line-dasharray': [1.5, 3],
         },
-      });
+      }, 'country-clusters-stack');
       map.addLayer({
         id: 'route-transit', type: 'line', source: 'route-line',
         slot: 'top',
@@ -2067,14 +2067,15 @@
           'line-color': '#000', 'line-width': 1.5, 'line-opacity': 0.8,
           'line-dasharray': [6, 2.5, 1.5, 2.5],
         },
-      });
+      }, 'country-clusters-stack');
 
-      // Route stop cluster circle (same style as individual stops)
+      // Route stop cluster marker (same style as individual stops)
       map.addLayer({
-        id: 'route-stop-cluster-markers', type: 'circle', source: 'route-stops-src',
+        id: 'route-stop-cluster-markers', type: 'symbol', source: 'route-stops-src',
         slot: 'top',
         filter: ['has', 'point_count'],
-        paint: { 'circle-radius': 8, 'circle-color': '#000', 'circle-stroke-width': 1.5, 'circle-stroke-color': '#fff' },
+        layout: { 'icon-image': 'aalto-dot', 'icon-size': 1.14, 'icon-allow-overlap': true, 'icon-ignore-placement': false },
+        paint: { 'icon-color': '#000', 'icon-halo-color': '#fff', 'icon-halo-width': 5 },
       });
       map.addLayer({
         id: 'route-stop-cluster-labels', type: 'symbol', source: 'route-stops-src',
@@ -2082,18 +2083,26 @@
         filter: ['has', 'point_count'],
         layout: {
           'text-field': ['concat', ['to-string', ['get', 'min_num']], '–', ['to-string', ['get', 'max_num']]],
-          'text-font': ['DIN Pro Bold', 'Arial Unicode MS Bold'],
-          'text-size': 10, 'text-allow-overlap': true,
+          'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular'],
+          'text-size': 11,
+          'text-letter-spacing': 0.06,
+          'text-transform': 'uppercase',
+          'text-variable-anchor': ['left', 'right', 'top', 'bottom'],
+          'text-radial-offset': 0.9,
+          'text-justify': 'auto',
+          'text-allow-overlap': true,
+          'text-ignore-placement': false,
         },
-        paint: { 'text-color': '#fff' },
+        paint: { 'text-color': '#000', 'text-halo-color': '#fff', 'text-halo-width': 2.5 },
       });
 
       // Numbered stop markers (individual, non-clustered)
       map.addLayer({
-        id: 'route-stop-markers', type: 'circle', source: 'route-stops-src',
+        id: 'route-stop-markers', type: 'symbol', source: 'route-stops-src',
         slot: 'top',
         filter: ['!', ['has', 'point_count']],
-        paint: { 'circle-radius': 8, 'circle-color': '#000', 'circle-stroke-width': 1.5, 'circle-stroke-color': '#fff' },
+        layout: { 'icon-image': 'aalto-dot', 'icon-size': 1.14, 'icon-allow-overlap': true, 'icon-ignore-placement': false },
+        paint: { 'icon-color': '#000', 'icon-halo-color': '#fff', 'icon-halo-width': 5 },
       });
       map.addLayer({
         id: 'route-stop-numbers', type: 'symbol', source: 'route-stops-src',
@@ -2104,7 +2113,7 @@
           'text-font': ['DIN Pro Bold', 'Arial Unicode MS Bold'],
           'text-size': 10,
           'text-allow-overlap': true,
-          'text-ignore-placement': true,
+          'text-ignore-placement': false,
         },
         paint: { 'text-color': '#fff' },
       });
@@ -2113,7 +2122,7 @@
         slot: 'top',
         filter: ['!', ['has', 'point_count']],
         layout: {
-          'text-field': ['concat', ['get', 'num'], '. ', ['get', 'name']],
+          'text-field': ['get', 'name'],
           'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular'],
           'text-size': 11,
           'text-letter-spacing': 0.06,
@@ -2122,7 +2131,7 @@
           'text-radial-offset': 0.9,
           'text-justify': 'auto',
           'text-allow-overlap': true,
-          'text-ignore-placement': true,
+          'text-ignore-placement': false,
         },
         paint: { 'text-color': '#000', 'text-halo-color': '#fff', 'text-halo-width': 2.5 },
       });
