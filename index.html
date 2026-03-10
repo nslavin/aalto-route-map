@@ -1365,14 +1365,14 @@
         slot: 'top',
         maxzoom: 6.5, filter: ['>', ['get', 'count'], 1],
         layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': true },
-        paint: { 'icon-color': '#000', 'icon-opacity': 0.35, 'icon-halo-color': '#fff', 'icon-halo-width': 5, 'icon-translate': [2.5, -2.5] },
+        paint: { 'icon-color': '#000', 'icon-opacity': 0.35, 'icon-halo-color': '#fff', 'icon-halo-width': 2, 'icon-translate': [2.5, -2.5] },
       });
       map.addLayer({
         id: 'country-clusters', type: 'symbol', source: 'aalto-countries',
         slot: 'top',
         maxzoom: 6.5,
         layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': false },
-        paint: { 'icon-color': '#000', 'icon-opacity': 0.9, 'icon-halo-color': '#fff', 'icon-halo-width': 5 },
+        paint: { 'icon-color': '#000', 'icon-opacity': 0.9, 'icon-halo-color': '#fff', 'icon-halo-width': 2 },
       });
       map.addLayer({
         id: 'country-labels', type: 'symbol', source: 'aalto-countries',
@@ -1392,14 +1392,14 @@
         slot: 'top',
         minzoom: 6.5, maxzoom: 13, filter: ['>', ['get', 'count'], 1],
         layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': true },
-        paint: { 'icon-color': '#000', 'icon-opacity': 0.35, 'icon-halo-color': '#fff', 'icon-halo-width': 5, 'icon-translate': [2.5, -2.5] },
+        paint: { 'icon-color': '#000', 'icon-opacity': 0.35, 'icon-halo-color': '#fff', 'icon-halo-width': 2, 'icon-translate': [2.5, -2.5] },
       });
       map.addLayer({
         id: 'city-clusters', type: 'symbol', source: 'aalto-cities',
         slot: 'top',
         minzoom: 6.5, maxzoom: 13,
         layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': false },
-        paint: { 'icon-color': '#000', 'icon-opacity': 0.9, 'icon-halo-color': '#fff', 'icon-halo-width': 5 },
+        paint: { 'icon-color': '#000', 'icon-opacity': 0.9, 'icon-halo-color': '#fff', 'icon-halo-width': 2 },
       });
       map.addLayer({
         id: 'city-labels', type: 'symbol', source: 'aalto-cities',
@@ -1419,7 +1419,7 @@
         slot: 'top',
         minzoom: 11, maxzoom: 13, filter: ['>', ['get', 'count'], 1],
         layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': true },
-        paint: { 'icon-color': '#000', 'icon-opacity': 0.35, 'icon-halo-color': '#fff', 'icon-halo-width': 5, 'icon-translate': [2.5, -2.5] },
+        paint: { 'icon-color': '#000', 'icon-opacity': 0.35, 'icon-halo-color': '#fff', 'icon-halo-width': 2, 'icon-translate': [2.5, -2.5] },
       });
       map.addLayer({
         id: 'metro-clusters', type: 'symbol', source: 'aalto-metro',
@@ -1427,7 +1427,7 @@
         minzoom: 11, maxzoom: 13,
         filter: ['>', ['get', 'count'], 1],
         layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': false },
-        paint: { 'icon-color': '#000', 'icon-opacity': 0.9, 'icon-halo-color': '#fff', 'icon-halo-width': 5 },
+        paint: { 'icon-color': '#000', 'icon-opacity': 0.9, 'icon-halo-color': '#fff', 'icon-halo-width': 2 },
       });
       map.addLayer({
         id: 'metro-labels', type: 'symbol', source: 'aalto-metro',
@@ -1448,7 +1448,7 @@
         slot: 'top',
         minzoom: 13, filter: ['has', 'point_count'],
         layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': true },
-        paint: { 'icon-color': '#000', 'icon-opacity': 0.35, 'icon-halo-color': '#fff', 'icon-halo-width': 5, 'icon-translate': [2.5, -2.5] },
+        paint: { 'icon-color': '#000', 'icon-opacity': 0.35, 'icon-halo-color': '#fff', 'icon-halo-width': 2, 'icon-translate': [2.5, -2.5] },
       });
       map.addLayer({
         id: 'aalto-clusters', type: 'symbol', source: 'aalto',
@@ -1456,7 +1456,7 @@
         minzoom: 13,
         filter: ['has', 'point_count'],
         layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': false },
-        paint: { 'icon-color': '#000', 'icon-opacity': 0.9, 'icon-halo-color': '#fff', 'icon-halo-width': 5 },
+        paint: { 'icon-color': '#000', 'icon-opacity': 0.9, 'icon-halo-color': '#fff', 'icon-halo-width': 2 },
       });
       map.addLayer({
         id: 'aalto-cluster-labels', type: 'symbol', source: 'aalto',
@@ -1520,7 +1520,7 @@
         paint: {
           'icon-color': ['case', ['get', '_visited'], '#999', '#000'],
           'icon-halo-color': '#fff',
-          'icon-halo-width': 5,
+          'icon-halo-width': 2,
           'text-color': '#000',
           'text-halo-color': '#fff',
           'text-halo-width': 2.5,
@@ -1618,7 +1618,8 @@
             const lats = pts.map(c => c[1]);
             const bounds = [[Math.min(...lons), Math.min(...lats)], [Math.max(...lons), Math.max(...lats)]];
             if (useFitBounds) {
-              map.flyTo({ center: [24.022, 61.776], zoom: 6, bearing: 0, pitch: 0, speed: 1.4 });
+              const cam = map.cameraForBounds(bounds, { padding: { top: 40, bottom: 160, left: 80, right: 80 } });
+              map.flyTo({ center: cam.center, zoom: 6, bearing: 0, pitch: 0, speed: 1.4 });
             } else {
               const cam = map.cameraForBounds(bounds, { padding: 80 });
               map.flyTo({ center: cam.center, zoom: Math.max(cam.zoom, 6.5), bearing: 0, pitch: 0, speed: 1.4 });
@@ -2075,7 +2076,7 @@
         slot: 'top',
         filter: ['has', 'point_count'],
         layout: { 'icon-image': 'aalto-dot', 'icon-size': 1.14, 'icon-allow-overlap': true, 'icon-ignore-placement': false },
-        paint: { 'icon-color': '#000', 'icon-halo-color': '#fff', 'icon-halo-width': 5 },
+        paint: { 'icon-color': '#000', 'icon-halo-color': '#fff', 'icon-halo-width': 2 },
       });
       map.addLayer({
         id: 'route-stop-cluster-labels', type: 'symbol', source: 'route-stops-src',
@@ -2102,7 +2103,7 @@
         slot: 'top',
         filter: ['!', ['has', 'point_count']],
         layout: { 'icon-image': 'aalto-dot', 'icon-size': 1.14, 'icon-allow-overlap': true, 'icon-ignore-placement': false },
-        paint: { 'icon-color': '#000', 'icon-halo-color': '#fff', 'icon-halo-width': 5 },
+        paint: { 'icon-color': '#000', 'icon-halo-color': '#fff', 'icon-halo-width': 2 },
       });
       map.addLayer({
         id: 'route-stop-numbers', type: 'symbol', source: 'route-stops-src',
