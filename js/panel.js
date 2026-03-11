@@ -62,7 +62,6 @@
       }
     });
 
-    // Fallback to external URLs when local_images missing
     if (images.length === 0) {
       const cov = det.cover || {};
       if (cov.url) {

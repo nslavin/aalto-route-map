@@ -636,15 +636,6 @@ a.panel-footer-value:hover { opacity: 0.5; }
 .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
 .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
 
-/* ── Stacked panel layout (panel shares right column with list) ── */
-#panel.stacked {
-  border-top: 1px solid #000;
-  border-left: 1px solid #000;
-}
-#list-panel.stacked-host {
-  border-bottom: none;
-}
-
 /* ── Mapbox controls ── */
 .mapboxgl-ctrl-group {
   border-radius: 0 !important; box-shadow: none !important;

@@ -870,27 +870,12 @@
       }
     }
 
-    function measureListPanelContent() {
-      const listPanel = document.getElementById('list-panel');
-      let h = 0;
-      for (const child of listPanel.children) {
-        if (child.style.display === 'none') continue;
-        if (child.id === 'list-body') {
-          h += child.scrollHeight;
-        } else {
-          h += child.offsetHeight;
-        }
-      }
-      return h;
-    }
-
     A.updatePanelLayout = function() {
       const routeCollapsed = document.getElementById('route-section').classList.contains('collapsed');
       const bothCollapsed = listCollapsed && routeCollapsed;
       const listPanel = document.getElementById('list-panel');
       const panelEl = document.getElementById('panel');
       const panelOpen = panelEl.classList.contains('open');
-      const vh = window.innerHeight;
 
       listPanel.classList.toggle('minimized', bothCollapsed);
       panelEl.classList.remove('stacked');
@@ -906,28 +891,16 @@
         mapEl.classList.remove('detail-open');
         mapEl.style.width = '100vw';
       } else if (panelOpen && !listCollapsed) {
-        const contentH = measureListPanelContent();
-        const freeRatio = (vh - contentH) / vh;
-
-        if (freeRatio >= 0.5) {
-          const usedH = Math.max(contentH, 1);
-          listPanel.style.height = usedH + 'px';
-          listPanel.classList.add('stacked-host');
-          panelEl.style.top = usedH + 'px';
-          panelEl.style.right = '0';
-          panelEl.style.width = '33.33vw';
-          panelEl.style.height = (vh - usedH) + 'px';
-          panelEl.classList.add('stacked');
-          mapEl.classList.remove('detail-open');
-          mapEl.style.width = '';
-        } else {
-          listPanel.style.height = '';
-          panelEl.style.top = ''; panelEl.style.height = '';
-          panelEl.style.right = ''; panelEl.style.width = '';
-          mapEl.style.width = '';
-          if (!mapEl.classList.contains('detail-open'))
-            mapEl.classList.add('detail-open');
-        }
+        listPanel.style.height = '100vh';
+        listPanel.style.background = '#fff';
+        panelEl.style.top = '0';
+        panelEl.style.height = '100vh';
+        panelEl.style.background = '#fff';
+        panelEl.style.right = '33.33vw';
+        panelEl.style.width = '33.33vw';
+        mapEl.style.width = '';
+        if (!mapEl.classList.contains('detail-open'))
+          mapEl.classList.add('detail-open');
       } else if (listCollapsed) {
         listPanel.style.height = '';
         panelEl.style.top = ''; panelEl.style.height = '';
@@ -937,8 +910,10 @@
           mapEl.classList.add('detail-open');
       } else {
         listPanel.style.height = '';
+        listPanel.style.background = '';
         panelEl.style.top = ''; panelEl.style.height = '';
         panelEl.style.right = ''; panelEl.style.width = '';
+        panelEl.style.background = '';
         mapEl.style.width = '';
       }
       mapEl.style.transition = 'none';

@@ -14,7 +14,7 @@ Interactive web map to explore, bookmark, plan, and share routes through Alvar A
   - Drag-and-drop stop reordering, route optimization
   - Google Maps export
 - Bilingual: EN / FI language switch
-- Adaptive layout: stacked panel in right column when space allows, 3-column when list is tall
+- Adaptive layout: 3-column when list and detail panel both visible
 - Local optimized images: thumb (300px), medium (800px), large (1600px) WebP versions
 
 ## Project structure
