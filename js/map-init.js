@@ -902,12 +902,28 @@
         if (!mapEl.classList.contains('detail-open'))
           mapEl.classList.add('detail-open');
       } else if (listCollapsed) {
-        listPanel.style.height = '';
-        panelEl.style.top = ''; panelEl.style.height = '';
-        panelEl.style.right = ''; panelEl.style.width = '';
-        mapEl.style.width = '100vw';
-        if (panelOpen && !mapEl.classList.contains('detail-open'))
-          mapEl.classList.add('detail-open');
+        if (panelOpen) {
+          listPanel.style.height = '100vh';
+          listPanel.style.background = '#fff';
+          panelEl.style.top = '0';
+          panelEl.style.height = '100vh';
+          panelEl.style.right = '33.33vw';
+          panelEl.style.width = '33.33vw';
+          panelEl.style.background = '#fff';
+          mapEl.style.width = '';
+          if (!mapEl.classList.contains('detail-open'))
+            mapEl.classList.add('detail-open');
+        } else {
+          listPanel.style.height = '';
+          listPanel.style.background = '';
+          panelEl.style.top = '';
+          panelEl.style.height = '';
+          panelEl.style.right = '';
+          panelEl.style.width = '';
+          panelEl.style.background = '';
+          mapEl.style.width = '100vw';
+          mapEl.classList.remove('detail-open');
+        }
       } else {
         listPanel.style.height = '';
         listPanel.style.background = '';
