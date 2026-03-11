@@ -257,7 +257,6 @@ body {
   color: #555; transition: color 0.15s;
 }
 #carousel-prev:hover, #carousel-next:hover { color: #000; }
-#carousel-counter { display: none; }
 
 #panel-carousel { cursor: zoom-in; }
 
@@ -471,10 +470,6 @@ a.panel-footer-value:hover { opacity: 0.5; }
 .route-mode-btn.active[data-mode="TRANSIT"]::after {
   background: repeating-linear-gradient(to right, #000 0 8px, transparent 8px 12px, #000 12px 14px, transparent 14px 18px);
 }
-#route-mode-mixed {
-  font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
-  color: #999; padding: 3px 6px; text-transform: uppercase;
-}
 
 .route-threshold-row {
   display: flex; align-items: center; gap: 6px;
@@ -561,6 +556,26 @@ a.panel-footer-value:hover { opacity: 0.5; }
 }
 .seg-mode-label[data-mode="TRANSIT"]::after {
   background: repeating-linear-gradient(to right, #666 0 6px, transparent 6px 9px, #666 9px 11px, transparent 11px 14px);
+}
+.seg-way-arrow {
+  font-size: 11px; color: #666; opacity: 0.9;
+  margin-right: 2px; user-select: none;
+}
+.seg-return-check {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 9px; font-weight: 600; letter-spacing: 0.06em; color: #666;
+  cursor: pointer; user-select: none;
+}
+.seg-return-check input {
+  margin: 0; cursor: pointer;
+  appearance: none; -webkit-appearance: none;
+  width: 12px; height: 12px;
+  border: 1px solid #999; background: transparent;
+}
+.seg-return-check input:checked {
+  background: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath fill='none' stroke='%23000' stroke-width='2' d='M2 6l3 3 5-6'/%3E%3C/svg%3E");
+  background-size: contain;
 }
 .seg-details { color: #999; }
 

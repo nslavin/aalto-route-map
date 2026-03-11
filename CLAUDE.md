@@ -51,7 +51,7 @@ scripts/
 
 ## Stack
 
-- **Map**: Mapbox GL JS v3.9.0, Standard style + CSS `grayscale(1) contrast(1.05)`
+- **Map**: Mapbox GL JS v3.19.0, Standard style + CSS `grayscale(1) contrast(1.05)`
 - **Routing**: Google Maps JavaScript API (DirectionsService)
 - **Data**: static GeoJSON + `aalto_details.json` (enriched building details)
 - **Dev server**: Python `http.server` — port 8081

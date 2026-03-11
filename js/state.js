@@ -6,6 +6,7 @@
   window.Aalto = {
     routeStops: _savedRoute ? _savedRoute.stops : [],
     routeSegments: [],
+    savedSegmentOverrides: _savedRoute?.segments || [],
     globalMode: _savedRoute ? (_savedRoute.globalMode || 'DRIVING') : 'DRIVING',
     walkThreshold: _savedRoute ? (_savedRoute.walkThreshold != null ? _savedRoute.walkThreshold : 1000) : 1000,
     favs: new Set(JSON.parse(localStorage.getItem('aalto_favs') || '[]')),
@@ -25,6 +26,7 @@
       stops: A.routeStops.map(s => ({ id: s.id, coords: s.coords, name: s.name })),
       globalMode: A.globalMode,
       walkThreshold: A.walkThreshold,
+      segments: A.routeSegments.map(s => ({ modeOverride: s.modeOverride, returnToCar: s.returnToCar })),
     }));
   }
   function updateFilterCounts() {

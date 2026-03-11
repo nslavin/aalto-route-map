@@ -986,6 +986,21 @@
       },
     }, 'country-clusters-stack');
     map.addLayer({
+      id: 'route-walking-arrows', type: 'symbol', source: 'route-line',
+      slot: 'top',
+      filter: ['all', ['==', ['get', 'mode'], 'WALKING'], ['to-boolean', ['get', 'returnToCar']]],
+      layout: {
+        'symbol-placement': 'line-center',
+        'text-field': '↔',
+        'text-size': ['interpolate', ['linear'], ['zoom'], 12, 14, 18, 22],
+        'text-offset': ['interpolate', ['linear'], ['zoom'], 10, ['literal', [0, 0.25]], 13, ['literal', [0, 0.5]], 16, ['literal', [0, 0.5]]],
+        'text-rotation-alignment': 'map',
+        'text-allow-overlap': true,
+        'text-ignore-placement': true,
+      },
+      paint: { 'text-color': '#000' },
+    }, 'country-clusters-stack');
+    map.addLayer({
       id: 'route-bicycling', type: 'line', source: 'route-line',
       slot: 'top',
       filter: ['==', ['get', 'mode'], 'BICYCLING'],
@@ -1008,12 +1023,15 @@
       id: 'route-stop-cluster-markers', type: 'symbol', source: 'route-stops-src',
       slot: 'top',
       filter: ['has', 'point_count'],
-      layout: { 'icon-image': 'aalto-dot', 'icon-size': 1.14, 'icon-allow-overlap': true, 'icon-ignore-placement': false },
+      layout: {
+        'icon-image': 'aalto-dot', 'icon-size': 1.14,
+        'icon-allow-overlap': true, 'icon-ignore-placement': false,
+        'symbol-sort-key': 0,
+      },
       paint: { 'icon-color': '#000', 'icon-halo-color': '#fff', 'icon-halo-width': 2 },
     });
     map.addLayer({
       id: 'route-stop-cluster-labels', type: 'symbol', source: 'route-stops-src',
-      slot: 'top',
       filter: ['has', 'point_count'],
       layout: {
         'text-field': ['concat', ['to-string', ['get', 'min_num']], '–', ['to-string', ['get', 'max_num']]],
@@ -1024,8 +1042,11 @@
         'text-variable-anchor': ['left', 'right', 'top', 'bottom'],
         'text-radial-offset': 0.9,
         'text-justify': 'auto',
-        'text-allow-overlap': true,
+        'text-allow-overlap': false,
         'text-ignore-placement': false,
+        'text-optional': true,
+        'text-padding': 2,
+        'symbol-sort-key': 1,
       },
       paint: { 'text-color': '#000', 'text-halo-color': '#fff', 'text-halo-width': 2.5 },
     });
@@ -1034,7 +1055,11 @@
       id: 'route-stop-markers', type: 'symbol', source: 'route-stops-src',
       slot: 'top',
       filter: ['!', ['has', 'point_count']],
-      layout: { 'icon-image': 'aalto-dot', 'icon-size': 1.14, 'icon-allow-overlap': true, 'icon-ignore-placement': false },
+      layout: {
+        'icon-image': 'aalto-dot', 'icon-size': 1.14,
+        'icon-allow-overlap': true, 'icon-ignore-placement': false,
+        'symbol-sort-key': 0,
+      },
       paint: { 'icon-color': '#000', 'icon-halo-color': '#fff', 'icon-halo-width': 2 },
     });
     map.addLayer({
@@ -1046,13 +1071,12 @@
         'text-font': ['DIN Pro Bold', 'Arial Unicode MS Bold'],
         'text-size': 10,
         'text-allow-overlap': true,
-        'text-ignore-placement': false,
+        'text-ignore-placement': true,
       },
       paint: { 'text-color': '#fff' },
     });
     map.addLayer({
       id: 'route-stop-labels', type: 'symbol', source: 'route-stops-src',
-      slot: 'top',
       filter: ['!', ['has', 'point_count']],
       layout: {
         'text-field': ['get', 'name'],
@@ -1063,8 +1087,11 @@
         'text-variable-anchor': ['left', 'right', 'top', 'bottom'],
         'text-radial-offset': 0.9,
         'text-justify': 'auto',
-        'text-allow-overlap': true,
+        'text-allow-overlap': false,
         'text-ignore-placement': false,
+        'text-optional': true,
+        'text-padding': 2,
+        'symbol-sort-key': 1,
       },
       paint: { 'text-color': '#000', 'text-halo-color': '#fff', 'text-halo-width': 2.5 },
     });
@@ -1132,16 +1159,60 @@
       if (loadingEl) loadingEl.style.display = '';
       const newSegments = [];
       for (let i = 0; i < A.routeStops.length - 1; i++) {
-        const existing = A.routeSegments[i];
+        const existing = A.routeSegments[i] || (A.savedSegmentOverrides && A.savedSegmentOverrides[i] ? {
+          modeOverride: A.savedSegmentOverrides[i].modeOverride,
+          returnToCar: A.savedSegmentOverrides[i].returnToCar,
+        } : null);
         const mode = (existing && existing.modeOverride) || getDefaultMode(A.routeStops[i].coords, A.routeStops[i+1].coords);
-        const result = await calculateSegment(A.routeStops[i].coords, A.routeStops[i+1].coords, mode);
+        const prevSeg = i > 0 ? newSegments[i - 1] : null;
+        const atCarOrBike = prevSeg && (
+          ['DRIVING', 'BICYCLING'].includes(prevSeg.mode) ||
+          (prevSeg.mode === 'WALKING' && prevSeg.returnToCar)
+        );
+        const isWalkFromCar = mode === 'WALKING' && atCarOrBike;
+        const wasAlreadyWalking = existing && existing.mode === 'WALKING';
+        const returnToCar = (wasAlreadyWalking && existing.returnToCar !== undefined)
+          ? existing.returnToCar
+          : (isWalkFromCar ? true : false);
+
+        const effectiveFrom = (prevSeg && prevSeg.mode === 'WALKING' && prevSeg.returnToCar)
+          ? prevSeg.effectiveEndCoords
+          : A.routeStops[i].coords;
+
+        let result;
+        if (returnToCar && mode === 'WALKING') {
+          const from = A.routeStops[i].coords;
+          const to = A.routeStops[i + 1].coords;
+          const out = await calculateSegment(from, to, 'WALKING');
+          const back = await calculateSegment(to, from, 'WALKING');
+          if (out && back) {
+            result = {
+              geometry: out.geometry,
+              distance: out.distance + back.distance,
+              duration: out.duration + back.duration,
+              distanceText: out.distanceText ? `2× ${out.distanceText}` : '?',
+              durationText: out.durationText ? `2× ${out.durationText}` : '?',
+            };
+          } else {
+            result = out || back;
+          }
+        } else {
+          result = await calculateSegment(effectiveFrom, A.routeStops[i+1].coords, mode);
+        }
+
+        const segReturnToCar = returnToCar && mode === 'WALKING';
+        const effectiveEndCoords = segReturnToCar ? A.routeStops[i].coords : A.routeStops[i + 1].coords;
+
         newSegments.push({
           fromIdx: i, toIdx: i + 1,
           mode,
           modeOverride: existing ? existing.modeOverride : null,
-          ...(result || { geometry: [A.routeStops[i].coords, A.routeStops[i+1].coords], distance: 0, duration: 0, distanceText: '?', durationText: '?' }),
+          returnToCar: segReturnToCar ? true : false,
+          effectiveEndCoords,
+          ...(result || { geometry: [effectiveFrom, A.routeStops[i+1].coords], distance: 0, duration: 0, distanceText: '?', durationText: '?' }),
         });
       }
+      A.savedSegmentOverrides = [];
       A.routeSegments = newSegments;
       updateRouteOnMap();
       A.renderRouteSection();
@@ -1151,7 +1222,7 @@
     function updateRouteOnMap() {
       const lineFeatures = A.routeSegments.map(seg => ({
         type: 'Feature',
-        properties: { mode: seg.mode },
+        properties: { mode: seg.mode, returnToCar: seg.returnToCar || false },
         geometry: { type: 'LineString', coordinates: seg.geometry },
       }));
       map.getSource('route-line').setData({ type: 'FeatureCollection', features: lineFeatures });
@@ -1232,30 +1303,60 @@
       });
     }
 
+    function getWalkingChainFromFirst(firstSegIndex) {
+      const segments = A.routeSegments;
+      const chain = [firstSegIndex];
+      for (let k = firstSegIndex + 1; k < segments.length && segments[k].mode === 'WALKING'; k++) {
+        chain.push(k);
+      }
+      return chain;
+    }
+
     function buildRouteSegmentRow(seg, i, stopsList) {
       const segRow = document.createElement('div');
       segRow.className = 'route-segment-info';
       const ml = A.i18n[A.lang].modeLabels;
+      const prevSeg = i > 0 ? A.routeSegments[i - 1] : null;
+      const showReturnToCar = seg.mode === 'WALKING' && prevSeg && ['DRIVING', 'BICYCLING'].includes(prevSeg.mode);
+      const returnLabel = prevSeg && prevSeg.mode === 'BICYCLING' ? A.t('returnToBicycle') : A.t('returnToCar');
+      const returnTip = prevSeg && prevSeg.mode === 'BICYCLING' ? A.t('returnToBicycleTip') : A.t('returnToCarTip');
+      const returnToCarHtml = showReturnToCar
+        ? `<span class="seg-way-arrow" title="${returnTip}">↔</span><label class="seg-return-check" title="${returnTip}"><input type="checkbox" ${seg.returnToCar ? 'checked' : ''} data-seg="${i}"><span>${returnLabel}</span></label>`
+        : '';
       segRow.innerHTML = `
         <span class="seg-mode-wrap">
           <span class="seg-arrow seg-prev" title="${A.t('tipPrevMode')}" data-seg="${i}"><svg width="5" height="8" viewBox="0 0 5 8" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 1L1 4l3 3"/></svg></span>
           <span class="seg-mode-label" title="${A.t('tipChangeMode')}" data-mode="${seg.mode}">${ml[seg.mode] || seg.mode}</span>
           <span class="seg-arrow seg-next" title="${A.t('tipNextMode')}" data-seg="${i}"><svg width="5" height="8" viewBox="0 0 5 8" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 1l3 3-3 3"/></svg></span>
         </span>
+        ${returnToCarHtml}
         <span class="seg-details">&middot; ${seg.distanceText || '...'} &middot; ${seg.durationText || '...'}</span>`;
       stopsList.appendChild(segRow);
+
+      if (showReturnToCar) {
+        const cb = segRow.querySelector('input[type="checkbox"]');
+        cb.addEventListener('change', (e) => {
+          e.stopPropagation();
+          const chainIndices = getWalkingChainFromFirst(i);
+          chainIndices.forEach((j) => { A.routeSegments[j].returnToCar = cb.checked; });
+          A.saveRoute();
+          A.calculateAllSegments();
+        });
+      }
 
       function cycleSegMode(direction) {
         const curIdx = A.modeOrder.indexOf(seg.mode);
         const nextMode = A.modeOrder[(curIdx + direction + A.modeOrder.length) % A.modeOrder.length];
         A.routeSegments[i].mode = nextMode;
         A.routeSegments[i].modeOverride = nextMode;
+        if (nextMode === 'WALKING' && i > 0) {
+          const prevSeg = A.routeSegments[i - 1];
+          if (prevSeg && ['DRIVING', 'BICYCLING'].includes(prevSeg.mode)) {
+            A.routeSegments[i].returnToCar = true;
+          }
+        }
         A.saveRoute();
-        calculateSegment(A.routeStops[i].coords, A.routeStops[i+1].coords, nextMode).then(result => {
-          if (result) Object.assign(A.routeSegments[i], result);
-          updateRouteOnMap();
-          A.renderRouteSection();
-        });
+        A.calculateAllSegments();
       }
       segRow.querySelector('.seg-prev').onclick = (e) => { e.stopPropagation(); cycleSegMode(-1); };
       segRow.querySelector('.seg-next').onclick = (e) => { e.stopPropagation(); cycleSegMode(1); };
