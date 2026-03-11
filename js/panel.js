@@ -18,7 +18,7 @@
     actionsEl.innerHTML = `
       <button class="panel-action-btn${isFav ? ' active' : ''}" data-action="fav" title="${A.t('tipBookmark')}"><svg width="9" height="12" viewBox="0 0 11 14" fill="currentColor"><path d="M0 0h11v14l-5.5-4L0 14z"/></svg> ${A.t('bookmark')}</button>
       <button class="panel-action-btn${isVis ? ' active' : ''}" data-action="visited" title="${A.t('tipVisited')}"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l3 3 5-6"/></svg> ${A.t('visited')}</button>
-      <button class="panel-action-btn${inRoute ? ' active' : ''}" data-action="route" title="${inRoute ? A.t('tipRemoveRoute') : A.t('tipAddRoute')}">${inRoute ? '− ' + A.t('removeFromRoute') : '+ ' + A.t('addToRoute')}</button>`;
+      <button class="panel-action-btn${inRoute ? ' active' : ''}" data-action="route" title="${inRoute ? A.t('tipRemoveRoute') : A.t('tipAddRoute')}">${inRoute ? '−' + A.t('removeFromRoute') : '+' + A.t('addToRoute')}</button>`;
     actionsEl.querySelector('[data-action="fav"]').onclick = () => {
       A.toggleFav(fid);
       A.renderPanel(feature);
@@ -38,19 +38,42 @@
   }
 
   function renderPanelCarousel(feature, det) {
-    const p = feature.properties;
-    const cover = det.cover || {};
-    const coverUrl = cover.url || p.image || '';
-    let coverCaption = cover.caption || '';
-    if (!coverCaption) {
-      const match = (det.gallery || []).find(g => g.url === coverUrl && g.caption);
-      if (match) coverCaption = match.caption;
-    }
+    const locals = det.local_images || {};
     const images = [];
-    if (coverUrl) images.push({ url: coverUrl, caption: coverCaption });
-    (det.gallery || []).forEach(item => {
-      if (item.url && item.url !== coverUrl) images.push(item);
+
+    if (locals.cover?.medium) {
+      const lc = locals.cover;
+      images.push({
+        medium: lc.medium,
+        large: lc.large || lc.medium,
+        thumb: lc.thumb || lc.medium,
+        caption: (det.cover || {}).caption || '',
+      });
+    }
+
+    (locals.gallery || []).forEach((gl, gi) => {
+      if (gl?.medium) {
+        images.push({
+          medium: gl.medium,
+          large: gl.large || gl.medium,
+          thumb: gl.thumb || gl.medium,
+          caption: (det.gallery || [])[gi]?.caption || '',
+        });
+      }
     });
+
+    // Fallback to external URLs when local_images missing
+    if (images.length === 0) {
+      const cov = det.cover || {};
+      if (cov.url) {
+        images.push({ medium: cov.url, large: cov.url, thumb: cov.url, caption: cov.caption || '' });
+      }
+      (det.gallery || []).forEach((g, gi) => {
+        if (g?.url) {
+          images.push({ medium: g.url, large: g.url, thumb: g.url, caption: g.caption || '' });
+        }
+      });
+    }
 
     const carEl = document.getElementById('panel-carousel');
     const imgEl = document.getElementById('carousel-img');
@@ -64,7 +87,8 @@
       const item = images[carouselIdx];
       imgEl.classList.add('loading');
       imgEl.onload = () => imgEl.classList.remove('loading');
-      imgEl.src = item.url;
+      imgEl.onerror = () => imgEl.classList.remove('loading');
+      imgEl.src = item.medium;
       imgEl.alt = item.caption || '';
       capText.textContent = item.caption || '';
       capBar.style.display = (item.caption || images.length > 1) ? '' : 'none';
@@ -122,18 +146,46 @@
           <a class="panel-footer-value" href="tel:${det.phone}">${det.phone}</a>
         </div>`;
     }
-    if (det.website) {
-      const domain = det.website.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+    if (det.email) {
+      contactEl.innerHTML += `
+        <div class="panel-footer-row">
+          <span class="panel-footer-label">Email</span>
+          <a class="panel-footer-value" href="mailto:${det.email}">${det.email}</a>
+        </div>`;
+    }
+    const websites = det.websites || [];
+    if (websites.length) {
+      websites.forEach(w => {
+        const domain = w.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/.*$/, '');
+        contactEl.innerHTML += `
+          <div class="panel-footer-row">
+            <span class="panel-footer-label">${w.label}</span>
+            <a class="panel-footer-value" href="${w.url}" target="_blank" rel="noopener">${domain}</a>
+          </div>`;
+      });
+    } else if (det.website) {
+      const domain = det.website.replace(/^https?:\/\/(www\.)?/, '').replace(/\/.*$/, '');
       contactEl.innerHTML += `
         <div class="panel-footer-row">
           <span class="panel-footer-label">${A.t('website')}</span>
           <a class="panel-footer-value" href="${det.website}" target="_blank" rel="noopener">${domain}</a>
         </div>`;
     }
+    const links = det.links || [];
+    if (links.length) {
+      links.forEach(l => {
+        const domain = l.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/.*$/, '');
+        contactEl.innerHTML += `
+          <div class="panel-footer-row">
+            <span class="panel-footer-label">${l.label}</span>
+            <a class="panel-footer-value" href="${l.url}" target="_blank" rel="noopener">${domain}</a>
+          </div>`;
+      });
+    }
     const socialEl = document.getElementById('panel-social');
     socialEl.innerHTML = '';
     const social = det.social || {};
-    const socialMap = { instagram: 'Instagram', facebook: 'Facebook', twitter: 'X' };
+    const socialMap = { instagram: 'Instagram', facebook: 'Facebook', twitter: 'X', pinterest: 'Pinterest' };
     Object.entries(socialMap).forEach(([key, label]) => {
       if (social[key]) {
         socialEl.innerHTML += `<a class="social-link" href="${social[key]}" target="_blank" rel="noopener">${label}</a>`;
@@ -143,7 +195,8 @@
 
   function renderPanel(feature) {
     const p = feature.properties;
-    const det = A.details[String(feature.id)] || {};
+    const detailsKey = String(feature.id);
+    const det = A.details[detailsKey] || {};
     const isfi = A.lang === 'fi';
 
     document.getElementById('panel-name').textContent =
@@ -172,11 +225,6 @@
     const panelBody = document.getElementById('panel-body');
     if (panelBody) panelBody.scrollTop = 0;
     panel.scrollTop = 0;
-    const mapEl = document.getElementById('map');
-    mapEl.style.transition = 'none';
-    mapEl.classList.add('detail-open');
-    map.resize();
-    requestAnimationFrame(() => { mapEl.style.transition = ''; });
     panel.classList.add('open');
     A.updatePanelLayout();
   }
@@ -184,11 +232,9 @@
   function closePanel() {
     const map = A.map;
     panel.classList.remove('open');
+    panel.classList.remove('stacked');
     const mapEl = document.getElementById('map');
-    mapEl.style.transition = 'none';
     mapEl.classList.remove('detail-open');
-    if (map) map.resize();
-    requestAnimationFrame(() => { mapEl.style.transition = ''; });
     if (map && A.selectedId != null) {
       map.setFeatureState({ source: 'aalto', id: A.selectedId }, { selected: false });
     }

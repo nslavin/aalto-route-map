@@ -143,33 +143,72 @@ def extract_phone(soup: BeautifulSoup) -> str:
     return a.get_text(strip=True) if a else ""
 
 
-def extract_website(soup: BeautifulSoup) -> str:
-    for strong in soup.find_all("strong"):
-        if "website" in strong.get_text(strip=True).lower():
-            a = strong.find_next_sibling("a") or strong.find_next("a")
-            if a and str(a.get("href", "")).startswith("http"):
-                return a["href"].strip()
+def extract_websites(soup: BeautifulSoup) -> list[dict]:
+    """Extract all website links from the vaa-destination-linkit container."""
+    results = []
+    link_div = soup.find("div", class_="vaa-destination-linkit")
+    if link_div:
+        for a in link_div.find_all("a", href=True):
+            href = a["href"].strip()
+            label = a.get_text(strip=True) or "Website"
+            if href.startswith("http"):
+                results.append({"label": label, "url": href})
+    return results
+
+
+def extract_email(soup: BeautifulSoup) -> str:
+    a = soup.find("a", href=re.compile(r"^mailto:"))
+    if a:
+        return a["href"].replace("mailto:", "").strip()
+    email_div = soup.find("div", class_="vaa-destination-sahkoposti")
+    if email_div:
+        for script in email_div.find_all("script"):
+            text = script.string or ""
+            m = re.search(r"decodeURIComponent\([\"'](.+?)[\"']", text)
+            if m:
+                from urllib.parse import unquote
+                decoded = unquote(m.group(1)).strip("'\"")
+                clean = re.sub(r"<[^>]+>", "", decoded).strip()
+                if "@" in clean:
+                    return clean
     return ""
 
 
+def extract_description_links(soup: BeautifulSoup) -> list[dict]:
+    """External links within the description block."""
+    block = soup.find(id="paateksti")
+    if not block:
+        return []
+    results = []
+    seen = set()
+    for a in block.find_all("a", href=True):
+        href = a["href"].strip()
+        label = a.get_text(strip=True)
+        if href.startswith("http") and "alvaraalto.fi" not in href and href not in seen:
+            seen.add(href)
+            results.append({"label": label or href, "url": href})
+    return results
+
+
 def extract_social(soup: BeautifulSoup) -> dict:
-    """Object-specific social links, skipping site-wide accounts."""
-    result = {"instagram": "", "facebook": "", "twitter": ""}
-    patterns = {
-        "instagram": r"instagram\.com/([^/?#\"]+)",
-        "facebook":  r"facebook\.com/([^/?#\"]+)",
-        "twitter":   r"(?:twitter|x)\.com/([^/?#\"]+)",
+    """Object-specific social links from the vaa-destination-some container."""
+    result = {"instagram": "", "facebook": "", "twitter": "", "pinterest": ""}
+    class_map = {
+        "instagram": "instagram",
+        "facebook":  "facebook",
+        "twitter":   "twitter",
+        "twitter-x": "twitter",
+        "pinterest": "pinterest",
     }
-    for a in soup.find_all("a", href=True):
-        href = a["href"]
-        for network, pat in patterns.items():
-            if result[network]:
-                continue
-            m = re.search(pat, href, re.I)
-            if m:
-                account = m.group(1).strip("/").lower()
-                if account not in SITE_ACCOUNTS:
-                    result[network] = href.strip()
+    social_div = soup.find("div", class_="vaa-destination-some")
+    if social_div:
+        for a in social_div.find_all("a", href=True):
+            href = a["href"].strip()
+            css = a.get("class", [])
+            for cls in css:
+                key = class_map.get(cls)
+                if key and not result[key]:
+                    result[key] = href
     return result
 
 
@@ -225,7 +264,9 @@ def scrape_en(soup: BeautifulSoup) -> dict:
         "cover":       extract_cover(soup),
         "description": extract_description(soup),
         "phone":       extract_phone(soup),
-        "website":     extract_website(soup),
+        "email":       extract_email(soup),
+        "websites":    extract_websites(soup),
+        "links":       extract_description_links(soup),
         "social":      extract_social(soup),
         "gallery":     extract_gallery(soup),
     }
@@ -255,13 +296,17 @@ def main():
             soup_fi = get_soup(url_fi, cache)
             fi_desc = extract_description(soup_fi) if soup_fi else ""
 
+        websites = en.get("websites", [])
         details[str(i)] = {
             "cover":          en.get("cover", {"url": "", "caption": ""}),
             "description":    en.get("description", ""),
             "description_fi": fi_desc,
             "phone":          en.get("phone", ""),
-            "website":        en.get("website", ""),
-            "social":         en.get("social", {"instagram": "", "facebook": "", "twitter": ""}),
+            "email":          en.get("email", ""),
+            "website":        websites[0]["url"] if websites else "",
+            "websites":       websites,
+            "links":          en.get("links", []),
+            "social":         en.get("social", {"instagram": "", "facebook": "", "twitter": "", "pinterest": ""}),
             "gallery":        en.get("gallery", []),
         }
 

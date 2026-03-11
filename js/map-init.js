@@ -500,21 +500,45 @@
     // ═════════════════════════════════════════════════════
     //  List Panel
     // ═════════════════════════════════════════════════════
-    const featureList = data.features.map((f, i) => ({
-      id: i,
-      name: f.properties.name,
-      name_fi: f.properties.name_fi,
-      country: f.properties.country || 'Finland',
-      feature: f,
-      coords: f.geometry.coordinates,
-    }));
+    function parseCityFromAddress(addr) {
+      if (!addr) return '';
+      const parts = addr.split(',').map(p => p.trim());
+      if (parts.length < 2) return '';
+      const beforeCountry = parts[parts.length - 2];
+      const m = beforeCountry.match(/^\d{5}\s+(.+)$/);
+      return m ? m[1].trim() : beforeCountry;
+    }
+
+    const featureList = data.features.map((f, i) => {
+      const p = f.properties;
+      const cityEn = p.city || parseCityFromAddress(p.address);
+      const cityFi = p.city_fi || parseCityFromAddress(p.address_fi || p.address);
+      return {
+        id: i,
+        name: p.name,
+        name_fi: p.name_fi,
+        country: p.country || 'Finland',
+        city: cityEn,
+        city_fi: cityFi,
+        feature: f,
+        coords: f.geometry.coordinates,
+      };
+    });
+
+    function haversineKm(a, b) {
+      const R = 6371;
+      const dLat = (b[1] - a[1]) * Math.PI / 180;
+      const dLon = (b[0] - a[0]) * Math.PI / 180;
+      const lat1 = a[1] * Math.PI / 180, lat2 = b[1] * Math.PI / 180;
+      const x = Math.sin(dLat/2)**2 + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLon/2)**2;
+      return 2 * R * Math.asin(Math.sqrt(x));
+    }
 
     const groups = {};
     featureList.forEach(item => {
       if (!groups[item.country]) groups[item.country] = [];
       groups[item.country].push(item);
     });
-    Object.values(groups).forEach(g => g.sort((a, b) => a.name.localeCompare(b.name)));
     const sortedCountries = Object.keys(groups).sort((a, b) => {
       if (a === 'Finland') return -1;
       if (b === 'Finland') return 1;
@@ -526,6 +550,8 @@
 
     const listBody = document.getElementById('list-body');
     let activeFilter = 'all';
+    let activeSortMode = 'distance';
+    let userLocation = null;
     const collapsedGroups = new Set();
 
     A.renderList = function() {
@@ -533,8 +559,11 @@
       const query = document.getElementById('list-search').value.toLowerCase();
       listBody.innerHTML = '';
 
+      const ref = userLocation || map.getCenter();
+      const refCoords = userLocation ? [userLocation.lng, userLocation.lat] : [ref.lng, ref.lat];
+
       sortedCountries.forEach(country => {
-        const items = groups[country].filter(item => {
+        let items = groups[country].filter(item => {
           const name = (isfi && item.name_fi ? item.name_fi : item.name).toLowerCase();
           if (query && !name.includes(query)) return false;
           if (activeFilter === 'fav' && !A.favs.has(item.id)) return false;
@@ -542,6 +571,13 @@
           return true;
         });
         if (!items.length) return;
+
+        if (activeSortMode === 'distance') {
+          items = items.map(item => ({ ...item, _dist: haversineKm(refCoords, item.coords) }));
+          items.sort((a, b) => a._dist - b._dist);
+        } else {
+          items = [...items].sort((a, b) => a.name.localeCompare(b.name));
+        }
 
         const header = document.createElement('div');
         header.className = 'list-group-header';
@@ -565,7 +601,10 @@
 
           const nameSpan = document.createElement('span');
           nameSpan.className = 'list-item-name';
-          nameSpan.textContent = isfi && item.name_fi ? item.name_fi : item.name;
+          const displayName = isfi && item.name_fi ? item.name_fi : item.name;
+          const city = isfi && item.city_fi ? item.city_fi : item.city;
+          const distKm = item._dist != null ? item._dist.toFixed(1) : null;
+          nameSpan.innerHTML = displayName + (city ? `<span class="list-item-meta">, ${city}</span>` : '') + (distKm != null ? `<span class="list-item-meta">, ${distKm} km</span>` : '');
 
           const actions = document.createElement('span');
           actions.className = 'list-actions';
@@ -623,6 +662,7 @@
         listBody.appendChild(noRes);
       }
       updateListCount();
+      A.updatePanelLayout();
     };
 
     function updateListCount() {
@@ -704,6 +744,83 @@
       });
     });
 
+    const sortDropdown = document.getElementById('list-sort-dropdown');
+    const sortTrigger = document.getElementById('list-sort-trigger');
+    const sortValueEl = document.getElementById('list-sort-value');
+    const sortMenu = document.getElementById('list-sort-menu');
+    if (sortDropdown && sortTrigger && sortMenu) {
+      const updateSortDisplay = () => {
+        sortValueEl.textContent = activeSortMode === 'distance' ? A.t('sortDistance') : A.t('sortAlphabet');
+        sortMenu.querySelectorAll('.list-sort-option').forEach(o => {
+          o.classList.toggle('active', o.dataset.sort === activeSortMode);
+        });
+      };
+      updateSortDisplay();
+      sortTrigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        sortDropdown.classList.toggle('open');
+      });
+      sortMenu.addEventListener('click', (e) => e.stopPropagation());
+      sortMenu.querySelectorAll('.list-sort-option').forEach(opt => {
+        opt.addEventListener('click', (e) => {
+          e.stopPropagation();
+          activeSortMode = opt.dataset.sort;
+          updateSortDisplay();
+          sortDropdown.classList.remove('open');
+          A.renderList();
+        });
+      });
+      document.addEventListener('click', () => sortDropdown.classList.remove('open'));
+    }
+
+    let _renderListMoveTimer;
+    map.on('moveend', () => {
+      if (activeSortMode !== 'distance') return;
+      clearTimeout(_renderListMoveTimer);
+      _renderListMoveTimer = setTimeout(() => A.renderList(), 200);
+    });
+
+    const geoControl = {
+      onAdd(map) {
+        const el = document.createElement('div');
+        el.className = 'mapboxgl-ctrl mapboxgl-ctrl-group';
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'mapboxgl-ctrl-icon map-geolocate-btn';
+        btn.setAttribute('aria-label', A.t('tipUseMyLocation'));
+        btn.title = A.t('tipUseMyLocation');
+        btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="10" r="3"/><path d="M10 2v4M10 14v4M2 10h4M14 10h4"/></svg>';
+        el.appendChild(btn);
+        btn.onclick = () => {
+          if (userLocation) {
+            userLocation = null;
+            btn.classList.remove('active');
+            A.renderList();
+            return;
+          }
+          if (!navigator.geolocation) {
+            A.showToast(A.t('locationUnavailable'));
+            return;
+          }
+          navigator.geolocation.getCurrentPosition(
+            (pos) => {
+              userLocation = { lng: pos.coords.longitude, lat: pos.coords.latitude };
+              btn.classList.add('active');
+              A.renderList();
+              map.flyTo({ center: [userLocation.lng, userLocation.lat], zoom: Math.max(map.getZoom(), 12), duration: 800 });
+            },
+            () => {
+              userLocation = null;
+              A.showToast(A.t('locationUnavailable'));
+            }
+          );
+        };
+        return el;
+      },
+      onRemove() {},
+    };
+    map.addControl(geoControl, 'bottom-left');
+
     document.getElementById('route-from-bookmarks').onclick = (e) => {
       e.stopPropagation();
       A.routeStops.length = 0;
@@ -753,16 +870,34 @@
       }
     }
 
+    function measureListPanelContent() {
+      const listPanel = document.getElementById('list-panel');
+      let h = 0;
+      for (const child of listPanel.children) {
+        if (child.style.display === 'none') continue;
+        if (child.id === 'list-body') {
+          h += child.scrollHeight;
+        } else {
+          h += child.offsetHeight;
+        }
+      }
+      return h;
+    }
+
     A.updatePanelLayout = function() {
       const routeCollapsed = document.getElementById('route-section').classList.contains('collapsed');
       const bothCollapsed = listCollapsed && routeCollapsed;
       const listPanel = document.getElementById('list-panel');
       const panelEl = document.getElementById('panel');
       const panelOpen = panelEl.classList.contains('open');
+      const vh = window.innerHeight;
 
       listPanel.classList.toggle('minimized', bothCollapsed);
+      panelEl.classList.remove('stacked');
+      listPanel.classList.remove('stacked-host');
 
       if (bothCollapsed) {
+        listPanel.style.height = '';
         const listHeight = listPanel.offsetHeight;
         panelEl.style.top = listHeight + 'px';
         panelEl.style.height = `calc(100vh - ${listHeight}px)`;
@@ -770,23 +905,48 @@
         panelEl.style.width = '33.33vw';
         mapEl.classList.remove('detail-open');
         mapEl.style.width = '100vw';
+      } else if (panelOpen && !listCollapsed) {
+        const contentH = measureListPanelContent();
+        const freeRatio = (vh - contentH) / vh;
+
+        if (freeRatio >= 0.5) {
+          const usedH = Math.max(contentH, 1);
+          listPanel.style.height = usedH + 'px';
+          listPanel.classList.add('stacked-host');
+          panelEl.style.top = usedH + 'px';
+          panelEl.style.right = '0';
+          panelEl.style.width = '33.33vw';
+          panelEl.style.height = (vh - usedH) + 'px';
+          panelEl.classList.add('stacked');
+          mapEl.classList.remove('detail-open');
+          mapEl.style.width = '';
+        } else {
+          listPanel.style.height = '';
+          panelEl.style.top = ''; panelEl.style.height = '';
+          panelEl.style.right = ''; panelEl.style.width = '';
+          mapEl.style.width = '';
+          if (!mapEl.classList.contains('detail-open'))
+            mapEl.classList.add('detail-open');
+        }
       } else if (listCollapsed) {
+        listPanel.style.height = '';
         panelEl.style.top = ''; panelEl.style.height = '';
         panelEl.style.right = ''; panelEl.style.width = '';
         mapEl.style.width = '100vw';
         if (panelOpen && !mapEl.classList.contains('detail-open'))
           mapEl.classList.add('detail-open');
       } else {
+        listPanel.style.height = '';
         panelEl.style.top = ''; panelEl.style.height = '';
         panelEl.style.right = ''; panelEl.style.width = '';
         mapEl.style.width = '';
-        if (panelOpen && !mapEl.classList.contains('detail-open'))
-          mapEl.classList.add('detail-open');
       }
       mapEl.style.transition = 'none';
       map.resize();
       requestAnimationFrame(() => { mapEl.style.transition = ''; });
     };
+
+    window.addEventListener('resize', () => A.updatePanelLayout());
 
     A.fitRouteOverview = function() {
       if (A.routeStops.length < 2) return;
@@ -943,7 +1103,9 @@
     }
 
     async function calculateSegment(from, to, mode) {
-      if (!getDirectionsService()) return null;
+      if (!getDirectionsService()) {
+        return null;
+      }
       return new Promise((resolve) => {
         getDirectionsService().route({
           origin: new google.maps.LatLng(from[1], from[0]),

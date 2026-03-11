@@ -12,7 +12,7 @@
     const thumbsEl = document.getElementById('lightbox-thumbs');
     thumbsEl.innerHTML = lbImages.length > 1
       ? lbImages.map((img, i) =>
-          `<img class="lb-thumb" src="${img.url}" data-idx="${i}">`
+          `<img class="lb-thumb" src="${img.thumb}" data-idx="${i}">`
         ).join('')
       : '';
     thumbsEl.querySelectorAll('.lb-thumb').forEach(t => {
@@ -30,7 +30,7 @@
     lbIdx = (n + lbImages.length) % lbImages.length;
     const item = lbImages[lbIdx];
     const img = document.getElementById('lightbox-img');
-    img.src = item.url;
+    img.src = item.large;
     img.alt = item.caption || '';
     document.getElementById('lightbox-caption').textContent = item.caption || '';
     document.getElementById('lightbox-prev').style.display = lbImages.length > 1 ? '' : 'none';

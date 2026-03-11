@@ -32,6 +32,11 @@
       filterAll: 'All',
       filterBookmarks: 'Bookmarks',
       filterVisited: 'Visited',
+      sortLabel: 'SORT:',
+      sortDistance: 'Distance',
+      sortAlphabet: 'Alphabet',
+      tipUseMyLocation: 'Use my location',
+      locationUnavailable: 'Location unavailable',
       phone: 'Phone',
       website: 'Website',
       optimizationFailed: 'ROUTE OPTIMIZATION NOT AVAILABLE',
@@ -51,6 +56,7 @@
       tipClearRoute: 'Clear all stops',
       tipBookmarked: 'Bookmarked',
       tipVisitedMark: 'Visited',
+      dataSource: 'Source: visit.alvaraalto.fi',
     },
     fi: {
       headerTitle: 'Alvar Aallon Reitti',
@@ -80,6 +86,11 @@
       filterAll: 'Kaikki',
       filterBookmarks: 'Suosikit',
       filterVisited: 'Käydyt',
+      sortLabel: 'JÄRJESTÄ:',
+      sortDistance: 'Etäisyys',
+      sortAlphabet: 'Aakkosjärjestys',
+      tipUseMyLocation: 'Käytä sijaintiani',
+      locationUnavailable: 'Sijainti ei saatavilla',
       phone: 'Puhelin',
       website: 'Verkkosivu',
       optimizationFailed: 'REITIN OPTIMOINTI EI SAATAVILLA',
@@ -99,6 +110,7 @@
       tipClearRoute: 'Tyhjennä kaikki pysäkit',
       tipBookmarked: 'Suosikeissa',
       tipVisitedMark: 'Käyty',
+      dataSource: 'Lähde: visit.alvaraalto.fi',
     },
   };
 
@@ -113,6 +125,8 @@
     const tr = A.i18n[lang];
     document.getElementById('header-title').textContent = tr.headerTitle;
     document.getElementById('header-sub').textContent = tr.headerSub;
+    const srcLink = document.getElementById('header-source');
+    if (srcLink) srcLink.textContent = tr.dataSource;
     document.querySelectorAll('.lang-btn').forEach(b =>
       b.classList.toggle('active', b.dataset.lang === lang));
     const destHeader = document.querySelector('#list-section-header > span:nth-child(2)');
@@ -130,6 +144,16 @@
     if (filterFav) filterFav.innerHTML = '<svg width="10" height="12" viewBox="0 0 11 14" fill="currentColor"><path d="M0 0h11v14l-5.5-4L0 14z"/></svg> ' + tr.filterBookmarks + ' <span class="filter-count"></span>';
     const filterVis = document.querySelector('[data-filter="visited"]');
     if (filterVis) filterVis.innerHTML = '<svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l3 3 5-6"/></svg> ' + tr.filterVisited + ' <span class="filter-count"></span>';
+    const sortLabel = document.getElementById('list-sort-label');
+    if (sortLabel) sortLabel.textContent = tr.sortLabel;
+    const sortOptDistance = document.querySelector('.list-sort-option[data-sort="distance"]');
+    const sortOptAlphabet = document.querySelector('.list-sort-option[data-sort="alphabet"]');
+    if (sortOptDistance) sortOptDistance.textContent = tr.sortDistance;
+    if (sortOptAlphabet) sortOptAlphabet.textContent = tr.sortAlphabet;
+    const sortValueEl = document.getElementById('list-sort-value');
+    const activeSortOpt = document.querySelector('.list-sort-option.active');
+    if (sortValueEl) sortValueEl.textContent = activeSortOpt?.dataset.sort === 'alphabet' ? tr.sortAlphabet : tr.sortDistance;
+    document.querySelectorAll('.map-geolocate-btn').forEach(b => { b.title = tr.tipUseMyLocation; b.setAttribute('aria-label', tr.tipUseMyLocation); });
     document.querySelectorAll('.route-mode-btn').forEach(b => {
       b.textContent = tr.modeLabels[b.dataset.mode] || b.dataset.mode;
     });

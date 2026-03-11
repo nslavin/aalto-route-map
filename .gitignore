@@ -1,2 +1,4 @@
 .DS_Store
 .claude/
+.cursor/
+data/images/

@@ -14,7 +14,8 @@ Interactive web map to explore, bookmark, plan, and share routes through Alvar A
   - Drag-and-drop stop reordering, route optimization
   - Google Maps export
 - Bilingual: EN / FI language switch
-- Three-column layout: map | detail panel | list panel (33.33vw each)
+- Adaptive layout: stacked panel in right column when space allows, 3-column when list is tall
+- Local optimized images: thumb (300px), medium (800px), large (1600px) WebP versions
 
 ## Project structure
 
@@ -30,7 +31,8 @@ js/
   map-init.js                 — Mapbox init, map.on('load'), layers, list, route
 data/
   aalto_route.geojson         — 72 features: name, name_fi, address, address_fi, url, url_fi, image
-  aalto_details.json          — enriched building details (cover, gallery, description, contact, social)
+  aalto_details.json          — enriched building details (cover, gallery, description, contact, social, websites, links, email, local_images)
+  images/                     — locally cached optimized images (thumb/medium/large WebP)
   aalto_route_enriched.geojson — intermediate enrichment output
   aalto_clusters_countries.geojson
   aalto_clusters_cities.geojson
@@ -44,6 +46,7 @@ scripts/
   enrich_aalto_route.py       — scrapes detail pages for descriptions, galleries, contact info
   cluster_geojson.py          — clusters route GeoJSON by country, city, Helsinki district
   merge_city_clusters.py      — merges city cluster variants
+  download_images.py          — downloads & optimizes images (thumb 300px, medium 800px, large 1600px WebP)
 ```
 
 ## Stack
@@ -66,7 +69,7 @@ python3 -m http.server 8081
 - **Modular app**: HTML in `index.html`, CSS in `styles.css`, JS split into `js/*.js` (state, toast, i18n, lightbox, panel, map-init). Load order: state → toast → i18n → lightbox → panel → map-init.
 - **Shared namespace**: `window.Aalto` holds state (routeStops, favs, visited, etc.) and callbacks; modules extend it.
 - **Stub pattern**: `state.js` declares stub functions (`renderRouteSection`, `calculateAllSegments`, etc.); `map-init.js` assigns real implementations after `map.on('load')`.
-- **Layout states**: normal (66.67vw map + 33.33vw list), detail-open (3×33.33vw), both-collapsed (100vw map + minimized headers top-right)
+- **Layout states**: normal (66.67vw map + 33.33vw list), detail-stacked (66.67vw map + 33.33vw right column split: list top + panel bottom, when list ≤50% viewport), detail-open (3×33.33vw, when list >50% viewport), both-collapsed (100vw map + minimized headers top-right)
 - **Persistence**: localStorage keys `aalto_favs`, `aalto_visited`, `aalto_route`
 - **Feature state**: Mapbox `setFeatureState` for `selected`, `hover`, `fav`, `visited`
 
