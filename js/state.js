@@ -37,9 +37,40 @@
     if (vs) vs.textContent = A.visited.size ? `(${A.visited.size})` : '';
   }
 
+  function loadPanels() {
+    try {
+      const raw = localStorage.getItem('aalto_panels');
+      if (!raw) return null;
+      const p = JSON.parse(raw);
+      return {
+        listCollapsed: !!p.listCollapsed,
+        routeCollapsed: !!p.routeCollapsed,
+        panelOpen: !!p.panelOpen,
+        selectedId: (typeof p.selectedId === 'number' ? p.selectedId : null),
+      };
+    } catch (e) {
+      return null;
+    }
+  }
+  function savePanels() {
+    const A = window.Aalto;
+    const routeEl = document.getElementById('route-section');
+    const panelEl = document.getElementById('panel');
+    if (!routeEl || !panelEl) return;
+    const state = {
+      listCollapsed: !!A.listCollapsed,
+      routeCollapsed: routeEl.classList.contains('collapsed'),
+      panelOpen: panelEl.classList.contains('open'),
+      selectedId: A.selectedId != null ? A.selectedId : null,
+    };
+    localStorage.setItem('aalto_panels', JSON.stringify(state));
+  }
+
   window.Aalto.saveFavs = saveFavs;
   window.Aalto.saveVisited = saveVisited;
   window.Aalto.saveRoute = saveRoute;
+  window.Aalto.loadPanels = loadPanels;
+  window.Aalto.savePanels = savePanels;
   window.Aalto.updateFilterCounts = updateFilterCounts;
 
   // Stubs — reassigned in map-init.js after map loads

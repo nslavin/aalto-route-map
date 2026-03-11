@@ -378,7 +378,9 @@
 
     function handleClusterClick(props, coords, useFitBounds = false) {
       _skipMapClick = true;
-      const objects = JSON.parse(props.objects || '[]');
+      const objects = typeof props.objects === 'string'
+        ? JSON.parse(props.objects || '[]')
+        : (Array.isArray(props.objects) ? props.objects : []);
       if (props.count === 1) {
         selectFeatureByName(objects[0]?.name, coords);
       } else {
@@ -851,28 +853,30 @@
     // ═════════════════════════════════════════════════════
     //  Layout Management
     // ═════════════════════════════════════════════════════
-    let listCollapsed = false;
+    A.listCollapsed = false;
     document.getElementById('list-section-header').onclick = () => {
-      listCollapsed = !listCollapsed;
-      document.getElementById('list-body').style.display = listCollapsed ? 'none' : '';
-      document.getElementById('list-toggle').style.transform = listCollapsed ? 'rotate(-90deg)' : '';
-      document.getElementById('list-panel').classList.toggle('list-collapsed', listCollapsed);
+      A.listCollapsed = !A.listCollapsed;
+      document.getElementById('list-body').style.display = A.listCollapsed ? 'none' : '';
+      document.getElementById('list-toggle').style.transform = A.listCollapsed ? 'rotate(-90deg)' : '';
+      document.getElementById('list-panel').classList.toggle('list-collapsed', A.listCollapsed);
       A.updatePanelLayout();
+      A.savePanels();
     };
 
     function expandDestinations() {
-      if (listCollapsed) {
-        listCollapsed = false;
+      if (A.listCollapsed) {
+        A.listCollapsed = false;
         document.getElementById('list-body').style.display = '';
         document.getElementById('list-toggle').style.transform = '';
         document.getElementById('list-panel').classList.remove('list-collapsed');
         A.updatePanelLayout();
+        A.savePanels();
       }
     }
 
     A.updatePanelLayout = function() {
       const routeCollapsed = document.getElementById('route-section').classList.contains('collapsed');
-      const bothCollapsed = listCollapsed && routeCollapsed;
+      const bothCollapsed = A.listCollapsed && routeCollapsed;
       const listPanel = document.getElementById('list-panel');
       const panelEl = document.getElementById('panel');
       const panelOpen = panelEl.classList.contains('open');
@@ -890,7 +894,7 @@
         panelEl.style.width = '33.33vw';
         mapEl.classList.remove('detail-open');
         mapEl.style.width = '100vw';
-      } else if (panelOpen && !listCollapsed) {
+      } else if (panelOpen && !A.listCollapsed) {
         listPanel.style.height = '100vh';
         listPanel.style.background = '#fff';
         panelEl.style.top = '0';
@@ -901,7 +905,7 @@
         mapEl.style.width = '';
         if (!mapEl.classList.contains('detail-open'))
           mapEl.classList.add('detail-open');
-      } else if (listCollapsed) {
+      } else if (A.listCollapsed) {
         if (panelOpen) {
           listPanel.style.height = '100vh';
           listPanel.style.background = '#fff';
@@ -1445,6 +1449,7 @@
       const ci = document.getElementById('route-collapsed-info');
       ci.style.display = (collapsed && A.routeStops.length > 0) ? '' : 'none';
       A.updatePanelLayout();
+      A.savePanels();
     };
 
     document.getElementById('route-clear').onclick = (e) => {
@@ -1564,5 +1569,30 @@
     }
 
     A.renderList();
+
+    // Restore saved panel state (after renderList so list items exist for highlightListItem)
+    const savedPanels = A.loadPanels();
+    if (savedPanels) {
+      A.listCollapsed = savedPanels.listCollapsed;
+      document.getElementById('list-body').style.display = A.listCollapsed ? 'none' : '';
+      document.getElementById('list-toggle').style.transform = A.listCollapsed ? 'rotate(-90deg)' : '';
+      document.getElementById('list-panel').classList.toggle('list-collapsed', A.listCollapsed);
+
+      const routeSection = document.getElementById('route-section');
+      if (savedPanels.routeCollapsed) {
+        routeSection.classList.add('collapsed');
+        const ci = document.getElementById('route-collapsed-info');
+        ci.style.display = A.routeStops.length > 0 ? '' : 'none';
+      } else {
+        routeSection.classList.remove('collapsed');
+      }
+
+      if (savedPanels.panelOpen && savedPanels.selectedId != null) {
+        const item = featureList.find(f => f.id == savedPanels.selectedId);
+        if (item) A.selectFeature({ ...item.feature, id: item.id }, { skipExpand: true });
+      }
+
+      A.updatePanelLayout();
+    }
   });
 })();

@@ -239,6 +239,7 @@
     panel.scrollTop = 0;
     panel.classList.add('open');
     A.updatePanelLayout();
+    A.savePanels();
   }
 
   function closePanel() {
@@ -253,6 +254,7 @@
     A.selectedId = null;
     A.currentFeature = null;
     A.updatePanelLayout();
+    A.savePanels();
   }
 
   function selectFeature(feature, opts) {
