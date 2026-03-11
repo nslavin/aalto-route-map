@@ -206,6 +206,19 @@
     document.getElementById('panel-address').textContent =
       parts.length > 2 ? parts.slice(-3).join(',').trim() : rawAddr;
 
+    const nameForQuery = (isfi && p.name_fi ? p.name_fi : p.name) || '';
+    const addrForQuery = (isfi && p.address_fi ? p.address_fi : p.address) || '';
+    const coords = feature.geometry?.coordinates;
+    const searchQuery = [nameForQuery, addrForQuery].filter(Boolean).join(' ');
+    const gmapsUrl = searchQuery
+      ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(searchQuery)}`
+      : (coords ? `https://www.google.com/maps/search/?api=1&query=${coords[1]},${coords[0]}` : '#');
+    const gmEl = document.getElementById('panel-gmaps');
+    gmEl.href = gmapsUrl;
+    gmEl.textContent = A.t('openGoogleMaps');
+    gmEl.title = A.t('tipGoogleMaps');
+    gmEl.style.display = gmapsUrl === '#' ? 'none' : '';
+
     renderPanelActions(feature);
     renderPanelCarousel(feature, det);
     renderPanelDescription(det, isfi);

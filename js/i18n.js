@@ -175,6 +175,8 @@
     if (clrBtn) { clrBtn.textContent = tr.clear; clrBtn.title = tr.tipClearRoute; }
     const cgmBtn = document.getElementById('route-collapsed-gmaps');
     if (cgmBtn) cgmBtn.textContent = tr.openGoogleMaps;
+    const pgm = document.getElementById('panel-gmaps');
+    if (pgm) { pgm.textContent = tr.openGoogleMaps; pgm.title = tr.tipGoogleMaps; }
     const rfb = document.getElementById('route-from-bookmarks');
     if (rfb) rfb.textContent = tr.newRouteFromBookmarks;
     A.updateFilterCounts();

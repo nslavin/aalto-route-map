@@ -285,10 +285,21 @@ body {
 }
 .panel-action-btn:hover { color: #888; }
 .panel-action-btn.active { color: #000; }
+#panel-address-row {
+  display: flex; align-items: baseline;
+  gap: 12px; flex-wrap: wrap; margin-bottom: 16px;
+}
 #panel-address {
   font-size: 12px; color: #888;
-  letter-spacing: 0.05em; line-height: 1.7; margin-bottom: 16px;
+  letter-spacing: 0.05em; line-height: 1.7; margin: 0; flex: 1; min-width: 0;
 }
+.panel-gmaps-link {
+  flex-shrink: 0;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: #999; text-decoration: none;
+  transition: opacity 0.15s;
+}
+.panel-gmaps-link:hover { opacity: 0.5; }
 #panel-description {
   font-size: 13.5px; color: #333;
   line-height: 1.75; margin-bottom: 10px;
