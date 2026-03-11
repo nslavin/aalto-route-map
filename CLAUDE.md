@@ -19,8 +19,7 @@ Interactive web map to explore, bookmark, plan, and share routes through Alvar A
 ## Project structure
 
 ```
-index.html                    — main HTML (production keys), loads external CSS/JS
-index-test.html               — copy with test API keys (gitignored, do not commit)
+index.html                    — main HTML, loads external CSS/JS
 styles.css                    — all app styles
 js/
   state.js                    — route stops, favs, visited, persistence, toggle helpers
@@ -52,31 +51,14 @@ scripts/
 - **Map**: Mapbox GL JS v3.9.0, Standard style + CSS `grayscale(1) contrast(1.05)`
 - **Routing**: Google Maps JavaScript API (DirectionsService)
 - **Data**: static GeoJSON + `aalto_details.json` (enriched building details)
-- **Dev server**: Python `http.server` — port 8081 (prod), port 8082 (test)
+- **Dev server**: Python `http.server` — port 8081
 - **No build tools** — vanilla HTML/CSS/JS, split into `styles.css` + `js/*.js`
 
 ## Running locally
 
 ```bash
-# Production (index.html, prod keys)
 python3 -m http.server 8081
 # open http://localhost:8081
-
-# Test (index-test.html, test keys)
-python3 -m http.server 8082
-# open http://localhost:8082/index-test.html
-```
-
-## index-test.html workflow
-
-`index-test.html` is a gitignored copy of `index.html` with test API keys. To sync after editing:
-
-```bash
-cp index.html index-test.html
-# Replace Google API key in script src (edit or use sed with your prod/test key strings)
-cp js/map-init.js js/map-init-test.js
-# Replace Mapbox token in map-init-test.js with test token
-sed -i '' 's|js/map-init.js|js/map-init-test.js|' index-test.html
 ```
 
 ## Architecture notes
@@ -98,7 +80,7 @@ sed -i '' 's|js/map-init.js|js/map-init-test.js|' index-test.html
 
 ## API keys
 
-Keys are stored in `index.html` (Google) and `js/map-init.js` (Mapbox). Use separate prod/test keys for production vs local testing. Do not commit secrets.
+Keys are stored in `index.html` (Google) and `js/map-init.js` (Mapbox). Do not commit secrets.
 
 ## Data pipeline (supporting tool)
 

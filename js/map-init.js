@@ -404,7 +404,11 @@
       }
     }
 
-    ['country-clusters', 'country-labels'].forEach(id => {
+    const countryClusterLayerIds = ['country-clusters', 'country-labels', 'country-clusters-stack'];
+    const cityClusterLayerIds = ['city-clusters', 'city-labels', 'city-clusters-stack'];
+    const metroClusterLayerIds = ['metro-clusters', 'metro-labels', 'metro-clusters-stack'];
+
+    countryClusterLayerIds.forEach(id => {
       map.on('click', id, (e) => {
         if (e.originalEvent === _clusterClickEvt) return;
         _clusterClickEvt = e.originalEvent;
@@ -414,7 +418,7 @@
       map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
     });
 
-    ['city-clusters', 'city-labels'].forEach(id => {
+    cityClusterLayerIds.forEach(id => {
       map.on('click', id, (e) => {
         if (e.originalEvent === _clusterClickEvt) return;
         _clusterClickEvt = e.originalEvent;
@@ -424,7 +428,7 @@
       map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
     });
 
-    ['metro-clusters', 'metro-labels'].forEach(id => {
+    metroClusterLayerIds.forEach(id => {
       map.on('click', id, (e) => {
         if (e.originalEvent === _clusterClickEvt) return;
         _clusterClickEvt = e.originalEvent;
@@ -434,10 +438,47 @@
       map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
     });
 
-    map.on('click', 'aalto-clusters', (e) => {
+    const handleAaltoClusterClick = (e) => {
       _skipMapClick = true;
-      map.flyTo({ center: e.features[0].geometry.coordinates, zoom: map.getZoom() + 2, pitch: 0 });
+      const f = e.features[0];
+      const clusterId = f.properties?.cluster_id ?? f.id;
+      if (clusterId == null) {
+        map.flyTo({ center: f.geometry.coordinates, zoom: map.getZoom() + 2, pitch: 0 });
+        return;
+      }
+      const source = map.getSource('aalto');
+      if (!source || typeof source.getClusterLeaves !== 'function') {
+        map.flyTo({ center: f.geometry.coordinates, zoom: map.getZoom() + 2, pitch: 0 });
+        return;
+      }
+      source.getClusterLeaves(clusterId, 500, 0, (err, leaves) => {
+        if (err || !leaves || leaves.length === 0) {
+          map.flyTo({ center: f.geometry.coordinates, zoom: map.getZoom() + 2, pitch: 0 });
+          return;
+        }
+        const coords = leaves
+          .map(leaf => leaf.geometry?.coordinates)
+          .filter(c => Array.isArray(c) && c.length >= 2);
+        if (coords.length === 0) {
+          map.flyTo({ center: f.geometry.coordinates, zoom: map.getZoom() + 2, pitch: 0 });
+          return;
+        }
+        const lons = coords.map(c => c[0]);
+        const lats = coords.map(c => c[1]);
+        const bounds = [[Math.min(...lons), Math.min(...lats)], [Math.max(...lons), Math.max(...lats)]];
+        map.fitBounds(bounds, { padding: 80, pitch: 0, duration: 800, maxZoom: 16 });
+      });
+    };
+
+    ['aalto-clusters', 'aalto-clusters-stack', 'aalto-cluster-labels'].forEach(id => {
+      map.on('click', id, handleAaltoClusterClick);
     });
+    map.on('mouseenter', 'aalto-clusters', () => { map.getCanvas().style.cursor = 'pointer'; });
+    map.on('mouseleave', 'aalto-clusters', () => { map.getCanvas().style.cursor = ''; });
+    map.on('mouseenter', 'aalto-clusters-stack', () => { map.getCanvas().style.cursor = 'pointer'; });
+    map.on('mouseleave', 'aalto-clusters-stack', () => { map.getCanvas().style.cursor = ''; });
+    map.on('mouseenter', 'aalto-cluster-labels', () => { map.getCanvas().style.cursor = 'pointer'; });
+    map.on('mouseleave', 'aalto-cluster-labels', () => { map.getCanvas().style.cursor = ''; });
 
     map.on('click', 'aalto-points', (e) => {
       _skipMapClick = true;
