@@ -1619,7 +1619,7 @@
             const bounds = [[Math.min(...lons), Math.min(...lats)], [Math.max(...lons), Math.max(...lats)]];
             if (useFitBounds) {
               const cam = map.cameraForBounds(bounds, { padding: { top: 40, bottom: 160, left: 80, right: 80 } });
-              map.flyTo({ center: cam.center, zoom: 6, bearing: 0, pitch: 0, speed: 1.4 });
+              map.flyTo({ center: cam.center, zoom: cam.zoom, bearing: 0, pitch: 0, speed: 1.4 });
             } else {
               const cam = map.cameraForBounds(bounds, { padding: 80 });
               map.flyTo({ center: cam.center, zoom: Math.max(cam.zoom, 6.5), bearing: 0, pitch: 0, speed: 1.4 });
