@@ -49,6 +49,15 @@
             <div class="list-sort-option" data-sort="alphabet" role="option">Alphabet</div>
           </div>
         </div></span>
+        <div id="list-export-dropdown" class="list-export-dropdown">
+          <button type="button" id="list-export-trigger" class="list-export-trigger" aria-haspopup="menu" aria-expanded="false">
+            <span id="list-export-value">SHARE</span><svg class="list-export-arrow" width="8" height="5" viewBox="0 0 8 5"><path fill="currentColor" d="M1 1l3 3 3-3"/></svg>
+          </button>
+          <div id="list-export-menu" class="list-export-menu" role="menu" aria-hidden="true">
+            <button type="button" class="list-export-option" data-action="share-bookmarks" role="menuitem">Share bookmarks</button>
+            <button type="button" class="list-export-option" data-action="print-bookmarks" role="menuitem">Print bookmarks</button>
+          </div>
+        </div>
       </div>
     </div>
     <button id="route-from-bookmarks" class="route-from-bookmarks-btn" style="display:none">NEW ROUTE FROM BOOKMARKS</button>
@@ -83,6 +92,15 @@
         <div id="route-actions-bar">
           <button id="route-optimize" class="route-action-link">OPTIMIZE ROUTE</button>
           <button id="route-gmaps" class="route-action-link">OPEN IN GOOGLE MAPS</button>
+          <div id="route-export-dropdown" class="route-export-dropdown">
+            <button type="button" id="route-export-trigger" class="route-export-trigger" aria-haspopup="menu" aria-expanded="false">
+              <span id="route-export-value">SHARE</span><svg class="route-export-arrow" width="8" height="5" viewBox="0 0 8 5"><path fill="currentColor" d="M1 1l3 3 3-3"/></svg>
+            </button>
+            <div id="route-export-menu" class="route-export-menu" role="menu" aria-hidden="true">
+              <button type="button" class="route-export-option" data-action="share-route" role="menuitem">Share route</button>
+              <button type="button" class="route-export-option" data-action="print-route" role="menuitem">Print route</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -136,8 +154,14 @@
   <script src="./js/state.js"></script>
   <script src="./js/toast.js"></script>
   <script src="./js/i18n.js"></script>
+  <script src="./js/utils.js"></script>
+  <script src="./js/export.js"></script>
   <script src="./js/lightbox.js"></script>
   <script src="./js/panel.js"></script>
+  <script src="./js/map-layers.js"></script>
+  <script src="./js/list-panel.js"></script>
+  <script src="./js/route-planner.js"></script>
+  <script src="./js/layout.js"></script>
   <script src="./js/map-init.js"></script>
 </body>
 </html>

@@ -61,6 +61,13 @@
       returnToBicycle: 'Return to bicycle',
       returnToBicycleTip: 'Uncheck for one-way walk',
       dataSource: 'Source: visit.alvaraalto.fi',
+      shareBookmarks: 'Share bookmarks',
+      shareRoute: 'Share route',
+      printBookmarks: 'Print bookmarks',
+      printRoute: 'Print route',
+      sharedToClipboard: 'Copied to clipboard',
+      shareFailed: 'Could not share',
+      exportLabel: 'Share',
     },
     fi: {
       headerTitle: 'Alvar Aallon Reitti',
@@ -119,6 +126,13 @@
       returnToBicycle: 'Takaisin pyörälle',
       returnToBicycleTip: 'Poista rasti yhden suunnan kävelystä',
       dataSource: 'Lähde: visit.alvaraalto.fi',
+      shareBookmarks: 'Jaa suosikit',
+      shareRoute: 'Jaa reitti',
+      printBookmarks: 'Tulosta suosikit',
+      printRoute: 'Tulosta reitti',
+      sharedToClipboard: 'Kopioitu leikepöydälle',
+      shareFailed: 'Jakaminen epäonnistui',
+      exportLabel: 'Jaa',
     },
   };
 
@@ -179,6 +193,18 @@
     if (pgm) { pgm.textContent = tr.openGoogleMaps; pgm.title = tr.tipGoogleMaps; }
     const rfb = document.getElementById('route-from-bookmarks');
     if (rfb) rfb.textContent = tr.newRouteFromBookmarks;
+    const listExportVal = document.getElementById('list-export-value');
+    if (listExportVal) listExportVal.textContent = tr.exportLabel;
+    const routeExportVal = document.getElementById('route-export-value');
+    if (routeExportVal) routeExportVal.textContent = tr.exportLabel;
+    document.querySelectorAll('.list-export-option').forEach(o => {
+      if (o.dataset.action === 'share-bookmarks') o.textContent = tr.shareBookmarks;
+      if (o.dataset.action === 'print-bookmarks') o.textContent = tr.printBookmarks;
+    });
+    document.querySelectorAll('.route-export-option').forEach(o => {
+      if (o.dataset.action === 'share-route') o.textContent = tr.shareRoute;
+      if (o.dataset.action === 'print-route') o.textContent = tr.printRoute;
+    });
     A.updateFilterCounts();
     if (A.currentFeature) A.renderPanel(A.currentFeature);
     if (window._renderList) window._renderList();

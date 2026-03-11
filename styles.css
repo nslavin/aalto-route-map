@@ -121,7 +121,7 @@ body {
 .list-sort-dropdown.open .list-sort-arrow { transform: rotate(-90deg); }
 .list-sort-menu {
   position: absolute; top: 100%; right: 0; margin-top: 2px;
-  background: #fff; border: 1px solid #000; min-width: 100%;
+  background: #fff; border: 1px solid #999; min-width: 100%;
   box-shadow: none; display: none; z-index: 20;
 }
 .list-sort-dropdown.open .list-sort-menu { display: block; }
@@ -134,6 +134,41 @@ body {
 .list-sort-option:last-child { border-bottom: none; }
 .list-sort-option:hover { color: #000; background: #fafafa; }
 .list-sort-option.active { color: #000; background: #fff; }
+.list-export-dropdown { position: relative; }
+.list-export-trigger, .route-export-trigger {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: none; border: none; outline: none; -webkit-tap-highlight-color: transparent;
+  font-family: inherit; font-size: 8px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: #999; padding: 4px 8px; cursor: pointer;
+  transition: color 0.15s;
+}
+#route-actions-bar .route-export-trigger {
+  font-size: 9px; font-weight: 700; padding: 0; line-height: 1;
+}
+.list-export-trigger:hover, .route-export-trigger:hover { color: #666; }
+.list-export-arrow, .route-export-arrow { flex-shrink: 0; transition: transform 0.2s; }
+.list-export-dropdown.open .list-export-arrow,
+.route-export-dropdown.open .route-export-arrow { transform: rotate(-90deg); }
+.list-export-menu, .route-export-menu {
+  position: absolute; bottom: 100%; right: 0; margin-bottom: 2px;
+  background: #fff; border: 1px solid #ccc; min-width: 140px;
+  box-shadow: none; display: none; z-index: 20;
+}
+.list-export-dropdown.open .list-export-menu,
+.route-export-dropdown.open .route-export-menu { display: block; }
+.list-export-option, .route-export-option {
+  display: block; width: 100%; white-space: nowrap;
+  font-family: inherit; font-size: 8px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: #aaa; padding: 6px 10px; cursor: pointer; background: none; border: none;
+  border-bottom: 1px solid #eee; transition: color 0.15s, background 0.15s;
+  text-align: left;
+}
+.list-export-option:last-child, .route-export-option:last-child { border-bottom: none; }
+.list-export-option:hover:not(:disabled), .route-export-option:hover:not(:disabled) { color: #000; background: #fafafa; }
+.list-export-option:disabled, .route-export-option:disabled { color: #ccc; cursor: default; }
+.route-export-dropdown { position: relative; flex-shrink: 0; }
 .map-geolocate-btn {
   width: 29px; height: 29px; display: flex; align-items: center; justify-content: center;
   padding: 0; background: #fff; border: none; cursor: pointer;
@@ -442,7 +477,7 @@ a.panel-footer-value:hover { opacity: 0.5; }
 #route-section-body {
   padding: 0 16px 12px;
   display: flex; flex-direction: column;
-  max-height: 50vh; overflow: hidden;
+  max-height: 50vh; overflow: visible;
 }
 #route-mode-bar {
   display: flex; gap: 2px; margin-bottom: 6px; flex-wrap: wrap;
@@ -491,7 +526,7 @@ a.panel-footer-value:hover { opacity: 0.5; }
 }
 .route-threshold-row.hidden { display: none; }
 #route-stops-list {
-  flex: 1; overflow-y: auto; min-height: 0;
+  flex: 0 1 auto; overflow-y: auto; min-height: 0;
 }
 #walk-threshold-input {
   font-family: inherit; font-size: 9px; font-weight: 700;
@@ -536,7 +571,7 @@ a.panel-footer-value:hover { opacity: 0.5; }
 .route-stop-remove:hover { color: #000; }
 
 .route-segment-info {
-  padding: 2px 0 2px 24px;
+  padding: 2px 0;
   font-size: 10px; color: #999;
   letter-spacing: 0.06em;
   display: flex; align-items: center; gap: 4px;
@@ -592,15 +627,17 @@ a.panel-footer-value:hover { opacity: 0.5; }
 .seg-details { color: #999; }
 
 #route-actions-bar {
-  display: flex; gap: 12px;
-  padding: 8px 0 0;
+  display: flex; align-items: baseline; gap: 12px;
+  padding: 10px 0;
   border-top: 1px solid #e8e8e8;
   margin-top: 6px;
   flex-shrink: 0;
 }
 .route-action-link {
   background: none; border: none; cursor: pointer;
+  padding: 0;
   font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+  line-height: 1;
   text-transform: uppercase; color: #999;
   transition: opacity 0.15s;
 }
@@ -675,3 +712,41 @@ a.panel-footer-value:hover { opacity: 0.5; }
 .mapboxgl-ctrl-group button:hover { opacity: 1; }
 .mapboxgl-ctrl-group button + button { border-top: 1px solid #ccc !important; }
 .mapboxgl-ctrl-attrib { font-size: 9px; background: transparent !important; }
+
+/* ── Print ── */
+@media print {
+  body.print-mode::before {
+    content: attr(data-print-title);
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0 16px 12px;
+    border-bottom: 1px solid #000;
+    margin-bottom: 12px;
+  }
+  body.print-mode #map, body.print-mode #header, body.print-mode .mapboxgl-ctrl,
+  body.print-mode #panel, body.print-mode #toast, body.print-mode #lightbox,
+  body.print-mode .mapboxgl-control-container { display: none !important; }
+  body.print-mode #list-panel { position: static; width: 100%; border-left: none !important; height: auto !important; }
+  body.print-bookmarks #route-section,
+  body.print-bookmarks #list-section-header, body.print-bookmarks #list-toggle,
+  body.print-bookmarks #list-header, body.print-bookmarks .list-group-arrow { display: none !important; }
+  body.print-bookmarks .list-group-header { border-bottom: 1px solid #000; cursor: default; }
+  body.print-bookmarks .list-group-header.collapsed, body.print-bookmarks .list-group-header.collapsed + * { display: block !important; }
+  body.print-bookmarks #list-body { flex: none !important; height: auto !important; min-height: 0 !important; overflow: visible !important; }
+  body.print-route #route-section { display: block !important; }
+  body.print-route #route-section.collapsed #route-section-body { display: block !important; }
+  body.print-route #route-section-body, body.print-route #route-stops-list { max-height: none !important; overflow: visible !important; }
+  body.print-route #list-section-header, body.print-route #list-header,
+  body.print-route #list-body, body.print-route .list-group-header { display: none !important; }
+  body.print-route #route-section-header,
+  body.print-route #route-mode-bar,
+  body.print-route #route-walk-threshold,
+  body.print-route #route-actions-bar { display: none !important; }
+  body.print-mode .list-item:hover,
+  body.print-mode .list-item.active { background: transparent !important; }
+  body.print-mode .route-stop-row:hover,
+  body.print-mode .route-stop-row.active { background: transparent !important; }
+}

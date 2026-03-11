@@ -35,6 +35,7 @@
     const vs = document.querySelector('[data-filter="visited"] .filter-count');
     if (fs) fs.textContent = A.favs.size ? `(${A.favs.size})` : '';
     if (vs) vs.textContent = A.visited.size ? `(${A.visited.size})` : '';
+    if (A.updateExportDropdowns) A.updateExportDropdowns();
   }
 
   function loadPanels() {
