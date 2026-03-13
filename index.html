@@ -49,7 +49,7 @@
             <div class="list-sort-option" data-sort="alphabet" role="option">Alphabet</div>
           </div>
         </div></span>
-        <div id="list-export-dropdown" class="list-export-dropdown">
+        <div id="list-export-dropdown" class="list-export-dropdown" style="display:none">
           <button type="button" id="list-export-trigger" class="list-export-trigger" aria-haspopup="menu" aria-expanded="false">
             <span id="list-export-value">SHARE</span><svg class="list-export-arrow" width="8" height="5" viewBox="0 0 8 5"><path fill="currentColor" d="M1 1l3 3 3-3"/></svg>
           </button>
@@ -61,6 +61,7 @@
       </div>
     </div>
     <button id="route-from-bookmarks" class="route-from-bookmarks-btn" style="display:none">NEW ROUTE FROM BOOKMARKS</button>
+    <button id="route-from-visible" class="route-from-bookmarks-btn" style="display:none">ADD DESTINATIONS IN VIEW TO ROUTE</button>
     <div id="list-body"></div>
     <div id="route-section">
       <div id="route-section-header">
@@ -142,6 +143,16 @@
 
   <div id="toast"></div>
 
+  <div id="layer-zoom-panel" class="layer-zoom-panel collapsed">
+    <div id="layer-zoom-header" class="layer-zoom-header">
+      <span>LAYER ZOOM</span>
+      <button id="layer-zoom-toggle" type="button" title="Expand/collapse">&#9660;</button>
+    </div>
+    <div id="layer-zoom-body" class="layer-zoom-body">
+      <div id="layer-zoom-list"></div>
+    </div>
+  </div>
+
   <div id="lightbox">
     <img id="lightbox-img" src="" alt="">
     <div id="lightbox-caption"></div>
@@ -161,6 +172,7 @@
   <script src="./js/map-layers.js"></script>
   <script src="./js/list-panel.js"></script>
   <script src="./js/route-planner.js"></script>
+  <script src="./js/layer-zoom-config.js"></script>
   <script src="./js/layout.js"></script>
   <script src="./js/map-init.js"></script>
 </body>

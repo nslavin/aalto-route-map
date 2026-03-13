@@ -105,8 +105,8 @@
     }
   }
 
-  function printBookmarks(opts) {
-    if (opts && opts.before) opts.before();
+  async function printBookmarks(opts) {
+    if (opts && opts.before) await Promise.resolve(opts.before());
     const title = A.lang === 'fi' ? 'Alvar Aallon Reitti – Suosikit' : 'Alvar Aalto Route – My Bookmarks';
     document.body.classList.add('print-mode', 'print-bookmarks');
     document.body.dataset.printTitle = title;
@@ -123,8 +123,8 @@
     window.addEventListener('afterprint', cleanup);
   }
 
-  function printRoute(opts) {
-    if (opts && opts.before) opts.before();
+  async function printRoute(opts) {
+    if (opts && opts.before) await Promise.resolve(opts.before());
     const title = A.lang === 'fi' ? 'Alvar Aallon Reitti – Matka' : 'Alvar Aalto Route – My Trip';
     document.body.classList.add('print-mode', 'print-route');
     document.body.dataset.printTitle = title;

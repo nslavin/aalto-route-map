@@ -22,6 +22,8 @@
       optimizeRoute: 'OPTIMIZE ROUTE',
       openGoogleMaps: 'OPEN IN GOOGLE MAPS',
       newRouteFromBookmarks: 'NEW ROUTE FROM BOOKMARKS',
+      addVisibleToRoute: 'ADD DESTINATIONS IN VIEW TO ROUTE',
+      allVisibleInRoute: 'All visible destinations already in route',
       stop: 'stop',
       stops: 'stops',
       mixed: 'MIXED',
@@ -87,6 +89,8 @@
       optimizeRoute: 'OPTIMOI REITTI',
       openGoogleMaps: 'AVAA GOOGLE MAPSISSA',
       newRouteFromBookmarks: 'UUSI REITTI SUOSIKEISTA',
+      addVisibleToRoute: 'LISÄÄ KARTAN NÄKYVÄN ALUEEN KOHTEET REITILLE',
+      allVisibleInRoute: 'Kaikki näkyvät kohteet jo reitillä',
       stop: 'pysäkki',
       stops: 'pysäkkiä',
       mixed: 'SEKOITETTU',
@@ -193,6 +197,8 @@
     if (pgm) { pgm.textContent = tr.openGoogleMaps; pgm.title = tr.tipGoogleMaps; }
     const rfb = document.getElementById('route-from-bookmarks');
     if (rfb) rfb.textContent = tr.newRouteFromBookmarks;
+    const rfv = document.getElementById('route-from-visible');
+    if (rfv) rfv.textContent = tr.addVisibleToRoute;
     const listExportVal = document.getElementById('list-export-value');
     if (listExportVal) listExportVal.textContent = tr.exportLabel;
     const routeExportVal = document.getElementById('route-export-value');
@@ -207,8 +213,8 @@
     });
     A.updateFilterCounts();
     if (A.currentFeature) A.renderPanel(A.currentFeature);
-    if (window._renderList) window._renderList();
-    if (window._updateClusterLabels) window._updateClusterLabels();
+    if (A.renderList) A.renderList();
+    if (A.updateClusterLabels) A.updateClusterLabels();
     A.renderRouteSection();
   };
 

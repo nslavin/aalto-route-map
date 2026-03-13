@@ -7,7 +7,7 @@
   let lbImages = [];
 
   function openLightbox(startIdx) {
-    lbImages = window._carouselImages || [];
+    lbImages = window.Aalto.carouselImages || [];
     lbIdx = startIdx;
     const thumbsEl = document.getElementById('lightbox-thumbs');
     thumbsEl.innerHTML = lbImages.length > 1

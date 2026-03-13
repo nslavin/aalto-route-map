@@ -9,6 +9,7 @@
   A.selectedId = null;
 
   function renderPanelActions(feature) {
+    const esc = window.AaltoUtils.escHtml;
     const actionsEl = document.getElementById('panel-actions');
     const fid = feature.id;
     const p = feature.properties;
@@ -16,9 +17,9 @@
     const isVis = A.visited.has(fid);
     const inRoute = A.routeStops.some(s => s.id === fid);
     actionsEl.innerHTML = `
-      <button class="panel-action-btn${isFav ? ' active' : ''}" data-action="fav" title="${A.t('tipBookmark')}"><svg width="9" height="12" viewBox="0 0 11 14" fill="currentColor"><path d="M0 0h11v14l-5.5-4L0 14z"/></svg> ${A.t('bookmark')}</button>
-      <button class="panel-action-btn${isVis ? ' active' : ''}" data-action="visited" title="${A.t('tipVisited')}"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l3 3 5-6"/></svg> ${A.t('visited')}</button>
-      <button class="panel-action-btn${inRoute ? ' active' : ''}" data-action="route" title="${inRoute ? A.t('tipRemoveRoute') : A.t('tipAddRoute')}">${inRoute ? '−' + A.t('removeFromRoute') : '+' + A.t('addToRoute')}</button>`;
+      <button class="panel-action-btn${isFav ? ' active' : ''}" data-action="fav" title="${esc(A.t('tipBookmark'))}"><svg width="9" height="12" viewBox="0 0 11 14" fill="currentColor"><path d="M0 0h11v14l-5.5-4L0 14z"/></svg> ${esc(A.t('bookmark'))}</button>
+      <button class="panel-action-btn${isVis ? ' active' : ''}" data-action="visited" title="${esc(A.t('tipVisited'))}"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l3 3 5-6"/></svg> ${esc(A.t('visited'))}</button>
+      <button class="panel-action-btn${inRoute ? ' active' : ''}" data-action="route" title="${inRoute ? esc(A.t('tipRemoveRoute')) : esc(A.t('tipAddRoute'))}">${inRoute ? '−' + esc(A.t('removeFromRoute')) : '+' + esc(A.t('addToRoute'))}</button>`;
     actionsEl.querySelector('[data-action="fav"]').onclick = () => {
       A.toggleFav(fid);
       A.renderPanel(feature);
@@ -96,7 +97,7 @@
       navEl.style.background = item.caption ? 'transparent' : 'rgba(255,255,255,0.8)';
     }
 
-    window._carouselImages = images;
+    A.carouselImages = images;
     if (images.length) {
       carEl.style.display = '';
       navEl.style.display = images.length > 1 ? '' : 'none';
@@ -110,14 +111,15 @@
   }
 
   function renderPanelDescription(det, isfi) {
+    const esc = window.AaltoUtils.escHtml;
     const descEl = document.getElementById('panel-description');
     const desc = (isfi && det.description_fi ? det.description_fi : det.description) || '';
     if (desc) {
       const paras = desc.split('\n\n');
-      let html = `<p>${paras[0]}</p>`;
+      let html = `<p>${esc(paras[0])}</p>`;
       if (paras.length > 1) {
-        html += `<div class="desc-rest">${paras.slice(1).map(p => `<p>${p}</p>`).join('')}</div>`;
-        html += `<button class="desc-toggle">${A.t('readMore')}</button>`;
+        html += `<div class="desc-rest">${paras.slice(1).map(p => `<p>${esc(p)}</p>`).join('')}</div>`;
+        html += `<button class="desc-toggle">${esc(A.t('readMore'))}</button>`;
       }
       descEl.innerHTML = html;
       const restEl = descEl.querySelector('.desc-rest');
@@ -136,20 +138,21 @@
   }
 
   function renderPanelContact(det) {
+    const esc = window.AaltoUtils.escHtml;
     const contactEl = document.getElementById('panel-contact');
     contactEl.innerHTML = '';
     if (det.phone) {
       contactEl.innerHTML += `
         <div class="panel-footer-row">
-          <span class="panel-footer-label">${A.t('phone')}</span>
-          <a class="panel-footer-value" href="tel:${det.phone}">${det.phone}</a>
+          <span class="panel-footer-label">${esc(A.t('phone'))}</span>
+          <a class="panel-footer-value" href="tel:${esc(det.phone)}">${esc(det.phone)}</a>
         </div>`;
     }
     if (det.email) {
       contactEl.innerHTML += `
         <div class="panel-footer-row">
           <span class="panel-footer-label">Email</span>
-          <a class="panel-footer-value" href="mailto:${det.email}">${det.email}</a>
+          <a class="panel-footer-value" href="mailto:${esc(det.email)}">${esc(det.email)}</a>
         </div>`;
     }
     const websites = det.websites || [];
@@ -158,16 +161,16 @@
         const domain = w.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/.*$/, '');
         contactEl.innerHTML += `
           <div class="panel-footer-row">
-            <span class="panel-footer-label">${w.label}</span>
-            <a class="panel-footer-value" href="${w.url}" target="_blank" rel="noopener">${domain}</a>
+            <span class="panel-footer-label">${esc(w.label)}</span>
+            <a class="panel-footer-value" href="${esc(w.url)}" target="_blank" rel="noopener">${esc(domain)}</a>
           </div>`;
       });
     } else if (det.website) {
       const domain = det.website.replace(/^https?:\/\/(www\.)?/, '').replace(/\/.*$/, '');
       contactEl.innerHTML += `
         <div class="panel-footer-row">
-          <span class="panel-footer-label">${A.t('website')}</span>
-          <a class="panel-footer-value" href="${det.website}" target="_blank" rel="noopener">${domain}</a>
+          <span class="panel-footer-label">${esc(A.t('website'))}</span>
+          <a class="panel-footer-value" href="${esc(det.website)}" target="_blank" rel="noopener">${esc(domain)}</a>
         </div>`;
     }
     const links = det.links || [];
@@ -176,8 +179,8 @@
         const domain = l.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/.*$/, '');
         contactEl.innerHTML += `
           <div class="panel-footer-row">
-            <span class="panel-footer-label">${l.label}</span>
-            <a class="panel-footer-value" href="${l.url}" target="_blank" rel="noopener">${domain}</a>
+            <span class="panel-footer-label">${esc(l.label)}</span>
+            <a class="panel-footer-value" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(domain)}</a>
           </div>`;
       });
     }
@@ -187,7 +190,7 @@
     const socialMap = { instagram: 'Instagram', facebook: 'Facebook', twitter: 'X', pinterest: 'Pinterest' };
     Object.entries(socialMap).forEach(([key, label]) => {
       if (social[key]) {
-        socialEl.innerHTML += `<a class="social-link" href="${social[key]}" target="_blank" rel="noopener">${label}</a>`;
+        socialEl.innerHTML += `<a class="social-link" href="${esc(social[key])}" target="_blank" rel="noopener">${label}</a>`;
       }
     });
   }

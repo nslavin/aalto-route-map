@@ -15,6 +15,161 @@
     }
 
     const haversineKm = window.AaltoUtils.haversineKm;
+    const ROUTE_LAYER_IDS = ['route-driving', 'route-walking', 'route-walking-arrows', 'route-bicycling', 'route-transit', 'route-stop-cluster-markers', 'route-stop-cluster-labels', 'route-stop-markers', 'route-stop-numbers', 'route-stop-labels'];
+
+    const FAV_LAYER_IDS = ['aalto-favs-cluster-markers', 'aalto-favs-cluster-labels', 'aalto-favs-markers', 'aalto-favs-numbers', 'aalto-favs-labels'];
+    const VISITED_LAYER_IDS = ['aalto-visited-cluster-markers', 'aalto-visited-cluster-labels', 'aalto-visited-markers', 'aalto-visited-numbers', 'aalto-visited-labels'];
+    const MAIN_LAYER_IDS = ['country-clusters-stack', 'country-clusters', 'country-labels', 'city-clusters-stack', 'city-clusters', 'city-labels', 'metro-clusters-stack', 'metro-clusters', 'metro-labels', 'aalto-clusters-stack', 'aalto-clusters', 'aalto-cluster-labels', 'aalto-halo', 'aalto-points'];
+
+    const AALTO_POINTS_FILTER_BASE = ['!', ['has', 'point_count']];
+    const AALTO_HALO_FILTER_BASE = ['!', ['has', 'point_count']];
+    const GREY_PAINT_LAYERS = [
+      { id: 'country-clusters-stack', icon: true }, { id: 'country-clusters', icon: true },
+      { id: 'country-labels', text: true },
+      { id: 'city-clusters-stack', icon: true }, { id: 'city-clusters', icon: true },
+      { id: 'city-labels', text: true },
+      { id: 'metro-clusters-stack', icon: true }, { id: 'metro-clusters', icon: true },
+      { id: 'metro-labels', text: true },
+      { id: 'aalto-clusters-stack', icon: true }, { id: 'aalto-clusters', icon: true },
+      { id: 'aalto-cluster-labels', text: true },
+      { id: 'aalto-halo', stroke: true },
+      { id: 'aalto-points', icon: true, text: true },
+    ];
+
+    function setMainLayersGrey(grey) {
+      GREY_PAINT_LAYERS.forEach(({ id, icon, text, stroke }) => {
+        if (!map.getLayer(id)) return;
+        if (icon) map.setPaintProperty(id, 'icon-color', grey ? '#999' : '#000');
+        if (text) map.setPaintProperty(id, 'text-color', grey ? '#999' : '#000');
+        if (stroke) map.setPaintProperty(id, 'circle-stroke-color', grey ? '#999' : '#000');
+      });
+      if (map.getLayer('aalto-points')) {
+        map.setPaintProperty('aalto-points', 'icon-color', grey ? '#999' : ['case', ['get', '_visited'], '#999', '#000']);
+      }
+    }
+
+    function setAaltoPointsFilter(excludeFav, excludeVisited) {
+      let filter = AALTO_POINTS_FILTER_BASE;
+      if (excludeFav) filter = ['all', filter, ['!', ['get', '_fav']]];
+      if (excludeVisited) filter = ['all', filter, ['!', ['get', '_visited']]];
+      if (map.getLayer('aalto-points')) map.setFilter('aalto-points', filter);
+      if (map.getLayer('aalto-halo')) map.setFilter('aalto-halo', filter);
+    }
+
+    function updateFavsOverlay() {
+      const src = map.getSource('aalto-favs');
+      if (!src) return;
+      if (activeFilter === 'fav' && A.favs.size > 0) {
+        const favItems = [];
+        sortedCountries.forEach(country => {
+          favItems.push(...groups[country].filter(item => A.favs.has(item.id)));
+        });
+        const isfi = A.lang === 'fi';
+        const getKey = (a) => (isfi && a.name_fi ? a.name_fi : a.name) || '';
+        favItems.sort((a, b) => getKey(a).localeCompare(getKey(b)));
+        const favFeatures = favItems.map((item, i) => {
+          const baseLabel = (isfi && item.name_fi) ? item.name_fi : item.name;
+          const routeIdx = A.routeStops.findIndex(s => s.id === item.id);
+          const routeNum = routeIdx >= 0 ? String(routeIdx + 1) : null;
+          const label = routeNum ? routeNum + ' · ' + baseLabel : baseLabel;
+          return {
+            type: 'Feature',
+            geometry: { type: 'Point', coordinates: item.coords },
+            properties: {
+              id: item.id,
+              name: item.name,
+              name_fi: item.name_fi,
+              label,
+              num: String(i + 1),
+              _fav: true,
+              _visited: A.visited.has(item.id),
+            },
+          };
+        });
+        src.setData({ type: 'FeatureCollection', features: favFeatures });
+        MAIN_LAYER_IDS.forEach(id => { if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', 'visible'); });
+        setMainLayersGrey(true);
+        setAaltoPointsFilter(true, false);
+        FAV_LAYER_IDS.forEach(id => { if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', 'visible'); });
+        map.getSource('aalto-visited')?.setData?.({ type: 'FeatureCollection', features: [] });
+        VISITED_LAYER_IDS.forEach(id => { if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', 'none'); });
+      } else {
+        src.setData({ type: 'FeatureCollection', features: [] });
+        FAV_LAYER_IDS.forEach(id => { if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', 'none'); });
+        if (activeFilter !== 'visited') {
+          setMainLayersGrey(false);
+          setAaltoPointsFilter(false, false);
+        }
+        map.getSource('aalto-visited')?.setData?.({ type: 'FeatureCollection', features: [] });
+        VISITED_LAYER_IDS.forEach(id => { if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', 'none'); });
+      }
+    }
+
+    function updateVisitedOverlay() {
+      const src = map.getSource('aalto-visited');
+      if (!src) return;
+      if (activeFilter === 'visited' && A.visited.size > 0) {
+        const visitedItems = [];
+        sortedCountries.forEach(country => {
+          visitedItems.push(...groups[country].filter(item => A.visited.has(item.id)));
+        });
+        const isfi = A.lang === 'fi';
+        const getKey = (a) => (isfi && a.name_fi ? a.name_fi : a.name) || '';
+        visitedItems.sort((a, b) => getKey(a).localeCompare(getKey(b)));
+        const visitedFeatures = visitedItems.map((item, i) => {
+          const baseLabel = (isfi && item.name_fi) ? item.name_fi : item.name;
+          const routeIdx = A.routeStops.findIndex(s => s.id === item.id);
+          const routeNum = routeIdx >= 0 ? String(routeIdx + 1) : null;
+          const label = routeNum ? routeNum + ' · ' + baseLabel : baseLabel;
+          return {
+            type: 'Feature',
+            geometry: { type: 'Point', coordinates: item.coords },
+            properties: {
+              id: item.id,
+              name: item.name,
+              name_fi: item.name_fi,
+              label,
+              num: String(i + 1),
+              _fav: A.favs.has(item.id),
+              _visited: true,
+            },
+          };
+        });
+        src.setData({ type: 'FeatureCollection', features: visitedFeatures });
+        MAIN_LAYER_IDS.forEach(id => { if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', 'visible'); });
+        setMainLayersGrey(true);
+        setAaltoPointsFilter(false, true);
+        map.getSource('aalto-favs')?.setData?.({ type: 'FeatureCollection', features: [] });
+        FAV_LAYER_IDS.forEach(id => { if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', 'none'); });
+        VISITED_LAYER_IDS.forEach(id => { if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', 'visible'); });
+      } else {
+        src.setData({ type: 'FeatureCollection', features: [] });
+        VISITED_LAYER_IDS.forEach(id => { if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', 'none'); });
+        if (activeFilter !== 'fav') {
+          setMainLayersGrey(false);
+          setAaltoPointsFilter(false, false);
+        }
+        map.getSource('aalto-favs')?.setData?.({ type: 'FeatureCollection', features: [] });
+        FAV_LAYER_IDS.forEach(id => { if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', 'none'); });
+      }
+    }
+
+    function updateMapVisibilityForFilter() {
+      if (activeFilter === 'fav') {
+        updateFavsOverlay();
+      } else if (activeFilter === 'visited') {
+        updateVisitedOverlay();
+      } else {
+        /* ALL: always clear grey and show all points; hide fav/visited overlays */
+        MAIN_LAYER_IDS.forEach(id => { if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', 'visible'); });
+        setMainLayersGrey(false);
+        setAaltoPointsFilter(false, false);
+        map.getSource('aalto-favs')?.setData?.({ type: 'FeatureCollection', features: [] });
+        map.getSource('aalto-visited')?.setData?.({ type: 'FeatureCollection', features: [] });
+        FAV_LAYER_IDS.forEach(id => { if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', 'none'); });
+        VISITED_LAYER_IDS.forEach(id => { if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', 'none'); });
+      }
+    }
     const featureList = data.features.map((f, i) => {
       const p = f.properties;
       const cityEn = p.city || parseCityFromAddress(p.address);
@@ -48,8 +203,21 @@
     let activeSortMode = 'distance';
     let userLocation = null;
     const collapsedGroups = new Set();
+    let viewBeforeFavVisitedMode = null;
+
+    function saveViewBeforeFavVisited() {
+      const c = map.getCenter();
+      viewBeforeFavVisitedMode = { center: [c.lng, c.lat], zoom: map.getZoom(), bearing: map.getBearing(), pitch: map.getPitch() };
+    }
+    function restoreViewBeforeFavVisited() {
+      if (viewBeforeFavVisitedMode) {
+        map.flyTo({ ...viewBeforeFavVisitedMode, duration: 600 });
+        viewBeforeFavVisitedMode = null;
+      }
+    }
 
     A.renderList = function() {
+      updateMapVisibilityForFilter();
       const isfi = A.lang === 'fi';
       const query = document.getElementById('list-search').value.toLowerCase();
       listBody.innerHTML = '';
@@ -57,38 +225,13 @@
       const ref = userLocation || map.getCenter();
       const refCoords = userLocation ? [userLocation.lng, userLocation.lat] : [ref.lng, ref.lat];
 
-      sortedCountries.forEach(country => {
-        let items = groups[country].filter(item => {
-          const name = (isfi && item.name_fi ? item.name_fi : item.name).toLowerCase();
-          if (query && !name.includes(query)) return false;
-          if (activeFilter === 'fav' && !A.favs.has(item.id)) return false;
-          if (activeFilter === 'visited' && !A.visited.has(item.id)) return false;
-          return true;
-        });
-        if (!items.length) return;
+      const isFavOrVisited = activeFilter === 'fav' || activeFilter === 'visited';
+      const effectiveSortByDistance = isFavOrVisited ? false : (activeSortMode === 'distance');
 
-        if (activeSortMode === 'distance') {
-          items = items.map(item => ({ ...item, _dist: haversineKm(refCoords, item.coords) }));
-          items.sort((a, b) => a._dist - b._dist);
-        } else {
-          items = [...items].sort((a, b) => a.name.localeCompare(b.name));
-        }
-
-        const header = document.createElement('div');
-        header.className = 'list-group-header';
-        const isCollapsed = collapsedGroups.has(country);
-        if (isCollapsed) header.classList.add('collapsed');
-        header.innerHTML = `<span>${country} (${items.length})</span><span class="list-group-arrow"><svg width="8" height="5" viewBox="0 0 8 5" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 1l3 3 3-3"/></svg></span>`;
-        header.onclick = () => {
-          if (collapsedGroups.has(country)) collapsedGroups.delete(country);
-          else collapsedGroups.add(country);
-          A.renderList();
-        };
-        listBody.appendChild(header);
-
-        if (isCollapsed) return;
-
-        items.forEach(item => {
+      function renderItems(items, listNumOffset) {
+        const esc = window.AaltoUtils.escHtml;
+        items.forEach((item, idx) => {
+          const listNum = listNumOffset != null ? listNumOffset + idx + 1 : null;
           const row = document.createElement('div');
           row.className = 'list-item';
           row.dataset.id = item.id;
@@ -98,8 +241,10 @@
           nameSpan.className = 'list-item-name';
           const displayName = isfi && item.name_fi ? item.name_fi : item.name;
           const city = isfi && item.city_fi ? item.city_fi : item.city;
-          const distKm = item._dist != null ? item._dist.toFixed(1) : null;
-          nameSpan.innerHTML = displayName + (city ? `<span class="list-item-meta">, ${city}</span>` : '') + (distKm != null ? `<span class="list-item-meta">, ${distKm} km</span>` : '');
+          const showDist = activeFilter === 'all' && item._dist != null;
+          const distKm = showDist ? item._dist.toFixed(1) : null;
+          const numPrefix = listNum != null ? `<span class="list-item-num">${listNum}</span>` : '';
+          nameSpan.innerHTML = numPrefix + esc(displayName) + (city ? `<span class="list-item-meta">, ${esc(city)}</span>` : '') + (distKm != null ? `<span class="list-item-meta">, ${distKm} km</span>` : '');
 
           const actions = document.createElement('span');
           actions.className = 'list-actions';
@@ -149,7 +294,62 @@
 
           row.onclick = () => A.selectFeature({ ...item.feature, id: item.id });
         });
-      });
+      }
+
+        if (isFavOrVisited) {
+        const esc = window.AaltoUtils.escHtml;
+        const collectItems = activeFilter === 'fav' ? (item) => A.favs.has(item.id) : (item) => A.visited.has(item.id);
+        let items = [];
+        sortedCountries.forEach(country => {
+          items.push(...groups[country].filter(item => {
+            const name = (isfi && item.name_fi ? item.name_fi : item.name).toLowerCase();
+            if (query && !name.includes(query)) return false;
+            if (!collectItems(item)) return false;
+            return true;
+          }));
+        });
+        const getKey = (a) => (isfi && a.name_fi ? a.name_fi : a.name) || '';
+        items.sort((a, b) => getKey(a).localeCompare(getKey(b)));
+
+        const tabLabel = activeFilter === 'fav' ? A.t('filterBookmarks') : A.t('filterVisited');
+        const header = document.createElement('div');
+        header.className = 'list-group-header';
+        header.innerHTML = `<span>${esc(tabLabel)} (${items.length})</span><span class="list-group-arrow"><svg width="8" height="5" viewBox="0 0 8 5" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 1l3 3 3-3"/></svg></span>`;
+        listBody.appendChild(header);
+        renderItems(items, 0);
+      } else {
+        sortedCountries.forEach(country => {
+          let items = groups[country].filter(item => {
+            const name = (isfi && item.name_fi ? item.name_fi : item.name).toLowerCase();
+            if (query && !name.includes(query)) return false;
+            return true;
+          });
+          if (!items.length) return;
+
+          if (effectiveSortByDistance) {
+            items = items.map(item => ({ ...item, _dist: haversineKm(refCoords, item.coords) }));
+            items.sort((a, b) => a._dist - b._dist);
+          } else {
+            items = [...items].sort((a, b) => a.name.localeCompare(b.name));
+          }
+
+          const esc = window.AaltoUtils.escHtml;
+          const header = document.createElement('div');
+          header.className = 'list-group-header';
+          const isCollapsed = collapsedGroups.has(country);
+          if (isCollapsed) header.classList.add('collapsed');
+          header.innerHTML = `<span>${esc(country)} (${items.length})</span><span class="list-group-arrow"><svg width="8" height="5" viewBox="0 0 8 5" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 1l3 3 3-3"/></svg></span>`;
+          header.onclick = () => {
+            if (collapsedGroups.has(country)) collapsedGroups.delete(country);
+            else collapsedGroups.add(country);
+            A.renderList();
+          };
+          listBody.appendChild(header);
+
+          if (!isCollapsed) renderItems(items, null);
+        });
+      }
+
       if (listBody.children.length === 0 && query) {
         const noRes = document.createElement('div');
         noRes.className = 'route-empty-hint';
@@ -157,6 +357,12 @@
         listBody.appendChild(noRes);
       }
       updateListCount();
+      if (A.selectedId != null) {
+        requestAnimationFrame(() => {
+          const el = listBody.querySelector(`.list-item[data-id="${A.selectedId}"]`);
+          if (el) el.scrollIntoView({ block: 'start', behavior: 'smooth' });
+        });
+      }
       A.updatePanelLayout();
     };
 
@@ -169,6 +375,7 @@
     }
 
     A.highlightListItem = function(id, opts) {
+      A.renderList();
       if (!(opts && opts.skipExpand)) expandDestinations();
       const item = featureList.find(f => f.id === id);
       if (item && collapsedGroups.has(item.country)) {
@@ -187,13 +394,9 @@
       }
       if (el) {
         el.classList.add('active');
-        const containerRect = listBody.getBoundingClientRect();
-        const elRect = el.getBoundingClientRect();
-        const currentScroll = listBody.scrollTop;
-        const elTopInContainer = elRect.top - containerRect.top + currentScroll;
-        const firstItem = listBody.querySelector('.list-item, .list-group-header');
-        const itemHeight = firstItem ? firstItem.getBoundingClientRect().height + 1 : 44;
-        listBody.scrollTo({ top: Math.max(0, elTopInContainer - itemHeight), behavior: 'smooth' });
+        requestAnimationFrame(() => {
+          el.scrollIntoView({ block: 'start', behavior: 'smooth' });
+        });
       }
     };
 
@@ -221,6 +424,12 @@
       searchInput.focus();
     });
 
+    function getVisibleInViewport() {
+      const bounds = map.getBounds();
+      if (!bounds) return [];
+      return featureList.filter(item => bounds.contains(item.coords));
+    }
+
     function updateRouteFromBookmarksBtn() {
       const rfb = document.getElementById('route-from-bookmarks');
       if (rfb) rfb.style.display = (activeFilter === 'fav' && A.favs.size >= 2) ? '' : 'none';
@@ -233,14 +442,64 @@
           listExport.classList.remove('open');
         }
       }
+      updateRouteFromVisibleBtn();
     }
+
+    function updateRouteFromVisibleBtn() {
+      const rfv = document.getElementById('route-from-visible');
+      if (!rfv) return;
+      rfv.style.display = activeFilter === 'all' ? '' : 'none';
+    }
+
     updateRouteFromBookmarksBtn();
 
     document.querySelectorAll('.list-filter-btn[data-filter]').forEach(btn => {
       btn.addEventListener('click', () => {
+        const prevFilter = activeFilter;
+        const newFilter = btn.dataset.filter;
         document.querySelectorAll('.list-filter-btn[data-filter]').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        activeFilter = btn.dataset.filter;
+        activeFilter = newFilter;
+        updateMapVisibilityForFilter();
+        if (newFilter === 'all' && (prevFilter === 'fav' || prevFilter === 'visited')) {
+          restoreViewBeforeFavVisited();
+        }
+        if (activeFilter === 'fav' && A.favs.size > 0) {
+          if (prevFilter === 'all') saveViewBeforeFavVisited();
+          const isfi = A.lang === 'fi';
+          const getKey = (a) => (isfi && a.name_fi ? a.name_fi : a.name);
+          const favItems = [];
+          sortedCountries.forEach(country => {
+            const items = groups[country].filter(item => A.favs.has(item.id));
+            items.sort((a, b) => getKey(a).localeCompare(getKey(b)));
+            favItems.push(...items);
+          });
+          if (favItems.length === 1) {
+            map.flyTo({ center: favItems[0].coords, zoom: 14, pitch: 0, duration: 600 });
+          } else {
+            const bounds = new mapboxgl.LngLatBounds();
+            favItems.forEach(item => bounds.extend(item.coords));
+            map.fitBounds(bounds, { padding: 80, pitch: 0, duration: 600, maxZoom: 14 });
+          }
+        }
+        if (activeFilter === 'visited' && A.visited.size > 0) {
+          if (prevFilter === 'all') saveViewBeforeFavVisited();
+          const isfi = A.lang === 'fi';
+          const getKey = (a) => (isfi && a.name_fi ? a.name_fi : a.name);
+          const visitedItems = [];
+          sortedCountries.forEach(country => {
+            const items = groups[country].filter(item => A.visited.has(item.id));
+            items.sort((a, b) => getKey(a).localeCompare(getKey(b)));
+            visitedItems.push(...items);
+          });
+          if (visitedItems.length === 1) {
+            map.flyTo({ center: visitedItems[0].coords, zoom: 14, pitch: 0, duration: 600 });
+          } else {
+            const bounds = new mapboxgl.LngLatBounds();
+            visitedItems.forEach(item => bounds.extend(item.coords));
+            map.fitBounds(bounds, { padding: 80, pitch: 0, duration: 600, maxZoom: 14 });
+          }
+        }
         expandDestinations();
         A.renderList();
         updateRouteFromBookmarksBtn();
@@ -308,9 +567,12 @@
               () => A.showToast(A.t('shareFailed'), 3000));
           } else if (opt.dataset.action === 'print-bookmarks') {
             const prevFilter = activeFilter;
+            const prevSort = activeSortMode;
+            let savedMapState = null;
             A.printBookmarks({
-              before: () => {
+              before: async () => {
                 activeFilter = 'fav';
+                activeSortMode = 'alphabet';
                 document.querySelectorAll('.list-filter-btn[data-filter]').forEach(b =>
                   b.classList.toggle('active', b.dataset.filter === 'fav'));
                 if (A.listCollapsed) {
@@ -319,13 +581,79 @@
                   document.getElementById('list-toggle').style.transform = '';
                   document.getElementById('list-panel').classList.remove('list-collapsed');
                 }
+                document.querySelectorAll('.list-sort-option[data-sort]').forEach(o =>
+                  o.classList.toggle('active', o.dataset.sort === 'alphabet'));
                 collapsedGroups.clear();
                 A.renderList();
+                document.querySelectorAll('#list-body .list-item').forEach((row, i) => {
+                  const nameEl = row.querySelector('.list-item-name');
+                  if (nameEl && !nameEl.querySelector('.list-item-print-num')) {
+                    const num = document.createElement('span');
+                    num.className = 'list-item-print-num';
+                    num.textContent = (i + 1) + '. ';
+                    nameEl.insertBefore(num, nameEl.firstChild);
+                  }
+                });
+                if (A.favs.size >= 1 && map) {
+                  document.querySelectorAll('#print-bookmarks-map').forEach(el => el.remove());
+                  const c = map.getCenter();
+                  savedMapState = { center: [c.lng, c.lat], zoom: map.getZoom(), bearing: map.getBearing(), pitch: map.getPitch() };
+                  const isfi = A.lang === 'fi';
+                  const getKey = (a) => (isfi && a.name_fi ? a.name_fi : a.name);
+                  const favItems = [];
+                  sortedCountries.forEach(country => {
+                    const items = groups[country].filter(item => A.favs.has(item.id));
+                    items.sort((a, b) => getKey(a).localeCompare(getKey(b)));
+                    favItems.push(...items);
+                  });
+                  const printFeatures = favItems.map((item, i) => ({
+                    type: 'Feature',
+                    geometry: { type: 'Point', coordinates: item.coords },
+                    properties: { num: String(i + 1), name: (isfi && item.name_fi) ? item.name_fi : item.name },
+                  }));
+                  const printData = { type: 'FeatureCollection', features: printFeatures };
+                  if (!map.getSource('print-bookmarks-src')) {
+                    map.addSource('print-bookmarks-src', { type: 'geojson', data: printData });
+                    map.addLayer({
+                      id: 'print-bookmarks-circles', type: 'symbol', source: 'print-bookmarks-src',
+                      slot: 'top',
+                      layout: {
+                        'icon-image': 'aalto-dot', 'icon-size': 1.14,
+                        'icon-allow-overlap': true, 'icon-ignore-placement': false,
+                      },
+                      paint: { 'icon-color': '#000' },
+                    });
+                  } else {
+                    map.getSource('print-bookmarks-src').setData(printData);
+                  }
+                  ROUTE_LAYER_IDS.forEach(id => { if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', 'none'); });
+                  if (map.getLayer('aalto-favs-markers')) map.setLayoutProperty('aalto-favs-markers', 'visibility', 'none');
+                  const bounds = new mapboxgl.LngLatBounds();
+                  favItems.forEach(item => bounds.extend(item.coords));
+                  map.fitBounds(bounds, { padding: 80, pitch: 0, duration: 500 });
+                  await new Promise(r => map.once('moveend', r));
+                  await new Promise(r => map.once('idle', r));
+                  const dataUrl = map.getCanvas().toDataURL('image/png');
+                  const container = document.createElement('div');
+                  container.id = 'print-bookmarks-map';
+                  container.innerHTML = '<span class="print-map-label">BOOKMARKS</span><img src="' + dataUrl + '" alt="Bookmarks map">';
+                  document.body.appendChild(container);
+                }
               },
               after: () => {
+                document.querySelectorAll('#print-bookmarks-map').forEach(el => el.remove());
+                ROUTE_LAYER_IDS.forEach(id => { if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', 'visible'); });
+                updateMapVisibilityForFilter();
+                if (map && map.getSource('print-bookmarks-src')) {
+                  map.getSource('print-bookmarks-src').setData({ type: 'FeatureCollection', features: [] });
+                }
+                if (savedMapState) map.flyTo({ ...savedMapState, duration: 500 });
                 activeFilter = prevFilter;
+                activeSortMode = prevSort;
                 document.querySelectorAll('.list-filter-btn[data-filter]').forEach(b =>
                   b.classList.toggle('active', b.dataset.filter === prevFilter));
+                document.querySelectorAll('.list-sort-option[data-sort]').forEach(o =>
+                  o.classList.toggle('active', o.dataset.sort === prevSort));
                 A.renderList();
                 updateRouteFromBookmarksBtn();
               }
@@ -339,7 +667,9 @@
 
     let _renderListMoveTimer;
     map.on('moveend', () => {
-      if (activeSortMode !== 'distance') return;
+      updateRouteFromVisibleBtn();
+      const needsRerender = activeSortMode === 'distance' || activeFilter === 'fav' || activeFilter === 'visited';
+      if (!needsRerender) return;
       clearTimeout(_renderListMoveTimer);
       _renderListMoveTimer = setTimeout(() => A.renderList(), 200);
     });
@@ -412,7 +742,48 @@
       }
     };
 
-    window._renderList = A.renderList;
-    return { renderList: A.renderList, highlightListItem: A.highlightListItem, featureList };
+    document.getElementById('route-from-visible').onclick = (e) => {
+      e.stopPropagation();
+      const visible = getVisibleInViewport();
+      const routeIds = new Set(A.routeStops.map(s => s.id));
+      const toAdd = visible.filter(item => !routeIds.has(item.id));
+      if (toAdd.length === 0) {
+        A.showToast(A.t('allVisibleInRoute'), 2500);
+        return;
+      }
+      toAdd.forEach(item => A.routeStops.push({ id: item.id, coords: item.coords, name: item.name }));
+      A.saveRoute();
+      document.getElementById('route-section').classList.remove('collapsed');
+      A.updatePanelLayout();
+      A.rebuildAaltoSource();
+      A.renderRouteSection();
+      A.renderList();
+      A.calculateAllSegments().then(() => {
+        if (A.routeStops.length >= 3 && typeof google !== 'undefined' && google.maps) {
+          document.getElementById('route-optimize').click();
+        }
+      });
+      A.fitRouteOverview();
+    };
+
+    // A.renderList is already on window.Aalto; no separate global needed
+
+    function getActiveFilter() {
+      return activeFilter;
+    }
+    function switchToFilter(filter) {
+      const prevFilter = activeFilter;
+      activeFilter = filter;
+      document.querySelectorAll('.list-filter-btn[data-filter]').forEach(b =>
+        b.classList.toggle('active', b.dataset.filter === filter));
+      updateMapVisibilityForFilter();
+      if (filter === 'all' && (prevFilter === 'fav' || prevFilter === 'visited')) {
+        restoreViewBeforeFavVisited();
+      }
+      A.renderList();
+      updateRouteFromBookmarksBtn();
+    }
+
+    return { renderList: A.renderList, highlightListItem: A.highlightListItem, featureList, getActiveFilter, switchToFilter };
   };
 })();

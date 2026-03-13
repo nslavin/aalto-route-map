@@ -12,5 +12,14 @@
     return 2 * R * Math.asin(Math.sqrt(x));
   }
 
-  window.AaltoUtils = { haversineKm };
+  function escHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  window.AaltoUtils = { haversineKm, escHtml };
 })();

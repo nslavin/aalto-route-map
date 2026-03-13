@@ -40,22 +40,44 @@
   let _clusterClickEvt = null;
 
   map.on('load', async () => {
-    const [geoRes, detRes, countriesRes, citiesRes, metroRes] = await Promise.all([
-      fetch('./data/aalto_route.geojson'),
-      fetch('./data/aalto_details.json').catch(() => null),
-      fetch('./data/aalto_clusters_countries.geojson'),
-      fetch('./data/aalto_clusters_cities.geojson'),
-      fetch('./data/aalto_clusters_helsinki_metropolitan.geojson'),
+    let geoRes, detRes, countriesRes, citiesRes, metroRes;
+    try {
+      [geoRes, detRes, countriesRes, citiesRes, metroRes] = await Promise.all([
+        fetch('./data/aalto_route.geojson'),
+        fetch('./data/aalto_details.json').catch(() => null),
+        fetch('./data/aalto_clusters_countries.geojson'),
+        fetch('./data/aalto_clusters_cities.geojson'),
+        fetch('./data/aalto_clusters_helsinki_metropolitan.geojson'),
+      ]);
+    } catch (e) {
+      A.showToast('Failed to load map data. Please refresh.', 8000);
+      return;
+    }
+
+    let data, countriesData, citiesData, metroData;
+    try {
+      data = await geoRes.json();
+      if (detRes?.ok) A.details = await detRes.json();
+      else if (!A.details) A.details = {};
+      countriesData = await countriesRes.json();
+      citiesData = await citiesRes.json();
+      metroData = await metroRes.json();
+    } catch (e) {
+      A.showToast('Failed to parse map data. Please refresh.', 8000);
+      return;
+    }
+
+    A.total = data.features.length;
+
+    const _loadImg = url => new Promise((res, rej) => {
+      const img = new Image(); img.onload = () => res(img); img.onerror = rej; img.src = url;
+    });
+    const [_dotImg, _dotRouteImg] = await Promise.all([
+      _loadImg('icons/dot.svg'),
+      _loadImg('icons/dot-route.svg'),
     ]);
-
-    const data = await geoRes.json();
-    if (detRes?.ok) A.details = await detRes.json();
-    else if (!A.details) A.details = {};
-    const countriesData = await countriesRes.json();
-    const citiesData = await citiesRes.json();
-    const metroData = await metroRes.json();
-
-    window._aaltoTotal = data.features.length;
+    map.addImage('aalto-dot', _dotImg, { sdf: true, pixelRatio: 2 });
+    map.addImage('aalto-dot-route', _dotRouteImg, { pixelRatio: 2 });
 
     window.initMapLayers(map, data, countriesData, citiesData, metroData, A);
 
@@ -77,6 +99,15 @@
 
     const setSkipMapClick = (v) => { _skipMapClick = v; };
     window.initRoutePlanner(map, A, featureList, setSkipMapClick);
+
+    (function applyLayerOrder() {
+      const routeLayerIds = ['route-stop-cluster-markers', 'route-stop-cluster-labels', 'route-stop-markers', 'route-stop-numbers', 'route-stop-labels'];
+      routeLayerIds.forEach(id => {
+        if (map.getLayer(id)) map.moveLayer(id);
+      });
+    })();
+
+    if (window.initLayerZoomConfig) window.initLayerZoomConfig(map);
 
     const nameToCoords = {};
     data.features.forEach(f => { nameToCoords[f.properties.name] = f.geometry.coordinates; });
@@ -197,6 +228,10 @@
 
     map.on('click', 'aalto-points', (e) => {
       _skipMapClick = true;
+      const filter = listRet.getActiveFilter();
+      if (filter === 'fav' || filter === 'visited') {
+        listRet.switchToFilter('all');
+      }
       if (map.getZoom() < 17)
         map.flyTo({ center: e.features[0].geometry.coordinates, zoom: 18, pitch: 50, speed: 1.2 });
       A.selectFeature(e.features[0]);
@@ -204,10 +239,51 @@
     map.on('mouseenter', 'aalto-points', () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', 'aalto-points', () => { map.getCanvas().style.cursor = ''; });
 
+    function handleFilteredMarkerClick(e) {
+      _skipMapClick = true;
+      const feat = e.features[0];
+      const fid = feat.properties?.id;
+      const match = typeof fid === 'number' ? featureList.find(f => f.id === fid) : null;
+      if (match) {
+        const filter = listRet.getActiveFilter();
+        if (filter === 'fav' || filter === 'visited') {
+          listRet.switchToFilter('all');
+        } else if (map.getZoom() < 17) {
+          map.flyTo({ center: feat.geometry.coordinates, zoom: 18, pitch: 50, speed: 1.2 });
+        }
+        A.selectFeature({ ...match.feature, id: match.id });
+      }
+    }
+    function handleFavVisitedClusterClick(e) {
+      _skipMapClick = true;
+      const f = e.features[0];
+      const clusterId = f.id;
+      const sourceId = f.layer.id.startsWith('aalto-favs') ? 'aalto-favs' : 'aalto-visited';
+      const source = map.getSource(sourceId);
+      if (!source || typeof source.getClusterExpansionZoom !== 'function') {
+        map.flyTo({ center: f.geometry.coordinates, zoom: map.getZoom() + 2, pitch: 0 });
+        return;
+      }
+      source.getClusterExpansionZoom(clusterId, (err, zoom) => {
+        if (err) return;
+        map.flyTo({ center: f.geometry.coordinates, zoom: zoom, pitch: 0, duration: 500 });
+      });
+    }
+    ['aalto-favs-cluster-markers', 'aalto-favs-cluster-labels', 'aalto-visited-cluster-markers', 'aalto-visited-cluster-labels'].forEach(id => {
+      map.on('click', id, handleFavVisitedClusterClick);
+      map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
+      map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
+    });
+    ['aalto-favs-markers', 'aalto-favs-numbers', 'aalto-favs-labels', 'aalto-visited-markers', 'aalto-visited-numbers', 'aalto-visited-labels'].forEach(id => {
+      map.on('click', id, handleFilteredMarkerClick);
+      map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
+      map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
+    });
+
     map.on('click', (e) => {
       if (_skipMapClick) { _skipMapClick = false; return; }
       const hits = map.queryRenderedFeatures(e.point, {
-        layers: ['aalto-points', 'aalto-clusters', 'country-clusters', 'city-clusters', 'metro-clusters', 'route-stop-markers', 'route-stop-labels'],
+        layers: ['aalto-points', 'aalto-clusters', 'country-clusters', 'city-clusters', 'metro-clusters', 'route-stop-markers', 'route-stop-labels', 'route-stop-cluster-markers', 'route-stop-cluster-labels', 'aalto-favs-cluster-markers', 'aalto-favs-cluster-labels', 'aalto-favs-markers', 'aalto-favs-numbers', 'aalto-favs-labels', 'aalto-visited-cluster-markers', 'aalto-visited-cluster-labels', 'aalto-visited-markers', 'aalto-visited-numbers', 'aalto-visited-labels'],
       });
       if (!hits.length) A.closePanel();
     });
@@ -219,11 +295,16 @@
 
     A.renderRouteSection();
     if (A.routeStops.length >= 2) {
+      let _googleMapsRetries = 0;
+      const _googleMapsMaxRetries = 25;
       function tryCalculateRoute() {
         if (typeof google !== 'undefined' && google.maps) {
           A.calculateAllSegments();
-        } else {
+        } else if (_googleMapsRetries < _googleMapsMaxRetries) {
+          _googleMapsRetries++;
           setTimeout(tryCalculateRoute, 200);
+        } else {
+          A.showToast('Route directions unavailable — Google Maps failed to load', 5000);
         }
       }
       tryCalculateRoute();

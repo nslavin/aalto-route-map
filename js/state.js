@@ -2,15 +2,23 @@
 //  State & Persistence
 // ═══════════════════════════════════════════════════════
 (function() {
-  const _savedRoute = JSON.parse(localStorage.getItem('aalto_route') || 'null');
+  function _safeParseJSON(key, fallback) {
+    try {
+      const raw = localStorage.getItem(key);
+      return raw ? JSON.parse(raw) : fallback;
+    } catch (e) {
+      return fallback;
+    }
+  }
+  const _savedRoute = _safeParseJSON('aalto_route', null);
   window.Aalto = {
     routeStops: _savedRoute ? _savedRoute.stops : [],
     routeSegments: [],
     savedSegmentOverrides: _savedRoute?.segments || [],
     globalMode: _savedRoute ? (_savedRoute.globalMode || 'DRIVING') : 'DRIVING',
     walkThreshold: _savedRoute ? (_savedRoute.walkThreshold != null ? _savedRoute.walkThreshold : 1000) : 1000,
-    favs: new Set(JSON.parse(localStorage.getItem('aalto_favs') || '[]')),
-    visited: new Set(JSON.parse(localStorage.getItem('aalto_visited') || '[]')),
+    favs: new Set(_safeParseJSON('aalto_favs', [])),
+    visited: new Set(_safeParseJSON('aalto_visited', [])),
     modeOrder: ['DRIVING', 'WALKING', 'TRANSIT', 'BICYCLING'],
   };
 
