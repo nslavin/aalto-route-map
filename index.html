@@ -24,6 +24,26 @@
     <a id="header-source" href="https://visit.alvaraalto.fi/en/alvar-aalto-route/" target="_blank" rel="noopener">Source: visit.alvaraalto.fi</a>
   </div>
 
+  <div id="bottom-sheet">
+    <div class="bs-handle"><div class="bs-handle-bar"></div></div>
+    <div class="bs-tabs">
+      <button class="bs-tab active" data-tab="all">ALL</button>
+      <button class="bs-tab" data-tab="fav">BOOKMARKS</button>
+      <button class="bs-tab" data-tab="visited">VISITED</button>
+      <button class="bs-tab bs-tab-route" data-tab="route">ROUTE</button>
+    </div>
+    <div class="bs-route-preview" style="display:none"></div>
+    <div class="bs-search-row"></div>
+    <div class="bs-content">
+      <div class="bs-view bs-view-list active"></div>
+      <div class="bs-view bs-view-detail">
+        <button class="bs-close">&times;</button>
+        <div class="bs-detail-content"></div>
+      </div>
+      <div class="bs-view bs-view-route"></div>
+    </div>
+  </div>
+
   <div id="list-panel">
     <div id="list-section-header">
       <span id="list-toggle"><svg width="8" height="5" viewBox="0 0 8 5" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 1l3 3 3-3"/></svg></span>
@@ -165,6 +185,7 @@
   <script src="./js/route-planner.js"></script>
   <script src="./js/layer-zoom-config.js"></script>
   <script src="./js/layout.js"></script>
+  <script src="./js/bottom-sheet.js"></script>
   <script src="./js/map-init.js"></script>
 </body>
 </html>

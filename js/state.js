@@ -58,6 +58,8 @@
       selectedId: (typeof p.selectedId === 'number' ? p.selectedId : null),
       activeListFilter: (p.activeListFilter === 'fav' || p.activeListFilter === 'visited') ? p.activeListFilter : 'all',
       activeSortMode: (['alphabet', 'distance', 'distanceFromCenter'].includes(p.activeSortMode)) ? p.activeSortMode : 'alphabet',
+      mobileActiveTab: (['all', 'fav', 'visited', 'route'].includes(p.mobileActiveTab)) ? p.mobileActiveTab : 'all',
+      mobileShowingDetail: !!p.mobileShowingDetail,
     };
   } catch (e) {
       return null;
@@ -75,6 +77,8 @@
       selectedId: A.selectedId != null ? A.selectedId : null,
       activeListFilter: A.activeListFilter || 'all',
       activeSortMode: A.activeSortMode || 'alphabet',
+      mobileActiveTab: A.mobileState ? A.mobileState.activeTab : 'all',
+      mobileShowingDetail: A.mobileState ? A.mobileState.showingDetail : false,
     };
     localStorage.setItem('aalto_panels', JSON.stringify(state));
   }

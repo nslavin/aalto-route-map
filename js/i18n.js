@@ -71,6 +71,10 @@
       sharedToClipboard: 'Copied to clipboard',
       shareFailed: 'Could not share',
       exportLabel: 'Share',
+      mobileTabAll: 'ALL',
+      mobileTabBookmarks: 'BOOKMARKS',
+      mobileTabVisited: 'VISITED',
+      mobileTabRoute: 'ROUTE',
     },
     fi: {
       headerTitle: 'Alvar Aallon Reitti',
@@ -139,6 +143,10 @@
       sharedToClipboard: 'Kopioitu leikepöydälle',
       shareFailed: 'Jakaminen epäonnistui',
       exportLabel: 'Jaa',
+      mobileTabAll: 'KAIKKI',
+      mobileTabBookmarks: 'SUOSIKIT',
+      mobileTabVisited: 'KÄYDYT',
+      mobileTabRoute: 'REITTI',
     },
   };
 

@@ -6,6 +6,7 @@
   window.initLayout = function(map, mapEl, A) {
     let _lastMapWidth = mapEl.offsetWidth;
     A.updatePanelLayout = function() {
+      if (A.isMobile) return;
       const routeCollapsed = document.getElementById('route-section').classList.contains('collapsed');
       const bothCollapsed = A.listCollapsed && routeCollapsed;
       const listPanel = document.getElementById('list-panel');
@@ -79,6 +80,20 @@
     };
 
     A.getMapPadding = function() {
+      if (A.isMobile) {
+        var snap = A.mobileState ? A.mobileState.snap : 'peek';
+        var bottom;
+        if (snap === 'half' && A.mobileState && A.mobileState.currentSnapPx) {
+          bottom = A.mobileState.currentSnapPx;
+        } else if (snap === 'half') {
+          var snaps = window._bsGetSnapValues ? window._bsGetSnapValues() : { half: 180 };
+          bottom = snaps.half;
+        } else {
+          var snaps2 = window._bsGetSnapValues ? window._bsGetSnapValues() : { peek: 180 };
+          bottom = snaps2.peek;
+        }
+        return { top: 40, bottom: bottom + 10, left: 40, right: 40 };
+      }
       const panelEl = document.getElementById('panel');
       const panelOpen = panelEl.classList.contains('open');
       const routeCollapsed = document.getElementById('route-section').classList.contains('collapsed');

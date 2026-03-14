@@ -502,7 +502,7 @@
           } else {
             const bounds = new mapboxgl.LngLatBounds();
             favItems.forEach(item => bounds.extend(item.coords));
-            map.fitBounds(bounds, { padding: 80, pitch: 0, duration: 600, maxZoom: 14 });
+            map.fitBounds(bounds, { padding: A.isMobile ? A.getMapPadding() : 80, pitch: 0, duration: 600, maxZoom: 14 });
           }
         }
         if (activeFilter === 'visited' && A.visited.size > 0) {
@@ -520,7 +520,7 @@
           } else {
             const bounds = new mapboxgl.LngLatBounds();
             visitedItems.forEach(item => bounds.extend(item.coords));
-            map.fitBounds(bounds, { padding: 80, pitch: 0, duration: 600, maxZoom: 14 });
+            map.fitBounds(bounds, { padding: A.isMobile ? A.getMapPadding() : 80, pitch: 0, duration: 600, maxZoom: 14 });
           }
         }
         expandDestinations();

@@ -69,6 +69,7 @@
     }
 
     A.total = data.features.length;
+    A.allFeatures = data.features;
 
     const _loadImg = url => new Promise((res, rej) => {
       const img = new Image(); img.onload = () => res(img); img.onerror = rej; img.src = url;
@@ -104,6 +105,8 @@
 
     const setSkipMapClick = (v) => { _skipMapClick = v; };
     window.initRoutePlanner(map, A, featureList, setSkipMapClick);
+
+    if (window.initBottomSheet) window.initBottomSheet(map, mapEl, listRet);
 
     (function applyLayerOrder() {
       const routeLayerIds = ['route-stop-cluster-markers', 'route-stop-cluster-labels', 'route-stop-markers', 'route-stop-numbers', 'route-stop-labels'];
@@ -141,11 +144,12 @@
           const lons = pts.map(c => c[0]);
           const lats = pts.map(c => c[1]);
           const bounds = [[Math.min(...lons), Math.min(...lats)], [Math.max(...lons), Math.max(...lats)]];
+          var clusterPad = A.isMobile ? A.getMapPadding() : { top: 40, bottom: 160, left: 80, right: 80 };
           if (useFitBounds) {
-            const cam = map.cameraForBounds(bounds, { padding: { top: 40, bottom: 160, left: 80, right: 80 } });
+            const cam = map.cameraForBounds(bounds, { padding: clusterPad });
             map.flyTo({ center: cam.center, zoom: 7, bearing: 0, pitch: 0, speed: 1.4 });
           } else {
-            const cam = map.cameraForBounds(bounds, { padding: 80 });
+            const cam = map.cameraForBounds(bounds, { padding: A.isMobile ? A.getMapPadding() : 80 });
             map.flyTo({ center: cam.center, zoom: Math.max(cam.zoom, 6.5), bearing: 0, pitch: 0, speed: 1.4 });
           }
         } else {
@@ -216,7 +220,7 @@
         const lons = coords.map(c => c[0]);
         const lats = coords.map(c => c[1]);
         const bounds = [[Math.min(...lons), Math.min(...lats)], [Math.max(...lons), Math.max(...lats)]];
-        map.fitBounds(bounds, { padding: 80, pitch: 0, duration: 800, maxZoom: 16 });
+        map.fitBounds(bounds, { padding: A.isMobile ? A.getMapPadding() : 80, pitch: 0, duration: 800, maxZoom: 16 });
       });
     };
 
@@ -346,6 +350,17 @@
 
       if (savedPanels.activeListFilter && savedPanels.activeListFilter !== 'all') {
         listRet.switchToFilter(savedPanels.activeListFilter);
+      }
+
+      // Restore mobile state
+      if (A.isMobile && A.mobileSwitchTab) {
+        if (savedPanels.mobileActiveTab && savedPanels.mobileActiveTab !== 'all') {
+          A.mobileSwitchTab(savedPanels.mobileActiveTab);
+        }
+        if (savedPanels.mobileShowingDetail && savedPanels.selectedId != null) {
+          const mobileItem = featureList.find(f => f.id == savedPanels.selectedId);
+          if (mobileItem) A.openPanel({ ...mobileItem.feature, id: mobileItem.id });
+        }
       }
 
       A.updatePanelLayout();
