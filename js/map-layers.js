@@ -53,7 +53,6 @@
       },
     });
 
-    let _rebuildTimer = null;
     function _doRebuildAaltoSource() {
       const routeIds = new Set(A.routeStops.map(s => s.id));
       const routeOrder = {};
@@ -82,8 +81,7 @@
         map.setFeatureState({ source: 'aalto', id: A.selectedId }, { selected: true });
     }
     A.rebuildAaltoSource = function() {
-      clearTimeout(_rebuildTimer);
-      _rebuildTimer = setTimeout(_doRebuildAaltoSource, 16);
+      _doRebuildAaltoSource();
     };
 
     const _overlayScale = (window.innerWidth < 768 || (window.innerHeight < 440 && window.innerWidth > window.innerHeight)) ? 1.3 : 1.2;

@@ -7,16 +7,27 @@
   (function initHeaderToggle() {
     var headerEl = document.getElementById('header');
     var headerToggle = document.getElementById('header-toggle');
+    var headerSource = document.getElementById('header-source');
     if (!headerEl || !headerToggle) return;
     var mql = window.matchMedia('(max-width: 767px)');
     mql.addEventListener('change', function(e) {
       if (!e.matches) headerEl.classList.remove('header-hidden');
     });
-    headerToggle.onclick = function(e) {
-      e.stopPropagation();
+    function doToggle() {
       if (!mql.matches) return;
       headerEl.classList.toggle('header-hidden');
       headerToggle.setAttribute('aria-expanded', !headerEl.classList.contains('header-hidden'));
+    }
+    headerEl.addEventListener('click', function(e) {
+      if (!mql.matches) return;
+      if (headerSource && headerSource.contains(e.target)) return;
+      e.preventDefault();
+      e.stopPropagation();
+      doToggle();
+    });
+    headerToggle.onclick = function(e) {
+      e.stopPropagation();
+      doToggle();
     };
   })();
 

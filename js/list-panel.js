@@ -917,6 +917,6 @@
       updateRouteFromBookmarksBtn();
     }
 
-    return { renderList: A.renderList, highlightListItem: A.highlightListItem, featureList, getActiveFilter, switchToFilter };
+    return { renderList: A.renderList, highlightListItem: A.highlightListItem, featureList, getActiveFilter, switchToFilter, refreshOverlayForFilter: updateMapVisibilityForFilter };
   };
 })();

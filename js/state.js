@@ -97,6 +97,7 @@
   window.Aalto.updatePanelLayout = function() {};
   window.Aalto.highlightListItem = function() {};
   window.Aalto.rebuildAaltoSource = function() {};
+  window.Aalto.refreshOverlayForFilter = function() {};
   window.Aalto.renderList = function() {};
   window.Aalto.fitRouteOverview = function() {};
   window.Aalto.updateRouteOnMap = function() {};
@@ -106,6 +107,8 @@
     if (A.favs.has(id)) A.favs.delete(id); else A.favs.add(id);
     saveFavs();
     A.rebuildAaltoSource();
+    A.updateRouteOnMap();
+    A.refreshOverlayForFilter();
     updateFilterCounts();
   }
   function toggleVisited(id) {
@@ -113,6 +116,8 @@
     if (A.visited.has(id)) A.visited.delete(id); else A.visited.add(id);
     saveVisited();
     A.rebuildAaltoSource();
+    A.updateRouteOnMap();
+    A.refreshOverlayForFilter();
     updateFilterCounts();
   }
   function toggleRoute(id, coords, name) {

@@ -936,7 +936,9 @@ a.panel-footer-value:hover { opacity: 0.5; }
     top: max(12px, env(safe-area-inset-top, 0));
     left: max(12px, env(safe-area-inset-left, 0));
     z-index: 25;
+    cursor: pointer;
   }
+  #header a { cursor: pointer; }
   #header-toggle {
     display: flex;
     align-items: center;

@@ -105,6 +105,7 @@
     const listRet = window.initListPanel(map, data, A, expandDestinations);
     const featureList = listRet.featureList;
     A.switchToListFilter = listRet.switchToFilter;
+    A.refreshOverlayForFilter = listRet.refreshOverlayForFilter;
 
     const setSkipMapClick = (v) => { _skipMapClick = v; };
     window.initRoutePlanner(map, A, featureList, setSkipMapClick);
