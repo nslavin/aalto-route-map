@@ -17,9 +17,9 @@
     const isVis = A.visited.has(fid);
     const inRoute = A.routeStops.some(s => s.id === fid);
     actionsEl.innerHTML = `
-      <button class="panel-action-btn${isFav ? ' active' : ''}" data-action="fav" title="${esc(A.t('tipBookmark'))}"><svg width="9" height="12" viewBox="0 0 11 14" fill="currentColor"><path d="M0 0h11v14l-5.5-4L0 14z"/></svg> ${esc(A.t('bookmark'))}</button>
-      <button class="panel-action-btn${isVis ? ' active' : ''}" data-action="visited" title="${esc(A.t('tipVisited'))}"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l3 3 5-6"/></svg> ${esc(A.t('visited'))}</button>
-      <button class="panel-action-btn${inRoute ? ' active' : ''}" data-action="route" title="${inRoute ? esc(A.t('tipRemoveRoute')) : esc(A.t('tipAddRoute'))}">${inRoute ? '−' + esc(A.t('removeFromRoute')) : '+' + esc(A.t('addToRoute'))}</button>`;
+      <button class="panel-action-btn${isFav ? ' active' : ''}" data-action="fav" title="${esc(A.t('tipBookmark'))}"><svg width="8" height="11" viewBox="0 0 11 14" fill="currentColor"><path d="M0 0h11v14l-5.5-4L0 14z"/></svg>${esc(A.t('bookmark'))}</button>
+      <button class="panel-action-btn${isVis ? ' active' : ''}" data-action="visited" title="${esc(A.t('tipVisited'))}"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l3 3 5-6"/></svg>${esc(A.t('visited'))}</button>
+      <button class="panel-action-btn${inRoute ? ' active' : ''}" data-action="route" title="${inRoute ? esc(A.t('tipRemoveRoute')) : esc(A.t('tipAddRoute'))}"><span class="panel-action-sym">${inRoute ? '−' : '+'}</span>${inRoute ? esc(A.t('removeFromRoute')) : esc(A.t('addToRoute'))}</button>`;
     actionsEl.querySelector('[data-action="fav"]').onclick = () => {
       A.toggleFav(fid);
       A.renderPanel(feature);

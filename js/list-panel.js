@@ -88,6 +88,7 @@
               num: String(i + 1),
               _fav: true,
               _visited: A.visited.has(item.id),
+              onRoute: routeIdx >= 0,
             },
           };
         });
@@ -137,6 +138,7 @@
               num: String(i + 1),
               _fav: A.favs.has(item.id),
               _visited: true,
+              onRoute: routeIdx >= 0,
             },
           };
         });
@@ -283,7 +285,7 @@
           routeBtn.className = 'list-action-btn' + (inRoute ? ' active' : '');
           routeBtn.innerHTML = inRoute ? '&#8722;' : '&#43;';
           routeBtn.title = inRoute ? A.t('tipRemoveRoute') : A.t('tipAddRoute');
-          routeBtn.style.fontSize = '14px';
+          routeBtn.style.fontSize = '20px';
           routeBtn.onclick = (e) => {
             e.stopPropagation();
             A.toggleRoute(item.id, item.coords, item.name);
@@ -465,6 +467,8 @@
         document.querySelectorAll('.list-filter-btn[data-filter]').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         activeFilter = newFilter;
+        A.activeListFilter = newFilter;
+        A.savePanels();
         updateMapVisibilityForFilter();
         if (newFilter === 'all' && (prevFilter === 'fav' || prevFilter === 'visited')) {
           restoreViewBeforeFavVisited();
@@ -779,6 +783,8 @@
     function switchToFilter(filter) {
       const prevFilter = activeFilter;
       activeFilter = filter;
+      A.activeListFilter = filter;
+      A.savePanels();
       document.querySelectorAll('.list-filter-btn[data-filter]').forEach(b =>
         b.classList.toggle('active', b.dataset.filter === filter));
       updateMapVisibilityForFilter();

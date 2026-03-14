@@ -297,7 +297,7 @@ body {
   width: 22px; height: 22px; cursor: pointer;
   font-size: 14px; font-family: inherit; line-height: 1;
   display: flex; align-items: center; justify-content: center;
-  color: #555; transition: color 0.15s;
+  color: #000; transition: color 0.15s;
 }
 #carousel-prev:hover, #carousel-next:hover { color: #000; }
 
@@ -326,6 +326,8 @@ body {
   color: #ccc; transition: color 0.15s; padding: 0;
   outline: none; line-height: 1;
 }
+.panel-action-btn svg { display: block; flex-shrink: 0; }
+.panel-action-sym { font-size: 14px; line-height: 0; position: relative; top: -1px; }
 .panel-action-btn:hover { color: #888; }
 .panel-action-btn.active { color: #000; }
 #panel-address-row {

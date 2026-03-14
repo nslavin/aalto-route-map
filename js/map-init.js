@@ -337,6 +337,10 @@
         if (item) A.selectFeature({ ...item.feature, id: item.id }, { skipExpand: true });
       }
 
+      if (savedPanels.activeListFilter && savedPanels.activeListFilter !== 'all') {
+        listRet.switchToFilter(savedPanels.activeListFilter);
+      }
+
       A.updatePanelLayout();
     }
   });

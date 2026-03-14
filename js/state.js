@@ -55,9 +55,10 @@
         listCollapsed: !!p.listCollapsed,
         routeCollapsed: !!p.routeCollapsed,
         panelOpen: !!p.panelOpen,
-        selectedId: (typeof p.selectedId === 'number' ? p.selectedId : null),
-      };
-    } catch (e) {
+      selectedId: (typeof p.selectedId === 'number' ? p.selectedId : null),
+      activeListFilter: (p.activeListFilter === 'fav' || p.activeListFilter === 'visited') ? p.activeListFilter : 'all',
+    };
+  } catch (e) {
       return null;
     }
   }
@@ -71,6 +72,7 @@
       routeCollapsed: routeEl.classList.contains('collapsed'),
       panelOpen: panelEl.classList.contains('open'),
       selectedId: A.selectedId != null ? A.selectedId : null,
+      activeListFilter: A.activeListFilter || 'all',
     };
     localStorage.setItem('aalto_panels', JSON.stringify(state));
   }

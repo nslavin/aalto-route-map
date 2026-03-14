@@ -208,6 +208,27 @@
     map.on('mouseenter', 'route-stop-labels', () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', 'route-stop-labels', () => { map.getCanvas().style.cursor = ''; });
 
+    function handleRouteClusterClick(e) {
+      setSkipMapClick(true);
+      const f = e.features[0];
+      const clusterId = f.id;
+      const source = map.getSource('route-stops-src');
+      if (!source || typeof source.getClusterExpansionZoom !== 'function') {
+        map.flyTo({ center: f.geometry.coordinates, zoom: map.getZoom() + 2, pitch: 0 });
+        return;
+      }
+      source.getClusterExpansionZoom(clusterId, (err, zoom) => {
+        if (err) return;
+        map.flyTo({ center: f.geometry.coordinates, zoom, pitch: 0, duration: 500 });
+      });
+    }
+    map.on('click', 'route-stop-cluster-markers', handleRouteClusterClick);
+    map.on('click', 'route-stop-cluster-labels', handleRouteClusterClick);
+    map.on('mouseenter', 'route-stop-cluster-markers', () => { map.getCanvas().style.cursor = 'pointer'; });
+    map.on('mouseleave', 'route-stop-cluster-markers', () => { map.getCanvas().style.cursor = ''; });
+    map.on('mouseenter', 'route-stop-cluster-labels', () => { map.getCanvas().style.cursor = 'pointer'; });
+    map.on('mouseleave', 'route-stop-cluster-labels', () => { map.getCanvas().style.cursor = ''; });
+
     function getDefaultMode(from, to) {
       if (A.globalMode === 'WALKING') return 'WALKING';
       if (A.walkThreshold <= 0) return A.globalMode;

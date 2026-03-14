@@ -64,7 +64,7 @@ scripts/
 
 ## Stack
 
-- **Map**: Mapbox GL JS v3.19.0, Standard style + CSS `grayscale(1) contrast(1.05)`
+- **Map**: Mapbox GL JS v3.19.0, custom Mapbox style
 - **Routing**: Google Maps JavaScript API (DirectionsService)
 - **Data**: static GeoJSON + `aalto_details.json` (enriched building details)
 - **Dev server**: Python `http.server` — port 8081
@@ -92,7 +92,7 @@ python3 -m http.server 8081
 ## Map design principles
 
 - Laconic architectural aesthetic: black and white, no decoration
-- Mapbox Standard style with CSS grayscale filter on canvas
+- Custom Mapbox style
 - Markers: custom SVG dot icons (`icons/dot.svg`, `icons/dot-route.svg`) loaded as Mapbox image sprites
 - Detail panel: 1px black border, no radius, grayscale images
 - Typography: Helvetica Neue, uppercase tracking, minimal color

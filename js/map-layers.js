@@ -39,6 +39,7 @@
       clusterProperties: {
         min_num: ['min', ['to-number', ['get', 'num']]],
         max_num: ['max', ['to-number', ['get', 'num']]],
+        route_count: ['+', ['case', ['boolean', ['get', 'onRoute'], false], 1, 0]],
       },
     });
     map.addSource('aalto-visited', {
@@ -48,6 +49,7 @@
       clusterProperties: {
         min_num: ['min', ['to-number', ['get', 'num']]],
         max_num: ['max', ['to-number', ['get', 'num']]],
+        route_count: ['+', ['case', ['boolean', ['get', 'onRoute'], false], 1, 0]],
       },
     });
 
@@ -335,9 +337,9 @@
 
     map.addLayer({
       id: 'aalto-favs-cluster-markers', type: 'symbol', source: 'aalto-favs',
-      filter: ['has', 'point_count'],
+      filter: ['all', ['has', 'point_count'], ['<', ['get', 'route_count'], ['get', 'point_count']]],
       layout: {
-        'icon-image': 'aalto-dot-fav', 'icon-size': ['interpolate', ['linear'], ['zoom'], 6, 0.765, 10, 0.85],
+        'icon-image': 'aalto-dot-fav', 'icon-size': ['interpolate', ['linear'], ['zoom'], 6, 0.71, 12, 0.86, 18, 1.02],
         'icon-allow-overlap': true, 'icon-ignore-placement': true,
         visibility: 'none',
       },
@@ -345,11 +347,11 @@
     });
     map.addLayer({
       id: 'aalto-favs-cluster-labels', type: 'symbol', source: 'aalto-favs',
-      filter: ['has', 'point_count'],
+      filter: ['all', ['has', 'point_count'], ['<', ['get', 'route_count'], ['get', 'point_count']]],
       layout: {
         'text-field': ['concat', ['to-string', ['get', 'min_num']], '–', ['to-string', ['get', 'max_num']]],
         'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular'],
-        'text-size': 11,
+        'text-size': ['interpolate', ['linear'], ['zoom'], 6, 10.5, 18, 11],
         'text-letter-spacing': 0.06,
         'text-transform': 'uppercase',
         'text-variable-anchor': ['left', 'top-left', 'bottom-left', 'top', 'bottom', 'right', 'top-right', 'bottom-right'],
@@ -365,10 +367,10 @@
     });
     map.addLayer({
       id: 'aalto-favs-markers', type: 'symbol', source: 'aalto-favs',
-      filter: ['!', ['has', 'point_count']],
+      filter: ['all', ['!', ['has', 'point_count']], ['!=', ['get', 'onRoute'], true]],
       layout: {
         'icon-image': 'aalto-dot-fav',
-        'icon-size': ['interpolate', ['linear'], ['zoom'], 6, 0.765, 10, 0.85],
+        'icon-size': ['interpolate', ['linear'], ['zoom'], 6, 0.71, 12, 0.86, 18, 1.02],
         'icon-allow-overlap': true,
         'icon-ignore-placement': true,
         visibility: 'none',
@@ -377,11 +379,11 @@
     });
     map.addLayer({
       id: 'aalto-favs-numbers', type: 'symbol', source: 'aalto-favs',
-      filter: ['!', ['has', 'point_count']],
+      filter: ['all', ['!', ['has', 'point_count']], ['!=', ['get', 'onRoute'], true]],
       layout: {
         'text-field': ['get', 'num'],
         'text-font': ['DIN Pro Bold', 'Arial Unicode MS Bold'],
-        'text-size': 10.5,
+        'text-size': ['interpolate', ['linear'], ['zoom'], 6, 9, 18, 9.5],
         'text-allow-overlap': false,
         'text-ignore-placement': false,
         'text-optional': true,
@@ -393,11 +395,11 @@
     });
     map.addLayer({
       id: 'aalto-favs-labels', type: 'symbol', source: 'aalto-favs',
-      filter: ['!', ['has', 'point_count']],
+      filter: ['all', ['!', ['has', 'point_count']], ['!=', ['get', 'onRoute'], true]],
       layout: {
         'text-field': ['concat', ['get', 'label'], ['case', ['get', '_fav'], ' ★', ''], ['case', ['get', '_visited'], ' ✓', '']],
         'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular'],
-        'text-size': 11,
+        'text-size': ['interpolate', ['linear'], ['zoom'], 13, 10.5, 18, 11],
         'text-letter-spacing': 0.06,
         'text-transform': 'uppercase',
         'text-variable-anchor': ['left', 'top-left', 'bottom-left', 'top', 'bottom', 'right', 'top-right', 'bottom-right'],
@@ -415,9 +417,9 @@
     });
     map.addLayer({
       id: 'aalto-visited-cluster-markers', type: 'symbol', source: 'aalto-visited',
-      filter: ['has', 'point_count'],
+      filter: ['all', ['has', 'point_count'], ['<', ['get', 'route_count'], ['get', 'point_count']]],
       layout: {
-        'icon-image': 'aalto-dot-visited', 'icon-size': ['interpolate', ['linear'], ['zoom'], 6, 0.765, 10, 0.85],
+        'icon-image': 'aalto-dot-visited', 'icon-size': ['interpolate', ['linear'], ['zoom'], 6, 0.71, 12, 0.86, 18, 1.02],
         'icon-allow-overlap': true, 'icon-ignore-placement': true,
         visibility: 'none',
       },
@@ -425,11 +427,11 @@
     });
     map.addLayer({
       id: 'aalto-visited-cluster-labels', type: 'symbol', source: 'aalto-visited',
-      filter: ['has', 'point_count'],
+      filter: ['all', ['has', 'point_count'], ['<', ['get', 'route_count'], ['get', 'point_count']]],
       layout: {
         'text-field': ['concat', ['to-string', ['get', 'min_num']], '–', ['to-string', ['get', 'max_num']]],
         'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular'],
-        'text-size': 11,
+        'text-size': ['interpolate', ['linear'], ['zoom'], 6, 10.5, 18, 11],
         'text-letter-spacing': 0.06,
         'text-transform': 'uppercase',
         'text-variable-anchor': ['left', 'top-left', 'bottom-left', 'top', 'bottom', 'right', 'top-right', 'bottom-right'],
@@ -445,10 +447,10 @@
     });
     map.addLayer({
       id: 'aalto-visited-markers', type: 'symbol', source: 'aalto-visited',
-      filter: ['!', ['has', 'point_count']],
+      filter: ['all', ['!', ['has', 'point_count']], ['!=', ['get', 'onRoute'], true]],
       layout: {
         'icon-image': 'aalto-dot-visited',
-        'icon-size': ['interpolate', ['linear'], ['zoom'], 6, 0.765, 10, 0.85],
+        'icon-size': ['interpolate', ['linear'], ['zoom'], 6, 0.71, 12, 0.86, 18, 1.02],
         'icon-allow-overlap': true,
         'icon-ignore-placement': true,
         visibility: 'none',
@@ -457,11 +459,11 @@
     });
     map.addLayer({
       id: 'aalto-visited-numbers', type: 'symbol', source: 'aalto-visited',
-      filter: ['!', ['has', 'point_count']],
+      filter: ['all', ['!', ['has', 'point_count']], ['!=', ['get', 'onRoute'], true]],
       layout: {
         'text-field': ['get', 'num'],
         'text-font': ['DIN Pro Bold', 'Arial Unicode MS Bold'],
-        'text-size': 10.5,
+        'text-size': ['interpolate', ['linear'], ['zoom'], 6, 9, 18, 9.5],
         'text-allow-overlap': false,
         'text-ignore-placement': false,
         'text-optional': true,
@@ -473,11 +475,11 @@
     });
     map.addLayer({
       id: 'aalto-visited-labels', type: 'symbol', source: 'aalto-visited',
-      filter: ['!', ['has', 'point_count']],
+      filter: ['all', ['!', ['has', 'point_count']], ['!=', ['get', 'onRoute'], true]],
       layout: {
         'text-field': ['concat', ['get', 'label'], ['case', ['get', '_fav'], ' ★', ''], ['case', ['get', '_visited'], ' ✓', '']],
         'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular'],
-        'text-size': 11,
+        'text-size': ['interpolate', ['linear'], ['zoom'], 13, 10.5, 18, 11],
         'text-letter-spacing': 0.06,
         'text-transform': 'uppercase',
         'text-variable-anchor': ['left', 'top-left', 'bottom-left', 'top', 'bottom', 'right', 'top-right', 'bottom-right'],
