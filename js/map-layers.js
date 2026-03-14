@@ -301,7 +301,7 @@
       layout: {
         ..._clusterSymLayout,
         'text-field': [
-          'case', ['>', ['get', 'cities_in_country'], 1],
+          'case', ['>', ['to-number', ['get', 'cities_in_country'], 0], 1],
           ['concat', ['coalesce', ['get', 'city_only'], ['get', 'name']], ' (', ['to-string', ['get', 'count']], ')'],
           ['concat', ['get', 'name'], ' (', ['to-string', ['get', 'count']], ')'],
         ],
@@ -337,7 +337,7 @@
       id: 'aalto-favs-cluster-markers', type: 'symbol', source: 'aalto-favs',
       filter: ['has', 'point_count'],
       layout: {
-        'icon-image': 'aalto-dot', 'icon-size': 1.14,
+        'icon-image': 'aalto-dot-fav', 'icon-size': ['interpolate', ['linear'], ['zoom'], 6, 0.765, 10, 0.85],
         'icon-allow-overlap': true, 'icon-ignore-placement': true,
         visibility: 'none',
       },
@@ -367,8 +367,8 @@
       id: 'aalto-favs-markers', type: 'symbol', source: 'aalto-favs',
       filter: ['!', ['has', 'point_count']],
       layout: {
-        'icon-image': 'aalto-dot',
-        'icon-size': 1.14,
+        'icon-image': 'aalto-dot-fav',
+        'icon-size': ['interpolate', ['linear'], ['zoom'], 6, 0.765, 10, 0.85],
         'icon-allow-overlap': true,
         'icon-ignore-placement': true,
         visibility: 'none',
@@ -417,7 +417,7 @@
       id: 'aalto-visited-cluster-markers', type: 'symbol', source: 'aalto-visited',
       filter: ['has', 'point_count'],
       layout: {
-        'icon-image': 'aalto-dot', 'icon-size': 1.14,
+        'icon-image': 'aalto-dot-visited', 'icon-size': ['interpolate', ['linear'], ['zoom'], 6, 0.765, 10, 0.85],
         'icon-allow-overlap': true, 'icon-ignore-placement': true,
         visibility: 'none',
       },
@@ -447,8 +447,8 @@
       id: 'aalto-visited-markers', type: 'symbol', source: 'aalto-visited',
       filter: ['!', ['has', 'point_count']],
       layout: {
-        'icon-image': 'aalto-dot',
-        'icon-size': 1.14,
+        'icon-image': 'aalto-dot-visited',
+        'icon-size': ['interpolate', ['linear'], ['zoom'], 6, 0.765, 10, 0.85],
         'icon-allow-overlap': true,
         'icon-ignore-placement': true,
         visibility: 'none',
@@ -513,7 +513,7 @@
 
       if (map.getLayer('city-labels'))
         map.setLayoutProperty('city-labels', 'text-field', [
-          'case', ['>', ['get', 'cities_in_country'], 1],
+          'case', ['>', ['to-number', ['get', 'cities_in_country'], 0], 1],
           ['concat', ['coalesce', ['get', cok], ['get', 'city_only'], ['get', 'name']], ' (', ['to-string', ['get', 'count']], ')'],
           ['concat', ['coalesce', ['get', nk], ['get', 'name']], ' (', ['to-string', ['get', 'count']], ')'],
         ]);

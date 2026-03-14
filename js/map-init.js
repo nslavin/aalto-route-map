@@ -11,10 +11,10 @@
   const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/nslavin/cmml8edyr004101r1fxw306px',
-    center: [24.83419, 60.20262],
-    zoom: 10.654,
-    bearing: 0,
-    pitch: 0,
+    center: [13.3217, 52.521],
+    zoom: 4,
+    bearing: -11,
+    pitch: 42,
     minZoom: 3,
   });
 
@@ -46,7 +46,7 @@
         fetch('./data/aalto_route.geojson'),
         fetch('./data/aalto_details.json').catch(() => null),
         fetch('./data/aalto_clusters_countries.geojson'),
-        fetch('./data/aalto_clusters_cities.geojson'),
+        fetch('./data/aalto_clusters_cities.geojson?v=2'),
         fetch('./data/aalto_clusters_helsinki_metropolitan.geojson'),
       ]);
     } catch (e) {
@@ -72,14 +72,16 @@
     const _loadImg = url => new Promise((res, rej) => {
       const img = new Image(); img.onload = () => res(img); img.onerror = rej; img.src = url;
     });
-    const [_dotImg, _dotRouteImg, _dotVisitedImg] = await Promise.all([
+    const [_dotImg, _dotRouteImg, _dotVisitedImg, _dotFavImg] = await Promise.all([
       _loadImg('icons/dot.svg'),
       _loadImg('icons/dot-route.svg'),
       _loadImg('icons/dot-visited.svg'),
+      _loadImg('icons/dot-fav.svg'),
     ]);
     map.addImage('aalto-dot', _dotImg, { pixelRatio: 2 });
     map.addImage('aalto-dot-route', _dotRouteImg, { pixelRatio: 2 });
     map.addImage('aalto-dot-visited', _dotVisitedImg, { pixelRatio: 2 });
+    map.addImage('aalto-dot-fav', _dotFavImg, { pixelRatio: 2 });
 
     window.initMapLayers(map, data, countriesData, citiesData, metroData, A);
 
@@ -90,7 +92,7 @@
         map.jumpTo({ center: [p.lng, p.lat], zoom: p.zoom, bearing: p.bearing, pitch: p.pitch });
       } catch (e) { /* ignore corrupt data */ }
     } else {
-      map.jumpTo({ center: [24.83419, 60.20262], zoom: 10.654, bearing: 0, pitch: 0 });
+      map.jumpTo({ center: [13.3217, 52.521], zoom: 4, bearing: -11, pitch: 42 });
     }
 
     const layoutRet = window.initLayout(map, mapEl, A);
