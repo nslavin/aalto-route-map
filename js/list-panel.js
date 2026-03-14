@@ -24,13 +24,13 @@
     const AALTO_POINTS_FILTER_BASE = ['!', ['has', 'point_count']];
     const AALTO_HALO_FILTER_BASE = ['!', ['has', 'point_count']];
     const GREY_PAINT_LAYERS = [
-      { id: 'country-clusters-stack', icon: true, defOpacity: 0.35 }, { id: 'country-clusters', icon: true, defOpacity: 0.9 },
+      { id: 'country-clusters-stack', icon: true, defOpacity: 0.9 }, { id: 'country-clusters', icon: true, defOpacity: 0.9 },
       { id: 'country-labels', text: true },
-      { id: 'city-clusters-stack', icon: true, defOpacity: 0.35 }, { id: 'city-clusters', icon: true, defOpacity: 0.9 },
+      { id: 'city-clusters-stack', icon: true, defOpacity: 0.9 }, { id: 'city-clusters', icon: true, defOpacity: 0.9 },
       { id: 'city-labels', text: true },
-      { id: 'metro-clusters-stack', icon: true, defOpacity: 0.35 }, { id: 'metro-clusters', icon: true, defOpacity: 0.9 },
+      { id: 'metro-clusters-stack', icon: true, defOpacity: 0.9 }, { id: 'metro-clusters', icon: true, defOpacity: 0.9 },
       { id: 'metro-labels', text: true },
-      { id: 'aalto-clusters-stack', icon: true, defOpacity: 0.35 }, { id: 'aalto-clusters', icon: true, defOpacity: 0.9 },
+      { id: 'aalto-clusters-stack', icon: true, defOpacity: 0.9 }, { id: 'aalto-clusters', icon: true, defOpacity: 0.9 },
       { id: 'aalto-cluster-labels', text: true },
       { id: 'aalto-halo', stroke: true },
       { id: 'aalto-points', icon: true, text: true, defOpacity: 0.9 },
@@ -48,6 +48,7 @@
           'case',
           ['boolean', ['feature-state', 'selected'], false], 1,
           ['boolean', ['feature-state', 'hover'], false], 1,
+          ['get', '_visited'], 0.45,
           0.9,
         ]);
       }
@@ -207,7 +208,8 @@
 
     const listBody = document.getElementById('list-body');
     let activeFilter = 'all';
-    let activeSortMode = 'distance';
+    let activeSortMode = 'alphabet';
+    A.activeSortMode = activeSortMode;
     let userLocation = null;
     const collapsedGroups = new Set();
     let viewBeforeFavVisitedMode = null;
@@ -229,11 +231,16 @@
       const query = document.getElementById('list-search').value.toLowerCase();
       listBody.innerHTML = '';
 
-      const ref = userLocation || map.getCenter();
-      const refCoords = userLocation ? [userLocation.lng, userLocation.lat] : [ref.lng, ref.lat];
-
       const isFavOrVisited = activeFilter === 'fav' || activeFilter === 'visited';
-      const effectiveSortByDistance = isFavOrVisited ? false : (activeSortMode === 'distance');
+      let refCoords = null;
+      if (!isFavOrVisited) {
+        if (activeSortMode === 'distance') {
+          refCoords = userLocation ? [userLocation.lng, userLocation.lat] : null;
+        } else if (activeSortMode === 'distanceFromCenter') {
+          refCoords = userLocation ? [userLocation.lng, userLocation.lat] : [map.getCenter().lng, map.getCenter().lat];
+        }
+      }
+      const effectiveSortByDistance = !isFavOrVisited && refCoords != null;
 
       function renderItems(items, listNumOffset) {
         const esc = window.AaltoUtils.escHtml;
@@ -333,11 +340,12 @@
           });
           if (!items.length) return;
 
-          if (effectiveSortByDistance) {
+          const getKey = (a) => (isfi && a.name_fi ? a.name_fi : a.name) || '';
+          if (effectiveSortByDistance && refCoords) {
             items = items.map(item => ({ ...item, _dist: haversineKm(refCoords, item.coords) }));
             items.sort((a, b) => a._dist - b._dist);
           } else {
-            items = [...items].sort((a, b) => a.name.localeCompare(b.name));
+            items = [...items].sort((a, b) => getKey(a).localeCompare(getKey(b)));
           }
 
           const esc = window.AaltoUtils.escHtml;
@@ -393,8 +401,12 @@
       let el = listBody.querySelector(`.list-item[data-id="${id}"]`);
       if (!el && activeFilter !== 'all') {
         activeFilter = 'all';
+        A.activeListFilter = 'all';
+        A.savePanels();
+        viewBeforeFavVisitedMode = null;
         document.querySelectorAll('.list-filter-btn[data-filter]').forEach(b =>
           b.classList.toggle('active', b.dataset.filter === 'all'));
+        updateMapVisibilityForFilter();
         updateRouteFromBookmarksBtn();
         A.renderList();
         el = listBody.querySelector(`.list-item[data-id="${id}"]`);
@@ -470,8 +482,10 @@
         A.activeListFilter = newFilter;
         A.savePanels();
         updateMapVisibilityForFilter();
-        if (newFilter === 'all' && (prevFilter === 'fav' || prevFilter === 'visited')) {
-          restoreViewBeforeFavVisited();
+        if (newFilter === 'all') {
+          viewBeforeFavVisitedMode = null;
+          const iv = A.initialView || { center: [13.3217, 52.521], zoom: 4, bearing: -11, pitch: 42 };
+          map.flyTo({ ...iv, duration: 800 });
         }
         if (activeFilter === 'fav' && A.favs.size > 0) {
           if (prevFilter === 'all') saveViewBeforeFavVisited();
@@ -520,8 +534,9 @@
     const sortValueEl = document.getElementById('list-sort-value');
     const sortMenu = document.getElementById('list-sort-menu');
     if (sortDropdown && sortTrigger && sortMenu) {
+      const sortLabelByMode = { alphabet: 'sortAlphabet', distance: 'sortDistance', distanceFromCenter: 'sortDistanceFromCenter' };
       const updateSortDisplay = () => {
-        sortValueEl.textContent = activeSortMode === 'distance' ? A.t('sortDistance') : A.t('sortAlphabet');
+        sortValueEl.textContent = A.t(sortLabelByMode[activeSortMode] || 'sortAlphabet');
         sortMenu.querySelectorAll('.list-sort-option').forEach(o => {
           o.classList.toggle('active', o.dataset.sort === activeSortMode);
         });
@@ -536,13 +551,37 @@
         opt.addEventListener('click', (e) => {
           e.stopPropagation();
           activeSortMode = opt.dataset.sort;
+          A.activeSortMode = activeSortMode;
+          A.savePanels();
+          if (activeSortMode === 'distance' && !userLocation && navigator.geolocation) {
+            updateSortDisplay();
+            sortDropdown.classList.remove('open');
+            navigator.geolocation.getCurrentPosition(
+              (pos) => {
+                userLocation = { lng: pos.coords.longitude, lat: pos.coords.latitude };
+                document.querySelector('.map-geolocate-btn')?.classList.add('active');
+                A.renderList();
+              },
+              () => {
+                if (A.showToast) A.showToast(A.t('locationUnavailable'));
+              },
+              { timeout: 10000 }
+            );
+            return;
+          }
           updateSortDisplay();
           sortDropdown.classList.remove('open');
           A.renderList();
         });
       });
-      document.addEventListener('click', () => sortDropdown.classList.remove('open'));
     }
+
+    function _closeAllDropdowns() {
+      if (sortDropdown) sortDropdown.classList.remove('open');
+      const led = document.getElementById('list-export-dropdown');
+      if (led) led.classList.remove('open');
+    }
+    document.addEventListener('click', _closeAllDropdowns);
 
     const listExportDropdown = document.getElementById('list-export-dropdown');
     const listExportTrigger = document.getElementById('list-export-trigger');
@@ -670,14 +709,13 @@
           }
         });
       });
-      document.addEventListener('click', () => listExportDropdown.classList.remove('open'));
       A.updateExportDropdowns = function() { updateListExportLabels(); };
     }
 
     let _renderListMoveTimer;
     map.on('moveend', () => {
       updateRouteFromVisibleBtn();
-      const needsRerender = activeSortMode === 'distance' || activeFilter === 'fav' || activeFilter === 'visited';
+      const needsRerender = activeSortMode === 'distanceFromCenter' || activeFilter === 'fav' || activeFilter === 'visited';
       if (!needsRerender) return;
       clearTimeout(_renderListMoveTimer);
       _renderListMoveTimer = setTimeout(() => A.renderList(), 200);
@@ -692,7 +730,7 @@
         btn.className = 'mapboxgl-ctrl-icon map-geolocate-btn';
         btn.setAttribute('aria-label', A.t('tipUseMyLocation'));
         btn.title = A.t('tipUseMyLocation');
-        btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="10" r="3"/><path d="M10 2v4M10 14v4M2 10h4M14 10h4"/></svg>';
+        btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>';
         el.appendChild(btn);
         btn.onclick = () => {
           if (userLocation) {
@@ -710,12 +748,13 @@
               userLocation = { lng: pos.coords.longitude, lat: pos.coords.latitude };
               btn.classList.add('active');
               A.renderList();
-              m.flyTo({ center: [userLocation.lng, userLocation.lat], zoom: Math.max(m.getZoom(), 12), duration: 800 });
+              m.flyTo({ center: [userLocation.lng, userLocation.lat], zoom: 18, pitch: 50, duration: 800 });
             },
             () => {
               userLocation = null;
               A.showToast(A.t('locationUnavailable'));
-            }
+            },
+            { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
           );
         };
         return el;
@@ -742,7 +781,7 @@
           if (A.routeStops.length >= 3 && typeof google !== 'undefined' && google.maps) {
             document.getElementById('route-optimize').click();
           }
-        });
+        }).catch(err => console.error('Route calc failed:', err));
         A.fitRouteOverview();
       } else {
         A.saveRoute();
@@ -771,7 +810,7 @@
         if (A.routeStops.length >= 3 && typeof google !== 'undefined' && google.maps) {
           document.getElementById('route-optimize').click();
         }
-      });
+      }).catch(err => console.error('Route calc failed:', err));
       A.fitRouteOverview();
     };
 

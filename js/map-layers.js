@@ -173,11 +173,11 @@
       paint: {
         'circle-radius': ['interpolate', ['linear'], ['zoom'], 11, 5, 18, 9],
         'circle-color': '#000', 'circle-opacity': 0,
-        'circle-stroke-width': 0.5, 'circle-stroke-color': '#000',
+        'circle-stroke-width': 0.25, 'circle-stroke-color': '#000',
         'circle-stroke-opacity': [
           'case',
-          ['all', ['boolean', ['feature-state', 'selected'], false], ['!', ['has', 'routeNum']]], 1,
-          ['boolean', ['feature-state', 'hover'], false], 0.2,
+          ['all', ['boolean', ['feature-state', 'selected'], false], ['!', ['has', 'routeNum']]], 0.75,
+          ['boolean', ['feature-state', 'hover'], false], 0.15,
           0,
         ],
       },
@@ -187,7 +187,7 @@
       minzoom: zoom.aaltoPoints.min, maxzoom: zoom.aaltoPoints.max,
       filter: ['!', ['has', 'point_count']],
       layout: {
-        'icon-image': ['case', ['get', '_visited'], 'aalto-dot-visited', 'aalto-dot'],
+        'icon-image': 'aalto-dot',
         'icon-size': ['interpolate', ['linear'], ['zoom'], 11, 0.35, 13, 0.5, 16, 0.75, 19, 1],
         'icon-allow-overlap': true,
         'icon-ignore-placement': true,
@@ -220,15 +220,17 @@
           'case',
           ['boolean', ['feature-state', 'selected'], false], 1,
           ['boolean', ['feature-state', 'hover'], false], 1,
+          ['get', '_visited'], 0.45,
           0.9,
         ],
         'text-color': '#000',
-        'text-halo-color': '#fff',
+        'text-halo-color': 'rgba(255,255,255,0.9)',
         'text-halo-width': [
           'case',
-          ['boolean', ['feature-state', 'selected'], false], 2.5,
-          1.5,
+          ['boolean', ['feature-state', 'selected'], false], 1.5,
+          1,
         ],
+        'text-halo-blur': 0.5,
       },
     });
 
@@ -236,7 +238,7 @@
       id: 'aalto-clusters-stack', type: 'symbol', source: 'aalto',
       minzoom: zoom.aaltoClusters.min, maxzoom: zoom.aaltoClusters.max, filter: ['has', 'point_count'],
       layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': true },
-      paint: { 'icon-opacity': 0.35, 'icon-translate': [2.5, -2.5] },
+      paint: { 'icon-opacity': 0.9, 'icon-translate': [2.5, -2.5] },
     });
     map.addLayer({
       id: 'aalto-clusters', type: 'symbol', source: 'aalto',
@@ -264,7 +266,7 @@
       id: 'metro-clusters-stack', type: 'symbol', source: 'aalto-metro',
       minzoom: zoom.metro.min, maxzoom: zoom.metro.max, filter: ['>', ['get', 'count'], 1],
       layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': true },
-      paint: { 'icon-opacity': 0.35, 'icon-translate': [2.5, -2.5] },
+      paint: { 'icon-opacity': 0.9, 'icon-translate': [2.5, -2.5] },
     });
     map.addLayer({
       id: 'metro-clusters', type: 'symbol', source: 'aalto-metro',
@@ -289,7 +291,7 @@
       id: 'city-clusters-stack', type: 'symbol', source: 'aalto-cities',
       minzoom: iconMin.cities, maxzoom: zoom.cities.max, filter: ['>', ['get', 'count'], 1],
       layout: { 'icon-image': 'aalto-dot', 'icon-size': ['interpolate', ['linear'], ['zoom'], iconMin.cities, 0.2415, zoom.cities.min, 0.552], 'icon-allow-overlap': true, 'icon-ignore-placement': true },
-      paint: { 'icon-opacity': 0.35, 'icon-translate': [2.5, -2.5] },
+      paint: { 'icon-opacity': 0.9, 'icon-translate': [2.5, -2.5] },
     });
     map.addLayer({
       id: 'city-clusters', type: 'symbol', source: 'aalto-cities',
@@ -316,7 +318,7 @@
       id: 'country-clusters-stack', type: 'symbol', source: 'aalto-countries',
       minzoom: zoom.countries.min, maxzoom: zoom.countries.max,
       layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.65, 'icon-allow-overlap': true, 'icon-ignore-placement': true },
-      paint: { 'icon-opacity': 0.35, 'icon-translate': [2.5, -2.5] },
+      paint: { 'icon-opacity': 0.9, 'icon-translate': [2.5, -2.5] },
     });
     map.addLayer({
       id: 'country-clusters', type: 'symbol', source: 'aalto-countries',

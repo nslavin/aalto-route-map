@@ -401,7 +401,7 @@ a.panel-footer-value:hover { opacity: 0.5; }
 /* Lightbox */
 #lightbox {
   display: none; position: fixed; inset: 0;
-  background: rgba(255,255,255,0.92); z-index: 100;
+  background: rgba(255,255,255,0.92); z-index: 150;
   align-items: center; justify-content: center;
   flex-direction: column;
 }

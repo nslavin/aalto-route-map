@@ -458,13 +458,20 @@
       });
     }
 
+    let _calcInProgress = false;
+    let _calcQueued = false;
     A.calculateAllSegments = async function() {
+      if (_calcInProgress) { _calcQueued = true; return; }
+      _calcInProgress = true;
+      _calcQueued = false;
       const loadingEl = _domRefs.loadingEl;
       if (A.routeStops.length < 2) {
         A.routeSegments = [];
         updateRouteOnMap();
         A.renderRouteSection();
         if (loadingEl) loadingEl.style.display = 'none';
+        _calcInProgress = false;
+        if (_calcQueued) A.calculateAllSegments();
         return;
       }
       if (loadingEl) loadingEl.style.display = '';
@@ -538,6 +545,8 @@
       updateRouteOnMap();
       A.renderRouteSection();
       if (loadingEl) loadingEl.style.display = 'none';
+      _calcInProgress = false;
+      if (_calcQueued) A.calculateAllSegments();
     };
 
     A.renderRouteSection = function() {
@@ -677,7 +686,7 @@
     };
 
     const gmapsHandler = () => {
-      const url = A.getGmapsUrl ? A.getGmapsUrl(A.routeStops, A.routeSegments) : null;
+      const url = A.getGmapsUrl(A.routeStops, A.routeSegments);
       if (!url || A.routeStops.length < 2) return;
       const isMixed = A.routeSegments.some(seg =>
         (seg.modeOverride && seg.modeOverride !== A.globalMode) ||
@@ -722,8 +731,8 @@
           if (opt.disabled) return;
           routeExportDropdown.classList.remove('open');
           if (opt.dataset.action === 'share-route') {
-            const gmapsUrl = A.getGmapsUrl ? A.getGmapsUrl(A.routeStops, A.routeSegments) : null;
-            const text = A.buildRouteText ? A.buildRouteText(A.routeStops, A.routeSegments, A.featureList || [], A.lang, gmapsUrl) : '';
+            const gmapsUrl = A.getGmapsUrl(A.routeStops, A.routeSegments);
+            const text = A.buildRouteText(A.routeStops, A.routeSegments, A.featureList || [], A.lang, gmapsUrl);
             if (!text) { A.showToast(A.t('shareFailed'), 3000); return; }
             A.shareToClipboard(text,
               () => A.showToast(A.t('sharedToClipboard'), 2000),

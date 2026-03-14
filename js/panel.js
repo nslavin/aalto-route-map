@@ -267,9 +267,14 @@
     const map = A.map;
     if (map && feature.geometry && feature.geometry.coordinates) {
       const randomBearing = Math.random() * 60 - 30;
-      map.flyTo({
-        center: feature.geometry.coordinates,
-        zoom: 18, pitch: 50, bearing: randomBearing, speed: 1.8,
+      // Defer flyTo so map.resize() from openPanel/updatePanelLayout takes effect
+      requestAnimationFrame(() => {
+        const padding = A.getMapPadding ? A.getMapPadding() : { top: 40, bottom: 40, left: 40, right: 40 };
+        map.flyTo({
+          center: feature.geometry.coordinates,
+          zoom: 18, pitch: 50, bearing: randomBearing, speed: 1.8,
+          padding: padding,
+        });
       });
     }
   }

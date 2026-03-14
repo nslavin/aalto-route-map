@@ -19,8 +19,9 @@
   });
 
   A.map = map;
+  A.initialView = { center: [13.3217, 52.521], zoom: 4, bearing: -11, pitch: 42 };
 
-  map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'bottom-left');
+  map.addControl(new mapboxgl.NavigationControl({ showCompass: true }), 'bottom-left');
 
   let _savePosTimer;
   map.on('moveend', () => {
@@ -300,13 +301,14 @@
     A.renderRouteSection();
     if (A.routeStops.length >= 2) {
       let _googleMapsRetries = 0;
-      const _googleMapsMaxRetries = 25;
+      const _googleMapsMaxRetries = 10;
       function tryCalculateRoute() {
         if (typeof google !== 'undefined' && google.maps) {
           A.calculateAllSegments();
         } else if (_googleMapsRetries < _googleMapsMaxRetries) {
+          const delay = Math.min(200 * Math.pow(2, _googleMapsRetries), 5000);
           _googleMapsRetries++;
-          setTimeout(tryCalculateRoute, 200);
+          setTimeout(tryCalculateRoute, delay);
         } else {
           A.showToast('Route directions unavailable — Google Maps failed to load', 5000);
         }
@@ -335,6 +337,11 @@
       if (savedPanels.panelOpen && savedPanels.selectedId != null) {
         const item = featureList.find(f => f.id == savedPanels.selectedId);
         if (item) A.selectFeature({ ...item.feature, id: item.id }, { skipExpand: true });
+      }
+
+      if (savedPanels.activeSortMode && savedPanels.activeSortMode !== 'alphabet') {
+        const sortOpt = document.querySelector(`.list-sort-option[data-sort="${savedPanels.activeSortMode}"]`);
+        if (sortOpt) sortOpt.click();
       }
 
       if (savedPanels.activeListFilter && savedPanels.activeListFilter !== 'all') {

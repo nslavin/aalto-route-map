@@ -37,6 +37,7 @@
       sortLabel: 'SORT BY:',
       sortDistance: 'Distance',
       sortAlphabet: 'Alphabet',
+      sortDistanceFromCenter: 'From map center',
       tipUseMyLocation: 'Use my location',
       locationUnavailable: 'Location unavailable',
       phone: 'Phone',
@@ -104,6 +105,7 @@
       sortLabel: 'JÄRJESTÄ:',
       sortDistance: 'Etäisyys',
       sortAlphabet: 'Aakkosjärjestys',
+      sortDistanceFromCenter: 'Kartan keskipisteestä',
       tipUseMyLocation: 'Käytä sijaintiani',
       locationUnavailable: 'Sijainti ei saatavilla',
       phone: 'Puhelin',
@@ -174,11 +176,14 @@
     if (sortLabel) sortLabel.textContent = tr.sortLabel;
     const sortOptDistance = document.querySelector('.list-sort-option[data-sort="distance"]');
     const sortOptAlphabet = document.querySelector('.list-sort-option[data-sort="alphabet"]');
+    const sortOptDistanceFromCenter = document.querySelector('.list-sort-option[data-sort="distanceFromCenter"]');
     if (sortOptDistance) sortOptDistance.textContent = tr.sortDistance;
     if (sortOptAlphabet) sortOptAlphabet.textContent = tr.sortAlphabet;
+    if (sortOptDistanceFromCenter) sortOptDistanceFromCenter.textContent = tr.sortDistanceFromCenter;
     const sortValueEl = document.getElementById('list-sort-value');
     const activeSortOpt = document.querySelector('.list-sort-option.active');
-    if (sortValueEl) sortValueEl.textContent = activeSortOpt?.dataset.sort === 'alphabet' ? tr.sortAlphabet : tr.sortDistance;
+    const sortLabelByMode = { alphabet: tr.sortAlphabet, distance: tr.sortDistance, distanceFromCenter: tr.sortDistanceFromCenter };
+    if (sortValueEl && activeSortOpt?.dataset.sort) sortValueEl.textContent = sortLabelByMode[activeSortOpt.dataset.sort] || sortValueEl.textContent;
     document.querySelectorAll('.map-geolocate-btn').forEach(b => { b.title = tr.tipUseMyLocation; b.setAttribute('aria-label', tr.tipUseMyLocation); });
     document.querySelectorAll('.route-mode-btn').forEach(b => {
       b.textContent = tr.modeLabels[b.dataset.mode] || b.dataset.mode;

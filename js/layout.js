@@ -4,6 +4,7 @@
 // ═══════════════════════════════════════════════════════
 (function() {
   window.initLayout = function(map, mapEl, A) {
+    let _lastMapWidth = mapEl.offsetWidth;
     A.updatePanelLayout = function() {
       const routeCollapsed = document.getElementById('route-section').classList.contains('collapsed');
       const bothCollapsed = A.listCollapsed && routeCollapsed;
@@ -68,9 +69,26 @@
         panelEl.style.background = '';
         mapEl.style.width = '';
       }
-      mapEl.style.transition = 'none';
-      map.resize();
-      requestAnimationFrame(() => { mapEl.style.transition = ''; });
+      const curWidth = mapEl.offsetWidth;
+      if (curWidth !== _lastMapWidth) {
+        _lastMapWidth = curWidth;
+        mapEl.style.transition = 'none';
+        map.resize();
+        requestAnimationFrame(() => { mapEl.style.transition = ''; });
+      }
+    };
+
+    A.getMapPadding = function() {
+      const panelEl = document.getElementById('panel');
+      const panelOpen = panelEl.classList.contains('open');
+      const routeCollapsed = document.getElementById('route-section').classList.contains('collapsed');
+      const bothCollapsed = A.listCollapsed && routeCollapsed;
+      let right = 40;
+      if (bothCollapsed && panelOpen) {
+        // Map is 100vw but panels overlay on the right
+        right = panelEl.offsetWidth;
+      }
+      return { top: 40, bottom: 40, left: 40, right: right };
     };
 
     window.addEventListener('resize', () => A.updatePanelLayout());
@@ -79,7 +97,8 @@
       if (A.routeStops.length < 2) return;
       const bounds = new mapboxgl.LngLatBounds();
       A.routeStops.forEach(s => bounds.extend(s.coords));
-      map.fitBounds(bounds, { padding: 80, pitch: 0, duration: 1000 });
+      const padding = A.getMapPadding();
+      map.fitBounds(bounds, { padding: padding, pitch: 0, duration: 1000 });
     };
 
     A.listCollapsed = false;
