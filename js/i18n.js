@@ -75,6 +75,7 @@
       mobileTabBookmarks: 'BOOKMARKS',
       mobileTabVisited: 'VISITED',
       mobileTabRoute: 'ROUTE',
+      headerToggle: 'Toggle info',
     },
     fi: {
       headerTitle: 'Alvar Aallon Reitti',
@@ -147,6 +148,7 @@
       mobileTabBookmarks: 'SUOSIKIT',
       mobileTabVisited: 'KÄYDYT',
       mobileTabRoute: 'REITTI',
+      headerToggle: 'Näytä tiedot',
     },
   };
 
@@ -174,6 +176,10 @@
     document.getElementById('list-search').placeholder = tr.searchPlaceholder;
     document.getElementById('list-search-clear').title = tr.tipClear;
     document.getElementById('panel-close').title = tr.tipClose;
+    var headerToggle = document.getElementById('header-toggle');
+    if (headerToggle) { headerToggle.title = tr.headerToggle; headerToggle.setAttribute('aria-label', tr.headerToggle); }
+    var carouselClose = document.querySelector('.bs-close-carousel');
+    if (carouselClose) carouselClose.title = tr.tipClose;
     const filterAll = document.querySelector('[data-filter="all"]');
     if (filterAll) filterAll.textContent = tr.filterAll;
     const filterFav = document.querySelector('[data-filter="fav"]');

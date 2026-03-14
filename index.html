@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Aalto Map</title>
   <link href="https://api.mapbox.com/mapbox-gl-js/v3.19.0/mapbox-gl.css" rel="stylesheet">
   <link href="./styles.css" rel="stylesheet">
@@ -14,26 +14,32 @@
   <div id="map"></div>
 
   <div id="header">
-    <h1 id="header-title">Alvar Aalto Route</h1>
-    <p id="header-sub">Architectural Heritage Map</p>
-    <div id="lang-switch">
-      <button class="lang-btn active" data-lang="en">EN</button>
-      <span class="lang-sep">/</span>
-      <button class="lang-btn" data-lang="fi">FI</button>
+    <div id="header-content">
+      <h1 id="header-title">Alvar Aalto Route</h1>
+      <p id="header-sub">Architectural Heritage Map</p>
+      <div id="lang-switch">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <span class="lang-sep">/</span>
+        <button class="lang-btn" data-lang="fi">FI</button>
+      </div>
+      <a id="header-source" href="https://visit.alvaraalto.fi/en/alvar-aalto-route/" target="_blank" rel="noopener">Source: visit.alvaraalto.fi</a>
     </div>
-    <a id="header-source" href="https://visit.alvaraalto.fi/en/alvar-aalto-route/" target="_blank" rel="noopener">Source: visit.alvaraalto.fi</a>
+    <button id="header-toggle" type="button" aria-expanded="true" aria-label="Toggle info" title="">
+      <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 1l4 4 4-4"/></svg>
+    </button>
   </div>
 
   <div id="bottom-sheet">
     <div class="bs-handle"><div class="bs-handle-bar"></div></div>
+    <div class="bs-search-row"></div>
     <div class="bs-tabs">
       <button class="bs-tab active" data-tab="all">ALL</button>
       <button class="bs-tab" data-tab="fav">BOOKMARKS</button>
       <button class="bs-tab" data-tab="visited">VISITED</button>
+      <span class="bs-tab-route-divider"></span>
       <button class="bs-tab bs-tab-route" data-tab="route">ROUTE</button>
     </div>
     <div class="bs-route-preview" style="display:none"></div>
-    <div class="bs-search-row"></div>
     <div class="bs-content">
       <div class="bs-view bs-view-list active"></div>
       <div class="bs-view bs-view-detail">
@@ -129,36 +135,39 @@
   </div>
 
   <div id="panel">
-    <div id="panel-header">
-      <span>INFO</span>
-      <button id="panel-close" title="Close">&#x2715;</button>
-    </div>
+    <div id="panel-inner">
+      <div id="panel-header">
+        <span>INFO</span>
+        <button id="panel-close" title="Close">&#x2715;</button>
+      </div>
 
-    <div id="panel-carousel">
-      <img id="carousel-img" src="" alt="">
-      <div id="carousel-caption">
-        <span id="carousel-caption-text"></span>
-        <div id="carousel-nav">
-          <button id="carousel-prev">&#8592;</button>
-          <button id="carousel-next">&#8594;</button>
+      <div id="panel-carousel">
+        <img id="carousel-img" src="" alt="">
+        <div id="carousel-caption">
+          <span id="carousel-caption-text"></span>
+          <div id="carousel-nav">
+            <button id="carousel-prev" title="Previous"><svg width="10" height="14" viewBox="0 0 5 8" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 1L1 4l3 3"/></svg></button>
+            <button id="carousel-next" title="Next"><svg width="10" height="14" viewBox="0 0 5 8" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 1l3 3-3 3"/></svg></button>
+            <button class="bs-close-carousel" title="Close">&#x2715;</button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div id="panel-body">
-      <h2 id="panel-name"></h2>
-      <div id="panel-actions"></div>
-      <div id="panel-address-row">
-        <p id="panel-address"></p>
-        <a id="panel-gmaps" class="panel-gmaps-link" href="#" target="_blank" rel="noopener"></a>
+      <div id="panel-body">
+        <h2 id="panel-name"></h2>
+        <div id="panel-actions"></div>
+        <div id="panel-address-row">
+          <p id="panel-address"></p>
+          <a id="panel-gmaps" class="panel-gmaps-link" href="#" target="_blank" rel="noopener"></a>
+        </div>
+
+        <div id="panel-footer">
+          <div id="panel-contact"></div>
+          <div id="panel-social"></div>
+        </div>
+
+        <div id="panel-description"></div>
       </div>
-
-      <div id="panel-footer">
-        <div id="panel-contact"></div>
-        <div id="panel-social"></div>
-      </div>
-
-      <div id="panel-description"></div>
     </div>
   </div>
 

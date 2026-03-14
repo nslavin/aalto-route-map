@@ -23,6 +23,17 @@ python3 -m http.server 8081
 
 Then open **http://localhost:8081**.
 
+## Testing
+
+Unit tests use Jest and jsdom (no app build step):
+
+```bash
+npm install
+npm test
+```
+
+Tests cover utilities (`haversineKm`, `escHtml`), i18n (`A.t()`, key parity EN/FI), and state persistence (`loadPanels` / `savePanels` roundtrip). See `tests/` and `tests/setup.js` for how app scripts are loaded in order.
+
 ## Stack
 
 - **Map**: Mapbox GL JS v3.19.0, custom style

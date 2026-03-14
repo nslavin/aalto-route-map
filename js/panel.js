@@ -24,6 +24,7 @@
       A.toggleFav(fid);
       A.renderPanel(feature);
       A.renderList();
+      if (A.updateFilterCounts) A.updateFilterCounts();
     };
     actionsEl.querySelector('[data-action="visited"]').onclick = () => {
       A.toggleVisited(fid);

@@ -86,6 +86,9 @@
       _rebuildTimer = setTimeout(_doRebuildAaltoSource, 16);
     };
 
+    const _overlayScale = (window.innerWidth < 768 || (window.innerHeight < 440 && window.innerWidth > window.innerHeight)) ? 1.3 : 1.2;
+    const _overlayIconSize = ['interpolate', ['linear'], ['zoom'], 6, 0.71 * _overlayScale, 12, 0.86 * _overlayScale, 18, 1.02 * _overlayScale];
+
     const _clusterSymLayout = {
       'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular'],
       'text-size': ['interpolate', ['linear'], ['zoom'], 6, 10.5, 18, 11],
@@ -341,7 +344,7 @@
       id: 'aalto-favs-cluster-markers', type: 'symbol', source: 'aalto-favs',
       filter: ['all', ['has', 'point_count'], ['<', ['get', 'route_count'], ['get', 'point_count']]],
       layout: {
-        'icon-image': 'aalto-dot-fav', 'icon-size': ['interpolate', ['linear'], ['zoom'], 6, 0.71, 12, 0.86, 18, 1.02],
+        'icon-image': 'aalto-dot-fav', 'icon-size': _overlayIconSize,
         'icon-allow-overlap': true, 'icon-ignore-placement': true,
         visibility: 'none',
       },
@@ -372,7 +375,7 @@
       filter: ['all', ['!', ['has', 'point_count']], ['!=', ['get', 'onRoute'], true]],
       layout: {
         'icon-image': 'aalto-dot-fav',
-        'icon-size': ['interpolate', ['linear'], ['zoom'], 6, 0.71, 12, 0.86, 18, 1.02],
+        'icon-size': _overlayIconSize,
         'icon-allow-overlap': true,
         'icon-ignore-placement': true,
         visibility: 'none',
@@ -421,7 +424,7 @@
       id: 'aalto-visited-cluster-markers', type: 'symbol', source: 'aalto-visited',
       filter: ['all', ['has', 'point_count'], ['<', ['get', 'route_count'], ['get', 'point_count']]],
       layout: {
-        'icon-image': 'aalto-dot-visited', 'icon-size': ['interpolate', ['linear'], ['zoom'], 6, 0.71, 12, 0.86, 18, 1.02],
+        'icon-image': 'aalto-dot-visited', 'icon-size': _overlayIconSize,
         'icon-allow-overlap': true, 'icon-ignore-placement': true,
         visibility: 'none',
       },
@@ -452,7 +455,7 @@
       filter: ['all', ['!', ['has', 'point_count']], ['!=', ['get', 'onRoute'], true]],
       layout: {
         'icon-image': 'aalto-dot-visited',
-        'icon-size': ['interpolate', ['linear'], ['zoom'], 6, 0.71, 12, 0.86, 18, 1.02],
+        'icon-size': _overlayIconSize,
         'icon-allow-overlap': true,
         'icon-ignore-placement': true,
         visibility: 'none',

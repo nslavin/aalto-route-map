@@ -3,6 +3,23 @@
 // Expects: map, mapEl, A (Aalto)
 // ═══════════════════════════════════════════════════════
 (function() {
+  // Header toggle (mobile): wire immediately so it works before map loads
+  (function initHeaderToggle() {
+    var headerEl = document.getElementById('header');
+    var headerToggle = document.getElementById('header-toggle');
+    if (!headerEl || !headerToggle) return;
+    var mql = window.matchMedia('(max-width: 767px)');
+    mql.addEventListener('change', function(e) {
+      if (!e.matches) headerEl.classList.remove('header-hidden');
+    });
+    headerToggle.onclick = function(e) {
+      e.stopPropagation();
+      if (!mql.matches) return;
+      headerEl.classList.toggle('header-hidden');
+      headerToggle.setAttribute('aria-expanded', !headerEl.classList.contains('header-hidden'));
+    };
+  })();
+
   window.initLayout = function(map, mapEl, A) {
     let _lastMapWidth = mapEl.offsetWidth;
     A.updatePanelLayout = function() {
@@ -75,24 +92,18 @@
         _lastMapWidth = curWidth;
         mapEl.style.transition = 'none';
         map.resize();
-        requestAnimationFrame(() => { mapEl.style.transition = ''; });
+        requestAnimationFrame(() => {
+          mapEl.style.transition = '';
+          // Second resize after layout has settled to avoid blank/gray area and redraw the map
+          requestAnimationFrame(() => map.resize());
+        });
       }
     };
 
     A.getMapPadding = function() {
       if (A.isMobile) {
-        var snap = A.mobileState ? A.mobileState.snap : 'peek';
-        var bottom;
-        if (snap === 'half' && A.mobileState && A.mobileState.currentSnapPx) {
-          bottom = A.mobileState.currentSnapPx;
-        } else if (snap === 'half') {
-          var snaps = window._bsGetSnapValues ? window._bsGetSnapValues() : { half: 180 };
-          bottom = snaps.half;
-        } else {
-          var snaps2 = window._bsGetSnapValues ? window._bsGetSnapValues() : { peek: 180 };
-          bottom = snaps2.peek;
-        }
-        return { top: 40, bottom: bottom + 10, left: 40, right: 40 };
+        // Map is resized to fit above the bottom sheet, so no extra bottom padding needed
+        return { top: 40, bottom: 20, left: 40, right: 40 };
       }
       const panelEl = document.getElementById('panel');
       const panelOpen = panelEl.classList.contains('open');

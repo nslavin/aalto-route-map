@@ -6,8 +6,10 @@
   const A = window.Aalto;
   const mapEl = document.getElementById('map');
 
+  // Public token from https://account.mapbox.com/access-tokens/ — if 403, check URL allowlist and token scopes
   mapboxgl.accessToken = 'pk.eyJ1IjoibnNsYXZpbiIsImEiOiJjbW1sNWxtMnYwMzUwMnBzNzhkMTljbGNsIn0.fkor-RTU_VQKCE4icVJSJg';
 
+  var isMobileInit = window.innerWidth < 768 || (window.innerHeight < 440 && window.innerWidth > window.innerHeight);
   const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/nslavin/cmml8edyr004101r1fxw306px',
@@ -15,7 +17,7 @@
     zoom: 4,
     bearing: -11,
     pitch: 42,
-    minZoom: 3,
+    minZoom: isMobileInit ? 2 : 3,
   });
 
   A.map = map;
@@ -102,6 +104,7 @@
 
     const listRet = window.initListPanel(map, data, A, expandDestinations);
     const featureList = listRet.featureList;
+    A.switchToListFilter = listRet.switchToFilter;
 
     const setSkipMapClick = (v) => { _skipMapClick = v; };
     window.initRoutePlanner(map, A, featureList, setSkipMapClick);
@@ -129,6 +132,11 @@
 
     function handleClusterClick(props, coords, useFitBounds = false) {
       _skipMapClick = true;
+      // Switch away from fav/visited overlay mode before navigating
+      const activeFilter = listRet.getActiveFilter();
+      if (activeFilter === 'fav' || activeFilter === 'visited') {
+        listRet.switchToFilter('all');
+      }
       const objects = typeof props.objects === 'string'
         ? JSON.parse(props.objects || '[]')
         : (Array.isArray(props.objects) ? props.objects : []);
@@ -194,6 +202,10 @@
 
     const handleAaltoClusterClick = (e) => {
       _skipMapClick = true;
+      const activeFilter = listRet.getActiveFilter();
+      if (activeFilter === 'fav' || activeFilter === 'visited') {
+        listRet.switchToFilter('all');
+      }
       const f = e.features[0];
       const clusterId = f.properties?.cluster_id ?? f.id;
       if (clusterId == null) {

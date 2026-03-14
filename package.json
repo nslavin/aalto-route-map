@@ -1,0 +1,13 @@
+{
+  "name": "aalto-route-map",
+  "private": true,
+  "scripts": {
+    "start": "npx serve -l 8081",
+    "dev": "npx serve -l 8081",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  }
+}

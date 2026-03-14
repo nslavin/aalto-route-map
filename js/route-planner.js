@@ -22,6 +22,8 @@
       clusterProperties: {
         min_num: ['min', ['to-number', ['get', 'num']]],
         max_num: ['max', ['to-number', ['get', 'num']]],
+        has_fav: ['max', ['case', ['get', '_fav'], 1, 0]],
+        has_visited: ['max', ['case', ['get', '_visited'], 1, 0]],
       },
     });
 
@@ -128,7 +130,7 @@
       id: 'route-stop-cluster-labels', type: 'symbol', source: 'route-stops-src',
       filter: ['has', 'point_count'],
       layout: {
-        'text-field': ['concat', ['to-string', ['get', 'min_num']], '–', ['to-string', ['get', 'max_num']]],
+        'text-field': ['concat', ['to-string', ['get', 'min_num']], '–', ['to-string', ['get', 'max_num']], ['case', ['==', ['get', 'has_fav'], 1], ' ★', ''], ['case', ['==', ['get', 'has_visited'], 1], ' ✓', '']],
         'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular'],
         'text-size': ['interpolate', ['linear'], ['zoom'], 3, 11, 18, 12],
         'text-letter-spacing': 0.06,
@@ -177,7 +179,7 @@
       id: 'route-stop-labels', type: 'symbol', source: 'route-stops-src',
       filter: ['!', ['has', 'point_count']],
       layout: {
-        'text-field': ['get', 'name'],
+        'text-field': ['concat', ['get', 'name'], ['case', ['get', '_fav'], ' ★', ''], ['case', ['get', '_visited'], ' ✓', '']],
         visibility: 'none',
         'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular'],
         'text-size': ['interpolate', ['linear'], ['zoom'], 3, 11, 18, 12],
@@ -243,11 +245,18 @@
     async function calculateSegment(from, to, mode) {
       if (!getDirectionsService()) return null;
       return new Promise((resolve) => {
+        var settled = false;
+        var timeout = setTimeout(function () {
+          if (!settled) { settled = true; resolve(null); }
+        }, 15000);
         getDirectionsService().route({
           origin: new google.maps.LatLng(from[1], from[0]),
           destination: new google.maps.LatLng(to[1], to[0]),
           travelMode: google.maps.TravelMode[mode],
         }, (result, status) => {
+          if (settled) return;
+          settled = true;
+          clearTimeout(timeout);
           if (status === 'OK' && result.routes.length) {
             const overviewPath = result.routes[0].overview_path.map(p => [p.lng(), p.lat()]);
             const detailPath = [];
@@ -273,6 +282,7 @@
     }
 
     const ROUTE_STOP_LAYER_IDS = ['route-stop-cluster-markers', 'route-stop-cluster-labels', 'route-stop-markers', 'route-stop-numbers', 'route-stop-labels'];
+    const ROUTE_LINE_LAYER_IDS = ['route-driving', 'route-walking', 'route-walking-arrows', 'route-bicycling', 'route-transit', 'route-driving-ov', 'route-walking-ov', 'route-bicycling-ov', 'route-transit-ov'];
 
     // Cached DOM references for renderRouteSection (static nodes that never change)
     const _domRefs = {
@@ -288,6 +298,7 @@
       walkInput: document.getElementById('walk-threshold-input'),
     };
 
+    A.updateRouteOnMap = updateRouteOnMap;
     function updateRouteOnMap() {
       const lineFeatures = A.routeSegments.map(seg => ({
         type: 'Feature',
@@ -304,13 +315,16 @@
 
       const stopFeatures = A.routeStops.map((s, i) => ({
         type: 'Feature',
-        properties: { num: String(i + 1), stopId: s.id, name: s.name, _fav: A.favs.has(s.id) },
+        properties: { num: String(i + 1), stopId: s.id, name: s.name, _fav: A.favs.has(s.id), _visited: A.visited.has(s.id) },
         geometry: { type: 'Point', coordinates: s.coords },
       }));
       map.getSource('route-stops-src').setData({ type: 'FeatureCollection', features: stopFeatures });
 
       const visible = A.routeStops.length > 0 ? 'visible' : 'none';
       ROUTE_STOP_LAYER_IDS.forEach(id => {
+        if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', visible);
+      });
+      ROUTE_LINE_LAYER_IDS.forEach(id => {
         if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', visible);
       });
     }
@@ -361,8 +375,10 @@
       row.querySelector('.route-stop-remove').onclick = (e) => {
         e.stopPropagation();
         A.routeStops.splice(i, 1);
+        A.routeSegments = [];
         A.saveRoute();
         A.rebuildAaltoSource();
+        updateRouteOnMap();
         A.renderList();
         A.renderRouteSection();
         A.calculateAllSegments();
@@ -386,7 +402,8 @@
         if (isNaN(fromIdx) || fromIdx < 0 || fromIdx >= A.routeStops.length) return;
         if (fromIdx !== toIdx) {
           const [moved] = A.routeStops.splice(fromIdx, 1);
-          A.routeStops.splice(toIdx, 0, moved);
+          const adjustedTo = fromIdx < toIdx ? toIdx - 1 : toIdx;
+          A.routeStops.splice(adjustedTo, 0, moved);
           A.routeSegments = [];
           A.saveRoute();
           A.rebuildAaltoSource();

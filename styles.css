@@ -22,6 +22,9 @@ body {
   top: 24px; left: 24px;
   z-index: 10;
 }
+#header-toggle {
+  display: none;
+}
 #header h1 {
   font-size: 13px; font-weight: 600;
   letter-spacing: 0.18em; text-transform: uppercase;
@@ -255,6 +258,10 @@ body {
 }
 #panel.open { opacity: 1; pointer-events: auto; }
 
+#panel-inner {
+  flex: 1; min-height: 0; display: flex; flex-direction: column; overflow: hidden;
+}
+
 #panel-header {
   display: flex; align-items: center; justify-content: space-between;
   padding: 12px 16px;
@@ -292,6 +299,9 @@ body {
   display: flex; align-items: center; gap: 4px; flex-shrink: 0;
   padding: 4px 6px; background: transparent;
 }
+/* Carousel close (mobile only; hidden on desktop) */
+.bs-close-carousel { display: none; }
+
 #carousel-prev, #carousel-next {
   background: none; border: none;
   width: 22px; height: 22px; cursor: pointer;
@@ -299,14 +309,15 @@ body {
   display: flex; align-items: center; justify-content: center;
   color: #000; transition: color 0.15s;
 }
+#carousel-prev svg, #carousel-next svg { display: block; }
 #carousel-prev:hover, #carousel-next:hover { color: #000; }
 
 #panel-carousel { cursor: zoom-in; }
 
-/* Scrollable body */
+/* Scrollable body — min-height: 0 so flex item can shrink and overflow-y creates scroll */
 #panel-body {
-  flex: 1; overflow-y: auto;
-  padding: 16px 16px 0;
+  flex: 1; min-height: 0; overflow-y: auto;
+  padding: 16px;
   display: flex; flex-direction: column; gap: 0;
 }
 
@@ -488,7 +499,7 @@ a.panel-footer-value:hover { opacity: 0.5; }
 #route-section-body {
   padding: 0 16px 12px;
   display: flex; flex-direction: column;
-  max-height: 50vh; overflow: visible;
+  max-height: 50vh; overflow-y: auto;
 }
 #route-mode-bar {
   display: flex; gap: 2px; margin-bottom: 6px; flex-wrap: wrap;
@@ -906,8 +917,13 @@ a.panel-footer-value:hover { opacity: 0.5; }
   /* ── Hide desktop panels, fullscreen map ── */
   #list-panel, #panel { display: none !important; }
   #map {
-    width: 100vw !important; height: 100vh !important;
+    width: 100vw !important;
+    height: 100dvh;
     position: fixed !important; top: 0; left: 0;
+    transition: height 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  #map.bs-dragging-map {
+    transition: none !important;
   }
   #map.detail-open { width: 100vw !important; }
 
@@ -916,10 +932,38 @@ a.panel-footer-value:hover { opacity: 0.5; }
     left: max(12px, env(safe-area-inset-left, 0));
     z-index: 25;
   }
+  #header {
+    padding-right: 20px;
+  }
+  #header-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px;
+    color: #888;
+    -webkit-tap-highlight-color: transparent;
+  }
+  #header-toggle:hover { color: #000; }
+  #header-toggle svg { display: block; transform: rotate(180deg); }
+  #header.header-hidden #header-content { display: none; }
+  #header.header-hidden { padding-right: 0; }
+  #header.header-hidden #header-toggle {
+    position: static;
+  }
+  #header.header-hidden #header-toggle svg {
+    transform: rotate(0);
+  }
   #header h1 { font-size: 11px; }
   #header p { font-size: 10px; margin-top: 2px; }
 
   /* ── Bottom sheet container ── */
+  /* Cap height so panel bottom always ends on screen (100vh/svh can exceed visible area on mobile) */
   #bottom-sheet {
     display: flex !important;
     flex-direction: column;
@@ -930,6 +974,8 @@ a.panel-footer-value:hover { opacity: 0.5; }
     border-top: 1px solid #000;
     will-change: transform;
     height: 100vh;
+    height: min(100vh, 100svh, 100dvh);
+    max-height: 100dvh;
     padding-bottom: env(safe-area-inset-bottom, 0);
     transform: translateY(100%);
     transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
@@ -946,7 +992,7 @@ a.panel-footer-value:hover { opacity: 0.5; }
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 28px;
+    height: 16px;
     flex-shrink: 0;
     cursor: grab;
     touch-action: none;
@@ -954,8 +1000,8 @@ a.panel-footer-value:hover { opacity: 0.5; }
     user-select: none;
   }
   .bs-handle-bar {
-    width: 36px;
-    height: 4px;
+    width: 32px;
+    height: 3px;
     background: #ccc;
     border-radius: 2px;
   }
@@ -964,30 +1010,29 @@ a.panel-footer-value:hover { opacity: 0.5; }
   .bs-tabs {
     display: flex;
     gap: 0;
-    padding: 0 12px;
+    padding: 0 8px;
     flex-shrink: 0;
     border-bottom: 1px solid #eee;
   }
   .bs-tab {
-    flex: 1;
+    flex: 1 1 auto;
+    min-width: 0;
     background: none;
     border: none;
     border-bottom: 2px solid transparent;
     cursor: pointer;
     font-family: inherit;
-    font-size: 9px;
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: #aaa;
     padding: 8px 4px;
     transition: color 0.2s, border-color 0.2s;
     text-align: center;
     -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    min-width: 0;
   }
   .bs-tab.active {
     color: #000;
@@ -995,45 +1040,66 @@ a.panel-footer-value:hover { opacity: 0.5; }
   }
   .bs-tab:hover:not(.active) { color: #555; }
 
-  /* Route tab distinct style */
-  .bs-tab-route {
-    flex: none;
-    padding: 8px 12px;
-    margin-left: 4px;
-    border: 1px solid #ddd;
-    border-bottom: none;
-    position: relative;
-    top: 1px;
-  }
-  .bs-tab-route.active {
-    border-color: #000;
-    color: #000;
+  /* Vertical divider before route tab */
+  .bs-tab-route-divider {
+    width: 1px;
+    align-self: stretch;
+    margin: 6px 4px;
+    background: #ddd;
+    flex-shrink: 0;
   }
 
-  /* ── Search row ── */
+  /* Route tab — underline style matching other tabs */
+  .bs-tab-route {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 8px 4px;
+    border: none;
+    border-bottom: 2px solid transparent;
+  }
+  .bs-tab-route.active {
+    color: #000;
+    border-bottom-color: #000;
+  }
+
+  /* ── Search row (search + sort on mobile) ── */
   .bs-search-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
     padding: 8px 12px 0;
     flex-shrink: 0;
   }
   .bs-search-row #list-search-wrap {
     margin: 0;
+    flex: 1;
+    min-width: 0;
   }
   .bs-search-row #list-search {
-    font-size: 13px;
-    padding: 10px 12px;
+    font-size: 11px;
+    padding: 8px 10px;
     border: 1px solid #ccc;
   }
+  .bs-search-row .list-sort-wrap {
+    flex-shrink: 0;
+    margin-left: 0;
+  }
 
-  /* ── Content area ── */
+  /* ── Content area (flex child so it fills remaining height; min-height: 0 allows shrink) ── */
+  /* Keep scroll area inside sheet so scrollbar doesn't run off screen */
   .bs-content {
-    flex: 1;
+    flex: 1 1 0;
     min-height: 0;
+    max-height: 100%;
     overflow: hidden;
     position: relative;
+    padding-bottom: calc(32px + env(safe-area-inset-bottom, 0));
+    box-sizing: border-box;
   }
+  /* Keep content non-scrollable so only .bs-view scrolls (single scroll container for list/visited) */
   #bottom-sheet.snap-full .bs-content {
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
   }
 
   /* ── Views (list / detail / route) ── */
@@ -1041,12 +1107,30 @@ a.panel-footer-value:hover { opacity: 0.5; }
     position: absolute;
     inset: 0;
     overflow-y: auto;
+    overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
     transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.3s;
   }
   .bs-view-list {
     transform: translateX(0);
     opacity: 1;
+  }
+  /* List body must grow with content so .bs-view-list scrolls (all/fav/visited tabs) */
+  .bs-view-list #list-body {
+    overflow: visible;
+    flex: none;
+    min-height: 0;
+  }
+  /* Sort wrap when inside list view (mobile All tab) */
+  .bs-view-list > .list-sort-wrap {
+    flex-shrink: 0;
+    padding: 8px 12px 0;
+  }
+  /* Extra bottom space so last line is fully visible (no half-line cut off) */
+  .bs-view-list {
+    padding-bottom: calc(64px + env(safe-area-inset-bottom, 0));
+    box-sizing: border-box;
   }
   .bs-view-list.slide-out {
     transform: translateX(-30%);
@@ -1062,6 +1146,12 @@ a.panel-footer-value:hover { opacity: 0.5; }
     transform: translateX(0);
     opacity: 1;
     pointer-events: auto;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+    box-sizing: border-box;
   }
   .bs-view-route {
     transform: translateX(0);
@@ -1075,20 +1165,25 @@ a.panel-footer-value:hover { opacity: 0.5; }
     display: block;
   }
 
-  /* ── Close button (detail view) ── */
+  /* ── Hide panel header (INFO + close) and top-right close in mobile detail ── */
+  .bs-detail-content #panel-header { display: none !important; }
+  .bs-close { display: none !important; }
+
+  /* ── Close button (detail view) — hidden on mobile; carousel close used instead ── */
   .bs-close {
     position: absolute;
     top: 8px;
     right: 8px;
     z-index: 10;
-    background: rgba(255,255,255,0.85);
-    border: 1px solid #000;
+    background: none;
+    border: none;
     cursor: pointer;
     font-family: inherit;
     font-size: 20px;
     font-weight: 300;
     line-height: 1;
-    color: #000;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
     width: 32px;
     height: 32px;
     display: flex;
@@ -1097,12 +1192,32 @@ a.panel-footer-value:hover { opacity: 0.5; }
     padding: 0;
     -webkit-tap-highlight-color: transparent;
   }
-  .bs-close:active { background: #eee; }
+  .bs-close:active { opacity: 0.6; }
 
-  /* ── Route tab active route indicator ── */
+  /* ── Close button inside carousel nav (next to arrows) ── */
+  .bs-detail-content .bs-close-carousel { display: flex !important; }
+  .bs-close-carousel {
+    background: none;
+    border: none;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: inherit;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    transition: color 0.15s;
+  }
+  .bs-close-carousel:active { opacity: 0.6; }
+
+  /* ── Route tab: bold text when route has stops (underline only when .active) ── */
   .bs-tab-route.has-route {
     color: #000;
-    border-color: #000;
   }
 
   /* ── Route preview bar (peek state) ── */
@@ -1142,21 +1257,109 @@ a.panel-footer-value:hover { opacity: 0.5; }
   }
   .bs-route-preview-clear:hover { color: #555; }
 
-  /* ── Detail content inside bottom sheet ── */
+  /* ── Detail content inside bottom sheet (single scroll container when #panel-inner is moved here) ── */
+  .bs-detail-content {
+    flex: 1;
+    min-height: 0;
+    max-height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    padding-bottom: calc(64px + env(safe-area-inset-bottom, 0));
+  }
   .bs-detail-content #panel-carousel {
     height: 200px;
   }
   .bs-detail-content #panel-body {
     padding: 12px;
+    flex: none;
+    min-height: auto;
+    overflow-y: visible;
   }
   .bs-detail-content #panel-name {
     font-size: 16px;
   }
+  .bs-detail-content .panel-footer-label {
+    width: auto;
+    min-width: 60px;
+  }
+  .bs-detail-content .panel-footer-row {
+    flex-wrap: wrap;
+  }
+  .bs-detail-content #carousel-caption {
+    left: 0;
+    flex-wrap: wrap;
+  }
+  .bs-detail-content #carousel-caption-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
 
-  /* ── Route view inside bottom sheet ── */
+  /* ── Route view inside bottom sheet ──
+   * Same as desktop: summary + actions bar always visible at bottom; only route items scroll. */
+  .bs-view-route.active {
+    display: flex !important;
+    flex-direction: column;
+    min-height: 0;
+    overflow-y: hidden;
+  }
   .bs-view-route #route-section-body {
     max-height: none;
     padding: 8px 12px 12px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+  .bs-view-route #route-mode-bar,
+  .bs-view-route #route-walk-threshold,
+  .bs-view-route #route-summary-row {
+    flex-shrink: 0;
+  }
+  .bs-view-route #route-stops-list {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    padding-bottom: calc(24px + env(safe-area-inset-bottom, 0));
+  }
+  /* Bottom bar always visible (same as desktop), not scrolled away */
+  .bs-view-route #route-actions-bar {
+    flex-shrink: 0;
+    border-top: 1px solid #e8e8e8;
+    padding: 10px 12px;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom, 0));
+    background: #fff;
+    margin: 0 -12px 0 -12px;
+    padding-left: 12px;
+    padding-right: 12px;
+    z-index: 2;
+  }
+
+  /* ── Bookmarks header row (route-from-bookmarks + share inline) ── */
+  .bs-bookmarks-header-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border-bottom: 1px solid #eee;
+    flex-shrink: 0;
+  }
+  .bs-bookmarks-header-row .route-from-bookmarks-btn {
+    flex: 1;
+    border-bottom: none;
+  }
+  .bs-bookmarks-header-row .list-export-dropdown {
+    flex-shrink: 0;
+    padding-right: 12px;
+  }
+  .bs-bookmarks-header-row .list-export-menu {
+    bottom: 100%;
+    top: auto;
   }
 
   /* ── List items touch-friendly sizing ── */
@@ -1176,31 +1379,15 @@ a.panel-footer-value:hover { opacity: 0.5; }
     justify-content: center;
   }
 
-  /* ── Filter counts badge ── */
-  .bs-tab .bs-badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: #000;
-    color: #fff;
-    font-size: 8px;
-    font-weight: 700;
-    min-width: 14px;
-    height: 14px;
-    border-radius: 7px;
-    padding: 0 3px;
-    margin-left: 4px;
+  /* ── Filter counts (brackets) ── */
+  .bs-tab .bs-count {
+    margin-left: 2px;
   }
 
   /* ── Toast position above bottom sheet ── */
   #toast {
     bottom: 200px;
     bottom: calc(200px + env(safe-area-inset-bottom, 0));
-  }
-
-  /* ── Mapbox controls: sit just above peek handle ── */
-  .mapboxgl-ctrl-bottom-left {
-    bottom: 60px !important;
   }
 
   /* ── Carousel touch-friendly ── */
@@ -1214,48 +1401,3 @@ a.panel-footer-value:hover { opacity: 0.5; }
   #lightbox { z-index: 200; }
 }
 
-/* ── Landscape: side panel mode ── */
-@media (max-width: 767px) and (orientation: landscape) {
-  #bottom-sheet {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: auto;
-    width: 40vw;
-    max-height: 100vh;
-    padding-left: env(safe-area-inset-left, 0);
-    border-top: none;
-    border-right: 1px solid #000;
-    transform: translateX(-100%);
-    transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
-  }
-  #bottom-sheet.bs-dragging {
-    transition: none !important;
-  }
-  #bottom-sheet.snap-peek,
-  #bottom-sheet.snap-half,
-  #bottom-sheet.snap-full {
-    transform: translateX(0);
-  }
-  #bottom-sheet.bs-dismissed {
-    transform: translateX(-100%);
-  }
-
-  .bs-handle {
-    height: 100%;
-    width: 20px;
-    position: absolute;
-    right: -20px;
-    top: 0;
-    flex-direction: column;
-  }
-  .bs-handle-bar {
-    width: 4px;
-    height: 36px;
-  }
-
-  .mapboxgl-ctrl-bottom-left {
-    bottom: 10px !important;
-    left: 10px !important;
-  }
-}
