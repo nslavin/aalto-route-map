@@ -5,16 +5,22 @@
 (function() {
   window.initMapLayers = function(map, data, countriesData, citiesData, metroData, A) {
     const zoom = typeof window.getLayerZoomConfig === 'function' ? window.getLayerZoomConfig() : {
-      countries: { min: 0, max: 6.5 },
-      cities: { min: 6.5, max: 13 },
-      metro: { min: 11, max: 13 },
-      aaltoClusters: { min: 13, max: 24 },
-      aaltoPoints: { min: 13, max: 24 },
+      countries: { min: 0, max: 5.5 },
+      cities: { min: 5.5, max: 11 },
+      metro: { min: 11, max: 12 },
+      aaltoClusters: { min: 12, max: 24 },
+      aaltoPoints: { min: 11, max: 20 },
+    };
+    const iconMin = {
+      countries:    Math.max(0, zoom.countries.min - 1),
+      cities:       Math.max(0, zoom.cities.min - 1),
+      metro:        Math.max(0, zoom.metro.min - 1),
+      aaltoClusters: Math.max(0, zoom.aaltoClusters.min - 1),
     };
 
     map.addSource('aalto', {
       type: 'geojson', data, generateId: true,
-      cluster: true, clusterMaxZoom: 14, clusterRadius: 40,
+      cluster: true, clusterMaxZoom: 11, clusterRadius: 20,
       clusterProperties: {
         first_name: [['coalesce', ['accumulated'], ['get', 'name']], ['get', 'name']],
         first_name_fi: [
@@ -80,14 +86,14 @@
 
     const _clusterSymLayout = {
       'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular'],
-      'text-size': ['interpolate', ['linear'], ['zoom'], 6, 10, 18, 11],
+      'text-size': ['interpolate', ['linear'], ['zoom'], 6, 10.5, 18, 11],
       'text-letter-spacing': 0.06,
       'text-transform': 'uppercase',
       'text-allow-overlap': false,
       'text-ignore-placement': false,
       'text-optional': true,
       'text-variable-anchor': ['left', 'top-left', 'bottom-left', 'top', 'bottom', 'right', 'top-right', 'bottom-right'],
-      'text-radial-offset': 0.82,
+      'text-radial-offset': 1.3,
       'text-justify': 'auto',
       'text-max-width': 14,
       'text-padding': 2,
@@ -95,7 +101,7 @@
     const _clusterSymPaint = {
       'text-color': '#000',
       'text-halo-color': '#fff',
-      'text-halo-width': 1.4,
+      'text-halo-width': 1.5,
     };
 
 
@@ -149,117 +155,17 @@
       map.addImage('aalto-flag', { width: sz, height: sz, data: d.data });
     })();
 
-    map.addLayer({
-      id: 'country-clusters-stack', type: 'symbol', source: 'aalto-countries',
-      slot: 'top',
-      minzoom: zoom.countries.min, maxzoom: zoom.countries.max, filter: ['>', ['get', 'count'], 1],
-      layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': true },
-      paint: { 'icon-color': '#000', 'icon-opacity': 0.35, 'icon-halo-color': '#fff', 'icon-halo-width': 2, 'icon-translate': [2.5, -2.5] },
-    });
-    map.addLayer({
-      id: 'country-clusters', type: 'symbol', source: 'aalto-countries',
-      slot: 'top',
-      minzoom: zoom.countries.min, maxzoom: zoom.countries.max,
-      layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': false },
-      paint: { 'icon-color': '#000', 'icon-opacity': 0.9, 'icon-halo-color': '#fff', 'icon-halo-width': 2 },
-    });
-    map.addLayer({
-      id: 'country-labels', type: 'symbol', source: 'aalto-countries',
-      slot: 'top',
-      minzoom: zoom.countries.min, maxzoom: zoom.countries.max,
-      layout: {
-        ..._clusterSymLayout,
-        'text-field': ['concat', ['get', 'name'], ' (', ['to-string', ['get', 'count']], ')'],
-        'symbol-sort-key': ['get', 'count'],
-      },
-      paint: _clusterSymPaint,
-    });
+    const _clusterIconSize = (iMin, zMin) => iMin < zMin
+      ? ['interpolate', ['linear'], ['zoom'], iMin, 0.25, zMin, 0.57]
+      : 0.57;
 
-    map.addLayer({
-      id: 'city-clusters-stack', type: 'symbol', source: 'aalto-cities',
-      slot: 'top',
-      minzoom: zoom.cities.min, maxzoom: zoom.cities.max, filter: ['>', ['get', 'count'], 1],
-      layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': true },
-      paint: { 'icon-color': '#000', 'icon-opacity': 0.35, 'icon-halo-color': '#fff', 'icon-halo-width': 2, 'icon-translate': [2.5, -2.5] },
-    });
-    map.addLayer({
-      id: 'city-clusters', type: 'symbol', source: 'aalto-cities',
-      slot: 'top',
-      minzoom: zoom.cities.min, maxzoom: zoom.cities.max,
-      layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': false },
-      paint: { 'icon-color': '#000', 'icon-opacity': 0.9, 'icon-halo-color': '#fff', 'icon-halo-width': 2 },
-    });
-    map.addLayer({
-      id: 'city-labels', type: 'symbol', source: 'aalto-cities',
-      slot: 'top',
-      minzoom: zoom.cities.min, maxzoom: zoom.cities.max,
-      layout: {
-        ..._clusterSymLayout,
-        'text-field': ['concat', ['get', 'name'], ' (', ['to-string', ['get', 'count']], ')'],
-        'symbol-sort-key': ['get', 'count'],
-      },
-      paint: _clusterSymPaint,
-    });
-
-    map.addLayer({
-      id: 'metro-clusters-stack', type: 'symbol', source: 'aalto-metro',
-      slot: 'top',
-      minzoom: zoom.metro.min, maxzoom: zoom.metro.max, filter: ['>', ['get', 'count'], 1],
-      layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': true },
-      paint: { 'icon-color': '#000', 'icon-opacity': 0.35, 'icon-halo-color': '#fff', 'icon-halo-width': 2, 'icon-translate': [2.5, -2.5] },
-    });
-    map.addLayer({
-      id: 'metro-clusters', type: 'symbol', source: 'aalto-metro',
-      slot: 'top',
-      minzoom: zoom.metro.min, maxzoom: zoom.metro.max,
-      filter: ['>', ['get', 'count'], 1],
-      layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': false },
-      paint: { 'icon-color': '#000', 'icon-opacity': 0.9, 'icon-halo-color': '#fff', 'icon-halo-width': 2 },
-    });
-    map.addLayer({
-      id: 'metro-labels', type: 'symbol', source: 'aalto-metro',
-      slot: 'top',
-      minzoom: zoom.metro.min, maxzoom: zoom.metro.max,
-      filter: ['>', ['get', 'count'], 1],
-      layout: {
-        ..._clusterSymLayout,
-        'text-field': ['concat', ['get', 'name'], ' (', ['to-string', ['get', 'count']], ')'],
-        'symbol-sort-key': ['get', 'count'],
-      },
-      paint: _clusterSymPaint,
-    });
-
-    map.addLayer({
-      id: 'aalto-clusters-stack', type: 'symbol', source: 'aalto',
-      slot: 'top',
-      minzoom: zoom.aaltoClusters.min, maxzoom: zoom.aaltoClusters.max, filter: ['has', 'point_count'],
-      layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': true },
-      paint: { 'icon-color': '#000', 'icon-opacity': 0.35, 'icon-halo-color': '#fff', 'icon-halo-width': 2, 'icon-translate': [2.5, -2.5] },
-    });
-    map.addLayer({
-      id: 'aalto-clusters', type: 'symbol', source: 'aalto',
-      slot: 'top',
-      minzoom: zoom.aaltoClusters.min, maxzoom: zoom.aaltoClusters.max,
-      filter: ['has', 'point_count'],
-      layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': true },
-      paint: { 'icon-color': '#000', 'icon-opacity': 0.9, 'icon-halo-color': '#fff', 'icon-halo-width': 2 },
-    });
-    map.addLayer({
-      id: 'aalto-cluster-labels', type: 'symbol', source: 'aalto',
-      slot: 'top',
-      minzoom: zoom.aaltoClusters.min, maxzoom: zoom.aaltoClusters.max,
-      filter: ['has', 'point_count'],
-      layout: {
-        ..._clusterSymLayout,
-        'text-field': ['concat', ['get', 'first_name'], ' +', ['to-string', ['-', ['get', 'point_count'], 1]]],
-        'symbol-sort-key': ['get', 'point_count'],
-      },
-      paint: _clusterSymPaint,
-    });
+    // Layer add order = bottom → top in Mapbox rendering stack.
+    // Finest detail (aalto points) at the bottom; broadest scope (country) on top.
+    // This ensures that at zoom transition zones where two levels briefly overlap,
+    // the coarser/broader level dominates visually.
 
     map.addLayer({
       id: 'aalto-halo', type: 'circle', source: 'aalto',
-      slot: 'top',
       minzoom: zoom.aaltoPoints.min, maxzoom: zoom.aaltoPoints.max,
       filter: ['!', ['has', 'point_count']],
       paint: {
@@ -276,14 +182,13 @@
     });
     map.addLayer({
       id: 'aalto-points', type: 'symbol', source: 'aalto',
-      slot: 'top',
       minzoom: zoom.aaltoPoints.min, maxzoom: zoom.aaltoPoints.max,
       filter: ['!', ['has', 'point_count']],
       layout: {
-        'icon-image': 'aalto-dot',
+        'icon-image': ['case', ['get', '_visited'], 'aalto-dot-visited', 'aalto-dot'],
         'icon-size': ['interpolate', ['linear'], ['zoom'], 11, 0.35, 13, 0.5, 16, 0.75, 19, 1],
         'icon-allow-overlap': true,
-        'icon-ignore-placement': false,
+        'icon-ignore-placement': true,
         'symbol-sort-key': ['get', '_sortKey'],
         'text-field': [
           'case',
@@ -294,7 +199,7 @@
         'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular'],
         'text-size': [
           'interpolate', ['linear'], ['zoom'],
-          13, ['case', ['has', 'routeNum'], 11, 10],
+          13, ['case', ['has', 'routeNum'], 11, 10.5],
           18, ['case', ['has', 'routeNum'], 12, 11],
         ],
         'text-letter-spacing': 0.06,
@@ -309,44 +214,137 @@
         'text-padding': 2,
       },
       paint: {
-        'icon-color': ['case', ['get', '_visited'], '#999', '#000'],
         'icon-opacity': [
           'case',
           ['boolean', ['feature-state', 'selected'], false], 1,
           ['boolean', ['feature-state', 'hover'], false], 1,
           0.9,
         ],
-        'icon-halo-color': '#fff',
-        'icon-halo-width': [
-          'case',
-          ['boolean', ['feature-state', 'selected'], false], 4,
-          ['boolean', ['feature-state', 'hover'], false], 3,
-          2,
-        ],
         'text-color': '#000',
         'text-halo-color': '#fff',
         'text-halo-width': [
           'case',
           ['boolean', ['feature-state', 'selected'], false], 2.5,
-          1.4,
+          1.5,
         ],
       },
     });
 
     map.addLayer({
+      id: 'aalto-clusters-stack', type: 'symbol', source: 'aalto',
+      minzoom: zoom.aaltoClusters.min, maxzoom: zoom.aaltoClusters.max, filter: ['has', 'point_count'],
+      layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': true },
+      paint: { 'icon-opacity': 0.35, 'icon-translate': [2.5, -2.5] },
+    });
+    map.addLayer({
+      id: 'aalto-clusters', type: 'symbol', source: 'aalto',
+      minzoom: zoom.aaltoClusters.min, maxzoom: zoom.aaltoClusters.max,
+      filter: ['has', 'point_count'],
+      layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': true },
+      paint: { 'icon-opacity': 0.9 },
+    });
+    map.addLayer({
+      id: 'aalto-cluster-labels', type: 'symbol', source: 'aalto',
+      minzoom: zoom.aaltoClusters.min, maxzoom: zoom.aaltoClusters.max,
+      filter: ['has', 'point_count'],
+      layout: {
+        ..._clusterSymLayout,
+        'text-field': ['step', ['zoom'],
+          ['to-string', ['get', 'point_count']],
+          11, ['concat', ['get', 'first_name'], ' +', ['to-string', ['-', ['get', 'point_count'], 1]]],
+        ],
+        'symbol-sort-key': ['get', 'point_count'],
+      },
+      paint: _clusterSymPaint,
+    });
+
+    map.addLayer({
+      id: 'metro-clusters-stack', type: 'symbol', source: 'aalto-metro',
+      minzoom: zoom.metro.min, maxzoom: zoom.metro.max, filter: ['>', ['get', 'count'], 1],
+      layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': true },
+      paint: { 'icon-opacity': 0.35, 'icon-translate': [2.5, -2.5] },
+    });
+    map.addLayer({
+      id: 'metro-clusters', type: 'symbol', source: 'aalto-metro',
+      minzoom: zoom.metro.min, maxzoom: zoom.metro.max,
+      filter: ['>', ['get', 'count'], 1],
+      layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.57, 'icon-allow-overlap': true, 'icon-ignore-placement': true },
+      paint: { 'icon-opacity': 0.9 },
+    });
+    map.addLayer({
+      id: 'metro-labels', type: 'symbol', source: 'aalto-metro',
+      minzoom: zoom.metro.min, maxzoom: zoom.metro.max,
+      filter: ['>', ['get', 'count'], 1],
+      layout: {
+        ..._clusterSymLayout,
+        'text-field': ['concat', ['get', 'name'], ' (', ['to-string', ['get', 'count']], ')'],
+        'symbol-sort-key': ['get', 'count'],
+      },
+      paint: _clusterSymPaint,
+    });
+
+    map.addLayer({
+      id: 'city-clusters-stack', type: 'symbol', source: 'aalto-cities',
+      minzoom: iconMin.cities, maxzoom: zoom.cities.max, filter: ['>', ['get', 'count'], 1],
+      layout: { 'icon-image': 'aalto-dot', 'icon-size': ['interpolate', ['linear'], ['zoom'], iconMin.cities, 0.2415, zoom.cities.min, 0.552], 'icon-allow-overlap': true, 'icon-ignore-placement': true },
+      paint: { 'icon-opacity': 0.35, 'icon-translate': [2.5, -2.5] },
+    });
+    map.addLayer({
+      id: 'city-clusters', type: 'symbol', source: 'aalto-cities',
+      minzoom: iconMin.cities, maxzoom: zoom.cities.max,
+      layout: { 'icon-image': 'aalto-dot', 'icon-size': ['interpolate', ['linear'], ['zoom'], iconMin.cities, 0.2415, zoom.cities.min, 0.552], 'icon-allow-overlap': true, 'icon-ignore-placement': true },
+      paint: { 'icon-opacity': 0.9 },
+    });
+    map.addLayer({
+      id: 'city-labels', type: 'symbol', source: 'aalto-cities',
+      minzoom: zoom.cities.min, maxzoom: zoom.cities.max,
+      layout: {
+        ..._clusterSymLayout,
+        'text-field': [
+          'case', ['>', ['get', 'cities_in_country'], 1],
+          ['concat', ['coalesce', ['get', 'city_only'], ['get', 'name']], ' (', ['to-string', ['get', 'count']], ')'],
+          ['concat', ['get', 'name'], ' (', ['to-string', ['get', 'count']], ')'],
+        ],
+        'symbol-sort-key': ['get', 'count'],
+      },
+      paint: _clusterSymPaint,
+    });
+
+    map.addLayer({
+      id: 'country-clusters-stack', type: 'symbol', source: 'aalto-countries',
+      minzoom: zoom.countries.min, maxzoom: zoom.countries.max,
+      layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.65, 'icon-allow-overlap': true, 'icon-ignore-placement': true },
+      paint: { 'icon-opacity': 0.35, 'icon-translate': [2.5, -2.5] },
+    });
+    map.addLayer({
+      id: 'country-clusters', type: 'symbol', source: 'aalto-countries',
+      minzoom: zoom.countries.min, maxzoom: zoom.countries.max,
+      layout: { 'icon-image': 'aalto-dot', 'icon-size': 0.65, 'icon-allow-overlap': true, 'icon-ignore-placement': true },
+      paint: { 'icon-opacity': 0.9 },
+    });
+    map.addLayer({
+      id: 'country-labels', type: 'symbol', source: 'aalto-countries',
+      minzoom: zoom.countries.min, maxzoom: zoom.countries.max,
+      layout: {
+        ..._clusterSymLayout,
+        'text-field': ['concat', ['get', 'name'], ' (', ['to-string', ['get', 'count']], ')'],
+        'symbol-sort-key': ['get', 'count'],
+      },
+      paint: _clusterSymPaint,
+    });
+
+    map.addLayer({
       id: 'aalto-favs-cluster-markers', type: 'symbol', source: 'aalto-favs',
-      slot: 'top',
       filter: ['has', 'point_count'],
       layout: {
         'icon-image': 'aalto-dot', 'icon-size': 1.14,
-        'icon-allow-overlap': true, 'icon-ignore-placement': false,
+        'icon-allow-overlap': true, 'icon-ignore-placement': true,
         visibility: 'none',
       },
-      paint: { 'icon-color': '#000', 'icon-halo-color': '#fff', 'icon-halo-width': 2 },
+      paint: {},
     });
     map.addLayer({
       id: 'aalto-favs-cluster-labels', type: 'symbol', source: 'aalto-favs',
-      slot: 'top',
       filter: ['has', 'point_count'],
       layout: {
         'text-field': ['concat', ['to-string', ['get', 'min_num']], '–', ['to-string', ['get', 'max_num']]],
@@ -363,29 +361,27 @@
         'symbol-sort-key': 10,
         visibility: 'none',
       },
-      paint: { 'text-color': '#000', 'text-halo-color': '#fff', 'text-halo-width': 3.1 },
+      paint: { 'text-color': '#000', 'text-halo-color': '#fff', 'text-halo-width': 1.5 },
     });
     map.addLayer({
       id: 'aalto-favs-markers', type: 'symbol', source: 'aalto-favs',
-      slot: 'top',
       filter: ['!', ['has', 'point_count']],
       layout: {
         'icon-image': 'aalto-dot',
         'icon-size': 1.14,
         'icon-allow-overlap': true,
-        'icon-ignore-placement': false,
+        'icon-ignore-placement': true,
         visibility: 'none',
       },
-      paint: { 'icon-color': '#000', 'icon-halo-color': '#fff', 'icon-halo-width': 2 },
+      paint: {},
     });
     map.addLayer({
       id: 'aalto-favs-numbers', type: 'symbol', source: 'aalto-favs',
-      slot: 'top',
       filter: ['!', ['has', 'point_count']],
       layout: {
         'text-field': ['get', 'num'],
         'text-font': ['DIN Pro Bold', 'Arial Unicode MS Bold'],
-        'text-size': 10,
+        'text-size': 10.5,
         'text-allow-overlap': false,
         'text-ignore-placement': false,
         'text-optional': true,
@@ -397,7 +393,6 @@
     });
     map.addLayer({
       id: 'aalto-favs-labels', type: 'symbol', source: 'aalto-favs',
-      slot: 'top',
       filter: ['!', ['has', 'point_count']],
       layout: {
         'text-field': ['concat', ['get', 'label'], ['case', ['get', '_fav'], ' ★', ''], ['case', ['get', '_visited'], ' ✓', '']],
@@ -416,22 +411,20 @@
         'symbol-sort-key': 10,
         visibility: 'none',
       },
-      paint: { 'text-color': '#000', 'text-halo-color': '#fff', 'text-halo-width': 3.1 },
+      paint: { 'text-color': '#000', 'text-halo-color': '#fff', 'text-halo-width': 1.5 },
     });
     map.addLayer({
       id: 'aalto-visited-cluster-markers', type: 'symbol', source: 'aalto-visited',
-      slot: 'top',
       filter: ['has', 'point_count'],
       layout: {
         'icon-image': 'aalto-dot', 'icon-size': 1.14,
-        'icon-allow-overlap': true, 'icon-ignore-placement': false,
+        'icon-allow-overlap': true, 'icon-ignore-placement': true,
         visibility: 'none',
       },
-      paint: { 'icon-color': '#000', 'icon-halo-color': '#fff', 'icon-halo-width': 2 },
+      paint: {},
     });
     map.addLayer({
       id: 'aalto-visited-cluster-labels', type: 'symbol', source: 'aalto-visited',
-      slot: 'top',
       filter: ['has', 'point_count'],
       layout: {
         'text-field': ['concat', ['to-string', ['get', 'min_num']], '–', ['to-string', ['get', 'max_num']]],
@@ -448,29 +441,27 @@
         'symbol-sort-key': 10,
         visibility: 'none',
       },
-      paint: { 'text-color': '#000', 'text-halo-color': '#fff', 'text-halo-width': 3.1 },
+      paint: { 'text-color': '#000', 'text-halo-color': '#fff', 'text-halo-width': 1.5 },
     });
     map.addLayer({
       id: 'aalto-visited-markers', type: 'symbol', source: 'aalto-visited',
-      slot: 'top',
       filter: ['!', ['has', 'point_count']],
       layout: {
         'icon-image': 'aalto-dot',
         'icon-size': 1.14,
         'icon-allow-overlap': true,
-        'icon-ignore-placement': false,
+        'icon-ignore-placement': true,
         visibility: 'none',
       },
-      paint: { 'icon-color': '#000', 'icon-halo-color': '#fff', 'icon-halo-width': 2 },
+      paint: {},
     });
     map.addLayer({
       id: 'aalto-visited-numbers', type: 'symbol', source: 'aalto-visited',
-      slot: 'top',
       filter: ['!', ['has', 'point_count']],
       layout: {
         'text-field': ['get', 'num'],
         'text-font': ['DIN Pro Bold', 'Arial Unicode MS Bold'],
-        'text-size': 10,
+        'text-size': 10.5,
         'text-allow-overlap': false,
         'text-ignore-placement': false,
         'text-optional': true,
@@ -482,7 +473,6 @@
     });
     map.addLayer({
       id: 'aalto-visited-labels', type: 'symbol', source: 'aalto-visited',
-      slot: 'top',
       filter: ['!', ['has', 'point_count']],
       layout: {
         'text-field': ['concat', ['get', 'label'], ['case', ['get', '_fav'], ' ★', ''], ['case', ['get', '_visited'], ' ✓', '']],
@@ -501,7 +491,7 @@
         'symbol-sort-key': 10,
         visibility: 'none',
       },
-      paint: { 'text-color': '#000', 'text-halo-color': '#fff', 'text-halo-width': 3.1 },
+      paint: { 'text-color': '#000', 'text-halo-color': '#fff', 'text-halo-width': 1.5 },
     });
 
     function updateClusterLabels() {
@@ -509,6 +499,7 @@
       const ck = A.lang === 'fi' ? 'city_fi' : 'city';
       const ok = A.lang === 'fi' ? 'object_name_fi' : 'object_name';
       const fnk = A.lang === 'fi' ? 'first_name_fi' : 'first_name';
+      const cok = A.lang === 'fi' ? 'city_only_fi' : 'city_only';
 
       if (map.getLayer('country-labels'))
         map.setLayoutProperty('country-labels', 'text-field', [
@@ -521,9 +512,11 @@
         ]);
 
       if (map.getLayer('city-labels'))
-        map.setLayoutProperty('city-labels', 'text-field',
+        map.setLayoutProperty('city-labels', 'text-field', [
+          'case', ['>', ['get', 'cities_in_country'], 1],
+          ['concat', ['coalesce', ['get', cok], ['get', 'city_only'], ['get', 'name']], ' (', ['to-string', ['get', 'count']], ')'],
           ['concat', ['coalesce', ['get', nk], ['get', 'name']], ' (', ['to-string', ['get', 'count']], ')'],
-        );
+        ]);
 
       if (map.getLayer('metro-labels'))
         map.setLayoutProperty('metro-labels', 'text-field', [
@@ -533,8 +526,10 @@
         ]);
 
       if (map.getLayer('aalto-cluster-labels'))
-        map.setLayoutProperty('aalto-cluster-labels', 'text-field',
-          ['concat', ['coalesce', ['get', fnk], ['get', 'first_name']], ' +', ['to-string', ['-', ['get', 'point_count'], 1]]]);
+        map.setLayoutProperty('aalto-cluster-labels', 'text-field', ['step', ['zoom'],
+          ['to-string', ['get', 'point_count']],
+          11, ['concat', ['coalesce', ['get', fnk], ['get', 'first_name']], ' +', ['to-string', ['-', ['get', 'point_count'], 1]]],
+        ]);
 
       if (map.getLayer('aalto-points')) {
         const tf = [
@@ -550,7 +545,7 @@
     updateClusterLabels();
 
     let hoveredId = null;
-    map.on('mouseenter', 'aalto-points', (e) => {
+    function _onAaltoEnter(e) {
       map.getCanvas().style.cursor = 'pointer';
       const id = e.features[0]?.id;
       if (id == null) return;
@@ -558,16 +553,19 @@
         map.setFeatureState({ source: 'aalto', id: hoveredId }, { hover: false });
       hoveredId = id;
       map.setFeatureState({ source: 'aalto', id: hoveredId }, { hover: true });
-    });
-    map.on('mouseleave', 'aalto-points', () => {
+    }
+    function _onAaltoLeave() {
       map.getCanvas().style.cursor = '';
       if (hoveredId != null) {
         map.setFeatureState({ source: 'aalto', id: hoveredId }, { hover: false });
         hoveredId = null;
       }
-    });
+    }
+    map.on('mouseenter', 'aalto-points', _onAaltoEnter);
+    map.on('mouseleave', 'aalto-points', _onAaltoLeave);
 
     A.rebuildAaltoSource();
+
     return { rebuildAaltoSource: A.rebuildAaltoSource, updateClusterLabels: A.updateClusterLabels };
   };
 })();

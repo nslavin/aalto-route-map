@@ -11,10 +11,10 @@
   const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/nslavin/cmml8edyr004101r1fxw306px',
-    center: [13.3217, 52.521],
-    zoom: 4,
-    bearing: -11,
-    pitch: 42,
+    center: [24.83419, 60.20262],
+    zoom: 10.654,
+    bearing: 0,
+    pitch: 0,
     minZoom: 3,
   });
 
@@ -72,12 +72,14 @@
     const _loadImg = url => new Promise((res, rej) => {
       const img = new Image(); img.onload = () => res(img); img.onerror = rej; img.src = url;
     });
-    const [_dotImg, _dotRouteImg] = await Promise.all([
+    const [_dotImg, _dotRouteImg, _dotVisitedImg] = await Promise.all([
       _loadImg('icons/dot.svg'),
       _loadImg('icons/dot-route.svg'),
+      _loadImg('icons/dot-visited.svg'),
     ]);
-    map.addImage('aalto-dot', _dotImg, { sdf: true, pixelRatio: 2 });
+    map.addImage('aalto-dot', _dotImg, { pixelRatio: 2 });
     map.addImage('aalto-dot-route', _dotRouteImg, { pixelRatio: 2 });
+    map.addImage('aalto-dot-visited', _dotVisitedImg, { pixelRatio: 2 });
 
     window.initMapLayers(map, data, countriesData, citiesData, metroData, A);
 
@@ -88,7 +90,7 @@
         map.jumpTo({ center: [p.lng, p.lat], zoom: p.zoom, bearing: p.bearing, pitch: p.pitch });
       } catch (e) { /* ignore corrupt data */ }
     } else {
-      map.jumpTo({ center: [13.3217, 52.521], zoom: 4, bearing: -11, pitch: 42 });
+      map.jumpTo({ center: [24.83419, 60.20262], zoom: 10.654, bearing: 0, pitch: 0 });
     }
 
     const layoutRet = window.initLayout(map, mapEl, A);
@@ -107,7 +109,6 @@
       });
     })();
 
-    if (window.initLayerZoomConfig) window.initLayerZoomConfig(map);
 
     const nameToCoords = {};
     data.features.forEach(f => { nameToCoords[f.properties.name] = f.geometry.coordinates; });
@@ -226,7 +227,7 @@
     map.on('mouseenter', 'aalto-cluster-labels', () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', 'aalto-cluster-labels', () => { map.getCanvas().style.cursor = ''; });
 
-    map.on('click', 'aalto-points', (e) => {
+    function _handleAaltoPointClick(e) {
       _skipMapClick = true;
       const filter = listRet.getActiveFilter();
       if (filter === 'fav' || filter === 'visited') {
@@ -235,7 +236,8 @@
       if (map.getZoom() < 17)
         map.flyTo({ center: e.features[0].geometry.coordinates, zoom: 18, pitch: 50, speed: 1.2 });
       A.selectFeature(e.features[0]);
-    });
+    }
+    map.on('click', 'aalto-points', _handleAaltoPointClick);
     map.on('mouseenter', 'aalto-points', () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', 'aalto-points', () => { map.getCanvas().style.cursor = ''; });
 

@@ -87,7 +87,7 @@
         <div id="route-summary-row" style="display:none">
           <span id="route-summary"></span>
           <span id="route-loading" class="loading-dots" style="display:none"><span>.</span><span>.</span><span>.</span></span>
-          <button id="route-clear" class="route-clear-text-btn">CLEAR</button>
+          <button id="route-clear" class="route-clear-text-btn"><span class="route-clear-cross">&times;</span> CLEAR</button>
         </div>
         <div id="route-stops-list"></div>
         <div id="route-actions-bar">
@@ -142,16 +142,6 @@
   </div>
 
   <div id="toast"></div>
-
-  <div id="layer-zoom-panel" class="layer-zoom-panel collapsed">
-    <div id="layer-zoom-header" class="layer-zoom-header">
-      <span>LAYER ZOOM</span>
-      <button id="layer-zoom-toggle" type="button" title="Expand/collapse">&#9660;</button>
-    </div>
-    <div id="layer-zoom-body" class="layer-zoom-body">
-      <div id="layer-zoom-list"></div>
-    </div>
-  </div>
 
   <div id="lightbox">
     <img id="lightbox-img" src="" alt="">

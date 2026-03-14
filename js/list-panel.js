@@ -24,27 +24,32 @@
     const AALTO_POINTS_FILTER_BASE = ['!', ['has', 'point_count']];
     const AALTO_HALO_FILTER_BASE = ['!', ['has', 'point_count']];
     const GREY_PAINT_LAYERS = [
-      { id: 'country-clusters-stack', icon: true }, { id: 'country-clusters', icon: true },
+      { id: 'country-clusters-stack', icon: true, defOpacity: 0.35 }, { id: 'country-clusters', icon: true, defOpacity: 0.9 },
       { id: 'country-labels', text: true },
-      { id: 'city-clusters-stack', icon: true }, { id: 'city-clusters', icon: true },
+      { id: 'city-clusters-stack', icon: true, defOpacity: 0.35 }, { id: 'city-clusters', icon: true, defOpacity: 0.9 },
       { id: 'city-labels', text: true },
-      { id: 'metro-clusters-stack', icon: true }, { id: 'metro-clusters', icon: true },
+      { id: 'metro-clusters-stack', icon: true, defOpacity: 0.35 }, { id: 'metro-clusters', icon: true, defOpacity: 0.9 },
       { id: 'metro-labels', text: true },
-      { id: 'aalto-clusters-stack', icon: true }, { id: 'aalto-clusters', icon: true },
+      { id: 'aalto-clusters-stack', icon: true, defOpacity: 0.35 }, { id: 'aalto-clusters', icon: true, defOpacity: 0.9 },
       { id: 'aalto-cluster-labels', text: true },
       { id: 'aalto-halo', stroke: true },
-      { id: 'aalto-points', icon: true, text: true },
+      { id: 'aalto-points', icon: true, text: true, defOpacity: 0.9 },
     ];
 
     function setMainLayersGrey(grey) {
-      GREY_PAINT_LAYERS.forEach(({ id, icon, text, stroke }) => {
+      GREY_PAINT_LAYERS.forEach(({ id, icon, text, stroke, defOpacity }) => {
         if (!map.getLayer(id)) return;
-        if (icon) map.setPaintProperty(id, 'icon-color', grey ? '#999' : '#000');
+        if (icon) map.setPaintProperty(id, 'icon-opacity', grey ? 0.3 : (defOpacity ?? 0.9));
         if (text) map.setPaintProperty(id, 'text-color', grey ? '#999' : '#000');
         if (stroke) map.setPaintProperty(id, 'circle-stroke-color', grey ? '#999' : '#000');
       });
-      if (map.getLayer('aalto-points')) {
-        map.setPaintProperty('aalto-points', 'icon-color', grey ? '#999' : ['case', ['get', '_visited'], '#999', '#000']);
+      if (map.getLayer('aalto-points') && !grey) {
+        map.setPaintProperty('aalto-points', 'icon-opacity', [
+          'case',
+          ['boolean', ['feature-state', 'selected'], false], 1,
+          ['boolean', ['feature-state', 'hover'], false], 1,
+          0.9,
+        ]);
       }
     }
 
@@ -54,7 +59,7 @@
       if (excludeVisited) filter = ['all', filter, ['!', ['get', '_visited']]];
       if (map.getLayer('aalto-points')) map.setFilter('aalto-points', filter);
       if (map.getLayer('aalto-halo')) map.setFilter('aalto-halo', filter);
-    }
+          }
 
     function updateFavsOverlay() {
       const src = map.getSource('aalto-favs');

@@ -190,7 +190,7 @@
     const gmBtn = document.getElementById('route-gmaps');
     if (gmBtn) { gmBtn.textContent = tr.openGoogleMaps; gmBtn.title = tr.tipGoogleMaps; }
     const clrBtn = document.getElementById('route-clear');
-    if (clrBtn) { clrBtn.textContent = tr.clear; clrBtn.title = tr.tipClearRoute; }
+    if (clrBtn) { clrBtn.innerHTML = `<span class="route-clear-cross">&times;</span> ${tr.clear}`; clrBtn.title = tr.tipClearRoute; }
     const cgmBtn = document.getElementById('route-collapsed-gmaps');
     if (cgmBtn) cgmBtn.textContent = tr.openGoogleMaps;
     const pgm = document.getElementById('panel-gmaps');

@@ -25,37 +25,39 @@
       },
     });
 
+    let _routeLayerAddError = null;
+    try {
     // Overview layers (zoom < 8): use simplified overview_path geometry
     map.addLayer({
       id: 'route-driving-ov', type: 'line', source: 'route-line-overview',
-      slot: 'top', maxzoom: 8,
+      maxzoom: 8,
       filter: ['==', ['get', 'mode'], 'DRIVING'],
-      paint: { 'line-color': '#000', 'line-width': 1.5, 'line-opacity': 0.8 },
+      paint: { 'line-color': '#080808', 'line-width': 1.5, 'line-opacity': 0.8 },
     }, 'country-clusters-stack');
     map.addLayer({
       id: 'route-walking-ov', type: 'line', source: 'route-line-overview',
-      slot: 'top', maxzoom: 8,
+      maxzoom: 8,
       filter: ['==', ['get', 'mode'], 'WALKING'],
       paint: {
-        'line-color': '#000', 'line-width': 1.5, 'line-opacity': 0.8,
+        'line-color': '#080808', 'line-width': 1.5, 'line-opacity': 0.8,
         'line-dasharray': [4, 3],
       },
     }, 'country-clusters-stack');
     map.addLayer({
       id: 'route-bicycling-ov', type: 'line', source: 'route-line-overview',
-      slot: 'top', maxzoom: 8,
+      maxzoom: 8,
       filter: ['==', ['get', 'mode'], 'BICYCLING'],
       paint: {
-        'line-color': '#000', 'line-width': 1.5, 'line-opacity': 0.8,
+        'line-color': '#080808', 'line-width': 1.5, 'line-opacity': 0.8,
         'line-dasharray': [1.5, 3],
       },
     }, 'country-clusters-stack');
     map.addLayer({
       id: 'route-transit-ov', type: 'line', source: 'route-line-overview',
-      slot: 'top', maxzoom: 8,
+      maxzoom: 8,
       filter: ['==', ['get', 'mode'], 'TRANSIT'],
       paint: {
-        'line-color': '#000', 'line-width': 1.5, 'line-opacity': 0.8,
+        'line-color': '#080808', 'line-width': 1.5, 'line-opacity': 0.8,
         'line-dasharray': [6, 2.5, 1.5, 2.5],
       },
     }, 'country-clusters-stack');
@@ -63,22 +65,22 @@
     // Detail layers (zoom >= 8): use full step-path geometry
     map.addLayer({
       id: 'route-driving', type: 'line', source: 'route-line',
-      slot: 'top', minzoom: 8,
+      minzoom: 8,
       filter: ['==', ['get', 'mode'], 'DRIVING'],
-      paint: { 'line-color': '#000', 'line-width': 1.5, 'line-opacity': 0.8 },
+      paint: { 'line-color': '#080808', 'line-width': 1.5, 'line-opacity': 0.8 },
     }, 'country-clusters-stack');
     map.addLayer({
       id: 'route-walking', type: 'line', source: 'route-line',
-      slot: 'top', minzoom: 8,
+      minzoom: 8,
       filter: ['==', ['get', 'mode'], 'WALKING'],
       paint: {
-        'line-color': '#000', 'line-width': 1.5, 'line-opacity': 0.8,
+        'line-color': '#080808', 'line-width': 1.5, 'line-opacity': 0.8,
         'line-dasharray': [4, 3],
       },
     }, 'country-clusters-stack');
     map.addLayer({
       id: 'route-walking-arrows', type: 'symbol', source: 'route-line',
-      slot: 'top', minzoom: 8,
+      minzoom: 8,
       filter: ['all', ['==', ['get', 'mode'], 'WALKING'], ['to-boolean', ['get', 'returnToCar']]],
       layout: {
         'symbol-placement': 'line-center',
@@ -93,26 +95,26 @@
     }, 'country-clusters-stack');
     map.addLayer({
       id: 'route-bicycling', type: 'line', source: 'route-line',
-      slot: 'top', minzoom: 8,
+      minzoom: 8,
       filter: ['==', ['get', 'mode'], 'BICYCLING'],
       paint: {
-        'line-color': '#000', 'line-width': 1.5, 'line-opacity': 0.8,
+        'line-color': '#080808', 'line-width': 1.5, 'line-opacity': 0.8,
         'line-dasharray': [1.5, 3],
       },
     }, 'country-clusters-stack');
     map.addLayer({
       id: 'route-transit', type: 'line', source: 'route-line',
-      slot: 'top', minzoom: 8,
+      minzoom: 8,
       filter: ['==', ['get', 'mode'], 'TRANSIT'],
       paint: {
-        'line-color': '#000', 'line-width': 1.5, 'line-opacity': 0.8,
+        'line-color': '#080808', 'line-width': 1.5, 'line-opacity': 0.8,
         'line-dasharray': [6, 2.5, 1.5, 2.5],
       },
     }, 'country-clusters-stack');
 
+    } catch(e) { _routeLayerAddError = e; }
     map.addLayer({
       id: 'route-stop-cluster-markers', type: 'symbol', source: 'route-stops-src',
-      slot: 'top',
       filter: ['has', 'point_count'],
       layout: {
         'icon-image': 'aalto-dot-route',
@@ -124,7 +126,6 @@
     });
     map.addLayer({
       id: 'route-stop-cluster-labels', type: 'symbol', source: 'route-stops-src',
-      slot: 'top',
       filter: ['has', 'point_count'],
       layout: {
         'text-field': ['concat', ['to-string', ['get', 'min_num']], '–', ['to-string', ['get', 'max_num']]],
@@ -141,11 +142,10 @@
         'text-padding': 2,
         'symbol-sort-key': 20,
       },
-      paint: { 'text-color': '#000', 'text-halo-color': '#fff', 'text-halo-width': 1.4 },
+      paint: { 'text-color': '#000', 'text-halo-color': '#fff', 'text-halo-width': 1.5 },
     });
     map.addLayer({
       id: 'route-stop-markers', type: 'symbol', source: 'route-stops-src',
-      slot: 'top',
       filter: ['!', ['has', 'point_count']],
       layout: {
         'icon-image': 'aalto-dot-route',
@@ -159,24 +159,22 @@
     });
     map.addLayer({
       id: 'route-stop-numbers', type: 'symbol', source: 'route-stops-src',
-      slot: 'top',
       filter: ['!', ['has', 'point_count']],
       layout: {
         'text-field': ['get', 'num'],
         'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular'],
         'text-size': 10,
-        'text-allow-overlap': false,
-        'text-ignore-placement': false,
-        'text-optional': true,
-        'text-padding': 2,
-        'symbol-sort-key': 20,
+        'text-allow-overlap': true,
+        'text-ignore-placement': true,
+        'text-optional': false,
+        'text-padding': 0,
+        'symbol-sort-key': 40,
         visibility: 'none',
       },
       paint: { 'text-color': '#000' },
     });
     map.addLayer({
       id: 'route-stop-labels', type: 'symbol', source: 'route-stops-src',
-      slot: 'top',
       filter: ['!', ['has', 'point_count']],
       layout: {
         'text-field': ['get', 'name'],
@@ -194,7 +192,7 @@
         'text-padding': 2,
         'symbol-sort-key': 20,
       },
-      paint: { 'text-color': '#000', 'text-halo-color': '#fff', 'text-halo-width': 1.4 },
+      paint: { 'text-color': '#000', 'text-halo-color': '#fff', 'text-halo-width': 1.5 },
     });
 
     function handleRouteStopClick(e) {

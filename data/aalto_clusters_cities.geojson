@@ -44,7 +44,10 @@
             "url": "https://visit.alvaraalto.fi/en/destinations/alvar-aalto-in-alajarvi/",
             "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alvar-aallon-alajarvi/"
           }
-        ]
+        ],
+        "city_only": "Alajärvi",
+        "cities_in_country": 25,
+        "city_only_fi": "Alajärvi"
       },
       "geometry": {
         "type": "Point",
@@ -69,7 +72,10 @@
           }
         ],
         "object_name": "Maison Louis Carré",
-        "object_name_fi": "Maison Louis Carré"
+        "object_name_fi": "Maison Louis Carré",
+        "city_only": "Bazoches-sur-Guyonne",
+        "cities_in_country": 1,
+        "city_only_fi": "Bazoches-sur-Guyonne"
       },
       "geometry": {
         "type": "Point",
@@ -94,7 +100,10 @@
           }
         ],
         "object_name": "Hansaviertel Apartment building “Haus 16”",
-        "object_name_fi": "Hansa­viertelin asuin­kerros­talo ”Haus 16”"
+        "object_name_fi": "Hansa­viertelin asuin­kerros­talo ”Haus 16”",
+        "city_only": "Berliini",
+        "cities_in_country": 2,
+        "city_only_fi": "Berliini"
       },
       "geometry": {
         "type": "Point",
@@ -119,7 +128,10 @@
           }
         ],
         "object_name": "Espoo and Otaniemi Campus Area",
-        "object_name_fi": "Espoo ja Otaniemen yliopisto­kampus"
+        "object_name_fi": "Espoo ja Otaniemen yliopisto­kampus",
+        "city_only": "Espoo",
+        "cities_in_country": 25,
+        "city_only_fi": "Espoo"
       },
       "geometry": {
         "type": "Point",
@@ -148,7 +160,10 @@
             "url": "https://visit.alvaraalto.fi/en/destinations/riverside-sauna-at-kauttua-works/",
             "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/jokisauna-kauttuan-ruukinpuistossa-eurassa/"
           }
-        ]
+        ],
+        "city_only": "Eura",
+        "cities_in_country": 25,
+        "city_only_fi": "Eura"
       },
       "geometry": {
         "type": "Point",
@@ -173,7 +188,10 @@
           }
         ],
         "object_name": "Summa paper mill and housing area in Hamina",
-        "object_name_fi": "Summan paperi­tehdas ja asuin­alue Haminassa"
+        "object_name_fi": "Summan paperi­tehdas ja asuin­alue Haminassa",
+        "city_only": "Hamina",
+        "cities_in_country": 25,
+        "city_only_fi": "Hamina"
       },
       "geometry": {
         "type": "Point",
@@ -268,7 +286,10 @@
             "url": "https://visit.alvaraalto.fi/en/destinations/house-of-culture/",
             "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/kulttuuritalo/"
           }
-        ]
+        ],
+        "city_only": "Helsinki",
+        "cities_in_country": 25,
+        "city_only_fi": "Helsinki"
       },
       "geometry": {
         "type": "Point",
@@ -293,7 +314,10 @@
           }
         ],
         "object_name": "Iittala Glass Factory and Design Museum Iittala",
-        "object_name_fi": "Iittalan lasi­tehdas ja Design­museo Iittala"
+        "object_name_fi": "Iittalan lasi­tehdas ja Design­museo Iittala",
+        "city_only": "Iittala",
+        "cities_in_country": 25,
+        "city_only_fi": "Iittala"
       },
       "geometry": {
         "type": "Point",
@@ -352,7 +376,10 @@
             "url": "https://visit.alvaraalto.fi/en/destinations/alvar-aalto-in-jyvaskyla/",
             "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alvar-aallon-jyvaskyla/"
           }
-        ]
+        ],
+        "city_only": "Jyväskylä",
+        "cities_in_country": 25,
+        "city_only_fi": "Jyväskylä"
       },
       "geometry": {
         "type": "Point",
@@ -377,7 +404,10 @@
           }
         ],
         "object_name": "Alvar Aalto’s Villa Kokkonen",
-        "object_name_fi": "Villa Kokkonen"
+        "object_name_fi": "Villa Kokkonen",
+        "city_only": "Järvenpää",
+        "cities_in_country": 25,
+        "city_only_fi": "Järvenpää"
       },
       "geometry": {
         "type": "Point",
@@ -402,7 +432,10 @@
           }
         ],
         "object_name": "Kauttua Ironworks in Eura",
-        "object_name_fi": "Kauttuan ruukin­puisto Eurassa"
+        "object_name_fi": "Kauttuan ruukin­puisto Eurassa",
+        "city_only": "Kauttua",
+        "cities_in_country": 25,
+        "city_only_fi": "Kauttua"
       },
       "geometry": {
         "type": "Point",
@@ -427,7 +460,10 @@
           }
         ],
         "object_name": "Mill Manager’s Residence Kantola and Seaside Sauna in Sunila",
-        "object_name_fi": "Tehtaan­johtajan asuin­talo Kantola ja ranta­sauna Sunilassa"
+        "object_name_fi": "Tehtaan­johtajan asuin­talo Kantola ja ranta­sauna Sunilassa",
+        "city_only": "Kotka Popinniemi",
+        "cities_in_country": 25,
+        "city_only_fi": "Kotka Popinniemi"
       },
       "geometry": {
         "type": "Point",
@@ -452,7 +488,10 @@
           }
         ],
         "object_name": "Sunila Sulphate Pulp Mill and Residential Area",
-        "object_name_fi": "Sunilan selluloosa­tehdas ja asuin­alue"
+        "object_name_fi": "Sunilan selluloosa­tehdas ja asuin­alue",
+        "city_only": "Kotka",
+        "cities_in_country": 25,
+        "city_only_fi": "Kotka"
       },
       "geometry": {
         "type": "Point",
@@ -481,7 +520,10 @@
             "url": "https://visit.alvaraalto.fi/en/destinations/industrial-history-and-residences-of-inkeroinen/",
             "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/tehtaanmaen-asuinalue-ja-koulu-kouvolan-inkeroisissa/"
           }
-        ]
+        ],
+        "city_only": "Kouvola",
+        "cities_in_country": 25,
+        "city_only_fi": "Kouvola"
       },
       "geometry": {
         "type": "Point",
@@ -506,7 +548,10 @@
           }
         ],
         "object_name": "Church of the Cross",
-        "object_name_fi": "Lahden Ristinkirkko"
+        "object_name_fi": "Lahden Ristinkirkko",
+        "city_only": "Lahti",
+        "cities_in_country": 25,
+        "city_only_fi": "Lahti"
       },
       "geometry": {
         "type": "Point",
@@ -531,7 +576,10 @@
           }
         ],
         "object_name": "Muurame church",
-        "object_name_fi": "Muuramen kirkko"
+        "object_name_fi": "Muuramen kirkko",
+        "city_only": "Muurame",
+        "cities_in_country": 25,
+        "city_only_fi": "Muurame"
       },
       "geometry": {
         "type": "Point",
@@ -566,7 +614,10 @@
             "url": "https://visit.alvaraalto.fi/en/destinations/toppila-sulphite-pulp-mill-from-toppila-oy-to-meri-toppila/",
             "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/toppilan-sulfiittiselluloosatehdas-toppila-oysta-meri-toppilaksi/"
           }
-        ]
+        ],
+        "city_only": "Oulu",
+        "cities_in_country": 25,
+        "city_only_fi": "Oulu"
       },
       "geometry": {
         "type": "Point",
@@ -591,7 +642,10 @@
           }
         ],
         "object_name": "Paimio Sanatorium",
-        "object_name_fi": "Paimion parantola"
+        "object_name_fi": "Paimion parantola",
+        "city_only": "Paimio",
+        "cities_in_country": 25,
+        "city_only_fi": "Paimio"
       },
       "geometry": {
         "type": "Point",
@@ -626,7 +680,10 @@
             "url": "https://visit.alvaraalto.fi/en/destinations/villa-mairea/",
             "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/villa-mairea/"
           }
-        ]
+        ],
+        "city_only": "Pori Noormarkku Finpyy",
+        "cities_in_country": 25,
+        "city_only_fi": "Pori Noormarkku Finpyy"
       },
       "geometry": {
         "type": "Point",
@@ -655,7 +712,10 @@
             "url": "https://visit.alvaraalto.fi/en/destinations/villa-skeppet/",
             "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/villa-skeppet/"
           }
-        ]
+        ],
+        "city_only": "Raasepori",
+        "cities_in_country": 25,
+        "city_only_fi": "Raasepori"
       },
       "geometry": {
         "type": "Point",
@@ -680,7 +740,10 @@
           }
         ],
         "object_name": "Riola church and parish centre",
-        "object_name_fi": "Riolan kirkko ja seura­kunta­keskus"
+        "object_name_fi": "Riolan kirkko ja seura­kunta­keskus",
+        "city_only": "Riola BO",
+        "cities_in_country": 2,
+        "city_only_fi": "Riola BO"
       },
       "geometry": {
         "type": "Point",
@@ -727,7 +790,10 @@
             "url": "https://visit.alvaraalto.fi/en/destinations/reindeer-antler-city-plan/",
             "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/poronsarviasemakaava/"
           }
-        ]
+        ],
+        "city_only": "Rovaniemi",
+        "cities_in_country": 25,
+        "city_only_fi": "Rovaniemi"
       },
       "geometry": {
         "type": "Point",
@@ -752,7 +818,10 @@
           }
         ],
         "object_name": "Church of the Three Crosses (Vuoksenniska Church)",
-        "object_name_fi": "Kolmen Ristin Kirkko"
+        "object_name_fi": "Kolmen Ristin Kirkko",
+        "city_only": "Ruokolahdentie",
+        "cities_in_country": 25,
+        "city_only_fi": "Ruokolahdentie"
       },
       "geometry": {
         "type": "Point",
@@ -793,7 +862,10 @@
             "url": "https://visit.alvaraalto.fi/en/destinations/alvar-aalto-in-seinajoki/",
             "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/alvar-aallon-seinajoki/"
           }
-        ]
+        ],
+        "city_only": "Seinäjoki",
+        "cities_in_country": 25,
+        "city_only_fi": "Seinäjoki"
       },
       "geometry": {
         "type": "Point",
@@ -818,7 +890,10 @@
           }
         ],
         "object_name": "Villa Tammekann",
-        "object_name_fi": "Villa Tammekann"
+        "object_name_fi": "Villa Tammekann",
+        "city_only": "Tartto",
+        "cities_in_country": 1,
+        "city_only_fi": "Tartto"
       },
       "geometry": {
         "type": "Point",
@@ -843,7 +918,10 @@
           }
         ],
         "object_name": "Turku and the Office Building for Turun Sanomat Newspaper",
-        "object_name_fi": "Turku ja Turun Sanomien toimitalo"
+        "object_name_fi": "Turku ja Turun Sanomien toimitalo",
+        "city_only": "Turku",
+        "cities_in_country": 25,
+        "city_only_fi": "Turku"
       },
       "geometry": {
         "type": "Point",
@@ -868,7 +946,10 @@
           }
         ],
         "object_name": "Artist community at Lake Tuusula and Villa Kokkonen in Järvenpää",
-        "object_name_fi": "Tuusulan­järven taiteilija­yhteisö ja Villa Kokkonen Järven­päässä"
+        "object_name_fi": "Tuusulan­järven taiteilija­yhteisö ja Villa Kokkonen Järven­päässä",
+        "city_only": "Tuusula",
+        "cities_in_country": 25,
+        "city_only_fi": "Tuusula"
       },
       "geometry": {
         "type": "Point",
@@ -893,7 +974,10 @@
           }
         ],
         "object_name": "Aerola Terraced Houses in Vantaa",
-        "object_name_fi": "Aerolan rivitalot Vantaalla"
+        "object_name_fi": "Aerolan rivitalot Vantaalla",
+        "city_only": "Vantaa",
+        "cities_in_country": 25,
+        "city_only_fi": "Vantaa"
       },
       "geometry": {
         "type": "Point",
@@ -922,7 +1006,10 @@
             "url": "https://visit.alvaraalto.fi/en/destinations/varkaus-industrial-history-lake-saimaa-waterways-and-caviar/",
             "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/varkaus-alvar-aallon-arkkitehtuuria-ja-teollisuuden-tarinoita-saimaan-rannalla/"
           }
-        ]
+        ],
+        "city_only": "Varkaus",
+        "cities_in_country": 25,
+        "city_only_fi": "Varkaus"
       },
       "geometry": {
         "type": "Point",
@@ -947,7 +1034,10 @@
           }
         ],
         "object_name": "Finnish Pavilion at the Venice Biennale",
-        "object_name_fi": "Suomen paviljonki Venetsian biennaali­alueella"
+        "object_name_fi": "Suomen paviljonki Venetsian biennaali­alueella",
+        "city_only": "Venezia VE",
+        "cities_in_country": 2,
+        "city_only_fi": "Venezia VE"
       },
       "geometry": {
         "type": "Point",
@@ -972,7 +1062,10 @@
           }
         ],
         "object_name": "Vyborg Library",
-        "object_name_fi": "Viipurin kirjasto"
+        "object_name_fi": "Viipurin kirjasto",
+        "city_only": "Viipuri",
+        "cities_in_country": 1,
+        "city_only_fi": "Viipuri"
       },
       "geometry": {
         "type": "Point",
@@ -1007,7 +1100,10 @@
             "url": "https://visit.alvaraalto.fi/en/destinations/detmerode-church-stephanuskirche-and-parish-centre/",
             "url_fi": "https://visit.alvaraalto.fi/fi/kohteet/detmeroden-kirkko-stephanuskirche-ja-seurakuntakeskus/"
           }
-        ]
+        ],
+        "city_only": "Wolfsburg",
+        "cities_in_country": 2,
+        "city_only_fi": "Wolfsburg"
       },
       "geometry": {
         "type": "Point",
