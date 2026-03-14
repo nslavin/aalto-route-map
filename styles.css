@@ -47,13 +47,18 @@ body {
 .lang-btn.active { color: #000; }
 .lang-btn:hover:not(.active) { color: #555; }
 .lang-sep { font-size: 10px; color: #000; }
+#header-source-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
 #header-source {
-  display: block; margin-top: 6px;
-  font-size: 10px; color: #888; letter-spacing: 0.06em;
+  font-size: 10px; color: #000; letter-spacing: 0.06em;
   text-transform: uppercase;
   text-decoration: none; transition: color 0.15s;
 }
-#header-source:hover { color: #333; }
+#header-source:hover { color: #555; }
 
 /* ── List panel (always visible, right edge) ── */
 #list-panel {
@@ -932,16 +937,10 @@ a.panel-footer-value:hover { opacity: 0.5; }
     left: max(12px, env(safe-area-inset-left, 0));
     z-index: 25;
   }
-  #header {
-    padding-right: 20px;
-  }
   #header-toggle {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    top: 0;
-    right: 0;
     background: none;
     border: none;
     cursor: pointer;
@@ -952,9 +951,9 @@ a.panel-footer-value:hover { opacity: 0.5; }
   #header-toggle:hover { color: #000; }
   #header-toggle svg { display: block; transform: rotate(180deg); }
   #header.header-hidden #header-content { display: none; }
-  #header.header-hidden { padding-right: 0; }
-  #header.header-hidden #header-toggle {
-    position: static;
+  #header.header-hidden #header-source { display: none; }
+  #header.header-hidden #header-source-row {
+    margin-top: 0;
   }
   #header.header-hidden #header-toggle svg {
     transform: rotate(0);
