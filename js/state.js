@@ -55,12 +55,12 @@
         listCollapsed: !!p.listCollapsed,
         routeCollapsed: !!p.routeCollapsed,
         panelOpen: !!p.panelOpen,
-      selectedId: (typeof p.selectedId === 'number' ? p.selectedId : null),
-      activeListFilter: (p.activeListFilter === 'fav' || p.activeListFilter === 'visited') ? p.activeListFilter : 'all',
-      activeSortMode: (['alphabet', 'distance', 'distanceFromCenter'].includes(p.activeSortMode)) ? p.activeSortMode : 'alphabet',
-      mobileActiveTab: (['all', 'fav', 'visited', 'route'].includes(p.mobileActiveTab)) ? p.mobileActiveTab : 'all',
-      mobileShowingDetail: !!p.mobileShowingDetail,
-    };
+        selectedId: (typeof p.selectedId === 'number' ? p.selectedId : null),
+        activeListFilter: (p.activeListFilter === 'fav' || p.activeListFilter === 'visited') ? p.activeListFilter : 'all',
+        activeSortMode: (['alphabet', 'distance', 'distanceFromCenter'].includes(p.activeSortMode)) ? p.activeSortMode : 'alphabet',
+        mobileActiveTab: (['all', 'fav', 'visited', 'route'].includes(p.mobileActiveTab)) ? p.mobileActiveTab : 'all',
+        mobileShowingDetail: !!p.mobileShowingDetail,
+      };
   } catch (e) {
       return null;
     }
@@ -99,6 +99,7 @@
   window.Aalto.rebuildAaltoSource = function() {};
   window.Aalto.renderList = function() {};
   window.Aalto.fitRouteOverview = function() {};
+  window.Aalto.updateRouteOnMap = function() {};
 
   function toggleFav(id) {
     const A = window.Aalto;
@@ -120,6 +121,7 @@
     const wasAdding = idx < 0;
     if (idx >= 0) {
       A.routeStops.splice(idx, 1);
+      A.routeSegments = [];
     } else {
       if (!coords) return false;
       A.routeStops.push({ id, coords, name });
@@ -128,9 +130,10 @@
     }
     saveRoute();
     A.rebuildAaltoSource();
+    A.updateRouteOnMap();
     A.renderRouteSection();
     A.calculateAllSegments();
-    if (wasAdding) A.fitRouteOverview();
+    if (A.routeStops.length >= 2) A.fitRouteOverview();
     return wasAdding;
   }
 

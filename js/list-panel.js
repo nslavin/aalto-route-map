@@ -60,7 +60,7 @@
       if (excludeVisited) filter = ['all', filter, ['!', ['get', '_visited']]];
       if (map.getLayer('aalto-points')) map.setFilter('aalto-points', filter);
       if (map.getLayer('aalto-halo')) map.setFilter('aalto-halo', filter);
-          }
+    }
 
     function updateFavsOverlay() {
       const src = map.getSource('aalto-favs');
@@ -226,6 +226,7 @@
     }
 
     A.renderList = function() {
+      activeSortMode = (A.activeSortMode && ['alphabet', 'distance', 'distanceFromCenter'].includes(A.activeSortMode)) ? A.activeSortMode : activeSortMode;
       updateMapVisibilityForFilter();
       const isfi = A.lang === 'fi';
       const query = document.getElementById('list-search').value.toLowerCase();
@@ -236,8 +237,13 @@
       if (!isFavOrVisited) {
         if (activeSortMode === 'distance') {
           refCoords = userLocation ? [userLocation.lng, userLocation.lat] : null;
-        } else if (activeSortMode === 'distanceFromCenter') {
-          refCoords = userLocation ? [userLocation.lng, userLocation.lat] : [map.getCenter().lng, map.getCenter().lat];
+        } else if (activeSortMode === 'distanceFromCenter' && map && typeof map.getCenter === 'function') {
+          try {
+            const c = map.getCenter();
+            if (c && typeof c.lng === 'number' && typeof c.lat === 'number') {
+              refCoords = [c.lng, c.lat];
+            }
+          } catch (e) { /* map not ready */ }
         }
       }
       const effectiveSortByDistance = !isFavOrVisited && refCoords != null;
@@ -273,6 +279,7 @@
             favBtn.classList.toggle('active');
             if (activeFilter === 'fav') A.renderList();
             if (A.currentFeature && A.currentFeature.id === item.id) A.renderPanel(A.currentFeature);
+            if (A.updateFilterCounts) A.updateFilterCounts();
           };
 
           const visitBtn = document.createElement('button');
@@ -332,37 +339,69 @@
         listBody.appendChild(header);
         renderItems(items, 0);
       } else {
-        sortedCountries.forEach(country => {
-          let items = groups[country].filter(item => {
-            const name = (isfi && item.name_fi ? item.name_fi : item.name).toLowerCase();
-            if (query && !name.includes(query)) return false;
-            return true;
+        const getKey = (a) => (isfi && a.name_fi ? a.name_fi : a.name) || '';
+        if (effectiveSortByDistance && refCoords) {
+          // Global sort by distance: flatten all items, sort by distance, then group by country (order = first occurrence)
+          let allItems = [];
+          sortedCountries.forEach(country => {
+            const items = groups[country].filter(item => {
+              const name = (isfi && item.name_fi ? item.name_fi : item.name).toLowerCase();
+              if (query && !name.includes(query)) return false;
+              return true;
+            });
+            allItems = allItems.concat(items.map(item => ({ ...item, _dist: haversineKm(refCoords, item.coords) })));
           });
-          if (!items.length) return;
-
-          const getKey = (a) => (isfi && a.name_fi ? a.name_fi : a.name) || '';
-          if (effectiveSortByDistance && refCoords) {
-            items = items.map(item => ({ ...item, _dist: haversineKm(refCoords, item.coords) }));
-            items.sort((a, b) => a._dist - b._dist);
-          } else {
+          allItems.sort((a, b) => a._dist - b._dist);
+          const countryOrder = [];
+          const byCountry = {};
+          allItems.forEach(item => {
+            if (!byCountry[item.country]) {
+              countryOrder.push(item.country);
+              byCountry[item.country] = [];
+            }
+            byCountry[item.country].push(item);
+          });
+          countryOrder.forEach(country => {
+            const items = byCountry[country];
+            const esc = window.AaltoUtils.escHtml;
+            const header = document.createElement('div');
+            header.className = 'list-group-header';
+            const isCollapsed = collapsedGroups.has(country);
+            if (isCollapsed) header.classList.add('collapsed');
+            header.innerHTML = `<span>${esc(country)} (${items.length})</span><span class="list-group-arrow"><svg width="8" height="5" viewBox="0 0 8 5" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 1l3 3 3-3"/></svg></span>`;
+            header.onclick = () => {
+              if (collapsedGroups.has(country)) collapsedGroups.delete(country);
+              else collapsedGroups.add(country);
+              A.renderList();
+            };
+            listBody.appendChild(header);
+            if (!isCollapsed) renderItems(items, null);
+          });
+        } else {
+          sortedCountries.forEach(country => {
+            let items = groups[country].filter(item => {
+              const name = (isfi && item.name_fi ? item.name_fi : item.name).toLowerCase();
+              if (query && !name.includes(query)) return false;
+              return true;
+            });
+            if (!items.length) return;
             items = [...items].sort((a, b) => getKey(a).localeCompare(getKey(b)));
-          }
 
-          const esc = window.AaltoUtils.escHtml;
-          const header = document.createElement('div');
-          header.className = 'list-group-header';
-          const isCollapsed = collapsedGroups.has(country);
-          if (isCollapsed) header.classList.add('collapsed');
-          header.innerHTML = `<span>${esc(country)} (${items.length})</span><span class="list-group-arrow"><svg width="8" height="5" viewBox="0 0 8 5" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 1l3 3 3-3"/></svg></span>`;
-          header.onclick = () => {
-            if (collapsedGroups.has(country)) collapsedGroups.delete(country);
-            else collapsedGroups.add(country);
-            A.renderList();
-          };
-          listBody.appendChild(header);
-
-          if (!isCollapsed) renderItems(items, null);
-        });
+            const esc = window.AaltoUtils.escHtml;
+            const header = document.createElement('div');
+            header.className = 'list-group-header';
+            const isCollapsed = collapsedGroups.has(country);
+            if (isCollapsed) header.classList.add('collapsed');
+            header.innerHTML = `<span>${esc(country)} (${items.length})</span><span class="list-group-arrow"><svg width="8" height="5" viewBox="0 0 8 5" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 1l3 3 3-3"/></svg></span>`;
+            header.onclick = () => {
+              if (collapsedGroups.has(country)) collapsedGroups.delete(country);
+              else collapsedGroups.add(country);
+              A.renderList();
+            };
+            listBody.appendChild(header);
+            if (!isCollapsed) renderItems(items, null);
+          });
+        }
       }
 
       if (listBody.children.length === 0 && query) {
@@ -379,6 +418,7 @@
         });
       }
       A.updatePanelLayout();
+      if (A.isMobile && A.updateFilterCounts) A.updateFilterCounts();
     };
 
     function updateListCount() {
@@ -406,6 +446,12 @@
         viewBeforeFavVisitedMode = null;
         document.querySelectorAll('.list-filter-btn[data-filter]').forEach(b =>
           b.classList.toggle('active', b.dataset.filter === 'all'));
+        // Sync mobile tabs
+        if (A.isMobile) {
+          document.querySelectorAll('.bs-tab').forEach(t =>
+            t.classList.toggle('active', t.dataset.tab === 'all'));
+          if (A.mobileState) A.mobileState.activeTab = 'all';
+        }
         updateMapVisibilityForFilter();
         updateRouteFromBookmarksBtn();
         A.renderList();
@@ -826,9 +872,46 @@
       A.savePanels();
       document.querySelectorAll('.list-filter-btn[data-filter]').forEach(b =>
         b.classList.toggle('active', b.dataset.filter === filter));
+      // Sync mobile tabs
+      if (A.isMobile) {
+        document.querySelectorAll('.bs-tab').forEach(t =>
+          t.classList.toggle('active', t.dataset.tab === filter));
+        if (A.mobileState) A.mobileState.activeTab = filter;
+      }
       updateMapVisibilityForFilter();
-      if (filter === 'all' && (prevFilter === 'fav' || prevFilter === 'visited')) {
-        restoreViewBeforeFavVisited();
+      if (filter === 'all') {
+        if (prevFilter === 'fav' || prevFilter === 'visited') {
+          restoreViewBeforeFavVisited();
+        } else {
+          const iv = A.initialView || { center: [13.3217, 52.521], zoom: 4, bearing: -11, pitch: 42 };
+          map.flyTo({ ...iv, duration: 800 });
+        }
+      } else if (filter === 'fav' && A.favs.size > 0) {
+        if (prevFilter === 'all') saveViewBeforeFavVisited();
+        const favItems = [];
+        sortedCountries.forEach(country => {
+          favItems.push(...groups[country].filter(item => A.favs.has(item.id)));
+        });
+        if (favItems.length === 1) {
+          map.flyTo({ center: favItems[0].coords, zoom: 14, pitch: 0, duration: 600 });
+        } else if (favItems.length > 1) {
+          const bounds = new mapboxgl.LngLatBounds();
+          favItems.forEach(item => bounds.extend(item.coords));
+          map.fitBounds(bounds, { padding: A.isMobile ? A.getMapPadding() : 80, pitch: 0, duration: 600, maxZoom: 14 });
+        }
+      } else if (filter === 'visited' && A.visited.size > 0) {
+        if (prevFilter === 'all') saveViewBeforeFavVisited();
+        const visitedItems = [];
+        sortedCountries.forEach(country => {
+          visitedItems.push(...groups[country].filter(item => A.visited.has(item.id)));
+        });
+        if (visitedItems.length === 1) {
+          map.flyTo({ center: visitedItems[0].coords, zoom: 14, pitch: 0, duration: 600 });
+        } else if (visitedItems.length > 1) {
+          const bounds = new mapboxgl.LngLatBounds();
+          visitedItems.forEach(item => bounds.extend(item.coords));
+          map.fitBounds(bounds, { padding: A.isMobile ? A.getMapPadding() : 80, pitch: 0, duration: 600, maxZoom: 14 });
+        }
       }
       A.renderList();
       updateRouteFromBookmarksBtn();
