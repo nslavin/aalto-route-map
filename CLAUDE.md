@@ -1,132 +1,58 @@
-# Aalto Map
+# Cursor / Claude instructions — Aalto Map
 
-Interactive web map to explore, bookmark, plan, and share routes through Alvar Aalto's architectural heritage. Built on Mapbox GL JS.
+Instructions for AI assistants (Cursor, Claude, etc.) working in this repo. For human-facing project info and setup, see **README.md**.
 
-## Features
+## What this project is
 
-- Interactive Mapbox map with 72 Aalto sites across Finland and Europe
-- Cluster layers: country → city → individual points at progressive zoom levels
-- Dedicated bookmark/visited overlay layers (clustered GL sources, greying main layers when filter active)
-- Detail panel: image carousel with lightbox, collapsible descriptions, contact & social info
-- Bookmark & visited tracking (localStorage-persisted, filterable in list)
-- Trip planner: multi-stop routing via Google Directions API
-  - Modes: driving, walking, bicycling, transit (global + per-segment overrides)
-  - Walk threshold: auto-switch short segments to walking
-  - Drag-and-drop stop reordering, route optimization
-  - Route overview layers at low zoom (zoom < 8) using simplified geometry
-  - Google Maps export
-- Bilingual: EN / FI language switch
-- Adaptive layout: 3-column when list and detail panel both visible
-- Local optimized images: thumb (300px), medium (800px), large (1600px) WebP versions
+- Interactive Mapbox web map for Alvar Aalto sites (72 across Finland and Europe).
+- Vanilla stack: no build; `index.html` + `styles.css` + `js/*.js`. Mapbox GL JS v3, Google Directions for routing.
+- Key concepts: cluster layers, bookmark/visited overlays, detail panel, trip planner, EN/FI i18n.
 
-## Project structure
+## Conventions to follow
 
-```
-index.html                    — main HTML, loads external CSS/JS
-styles.css                    — all app styles
-icons/
-  dot.svg                     — default map marker icon
-  dot-route.svg               — route stop marker icon
-js/
-  state.js                    — route stops, favs, visited, persistence, toggle helpers
-  toast.js                    — toast notification
-  i18n.js                     — language (EN/FI), translations, applyLang
-  lightbox.js                 — image lightbox
-  utils.js                    — shared utilities (haversineKm, etc.)
-  panel.js                    — detail panel (render, open/close, selectFeature)
-  layout.js                   — updatePanelLayout, list/route collapse, fitRouteOverview
-  export.js                   — share (clipboard) & print for bookmarks and route
-  map-layers.js               — GL sources, cluster & point layers, rebuildAaltoSource, favs/visited overlays
-  list-panel.js               — featureList, renderList, search/filter/sort, filter overlay logic
-  route-planner.js            — route sources/layers, calculateAllSegments, renderRouteSection, mode bar
-  map-init.js                 — Mapbox init, map.on('load'), orchestrates all modules
-  layer-zoom-config.js        — externalized zoom breakpoints for layer groups, persisted to localStorage
-  debug-layers.js             — dev panel to toggle visibility and z-order of map layers
-data/
-  aalto_route.geojson         — 72 features: name, name_fi, address, address_fi, url, url_fi, image
-  aalto_details.json          — enriched building details (cover, gallery, description, contact, social, websites, links, email, local_images)
-  images/                     — locally cached optimized images (thumb/medium/large WebP)
-  aalto_route_enriched.geojson — intermediate enrichment output
-  aalto_clusters_countries.geojson
-  aalto_clusters_cities.geojson
-  aalto_clusters_cities_merged.geojson
-  aalto_clusters_helsinki_metropolitan.geojson
-  en_fi_url_cache.json        — cache of EN→FI URL mappings
-  enrich_cache.json           — enrichment scraping cache
-  helsinki_districts.geojson   — cached WFS response for Helsinki district boundaries
-scripts/
-  extract_aalto_route.py      — scrapes Leaflet marker data from downloaded HTML pages, merges EN/FI
-  enrich_aalto_route.py       — scrapes detail pages for descriptions, galleries, contact info
-  cluster_geojson.py          — clusters route GeoJSON by country, city, Helsinki district
-  merge_city_clusters.py      — merges city cluster variants
-  download_images.py          — downloads & optimizes images (thumb 300px, medium 800px, large 1600px WebP)
-```
+- **No build tools** — Keep vanilla HTML/CSS/JS. Do not introduce bundlers, transpilers, or frameworks unless explicitly requested.
+- **Load order** — Scripts in `index.html` must stay in this order: state → toast → i18n → lightbox → utils → panel → layout → export → map-layers → list-panel → route-planner → layer-zoom-config → debug-layers → map-init.
+- **Shared namespace** — App state and callbacks live on `window.Aalto`; modules extend it, do not replace it.
+- **Stub pattern** — `state.js` declares stubs (e.g. `renderRouteSection`, `calculateAllSegments`); `map-init.js` assigns real implementations after `map.on('load')`. When adding new cross-module callbacks, follow this pattern.
+- **i18n** — All user-facing strings in `js/i18n.js` (EN + FI). Use keys and `applyLang`; no hardcoded UI copy in HTML/JS.
+- **Data** — GeoJSON and JSON use `ensure_ascii=False` (preserve ä, ö). Helsinki WFS: `kartta.hel.fi/ws/geoserver/avoindata/wfs`, type `avoindata:Kaupunginosajako`, EPSG:4326.
 
-## Stack
+## File roles (quick reference)
 
-- **Map**: Mapbox GL JS v3.19.0, custom Mapbox style
-- **Routing**: Google Maps JavaScript API (DirectionsService)
-- **Data**: static GeoJSON + `aalto_details.json` (enriched building details)
-- **Dev server**: Python `http.server` — port 8081
-- **No build tools** — vanilla HTML/CSS/JS, split into `styles.css` + `js/*.js`
+| File | Role |
+|------|------|
+| `state.js` | Route stops, favs, visited, persistence, toggle helpers, stubs for route/segment logic |
+| `map-init.js` | Mapbox init, `map.on('load')`, wires modules and assigns stub implementations |
+| `map-layers.js` | GL sources, cluster/point layers, `rebuildAaltoSource`, fav/visited overlays |
+| `list-panel.js` | Feature list, search/filter/sort, filter overlay behaviour |
+| `route-planner.js` | Route sources/layers, `calculateAllSegments`, `renderRouteSection`, mode bar |
+| `layout.js` | `updatePanelLayout`, list/route collapse, `fitRouteOverview`, map resize / padding |
+| `panel.js` | Detail panel render, open/close, `selectFeature` |
+| `layer-zoom-config.js` | Zoom breakpoints for layer groups, persisted; `getLayerZoomConfig()`, `initLayerZoomConfig(map)` |
 
-## Running locally
+## Persistence (localStorage)
 
-```bash
-python3 -m http.server 8081
-# open http://localhost:8081
-```
+- `aalto_favs`, `aalto_visited`, `aalto_route` — user data.
+- `aalto_layer_zoom_config`, `aalto_debug_layer_order`, `aalto_debug_layer_visibility` — map/debug settings.
 
-## Architecture notes
+Do not change these keys without updating all read/write sites.
 
-- **Modular app**: HTML in `index.html`, CSS in `styles.css`, JS split into `js/*.js`. Load order: state → toast → i18n → lightbox → utils → panel → layout → export → map-layers → list-panel → route-planner → layer-zoom-config → debug-layers → map-init.
-- **Shared namespace**: `window.Aalto` holds state (routeStops, favs, visited, etc.) and callbacks; modules extend it.
-- **Stub pattern**: `state.js` declares stub functions (`renderRouteSection`, `calculateAllSegments`, etc.); `map-init.js` assigns real implementations after `map.on('load')`.
-- **Layout states**: normal (66.67vw map + 33.33vw list), detail-stacked (66.67vw map + 33.33vw right column split: list top + panel bottom, when list ≤50% viewport), detail-open (3×33.33vw, when list >50% viewport), both-collapsed (100vw map + minimized headers top-right)
-- **Persistence**: localStorage keys `aalto_favs`, `aalto_visited`, `aalto_route`, `aalto_layer_zoom_config`, `aalto_debug_layer_order`, `aalto_debug_layer_visibility`
-- **Feature state**: Mapbox `setFeatureState` for `selected`, `hover`, `fav`, `visited`
-- **Overlay layers**: when "bookmarks" or "visited" filter is active, dedicated `aalto-favs` / `aalto-visited` clustered GL sources drive their own marker/label layers; main layers are greyed out
-- **Route overview**: separate `route-line-overview` source feeds low-zoom (< 8) line layers using simplified `overview_path` geometry
-- **Zoom breakpoints**: `layer-zoom-config.js` exposes `window.getLayerZoomConfig()` read by `map-layers.js` on init; `initLayerZoomConfig(map)` renders the dev UI panel
+## Map behaviour
 
-## Map design principles
+- **Feature state**: Mapbox `setFeatureState` for `selected`, `hover`, `fav`, `visited`.
+- **Overlays**: With “bookmarks” or “visited” filter active, `aalto-favs` / `aalto-visited` GL sources drive overlay layers; main layers are greyed out.
+- **Route overview**: At zoom &lt; 8, `route-line-overview` source with simplified `overview_path` geometry is used for overview line layers.
 
-- Laconic architectural aesthetic: black and white, no decoration
-- Custom Mapbox style
-- Markers: custom SVG dot icons (`icons/dot.svg`, `icons/dot-route.svg`) loaded as Mapbox image sprites
-- Detail panel: 1px black border, no radius, grayscale images
-- Typography: Helvetica Neue, uppercase tracking, minimal color
+## Design rules (map and UI)
 
-## API keys
+- Laconic, architectural look: black and white, no decoration.
+- Custom Mapbox style; markers = custom SVG dots in `icons/` (e.g. `dot.svg`, `dot-route.svg`) as image sprites.
+- Detail panel: 1px black border, no radius, grayscale images.
+- Typography: Helvetica Neue, uppercase tracking, minimal colour.
 
-Keys are stored in `index.html` (Google) and `js/map-init.js` (Mapbox). Do not commit secrets.
+## When editing
 
-## Data pipeline (supporting tool)
-
-### 1. Download HTML sources
-```bash
-curl -L "https://visit.alvaraalto.fi/en/alvar-aalto-route/" -o data/aalto_route.html
-curl -L "https://visit.alvaraalto.fi/fi/alvar-aalto-reitti/" -o data/aalto_route_fi.html
-```
-
-### 2. Extract GeoJSON
-```bash
-pip install requests beautifulsoup4
-python scripts/extract_aalto_route.py
-```
-
-### 3. Enrich with details
-```bash
-python scripts/enrich_aalto_route.py
-```
-
-### 4. Cluster
-```bash
-python scripts/cluster_geojson.py
-```
-
-## Key details
-
-- All GeoJSON uses `ensure_ascii=False` (preserves ä, ö)
-- Helsinki WFS endpoint: `kartta.hel.fi/ws/geoserver/avoindata/wfs` (type `avoindata:Kaupunginosajako`, EPSG:4326)
-- 72 Aalto objects across Finland and Europe
+- Prefer extending existing modules over new global state.
+- Keep script load order and `window.Aalto` contract; document new public callbacks if they are part of the app contract.
+- For new UI copy, add EN/FI entries in `i18n.js` and use the existing apply/refresh flow.
+- API keys: Google in `index.html`, Mapbox in `js/map-init.js` — never commit secrets; mention in README or here if key handling changes.
