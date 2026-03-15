@@ -18,13 +18,18 @@
       headerEl.classList.toggle('header-hidden');
       headerToggle.setAttribute('aria-expanded', !headerEl.classList.contains('header-hidden'));
     }
-    headerEl.addEventListener('click', function(e) {
-      if (!mql.matches) return;
-      if (headerSource && headerSource.contains(e.target)) return;
-      e.preventDefault();
-      e.stopPropagation();
-      doToggle();
-    });
+    // Title, subtitle, and toggle button collapse the header on mobile
+    var headerContent = document.getElementById('header-content');
+    if (headerContent) {
+      headerContent.addEventListener('click', function(e) {
+        if (!mql.matches) return;
+        // Let lang switch buttons work normally
+        if (e.target.closest('#lang-switch')) return;
+        e.preventDefault();
+        e.stopPropagation();
+        doToggle();
+      });
+    }
     headerToggle.onclick = function(e) {
       e.stopPropagation();
       doToggle();

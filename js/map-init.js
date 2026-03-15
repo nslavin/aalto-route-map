@@ -37,7 +37,12 @@
     }, 400);
   });
 
-  map.once('style.load', () => map.resize());
+  map.once('style.load', () => {
+    map.resize();
+    if (isMobileInit) {
+      map.setFog({ 'horizon-blend': 0 });
+    }
+  });
 
   let _skipMapClick = false;
   let _clusterClickEvt = null;

@@ -1,24 +1,26 @@
 // ═══════════════════════════════════════════════════════
 //  Bottom Sheet — Mobile layout: snaps, gestures, reparenting
+//  Height-based approach: sheet sits at bottom:0, grows upward
 //  Expects: window.Aalto
 // ═══════════════════════════════════════════════════════
 (function () {
-  const A = window.Aalto;
+  var A = window.Aalto;
 
   window.initBottomSheet = function (map, mapEl, listRet) {
-    const sheet = document.getElementById('bottom-sheet');
-    const handle = sheet.querySelector('.bs-handle');
-    const content = sheet.querySelector('.bs-content');
-    const tabs = sheet.querySelectorAll('.bs-tab');
-    const viewList = sheet.querySelector('.bs-view-list');
-    const viewDetail = sheet.querySelector('.bs-view-detail');
-    const viewRoute = sheet.querySelector('.bs-view-route');
-    const detailContent = sheet.querySelector('.bs-detail-content');
-    const closeBtn = sheet.querySelector('.bs-close');
-    const searchRow = sheet.querySelector('.bs-search-row');
+    var sheet = document.getElementById('bottom-sheet');
+    var handle = sheet.querySelector('.bs-handle');
+    var content = sheet.querySelector('.bs-content');
+    var tabs = sheet.querySelectorAll('.bs-tab');
+    var viewList = sheet.querySelector('.bs-view-list');
+    var viewDetail = sheet.querySelector('.bs-view-detail');
+    var viewRoute = sheet.querySelector('.bs-view-route');
+    var detailContent = sheet.querySelector('.bs-detail-content');
+    var closeBtn = sheet.querySelector('.bs-close');
+    var searchRow = sheet.querySelector('.bs-search-row');
+    var tabBar = sheet.querySelector('.bs-tabs');
 
     // ── Mobile detection ──
-    const mql = window.matchMedia('(max-width: 767px)');
+    var mql = window.matchMedia('(max-width: 767px)');
     A.isMobile = mql.matches;
 
     A.mobileState = {
@@ -26,343 +28,267 @@
       previousSnap: 'peek',
       activeTab: 'all',
       showingDetail: false,
-      isLandscape: false,
     };
 
-    // ── Snap point values ──
+    // ── Viewport height ──
+    function getViewportHeight() {
+      if (window.visualViewport && typeof window.visualViewport.height === 'number') {
+        return Math.min(window.visualViewport.height, window.innerHeight);
+      }
+      return window.innerHeight;
+    }
+
+    // ── Snap point system ──
     function getPeekHeight() {
       var h = handle.offsetHeight || 28;
-      var tabBarEl = sheet.querySelector('.bs-tabs');
-      if (tabBarEl && tabBarEl.style.display !== 'none') h += tabBarEl.offsetHeight;
-      if (searchRow && searchRow.style.display !== 'none') h += searchRow.offsetHeight;
+      if (tabBar && tabBar.style.display !== 'none') h += tabBar.offsetHeight || 0;
+      if (searchRow && searchRow.style.display !== 'none') h += searchRow.offsetHeight || 0;
       var rp = sheet.querySelector('.bs-route-preview');
-      if (rp && rp.style.display !== 'none') h += rp.offsetHeight;
+      if (rp && rp.style.display !== 'none') h += rp.offsetHeight || 0;
       return Math.max(h + 10, 120);
     }
 
-    function getVisibleViewportHeight() {
-      var vv = window.visualViewport && typeof window.visualViewport.height === 'number' ? window.visualViewport.height : null;
-      var ih = window.innerHeight;
-      return vv != null ? Math.min(vv, ih) : ih;
+    function getHalfHeight() {
+      var vh = getViewportHeight();
+      var pct = A.mobileState.showingDetail ? 0.70 : 0.50;
+      return Math.round(vh * pct);
     }
 
+    function getFullHeight() {
+      return getViewportHeight();
+    }
+
+    function resolveSnap(name) {
+      if (name === 'peek') return getPeekHeight();
+      if (name === 'half') return getHalfHeight();
+      if (name === 'full') return getFullHeight();
+      return getPeekHeight();
+    }
+
+    var SNAP_ORDER = ['peek', 'half', 'full'];
+
     function getSnapValues() {
-      if (A.mobileState.isLandscape) {
-        return { dismissed: 0, peek: 0, half: 0, full: 0 };
-      }
-      var vh = getVisibleViewportHeight();
-      var halfPct = A.mobileState.showingDetail ? 0.75 : 0.55;
       return {
-        dismissed: 0,
         peek: getPeekHeight(),
-        half: Math.round(vh * halfPct),
-        full: vh,
+        half: getHalfHeight(),
+        full: getFullHeight(),
       };
     }
 
-    // Set sheet height to visible viewport so panel bottom always ends on screen
-    function setSheetHeight() {
-      if (!A.isMobile || !sheet) return;
-      var h = Math.max(100, getVisibleViewportHeight());
-      sheet.style.height = h + 'px';
-      sheet.style.maxHeight = '';
-    }
-
-    // Measure actual content height for fit-to-content in list/route mode
-    function getContentFitHeight() {
-      var chrome = handle.offsetHeight;
-      var tabBarEl = sheet.querySelector('.bs-tabs');
-      if (tabBarEl && tabBarEl.style.display !== 'none') chrome += tabBarEl.offsetHeight;
-      if (searchRow && searchRow.style.display !== 'none') chrome += searchRow.offsetHeight;
-      var routePreviewEl = sheet.querySelector('.bs-route-preview');
-      if (routePreviewEl && routePreviewEl.style.display !== 'none') chrome += routePreviewEl.offsetHeight;
-
-      // Measure actual content children (not the abs-positioned view container)
-      var contentH = 0;
-      if (A.mobileState.activeTab === 'route') {
-        var routeBody = document.getElementById('route-section-body');
-        contentH = routeBody ? routeBody.scrollHeight : 0;
-      } else {
-        var listBody = document.getElementById('list-body');
-        contentH = listBody ? listBody.scrollHeight : 0;
-        // Add route helper buttons if visible
-        var rfb = document.getElementById('route-from-bookmarks');
-        var rfv = document.getElementById('route-from-visible');
-        if (rfb && rfb.offsetHeight) contentH += rfb.offsetHeight;
-        if (rfv && rfv.offsetHeight) contentH += rfv.offsetHeight;
-      }
-
-      var total = chrome + contentH;
-      var maxH = Math.round(getVisibleViewportHeight() * 0.55);
+    // ── Apply height ──
+    function applyHeight(px) {
+      var maxH = getFullHeight();
       var minH = getPeekHeight();
-      return Math.max(minH, Math.min(total, maxH));
+      px = Math.max(minH, Math.min(maxH, px));
+      sheet.style.height = px + 'px';
+      document.documentElement.style.setProperty('--bs-height', px + 'px');
+      return px;
     }
+
+    // ── Set snap ──
+    var resizeObserver = null;
 
     function setSnap(snapName, animated) {
       if (typeof animated === 'undefined') animated = true;
-      // Keep sheet height in sync with viewport so full/half/peek transforms are correct
-      if (A.isMobile && !A.mobileState.isLandscape) setSheetHeight();
-      var snaps = getSnapValues();
+      var heightPx = resolveSnap(snapName);
 
-      if (A.mobileState.isLandscape) {
-        sheet.classList.remove('bs-dismissed', 'snap-peek', 'snap-half', 'snap-full');
-        if (snapName === 'dismissed') {
-          sheet.classList.add('bs-dismissed');
-        } else {
-          sheet.classList.add('snap-' + snapName);
-        }
-        A.mobileState.snap = snapName;
-        A.mobileState.currentSnapPx = 0;
-        updateMapPadding();
-        return;
-      }
-
-      sheet.style.transition = animated
-        ? 'transform 0.4s cubic-bezier(0.32, 0.72, 0, 1)'
-        : 'none';
-
-      sheet.classList.remove('bs-dismissed', 'snap-peek', 'snap-half', 'snap-full');
-
-      var sheetHeight = sheet.offsetHeight;
-      if (snapName === 'dismissed') {
-        sheet.style.transform = 'translateY(' + sheetHeight + 'px)';
-        sheet.classList.add('bs-dismissed');
-        A.mobileState.currentSnapPx = 0;
+      if (animated) {
+        sheet.style.transition = 'height 0.35s cubic-bezier(0.32, 0.72, 0, 1)';
+        document.body.classList.remove('bs-dragging');
       } else {
-        var px = snaps[snapName];
-        // For list/route mode at half snap, use fit-to-content (with minimum so panel is usable)
-        if (snapName === 'half' && !A.mobileState.showingDetail) {
-          px = Math.max(getContentFitHeight(), Math.round(getVisibleViewportHeight() * 0.35));
-        }
-        // Don't show more than "full" (no invisible bottom): ty >= sheetHeight - full; allow half/peek (positive ty)
-        var full = snaps.full;
-        var ty = sheetHeight - px;
-        var minTy = sheetHeight - full;
-        if (ty < minTy) ty = minTy;
-        sheet.style.transform = 'translateY(' + ty + 'px)';
-        sheet.classList.add('snap-' + snapName);
-        A.mobileState.currentSnapPx = px;
+        sheet.style.transition = 'none';
       }
+
+      applyHeight(heightPx);
+
+      sheet.classList.remove('snap-peek', 'snap-half', 'snap-full');
+      sheet.classList.add('snap-' + snapName);
 
       A.mobileState.snap = snapName;
-      updateContentScroll(snapName);
-      updateMapPadding();
-    }
+      A.mobileState.currentSnapPx = heightPx;
 
-    function updateContentScroll(snapName) {
-      // Keep content non-scrollable so only the inner .bs-view scrolls (single scroll container)
-      content.style.overflowY = 'hidden';
-    }
-
-    // targetSheetPx: known visible sheet height (from setSnap or drag).
-    // When omitted, reads the sheet's actual position via getBoundingClientRect.
-    function syncMapToSheet(targetSheetPx) {
-      if (!A.isMobile || !map) return;
-
-      if (A.mobileState.isLandscape) {
-        mapEl.style.height = '';
-        var snapName = A.mobileState.snap;
-        map.setPadding({ top: 0, bottom: 0, left: snapName === 'dismissed' ? 0 : Math.round(window.innerWidth * 0.4) + 10, right: 0 });
-      } else {
-        var mapH;
-        if (typeof targetSheetPx === 'number') {
-          mapH = window.innerHeight - targetSheetPx;
-        } else {
-          // Fallback: read actual sheet position (for transitionend, etc.)
-          var sheetTop = sheet.getBoundingClientRect().top;
-          if (sheetTop >= window.innerHeight) sheetTop = window.innerHeight;
-          mapH = sheetTop;
-        }
-        mapEl.style.height = Math.max(mapH, 0) + 'px';
-        map.setPadding({ top: 0, bottom: 0, left: 0, right: 0 });
+      if (!animated) {
+        map.resize();
       }
-      map.resize();
-      // Second resize after layout has settled to avoid blank/gray area; defer if camera is animating
-      requestAnimationFrame(function () {
-        if (map.isMoving()) {
-          map.once('moveend', function () { map.resize(); });
-        } else {
-          map.resize();
-        }
+    }
+
+    // Map resize via ResizeObserver — auto-resizes when map container changes
+    if (window.ResizeObserver) {
+      resizeObserver = new ResizeObserver(function () {
+        if (A.isMobile && map) map.resize();
       });
+      resizeObserver.observe(mapEl);
     }
 
-    function updateMapPadding() { syncMapToSheet(A.mobileState.currentSnapPx || 0); }
-
-    // Sync map after any sheet CSS transition finishes (safety net)
+    // Also resize map after sheet transition ends
     sheet.addEventListener('transitionend', function (e) {
-      if (e.target !== sheet) return;
-      if (map.isMoving()) {
-        map.once('moveend', function () { syncMapToSheet(); });
-      } else {
-        syncMapToSheet();
-      }
+      if (e.target !== sheet || e.propertyName !== 'height') return;
+      if (map) map.resize();
     });
 
     // ── Touch gesture handling ──
-    var touchStartY = 0;
-    var touchStartTranslateY = 0;
-    var touchStartTime = 0;
-    var isDragging = false;
+    var dragState = {
+      phase: 'idle',   // 'idle' | 'undecided' | 'scroll' | 'drag'
+      startY: 0,
+      startHeight: 0,
+      startTime: 0,
+      startScrollTop: 0,
+      activeScroller: null,
+    };
+    var resizeScheduled = false;
 
-    function getCurrentTranslateY() {
-      var style = window.getComputedStyle(sheet);
-      var matrix = new DOMMatrix(style.transform);
-      return matrix.m42;
+    function getActiveScroller() {
+      if (A.mobileState.showingDetail) return detailContent;
+      if (A.mobileState.activeTab === 'route') {
+        return document.getElementById('route-stops-list') || viewRoute;
+      }
+      return viewList;
     }
 
-    function handleTouchStart(e) {
-      if (A.mobileState.isLandscape) return;
+    function scheduleMapResize() {
+      if (resizeScheduled) return;
+      resizeScheduled = true;
+      requestAnimationFrame(function () {
+        if (map) map.resize();
+        resizeScheduled = false;
+      });
+    }
+
+    // -- Handle / tab bar drag (always drags sheet) --
+    function onHandleTouchStart(e) {
       if (e.target && e.target.closest && e.target.closest('.bs-tab')) return;
       var touch = e.touches[0];
-      touchStartY = touch.clientY;
-      touchStartTranslateY = getCurrentTranslateY();
-      touchStartTime = Date.now();
-      isDragging = true;
-      sheet.classList.add('bs-dragging');
-      mapEl.classList.add('bs-dragging-map');
+      dragState.phase = 'drag';
+      dragState.startY = touch.clientY;
+      dragState.startHeight = sheet.offsetHeight;
+      dragState.startTime = Date.now();
+      sheet.style.transition = 'none';
+      document.body.classList.add('bs-dragging');
     }
 
-    function handleTouchMove(e) {
-      if (!isDragging || A.mobileState.isLandscape) return;
+    function onHandleTouchMove(e) {
+      if (dragState.phase !== 'drag') return;
+      e.preventDefault();
       var touch = e.touches[0];
-      var delta = touch.clientY - touchStartY;
-      var newY = touchStartTranslateY + delta;
-      var sh = sheet.offsetHeight;
-      var snaps = getSnapValues();
-      // Clamp so we never show more than full (maxY = sh - full) and can go down to peek (minY = sh - peek)
-      var maxY = sh - snaps.full;
-      var minY = sh - getPeekHeight();
-      newY = Math.max(minY, Math.min(maxY, newY));
-      sheet.style.transform = 'translateY(' + newY + 'px)';
-
-      // Resize map to match during drag — visible sheet height = innerHeight - newY
-      syncMapToSheet(window.innerHeight - newY);
+      var deltaY = dragState.startY - touch.clientY; // positive = finger up = grow
+      var newH = dragState.startHeight + deltaY;
+      applyHeight(newH);
+      scheduleMapResize();
     }
 
-    function handleTouchEnd(e) {
-      if (!isDragging || A.mobileState.isLandscape) return;
-      isDragging = false;
-      sheet.classList.remove('bs-dragging');
-      mapEl.classList.remove('bs-dragging-map');
-
-      var touch = e.changedTouches[0];
-      var endY = touch.clientY;
-      var dt = Date.now() - touchStartTime;
-      var velocity = (endY - touchStartY) / Math.max(dt, 1);
-
-      var currentTranslateY = getCurrentTranslateY();
-      var currentHeight = window.innerHeight - currentTranslateY;
-      var snaps = getSnapValues();
-      var snapOrder = ['peek', 'half', 'full'];
-      var snapValues = [snaps.peek, snaps.half, snaps.full];
-
-      // Fast swipe: snap to next in direction
-      if (Math.abs(velocity) > 0.4) {
-        var currentIdx = 0;
-        var minDist = Infinity;
-        for (var i = 0; i < snapValues.length; i++) {
-          var d = Math.abs(currentHeight - snapValues[i]);
-          if (d < minDist) { minDist = d; currentIdx = i; }
-        }
-        if (velocity > 0) {
-          // Swiping down
-          setSnap(snapOrder[Math.max(0, currentIdx - 1)]);
-        } else {
-          // Swiping up
-          setSnap(snapOrder[Math.min(snapOrder.length - 1, currentIdx + 1)]);
-        }
-        return;
-      }
-
-      // Slow drag: snap to nearest
-      var nearest = 'peek';
-      var nearestDist = Infinity;
-      for (var j = 0; j < snapValues.length; j++) {
-        var dist = Math.abs(currentHeight - snapValues[j]);
-        if (dist < nearestDist) { nearestDist = dist; nearest = snapOrder[j]; }
-      }
-      setSnap(nearest);
+    function onHandleTouchEnd(e) {
+      if (dragState.phase !== 'drag') return;
+      document.body.classList.remove('bs-dragging');
+      resolveSnapFromGesture(e);
+      dragState.phase = 'idle';
     }
 
-    handle.addEventListener('touchstart', handleTouchStart, { passive: true });
-    handle.addEventListener('touchmove', handleTouchMove, { passive: false });
-    handle.addEventListener('touchend', handleTouchEnd, { passive: true });
+    handle.addEventListener('touchstart', onHandleTouchStart, { passive: true });
+    handle.addEventListener('touchmove', onHandleTouchMove, { passive: false });
+    handle.addEventListener('touchend', onHandleTouchEnd, { passive: true });
+    tabBar.addEventListener('touchstart', onHandleTouchStart, { passive: true });
+    tabBar.addEventListener('touchmove', onHandleTouchMove, { passive: false });
+    tabBar.addEventListener('touchend', onHandleTouchEnd, { passive: true });
 
-    // Also allow dragging from tab area
-    var tabBar = sheet.querySelector('.bs-tabs');
-    tabBar.addEventListener('touchstart', handleTouchStart, { passive: true });
-    tabBar.addEventListener('touchmove', handleTouchMove, { passive: false });
-    tabBar.addEventListener('touchend', handleTouchEnd, { passive: true });
-
-    // Content scroll vs sheet drag disambiguation
-    var contentTouchStartY = 0;
-    var contentDragging = false;
-
+    // -- Content area: scroll vs drag disambiguation --
     content.addEventListener('touchstart', function (e) {
-      if (A.mobileState.isLandscape) return;
-      contentTouchStartY = e.touches[0].clientY;
-      contentDragging = false;
+      dragState.phase = 'undecided';
+      dragState.startY = e.touches[0].clientY;
+      dragState.startHeight = sheet.offsetHeight;
+      dragState.startTime = Date.now();
+      dragState.activeScroller = getActiveScroller();
+      dragState.startScrollTop = dragState.activeScroller ? dragState.activeScroller.scrollTop : 0;
     }, { passive: true });
 
     content.addEventListener('touchmove', function (e) {
-      if (A.mobileState.isLandscape) return;
-      var snap = A.mobileState.snap;
-      if (snap === 'peek' || snap === 'dismissed') {
-        // Prevent scroll, start sheet drag
-        e.preventDefault();
-        if (!contentDragging) {
-          contentDragging = true;
-          touchStartY = contentTouchStartY;
-          touchStartTranslateY = getCurrentTranslateY();
-          touchStartTime = Date.now();
-          isDragging = true;
-          sheet.classList.add('bs-dragging');
-          mapEl.classList.add('bs-dragging-map');
+      if (dragState.phase === 'idle' || dragState.phase === 'scroll') return;
+
+      var touch = e.touches[0];
+      var deltaY = touch.clientY - dragState.startY; // positive = finger moved down
+
+      if (dragState.phase === 'undecided') {
+        if (Math.abs(deltaY) < 10) return; // dead zone
+
+        var atScrollTop = dragState.startScrollTop <= 1;
+        var pullingDown = deltaY > 0;
+        var pushingUp = deltaY < 0;
+        var snap = A.mobileState.snap;
+
+        // At peek: any touch on content should drag the sheet
+        if (snap === 'peek') {
+          dragState.phase = 'drag';
         }
-        handleTouchMove(e);
-        return;
+        // At half/full: drag only if at scroll top and pulling down
+        else if (atScrollTop && pullingDown) {
+          dragState.phase = 'drag';
+        }
+        // At half: pushing up should expand to full (if at scroll top)
+        else if (snap === 'half' && atScrollTop && pushingUp) {
+          dragState.phase = 'drag';
+        }
+        else {
+          dragState.phase = 'scroll';
+          return;
+        }
+
+        // Entering drag mode
+        sheet.style.transition = 'none';
+        document.body.classList.add('bs-dragging');
       }
 
-      // At half/full: start sheet drag when at scroll top and user pulls down (collapse) or up (expand)
-      var delta = e.touches[0].clientY - contentTouchStartY;
-
-      var activeView = null;
-      if (A.mobileState.showingDetail) {
-        activeView = detailContent;
-      } else if (A.mobileState.activeTab === 'route') {
-        activeView = document.getElementById('route-section-body');
-      } else {
-        activeView = content.querySelector('.bs-view-list:not(.slide-out)');
-      }
-      var viewScrollTop = activeView ? activeView.scrollTop : 0;
-      var atTop = viewScrollTop <= 0;
-
-      // When not at top and swiping up, let native scroll handle it
-      if (!atTop && delta < 0 && !contentDragging) return;
-
-      if (atTop && Math.abs(delta) > 15 && !contentDragging) {
-        contentDragging = true;
-        touchStartY = contentTouchStartY;
-        touchStartTranslateY = getCurrentTranslateY();
-        touchStartTime = Date.now();
-        isDragging = true;
-        sheet.classList.add('bs-dragging');
-        mapEl.classList.add('bs-dragging-map');
-      }
-
-      if (contentDragging) {
+      if (dragState.phase === 'drag') {
         e.preventDefault();
-        handleTouchMove(e);
+        var dragDelta = dragState.startY - touch.clientY;
+        var newH = dragState.startHeight + dragDelta;
+        applyHeight(newH);
+        scheduleMapResize();
       }
     }, { passive: false });
 
     content.addEventListener('touchend', function (e) {
-      if (contentDragging) {
-        contentDragging = false;
-        handleTouchEnd(e);
+      if (dragState.phase === 'drag') {
+        document.body.classList.remove('bs-dragging');
+        resolveSnapFromGesture(e);
       }
+      dragState.phase = 'idle';
     }, { passive: true });
+
+    // -- Velocity-based snap resolution --
+    function resolveSnapFromGesture(e) {
+      var touch = e.changedTouches[0];
+      var endY = touch.clientY;
+      var dt = Date.now() - dragState.startTime;
+      var velocity = (endY - dragState.startY) / Math.max(dt, 1); // px/ms; positive = down
+
+      var currentH = sheet.offsetHeight;
+      var snaps = getSnapValues();
+      var snapHeights = [snaps.peek, snaps.half, snaps.full];
+
+      // Find closest snap to current position
+      var closestIdx = 0;
+      var minDist = Infinity;
+      for (var i = 0; i < snapHeights.length; i++) {
+        var d = Math.abs(currentH - snapHeights[i]);
+        if (d < minDist) { minDist = d; closestIdx = i; }
+      }
+
+      var targetIdx;
+      if (Math.abs(velocity) > 0.4) {
+        // Fast swipe
+        if (velocity > 0) {
+          // Swiping down → shrink
+          targetIdx = Math.max(0, closestIdx - 1);
+        } else {
+          // Swiping up → grow
+          targetIdx = Math.min(SNAP_ORDER.length - 1, closestIdx + 1);
+        }
+      } else {
+        // Slow drag → nearest
+        targetIdx = closestIdx;
+      }
+
+      setSnap(SNAP_ORDER[targetIdx]);
+    }
 
     // Handle tap on handle to toggle
     handle.addEventListener('click', function () {
@@ -385,7 +311,6 @@
 
     function enterMobileMode() {
       document.body.classList.add('is-mobile');
-      setSheetHeight();
 
       // Move search
       var searchWrap = document.getElementById('list-search-wrap');
@@ -436,16 +361,13 @@
         if (listBody2) viewList.insertBefore(rfv, listBody2);
       }
 
-      // Move sort into list view (All tab) so it's only visible when list is shown
+      // Move sort into list view
       var sortWrap = document.querySelector('.list-sort-wrap');
       if (sortWrap && sortWrap.parentNode !== viewList) {
         _origSortParent = sortWrap.parentNode;
         _origSortNext = sortWrap.nextSibling;
         viewList.insertBefore(sortWrap, viewList.firstChild);
       }
-
-      // Keep route-actions-bar inside route-section-body so it can be sticky at bottom when scrolling
-      // (no reparenting — bar stays in flow for "always visible with active route")
 
       map.resize();
       setSnap('peek', false);
@@ -485,7 +407,7 @@
         else _origSearchParent.appendChild(searchWrap);
       }
 
-      // Restore sort dropdown to list-filters
+      // Restore sort
       var sortWrap = document.querySelector('.list-sort-wrap');
       if (sortWrap && _origSortParent) {
         sortWrap.style.display = '';
@@ -528,16 +450,13 @@
       }
       if (headerRow) headerRow.remove();
 
-      // route-actions-bar was left inside route-section-body on mobile (no restore needed)
-
-      // Clear sheet height so CSS applies on desktop
+      // Clear sheet inline styles
       sheet.style.height = '';
-      // Reset map height and padding
-      mapEl.style.height = '';
+      sheet.style.transition = '';
+      document.documentElement.style.removeProperty('--bs-height');
       map.setPadding({ top: 0, bottom: 0, left: 0, right: 0 });
       map.resize();
 
-      // Restore desktop layout
       A.updatePanelLayout();
     }
 
@@ -561,7 +480,6 @@
         } else {
           requestAnimationFrame(function () { setSnap('half', false); });
         }
-        // Zoom to fit route stops
         if (A.fitRouteOverview && A.routeStops && A.routeStops.length >= 2) {
           A.fitRouteOverview();
         } else if (A.routeStops && A.routeStops.length === 1 && map) {
@@ -578,10 +496,8 @@
           viewDetail.classList.remove('active');
         }
 
-        // Always snap to half so map is correctly sized for fitBounds
         setSnap('half', false);
 
-        // Apply filter: use A.switchToListFilter (set by map-init) or listRet; avoids reliance on hidden #list-panel
         var filterMap = { all: 'all', fav: 'fav', visited: 'visited' };
         var filter = filterMap[tabName];
         var switchFilter = A.switchToListFilter || (listRet && listRet.switchToFilter);
@@ -591,26 +507,9 @@
           var filterBtn = document.querySelector('.list-filter-btn[data-filter="' + filter + '"]');
           if (filterBtn) filterBtn.click();
         }
-
-        // Re-snap after content height changes from filter
-        if (filter === 'all') {
-          // Immediate re-snap for 'all' (no fitBounds to interrupt)
-          requestAnimationFrame(function () {
-            requestAnimationFrame(function () {
-              if (A.mobileState.snap === 'half') setSnap('half', false);
-            });
-          });
-        } else {
-          // For fav/visited, delay re-snap so fitBounds animation (600ms) completes first
-          setTimeout(function () {
-            if (A.mobileState.snap === 'half') setSnap('half', true);
-          }, 700);
-        }
       }
 
-      // Show/hide list export row based on tab
       updateMobileExportRow(tabName);
-      // On mobile, show sort only in the All tab
       var sortWrap = document.querySelector('.list-sort-wrap');
       if (sortWrap && A.isMobile) {
         sortWrap.style.display = (tabName === 'all') ? '' : 'none';
@@ -641,7 +540,6 @@
       var panelEl = document.getElementById('panel');
       var panelInner = document.getElementById('panel-inner');
 
-      // Set feature state
       if (map && A.selectedId != null)
         map.setFeatureState({ source: 'aalto', id: A.selectedId }, { selected: false });
       A.selectedId = feature.id;
@@ -649,18 +547,15 @@
         map.setFeatureState({ source: 'aalto', id: feature.id }, { selected: true });
       A.currentFeature = feature;
 
-      // Render into panel (nodes still in #panel), then move #panel-inner into sheet
       origRenderPanel(feature);
 
       if (panelInner) {
         detailContent.appendChild(panelInner);
       }
 
-      // Hide redundant panel-close when in sheet (bs-close is the single close)
       var panelClose = document.getElementById('panel-close');
       if (panelClose) panelClose.style.display = 'none';
 
-      // Show detail view only (route panel must not overlay — one of route or info at a time)
       viewRoute.classList.remove('active');
       viewRoute.style.display = 'none';
       tabBar.style.display = 'none';
@@ -677,11 +572,6 @@
 
       A.savePanels();
     };
-
-    function rerenderDetail(feature) {
-      origRenderPanel(feature);
-      A.updateFilterCounts();
-    }
 
     A.closePanel = function () {
       if (!A.isMobile) return origClosePanel();
@@ -703,7 +593,6 @@
       tabBar.style.display = '';
       searchRow.style.display = '';
 
-      // Restore route panel if we're on the route tab (so we show route or info, never both)
       if (A.mobileState.activeTab === 'route') {
         viewList.style.display = 'none';
         viewRoute.classList.add('active');
@@ -721,12 +610,10 @@
       A.savePanels();
     };
 
-    // Close button (top-right; hidden on mobile)
     closeBtn.addEventListener('click', function () {
       A.closePanel();
     });
 
-    // Carousel close (mobile only; next to arrows)
     var carouselClose = document.querySelector('.bs-close-carousel');
     if (carouselClose) {
       carouselClose.addEventListener('click', function () {
@@ -734,7 +621,7 @@
       });
     }
 
-    // ── selectFeature override for mobile padding ──
+    // ── selectFeature override for mobile ──
     var origSelectFeature = A.selectFeature;
     A.selectFeature = function (feature, opts) {
       if (!A.isMobile) return origSelectFeature(feature, opts);
@@ -743,7 +630,6 @@
       A.highlightListItem(feature.id, opts);
       A.highlightRouteStop(feature.id);
 
-      // Collapse route section when opening detail so the info tab takes focus
       var routeSection = document.getElementById('route-section');
       if (routeSection && !routeSection.classList.contains('collapsed')) {
         routeSection.classList.add('collapsed');
@@ -783,25 +669,38 @@
       });
     }
 
-    // ── Resize ──
+    // visualViewport resize (keyboard appear/dismiss)
+    if (window.visualViewport) {
+      var lastVVHeight = window.visualViewport.height;
+      window.visualViewport.addEventListener('resize', function () {
+        if (!A.isMobile) return;
+        var newH = window.visualViewport.height;
+        var delta = lastVVHeight - newH;
+        lastVVHeight = newH;
+
+        // Keyboard appeared (viewport shrank significantly)
+        if (delta > 100) {
+          A.mobileState.preKeyboardSnap = A.mobileState.snap;
+          setSnap('full', true);
+          return;
+        }
+        // Keyboard dismissed (viewport grew significantly)
+        if (delta < -100 && A.mobileState.preKeyboardSnap) {
+          setSnap(A.mobileState.preKeyboardSnap, true);
+          A.mobileState.preKeyboardSnap = null;
+          return;
+        }
+        // Small resize: re-snap at current position
+        setSnap(A.mobileState.snap, false);
+      });
+    }
+
+    // ── Window resize ──
     window.addEventListener('resize', function () {
       if (A.isMobile) {
-        setSheetHeight();
-        map.resize();
         setSnap(A.mobileState.snap, false);
       }
     });
-
-    // When keyboard or browser chrome changes visible viewport, keep sheet height in sync
-    if (window.visualViewport) {
-      window.visualViewport.addEventListener('resize', function () {
-        if (A.isMobile) {
-          setSheetHeight();
-          map.resize();
-          setSnap(A.mobileState.snap, false);
-        }
-      });
-    }
 
     // ── Media query change ──
     mql.addEventListener('change', function (e) {
@@ -819,7 +718,6 @@
     // ── Initial setup ──
     if (A.isMobile) {
       enterMobileMode();
-      // Update counts and route preview for any existing data
       requestAnimationFrame(function () {
         A.updateFilterCounts();
       });
@@ -838,7 +736,6 @@
         if (wasVisible && A.mobileState.snap === 'peek') setSnap('peek', true);
         return;
       }
-      // Build summary text
       var totalDist = 0;
       var totalDur = 0;
       if (A.routeSegments) {
@@ -860,13 +757,11 @@
       routePreview.innerHTML = '<span class="bs-route-preview-text">' + summary + '</span><button class="bs-route-preview-clear">' + (A.t ? A.t('clear') : 'CLEAR') + '</button>';
       routePreview.style.display = '';
 
-      // Re-snap if at peek so height adjusts for preview bar
       if (A.mobileState.snap === 'peek') setSnap('peek', true);
 
-      // Bind events
       routePreview.querySelector('.bs-route-preview-text').onclick = function () {
         switchTab('route');
-        if (A.mobileState.snap === 'peek' || A.mobileState.snap === 'dismissed') setSnap('half');
+        if (A.mobileState.snap === 'peek') setSnap('half');
         if (A.routeStops && A.routeStops.length >= 2) A.fitRouteOverview();
       };
       routePreview.querySelector('.bs-route-preview-clear').onclick = function (e) {
@@ -882,7 +777,7 @@
       };
     }
 
-    // ── Wrap renderRouteSection to update preview on any route change ──
+    // Wrap renderRouteSection to update preview on any route change
     var origRenderRouteSection = A.renderRouteSection;
     A.renderRouteSection = function () {
       origRenderRouteSection();
@@ -910,10 +805,7 @@
         visitedTab.innerHTML = A.t('mobileTabVisited') + (visitedCount ? '<span class="bs-count">(' + visitedCount + ')</span>' : '');
         routeTab.innerHTML = A.t('mobileTabRoute') + (routeCount ? '<span class="bs-count">(' + routeCount + ')</span>' : '');
 
-        // Route tab in black when route has stops
         routeTab.classList.toggle('has-route', routeCount > 0);
-
-        // Update route preview
         updateRoutePreview();
       };
     }

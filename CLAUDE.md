@@ -50,6 +50,12 @@ Do not change these keys without updating all read/write sites.
 - Detail panel: 1px black border, no radius, grayscale images.
 - Typography: Helvetica Neue, uppercase tracking, minimal colour.
 
+## Running the preview
+
+- **Dev server**: `python3 -m http.server 8081` from the project root (port 8081). `npm`/`npx` are not available in the Bash tool shell (nvm-managed, non-interactive).
+- **Viewing**: Use `mcp__Claude_in_Chrome__tabs_context_mcp` → `mcp__Claude_in_Chrome__navigate` to `http://localhost:8081` → `mcp__Claude_in_Chrome__computer` screenshot. The `mcp__Claude_Preview__preview_start` tool does not work in this project (persistent bug: can't find `.claude/launch.json` despite it existing).
+- **launch.json**: `.claude/launch.json` is configured with `python3 -m http.server 8081` for reference, but use Chrome MCP to actually view the app.
+
 ## When editing
 
 - Prefer extending existing modules over new global state.
