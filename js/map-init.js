@@ -13,29 +13,49 @@
   const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/nslavin/cmml8edyr004101r1fxw306px',
-    center: [13.3217, 52.521],
-    zoom: 4,
-    bearing: -11,
-    pitch: 42,
+    center: [19.96148, 57.70808],
+    zoom: 2.687,
+    bearing: 18.2,
+    pitch: 50.9,
     minZoom: isMobileInit ? 2 : 3,
   });
 
   A.map = map;
-  A.initialView = { center: [13.3217, 52.521], zoom: 4, bearing: -11, pitch: 42 };
+  // Mobile: min pitch 34 when zoom < 5 (avoids tilt/globe halo at low zoom)
+  A.getMobilePitch = function(zoom, pitch) {
+    if (!A.isMobile) return pitch;
+    if (zoom >= 5) return pitch;
+    return Math.max(pitch, 34);
+  };
+  // Hardcoded view states:
+  // - initialView / fallback “all” Europe: here and list-panel.js (initialView fallback)
+  // - Finland cluster click: FINLAND_CLICK_STATE below
+  // - Mobile “fit all sites” on first load: bottom-sheet.js enterMobileMode fitBounds
+  A.initialView = { center: [19.96148, 57.70808], zoom: 2.687, bearing: 18.2, pitch: 50.9 };
 
   map.addControl(new mapboxgl.NavigationControl({ showCompass: true }), 'bottom-left');
 
   let _savePosTimer;
-  map.on('moveend', () => {
-    clearTimeout(_savePosTimer);
-    _savePosTimer = setTimeout(() => {
+  function saveMapPos() {
+    try {
       const c = map.getCenter();
+      var pitch = map.getPitch();
+      if (A.isMobile && map.getZoom() < 5 && pitch < 34) pitch = 34;
       localStorage.setItem('aalto_map_pos', JSON.stringify({
         lng: c.lng, lat: c.lat, zoom: map.getZoom(),
-        bearing: map.getBearing(), pitch: map.getPitch(),
+        bearing: map.getBearing(), pitch: pitch,
       }));
-    }, 400);
+    } catch (e) { /* localStorage disabled or quota */ }
+  }
+  map.on('moveend', () => {
+    if (A.isMobile && map.getZoom() < 5 && map.getPitch() < 34) {
+      map.setPitch(34);
+    }
+    clearTimeout(_savePosTimer);
+    _savePosTimer = setTimeout(saveMapPos, 400);
   });
+  window.addEventListener('pagehide', saveMapPos);
+  window.addEventListener('beforeunload', saveMapPos);
 
   map.once('style.load', () => {
     map.resize();
@@ -98,10 +118,13 @@
     if (_savedPos) {
       try {
         const p = JSON.parse(_savedPos);
-        map.jumpTo({ center: [p.lng, p.lat], zoom: p.zoom, bearing: p.bearing, pitch: p.pitch });
+        var pitch = A.getMobilePitch ? A.getMobilePitch(p.zoom, p.pitch) : p.pitch;
+        map.jumpTo({ center: [p.lng, p.lat], zoom: p.zoom, bearing: p.bearing, pitch: pitch });
       } catch (e) { /* ignore corrupt data */ }
     } else {
-      map.jumpTo({ center: [13.3217, 52.521], zoom: 4, bearing: -11, pitch: 42 });
+      // Fallback “all” view (same as initialView)
+      var iv = A.initialView;
+      map.jumpTo({ center: iv.center, zoom: iv.zoom, bearing: iv.bearing, pitch: A.getMobilePitch ? A.getMobilePitch(iv.zoom, iv.pitch) : iv.pitch });
     }
 
     const layoutRet = window.initLayout(map, mapEl, A);
@@ -128,7 +151,8 @@
     const nameToCoords = {};
     data.features.forEach(f => { nameToCoords[f.properties.name] = f.geometry.coordinates; });
 
-    const FINLAND_CLICK_STATE = { center: [24.8041, 60.8095], zoom: 6.62, bearing: 0, pitch: 0 };
+    // Finland cluster click view
+    const FINLAND_CLICK_STATE = { center: [24.81291, 61.22175], zoom: 5.736, bearing: 0, pitch: 0 };
 
     function selectFeatureByName(name, coords) {
       const match = featureList.find(f => f.name === name);
@@ -178,6 +202,7 @@
 
     countryClusterLayerIds.forEach(id => {
       map.on('click', id, (e) => {
+        e.preventDefault();
         if (e.originalEvent === _clusterClickEvt) return;
         _clusterClickEvt = e.originalEvent;
         handleClusterClick(e.features[0].properties, e.features[0].geometry.coordinates, true);
@@ -188,6 +213,7 @@
 
     cityClusterLayerIds.forEach(id => {
       map.on('click', id, (e) => {
+        e.preventDefault();
         if (e.originalEvent === _clusterClickEvt) return;
         _clusterClickEvt = e.originalEvent;
         handleClusterClick(e.features[0].properties, e.features[0].geometry.coordinates);
@@ -198,6 +224,7 @@
 
     metroClusterLayerIds.forEach(id => {
       map.on('click', id, (e) => {
+        e.preventDefault();
         if (e.originalEvent === _clusterClickEvt) return;
         _clusterClickEvt = e.originalEvent;
         handleClusterClick(e.features[0].properties, e.features[0].geometry.coordinates);
@@ -207,6 +234,7 @@
     });
 
     const handleAaltoClusterClick = (e) => {
+      e.preventDefault();
       _skipMapClick = true;
       const activeFilter = listRet.getActiveFilter();
       if (activeFilter === 'fav' || activeFilter === 'visited') {
@@ -253,6 +281,7 @@
     map.on('mouseleave', 'aalto-cluster-labels', () => { map.getCanvas().style.cursor = ''; });
 
     function _handleAaltoPointClick(e) {
+      e.preventDefault();
       _skipMapClick = true;
       const filter = listRet.getActiveFilter();
       if (filter === 'fav' || filter === 'visited') {
@@ -267,6 +296,7 @@
     map.on('mouseleave', 'aalto-points', () => { map.getCanvas().style.cursor = ''; });
 
     function handleFilteredMarkerClick(e) {
+      e.preventDefault();
       _skipMapClick = true;
       const feat = e.features[0];
       const fid = feat.properties?.id;
@@ -282,6 +312,7 @@
       }
     }
     function handleFavVisitedClusterClick(e) {
+      e.preventDefault();
       _skipMapClick = true;
       const f = e.features[0];
       const clusterId = f.id;
@@ -356,7 +387,8 @@
         routeSection.classList.remove('collapsed');
       }
 
-      if (savedPanels.panelOpen && savedPanels.selectedId != null) {
+      // Desktop: restore panel open via selectFeature; mobile: restore in mobile block below
+      if (!A.isMobile && savedPanels.panelOpen && savedPanels.selectedId != null) {
         const item = featureList.find(f => f.id == savedPanels.selectedId);
         if (item) A.selectFeature({ ...item.feature, id: item.id }, { skipExpand: true });
       }

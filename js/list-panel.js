@@ -207,6 +207,16 @@
     });
 
     const listBody = document.getElementById('list-body');
+    /** Scroll list-body so el is in view without scrolling the document (fixes desktop page scroll after map click). */
+    function scrollListBodyTo(el, padding) {
+      if (!el || !listBody || !listBody.contains(el)) return;
+      padding = padding ?? 8;
+      const bodyRect = listBody.getBoundingClientRect();
+      const elRect = el.getBoundingClientRect();
+      const relativeTop = elRect.top - bodyRect.top + listBody.scrollTop;
+      const targetScroll = relativeTop - padding;
+      listBody.scrollTop = Math.max(0, Math.min(targetScroll, listBody.scrollHeight - listBody.clientHeight));
+    }
     let activeFilter = 'all';
     let activeSortMode = 'alphabet';
     A.activeSortMode = activeSortMode;
@@ -414,7 +424,7 @@
       if (A.selectedId != null) {
         requestAnimationFrame(() => {
           const el = listBody.querySelector(`.list-item[data-id="${A.selectedId}"]`);
-          if (el) el.scrollIntoView({ block: 'start', behavior: 'smooth' });
+          if (el) scrollListBodyTo(el);
         });
       }
       A.updatePanelLayout();
@@ -460,7 +470,7 @@
       if (el) {
         el.classList.add('active');
         requestAnimationFrame(() => {
-          el.scrollIntoView({ block: 'start', behavior: 'smooth' });
+          scrollListBodyTo(el);
         });
       }
     };
@@ -530,8 +540,9 @@
         updateMapVisibilityForFilter();
         if (newFilter === 'all') {
           viewBeforeFavVisitedMode = null;
-          const iv = A.initialView || { center: [13.3217, 52.521], zoom: 4, bearing: -11, pitch: 42 };
-          map.flyTo({ ...iv, duration: 800 });
+          const iv = A.initialView || { center: [19.96148, 57.70808], zoom: 2.687, bearing: 18.2, pitch: 50.9 };
+          const pitch = A.getMobilePitch ? A.getMobilePitch(iv.zoom, iv.pitch) : iv.pitch;
+          map.flyTo({ center: iv.center, zoom: iv.zoom, bearing: iv.bearing, pitch: pitch, duration: 800 });
         }
         if (activeFilter === 'fav' && A.favs.size > 0) {
           if (prevFilter === 'all') saveViewBeforeFavVisited();
@@ -645,6 +656,13 @@
       updateListExportLabels();
       listExportTrigger.addEventListener('click', (e) => {
         e.stopPropagation();
+        if (document.body.classList.contains('is-mobile')) {
+          const text = A.buildBookmarksText(featureList, A.favs, A.lang);
+          if (!text) { A.showToast(A.t('shareFailed'), 3000); return; }
+          const title = A.lang === 'fi' ? 'Alvar Aallon suosikit' : 'My Alvar Aalto bookmarks';
+          A.share(text, { title }, () => A.showToast(A.t('sharedToClipboard'), 2000), () => A.showToast(A.t('shareFailed'), 3000));
+          return;
+        }
         listExportDropdown.classList.toggle('open');
       });
       listExportMenu.addEventListener('click', (e) => e.stopPropagation());
@@ -656,7 +674,8 @@
           if (opt.dataset.action === 'share-bookmarks') {
             const text = A.buildBookmarksText(featureList, A.favs, A.lang);
             if (!text) { A.showToast(A.t('shareFailed'), 3000); return; }
-            A.shareToClipboard(text,
+            const title = A.lang === 'fi' ? 'Alvar Aallon suosikit' : 'My Alvar Aalto bookmarks';
+            A.share(text, { title },
               () => A.showToast(A.t('sharedToClipboard'), 2000),
               () => A.showToast(A.t('shareFailed'), 3000));
           } else if (opt.dataset.action === 'print-bookmarks') {
@@ -882,9 +901,11 @@
       if (filter === 'all') {
         if (prevFilter === 'fav' || prevFilter === 'visited') {
           restoreViewBeforeFavVisited();
-        } else {
-          const iv = A.initialView || { center: [13.3217, 52.521], zoom: 4, bearing: -11, pitch: 42 };
-          map.flyTo({ ...iv, duration: 800 });
+        } else if (A.isMobile) {
+          viewBeforeFavVisitedMode = null;
+          const iv = A.initialView || { center: [19.96148, 57.70808], zoom: 2.687, bearing: 18.2, pitch: 50.9 };
+          const pitch = A.getMobilePitch ? A.getMobilePitch(iv.zoom, iv.pitch) : iv.pitch;
+          map.flyTo({ center: iv.center, zoom: iv.zoom, bearing: iv.bearing, pitch: pitch, duration: 800 });
         }
       } else if (filter === 'fav' && A.favs.size > 0) {
         if (prevFilter === 'all') saveViewBeforeFavVisited();

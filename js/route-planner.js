@@ -198,6 +198,7 @@
     });
 
     function handleRouteStopClick(e) {
+      e.preventDefault();
       setSkipMapClick(true);
       const stopId = e.features[0].properties.stopId;
       const item = featureList.find(f => f.id === stopId);
@@ -211,6 +212,7 @@
     map.on('mouseleave', 'route-stop-labels', () => { map.getCanvas().style.cursor = ''; });
 
     function handleRouteClusterClick(e) {
+      e.preventDefault();
       setSkipMapClick(true);
       const f = e.features[0];
       const clusterId = f.id;
@@ -739,6 +741,14 @@
       updateRouteExportLabels();
       routeExportTrigger.addEventListener('click', (e) => {
         e.stopPropagation();
+        if (document.body.classList.contains('is-mobile')) {
+          const gmapsUrl = A.getGmapsUrl(A.routeStops, A.routeSegments);
+          const text = A.buildRouteText(A.routeStops, A.routeSegments, A.featureList || [], A.lang, gmapsUrl);
+          if (!text) { A.showToast(A.t('shareFailed'), 3000); return; }
+          const title = A.lang === 'fi' ? 'Alvar Aallon reitti' : 'My Alvar Aalto route';
+          A.share(text, { title, url: gmapsUrl || undefined }, () => A.showToast(A.t('sharedToClipboard'), 2000), () => A.showToast(A.t('shareFailed'), 3000));
+          return;
+        }
         routeExportDropdown.classList.toggle('open');
       });
       routeExportMenu.addEventListener('click', (e) => e.stopPropagation());
@@ -751,7 +761,8 @@
             const gmapsUrl = A.getGmapsUrl(A.routeStops, A.routeSegments);
             const text = A.buildRouteText(A.routeStops, A.routeSegments, A.featureList || [], A.lang, gmapsUrl);
             if (!text) { A.showToast(A.t('shareFailed'), 3000); return; }
-            A.shareToClipboard(text,
+            const title = A.lang === 'fi' ? 'Alvar Aallon reitti' : 'My Alvar Aalto route';
+            A.share(text, { title, url: gmapsUrl || undefined },
               () => A.showToast(A.t('sharedToClipboard'), 2000),
               () => A.showToast(A.t('shareFailed'), 3000));
           } else if (opt.dataset.action === 'print-route') {

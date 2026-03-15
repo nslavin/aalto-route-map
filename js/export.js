@@ -105,6 +105,29 @@
     }
   }
 
+  /** Prefer system share (navigator.share) when available, else clipboard. opts: { title?, url? }. */
+  function share(text, opts, onSuccess, onFail) {
+    if (!text) {
+      if (onFail) onFail('Nothing to share');
+      return;
+    }
+    opts = opts || {};
+    if (navigator.share && typeof navigator.share === 'function') {
+      navigator.share({
+        title: opts.title || document.title || 'Alvar Aalto Route',
+        text: text,
+        url: opts.url || window.location.href
+      })
+        .then(() => { if (onSuccess) onSuccess(); })
+        .catch((err) => {
+          if (err && err.name === 'AbortError') return;
+          if (onFail) onFail();
+        });
+    } else {
+      shareToClipboard(text, onSuccess, onFail);
+    }
+  }
+
   async function printBookmarks(opts) {
     if (opts && opts.before) await Promise.resolve(opts.before());
     const title = A.lang === 'fi' ? 'Alvar Aallon Reitti – Suosikit' : 'Alvar Aalto Route – My Bookmarks';
@@ -145,6 +168,7 @@
   A.buildRouteText = buildRouteText;
   A.getGmapsUrl = getGmapsUrl;
   A.shareToClipboard = shareToClipboard;
+  A.share = share;
   A.printBookmarks = printBookmarks;
   A.printRoute = printRoute;
 })();

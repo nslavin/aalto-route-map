@@ -82,6 +82,7 @@
     const capText = document.getElementById('carousel-caption-text');
     const navEl = document.getElementById('carousel-nav');
     let carouselIdx = 0;
+    let touchStartX, touchStartY, carouselSwipe = false;
 
     function showSlide(n) {
       carouselIdx = (n + images.length) % images.length;
@@ -106,6 +107,31 @@
       document.getElementById('carousel-prev').onclick = (e) => { e.stopPropagation(); showSlide(carouselIdx - 1); };
       document.getElementById('carousel-next').onclick = (e) => { e.stopPropagation(); showSlide(carouselIdx + 1); };
       imgEl.onclick = () => A.openLightbox(carouselIdx);
+      if (images.length > 1) {
+        carEl.addEventListener('touchstart', function (e) {
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+          carouselSwipe = false;
+        }, { passive: true });
+        carEl.addEventListener('touchmove', function (e) {
+          var dx = e.touches[0].clientX - touchStartX;
+          var dy = e.touches[0].clientY - touchStartY;
+          if (!carouselSwipe && Math.abs(dx) > 30 && Math.abs(dx) > Math.abs(dy)) {
+            carouselSwipe = true;
+          }
+          if (carouselSwipe) {
+            e.preventDefault();
+          }
+        }, { passive: false });
+        carEl.addEventListener('touchend', function (e) {
+          if (!carouselSwipe || !e.changedTouches[0]) return;
+          var endX = e.changedTouches[0].clientX;
+          var deltaX = endX - touchStartX;
+          if (Math.abs(deltaX) > 50) {
+            showSlide(carouselIdx + (deltaX < 0 ? 1 : -1));
+          }
+        }, { passive: true });
+      }
     } else {
       carEl.style.display = 'none';
     }

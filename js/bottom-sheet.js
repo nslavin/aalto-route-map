@@ -374,11 +374,16 @@
       switchTab('all');
       A.updateFilterCounts();
 
-      // Fit all sites on initial mobile load
-      if (A.allFeatures && A.allFeatures.length > 0) {
-        var bounds = new mapboxgl.LngLatBounds();
-        A.allFeatures.forEach(function (f) { bounds.extend(f.geometry.coordinates); });
-        map.fitBounds(bounds, { padding: { top: 40, bottom: 200, left: 40, right: 40 }, pitch: 0, duration: 0 });
+      // Use saved map position when available (same as desktop); otherwise default "all" view
+      var savedPos = null;
+      try {
+        var raw = localStorage.getItem('aalto_map_pos');
+        if (raw) savedPos = JSON.parse(raw);
+      } catch (e) { /* ignore */ }
+      if (!savedPos) {
+        var iv = A.initialView || { center: [19.96148, 57.70808], zoom: 2.687, bearing: 18.2, pitch: 50.9 };
+        var pitch = A.getMobilePitch ? A.getMobilePitch(iv.zoom, iv.pitch) : iv.pitch;
+        map.jumpTo({ center: iv.center, zoom: iv.zoom, bearing: iv.bearing, pitch: pitch, duration: 0 });
       }
     }
 
@@ -515,6 +520,7 @@
         sortWrap.style.display = (tabName === 'all') ? '' : 'none';
       }
       A.updateFilterCounts();
+      A.savePanels();
     }
 
     function updateMobileExportRow(tabName) {

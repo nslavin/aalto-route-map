@@ -70,10 +70,14 @@
     const routeEl = document.getElementById('route-section');
     const panelEl = document.getElementById('panel');
     if (!routeEl || !panelEl) return;
+    // On mobile, detail is shown in bottom sheet — #panel never gets .open; use mobileState
+    const panelOpen = A.isMobile && A.mobileState
+      ? A.mobileState.showingDetail
+      : panelEl.classList.contains('open');
     const state = {
       listCollapsed: !!A.listCollapsed,
       routeCollapsed: routeEl.classList.contains('collapsed'),
-      panelOpen: panelEl.classList.contains('open'),
+      panelOpen: !!panelOpen,
       selectedId: A.selectedId != null ? A.selectedId : null,
       activeListFilter: A.activeListFilter || 'all',
       activeSortMode: A.activeSortMode || 'alphabet',

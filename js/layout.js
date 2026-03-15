@@ -110,9 +110,24 @@
         map.resize();
         requestAnimationFrame(() => {
           mapEl.style.transition = '';
-          // Second resize after layout has settled to avoid blank/gray area and redraw the map
           requestAnimationFrame(() => map.resize());
         });
+      } else {
+        // Panel open/close can change container size before reflow; redraw next frame so map matches.
+        requestAnimationFrame(() => {
+          const w = mapEl.offsetWidth;
+          if (w !== _lastMapWidth) _lastMapWidth = w;
+          map.resize();
+        });
+        // #map has CSS transition on width (0.35s); resize again when it finishes so map fills final size.
+        function onWidthTransitionEnd(e) {
+          if (e.target !== mapEl || e.propertyName !== 'width') return;
+          mapEl.removeEventListener('transitionend', onWidthTransitionEnd);
+          const w = mapEl.offsetWidth;
+          if (w !== _lastMapWidth) _lastMapWidth = w;
+          map.resize();
+        }
+        mapEl.addEventListener('transitionend', onWidthTransitionEnd);
       }
     };
 

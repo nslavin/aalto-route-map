@@ -1386,6 +1386,20 @@ a.panel-footer-value:hover { opacity: 0.5; }
     z-index: 10;
   }
 
+  /* Mobile layout: no print, single Share button → system share sheet */
+  .is-mobile .list-export-option[data-action="print-bookmarks"],
+  .is-mobile .route-export-option[data-action="print-route"] {
+    display: none;
+  }
+  .is-mobile .list-export-menu,
+  .is-mobile .route-export-menu {
+    display: none !important;
+  }
+  .is-mobile .list-export-arrow,
+  .is-mobile .route-export-arrow {
+    display: none;
+  }
+
   /* Hide redundant group headers on mobile — tabs already show filter + count */
   .bs-view-list > #list-body > .list-group-header:first-child {
     display: none;
