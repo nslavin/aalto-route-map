@@ -1,5 +1,8 @@
 .DS_Store
-.claude/
+.claude/*
+!.claude/hooks/
+!.claude/hooks/**
+!.claude/settings.json
 .cursor/
 data/images/
 node_modules/
