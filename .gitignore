@@ -1,5 +1,6 @@
 .DS_Store
 .claude/
 .cursor/
+CLAUDE.md
 data/images/
 node_modules/

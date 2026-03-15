@@ -73,13 +73,6 @@ Used to refresh or rebuild data from the Alvar Aalto Route site:
 
 GeoJSON is written with `ensure_ascii=False` so Finnish characters (ä, ö) are preserved.
 
-## API keys
-
-- **Google** (Directions): in `index.html`
-- **Mapbox**: in `js/map-init.js`
-
-Do not commit secrets; use env or local config if needed.
-
 ## Licence
 
 See repository or project metadata for licence terms.
